@@ -1,0 +1,10 @@
+# Install with "pip install -r requirements.txt" or "pip install --upgrade -r requirements.txt".
+# Ya instalados
+Flask==0.10.1
+flask-admin==1.0.8
+flask-mongoengine==0.7.1
+Flask-Login==0.2.11
+Flask-WTF==0.10.2
+WTForms==1.0.5
+blinker==1.3
+

@@ -1,0 +1,25 @@
+{% extends 'master.html' %}
+
+{% block body %}
+<p>
+
+    Examen generado correctamente.
+    de modo {{ modo }}.
+<p>
+    Asignatura: {{ asignatura }}
+<br>    
+{{ nombre }}
+<br>
+Tipo: {{ tipo }}
+    
+    
+    {% for pregunta in preguntas  %}
+        <p>{{ pregunta.texto }}
+    {% endfor %}
+
+<br>
+<p>
+<hr>
+<a class="btn btn-primary" href="/genexa"><i class="icon-arrow-left icon-white"></i> Back</a>
+
+{% endblock body %}
