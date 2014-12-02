@@ -119,7 +119,8 @@ class PreguntasView(MyView):
     column_choices = {
         'tipo': [
             (0, 'Desarrollo'), 
-            (1, 'Verdadero o Falso'),
-            (2, 'Test')
+            (1, 'Test'),
+            (2, 'Verdadero o Falso')
+            
         ]
     }

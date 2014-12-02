@@ -108,7 +108,7 @@ class Respuestas(EmbeddedDocument):
 
 @update_modified.apply
 class Preguntas(Document):
-    TIPO = ((0, 'Desarrollo'), (1, 'Verdadero o Falso'),(2, 'Test'))
+    TIPO = ((0, 'Desarrollo'), (1, 'Test'), (2, 'Verdadero o Falso'))
 
     num = IntField(required=True, unique_with = ('asignatura', 'usuario'))    
     texto = StringField()
