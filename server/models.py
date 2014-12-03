@@ -142,3 +142,10 @@ class Examenes(Document):
     @queryset_manager
     def objects(doc_cls, queryset):
        return queryset.filter(usuario=login.current_user.get_id())
+
+
+@update_modified.apply
+class Examenes_Resueltos(Document):
+    examen = ReferenceField(Examenes)
+#    Respuestas = ReferenceField(Respuestas)
+    usuario = ReferenceField(Usuarios, reverse_delete_rule= 'NULLIFY')    

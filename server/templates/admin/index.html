@@ -24,10 +24,10 @@
             Bienvenido, {{ current_user.login }}
         </p>
             {% if not current_user.is_activado() %}
-	      <div class="alert alert-warning" role="alert">                
-		<p>Debe esperar a que el administrador le de permisos para 
+             <div class="alert alert-warning" role="alert">
+                <p>Debe esperar a que el administrador le de permisos para 
                     acceder a la aplicación.</p>
-	      </div>
+            </div>
             {% elif current_user.is_profesor %}        
                 <p>Puede generar examenes con las preguntas insertadas en la base de datos a partir del siguiente enlace:
                 <br>

@@ -1,7 +1,6 @@
 {% extends 'admin/base.html' %}
 
 {% block panel %}
-     {{ super() }}
      {% for item in admin_view.admin.menu() %}
        {% if item.is_accessible() and item.is_visible() and item.name != "Home" %}
         {% if item.is_active(admin_view) %}<li class="active">{% else %}<li class="active">{% endif %}
