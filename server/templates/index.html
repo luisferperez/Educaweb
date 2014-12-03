@@ -16,8 +16,9 @@ alumnos para que éstos puedan resolverlos.
         <div>
             {% if current_user.is_authenticated() %}            
                 Hola {{ current_user.login }}! 
+                <br>
+                
                 <p align=right><a href="{{ url_for('logout_view') }}">Logout</a>
-                <p><a href="{{ url_for('admin.index') }}">Página de administración</a>
  
             {% else %}
             <p>
