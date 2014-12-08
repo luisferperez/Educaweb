@@ -8,9 +8,6 @@ from flask.ext.mongoengine import MongoEngine
 from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes
 from forms import GeneraExamenForm
 
-#from flask.ext.wtf import 
-#from flask.ext.mongoengine.wtf import model_form
-
 #========================================#
 #    Creation of the Web Application     #
 #========================================#
@@ -44,6 +41,9 @@ def init_ddbb():
         redes = Asignaturas(asignatura="Redes")
         redes.save()
         
+        profe1 = Usuarios(login="profe1", password="profe1", tipo=1, activado=True, asignaturas={ss_oo, redes})
+        profe1.save()
+
         luisfer = Usuarios(login="luisfer", password="luisfer", tipo=1, activado=True, asignaturas={procesadores, ia, leng})
         luisfer.save()
         
@@ -111,7 +111,6 @@ def genera_examen_view():
 
     asig=login.current_user.get_asignaturas()    
     form.asignatura.choices = [(g.asignatura, g.asignatura) for g in asig]
-#    form.preguntas_tema(disabled=True)    
     
     if request.method == 'POST' and form.validate():        
         asignatura = Asignaturas.objects(asignatura=form.asignatura.data).first()
@@ -125,12 +124,11 @@ def genera_examen_view():
 
         # Random mode    
         if form.modo.data==0:
-            modo = "aleatorio"            
+            #modo = "aleatorio"            
             lista_preguntas = random.sample(lista_preguntas, num_preguntas)
 
         else:
             #modo = "preguntas por tema"
-
             lista = []
             lista_preguntas = []
             lista_temas = Temas.objects(asignatura = asignatura.get_id())
@@ -164,26 +162,15 @@ def genera_examen_view():
     return render_template('gen_exa.html', form=form)
 
 
-"""EXAMPLES
-PostForm = model_form(Post)
-
-def add_post(request):
-    form = PostForm(request.POST)
-    if request.method == 'POST' and form.validate():
-        # do something
-        redirect('done')
-    return render_response('add_post.html', form=form)
-
-@app.route("/edit<id>")
-def edit(id):
-    MyForm = model_form(MyModel, Form)
-    model = MyModel.get(id)
-    form = MyForm(request.form, model)
-
-    if form.validate_on_submit():
-        form.populate_obj(model)
-        model.put() 
-        flash("MyModel updated")
-        return redirect(url_for("index"))
-    return render_template("edit.html", form=form)
-"""
+@app.route('/examenes', methods=('GET', 'POST'))
+@app.route('/examenes/<nombre>', methods=('GET', 'POST'))
+def examenes_view(nombre=None):
+    exams = Examenes.public()
+    
+    if request.method == 'POST':
+        if nombre:
+            exam = Examenes.objects(nombre=nombre).first()
+            return render_template('exams/exam.html', exam=exam)
+        else:
+            return render_template('examen.html')
+    return render_template('public_exam.html', exams = exams)

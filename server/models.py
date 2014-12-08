@@ -133,7 +133,7 @@ class Preguntas(Document):
 
 @update_modified.apply
 class Examenes(Document):
-    nombre = StringField()
+    nombre = StringField(unique=True)
     asignatura = ReferenceField(Asignaturas, reverse_delete_rule= 'NULLIFY')
     preguntas = ListField(ReferenceField(Preguntas))
     publico = BooleanField()
@@ -143,6 +143,21 @@ class Examenes(Document):
     def objects(doc_cls, queryset):
        return queryset.filter(usuario=login.current_user.get_id())
 
+    @queryset_manager
+    def public(doc_cls, queryset):
+        lista_asignaturas=login.current_user.get_asignaturas()
+        query = Q(asignatura= lista_asignaturas[0].get_id())
+        for l in lista_asignaturas[1:]:
+            query |= Q(asignatura=l.get_id())
+        query &= Q(publico=True)
+        return queryset.filter(query)
+
+    # Required for administrative interface
+    def __unicode__(self):
+        return str(self.nombre) + " - " + str(self.asignatura)
+
+    def get_id(self):
+        return str(self.id)
 
 @update_modified.apply
 class Examenes_Resueltos(Document):
