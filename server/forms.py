@@ -2,7 +2,7 @@
 
 # Define login and registration forms (for flask-login)
 from wtforms import form, fields, validators
-from models import Usuarios, Preguntas, Asignaturas
+from models import Usuarios, Preguntas, Asignaturas, Examenes
 
 #from flask_wtf import Form
 
@@ -24,6 +24,8 @@ class LoginForm(form.Form):
 
 
 class RegistrationForm(form.Form):
+    nombre = fields.TextField(validators=[validators.required()])
+    apellidos = fields.TextField(validators=[validators.required()])
     login = fields.TextField(validators=[validators.required()])
     email = fields.TextField()
     password = fields.PasswordField(validators=[validators.DataRequired(), validators.EqualTo('confirm', message='Passwords must match')])
@@ -44,6 +46,10 @@ class GeneraExamenForm(form.Form):
     modo = fields.SelectField('Modo de examen:', coerce=int, choices=MODO)
     publico = fields.BooleanField(u'¿Desea hacer público el examen?')
     
+    def validate_nombre(self, field):
+        if Examenes.objects(nombre=self.nombre.data):
+            raise validators.ValidationError(u'El nombre del examen ya ha sido usado')
+
     def validate_num_preguntas(self, field):
         asignatura = Asignaturas.objects(asignatura=self.asignatura.data).first()
         tipo = self.tipo_examen.data
