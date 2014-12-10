@@ -9,11 +9,12 @@
 <br>    
 
 <br>
+<form action="/examenes/{{ exam.nombre }}" method="POST">
     {% for pregunta in exam.preguntas  %}
         <p>{{ loop.index }}.-  {{ pregunta.texto }}
         <br>{% if pregunta.tipo == 0 %}
-            <textarea name="resp" rows="7" cols="60">
-            </textarea> 
+                <textarea name="resp" rows="7" cols="60">
+                </textarea> 
             {% elif pregunta.tipo == 1 %}
                 {% for r in pregunta.respuesta %}
                 <input type="radio" name="{{ pregunta.num }}" value="{{ r.letra }}">  {{ r.letra }}.- {{ r.texto }}
@@ -23,10 +24,12 @@
                 <input type="radio" name="{{ pregunta.num }}" value="V">  Verdadera
                 <br>
                 <input type="radio" name="{{ pregunta.num }}" value="F">  Falsa
-                <br>
+                <br><br>
 
             {% endif %}
     {% endfor %}
+    <button class="btn btn-success" type="submit">Submit</button>
+</form>
 <br>
 <p>
 <hr>

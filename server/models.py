@@ -84,6 +84,9 @@ class Usuarios(Document):
     def get_asignaturas(self):
         return self.asignaturas       
         
+    def get_nombre_ape(self):
+        return self.nombre + " " + self.apellidos       
+
     # Required for administrative interface
     def __unicode__(self):
         return self.login

@@ -24,8 +24,7 @@ def init_ddbb():
     if num == 0:
         Usuarios(login="admin", password="educaweb", tipo=0, activado=True).save()    
         
-        # Registros de prueba -- BORRAR EN PRODUCCIÓN
-        #luisfer.save()        
+        # Registros de prueba -- BORRAR EN PRODUCCIÓN      
         procesadores = Asignaturas(asignatura="Procesadores del lenguaje")
         procesadores.save()        
 
@@ -170,8 +169,8 @@ def genera_examen_view():
         examen.preguntas = lista_preguntas
         examen.save()
 
-        return render_template('examen.html', asignatura=asignatura, nombre=nombre, preguntas=lista_preguntas, tipo=tipo)
-    return render_template('gen_exa.html', form=form)
+        return render_template('exams/examen.html', asignatura=asignatura, nombre=nombre, preguntas=lista_preguntas, tipo=tipo)
+    return render_template('exams/gen_exa.html', form=form)
 
 
 @app.route('/examenes', methods=('GET', 'POST'))
@@ -183,6 +182,28 @@ def examenes_view(nombre=None):
         if nombre:
             exam = Examenes.objects(nombre=nombre).first()
             return render_template('exams/exam.html', exam=exam)
-        else:
-            return render_template('examen.html')
-    return render_template('public_exam.html', exams = exams)
+        else:    
+            resp = []
+            exam = Examenes.objects(nombre=nombre).first()
+            for pregunta in exam.preguntas:
+                if pregunta.tipo == 0:
+                #<textarea name="resp" rows="7" cols="60">
+                    pass
+                elif pregunta.tipo == 1:
+                    for r in pregunta.respuesta:
+                #<input type="radio" name="{{ pregunta.num }}" value="{{ r.letra }}">  {{ r.letra }}.- {{ r.texto }}
+                        pass
+                elif pregunta.tipo == 2:
+#                <input type="radio" name="{{ pregunta.num }}" value="V">  Verdadera
+#                <input type="radio" name="{{ pregunta.num }}" value="F">  Falsa
+                    campo = pregunta.num
+                    resp = resp.append(request.form[campo])
+                
+            
+            
+            return render_template('exams/exam.html', exam=exam, resp=resp)
+    if nombre:
+        exam = Examenes.objects(nombre=nombre).first()
+        return render_template('exams/exam.html', exam=exam)
+    else:        
+        return render_template('exams/public_exam.html', exams = exams)

@@ -6,7 +6,7 @@
 
 {% block body %}
 <br><br>
-<form action="respond" method="POST">
+<form action="respond" method="GET">
 
   <div class="container">
     <h4>Exámenes disponibles</h4>
@@ -15,6 +15,7 @@
         <tr>
           <th>Examen</th>
           <th>Asignatura</th>
+          <th>Profesor</th>
           <th>Tipo</th>
         </tr>
       </thead>
@@ -23,6 +24,7 @@
             <tr>
               <td>{{ ex.nombre }}</td>
               <td>{{ ex.asignatura }}</td>
+              <td>{{ ex.usuario.get_nombre_ape() }}</td>
               <td>{{ ex.tipo }}</td>
               <td><input type="submit" formaction="/examenes/{{ ex.nombre }}"  value="Ver"></td>
             </tr>

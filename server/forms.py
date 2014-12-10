@@ -4,8 +4,6 @@
 from wtforms import form, fields, validators
 from models import Usuarios, Preguntas, Asignaturas, Examenes
 
-#from flask_wtf import Form
-
 class LoginForm(form.Form):
     login = fields.TextField(validators=[validators.required()])
     password = fields.PasswordField(validators=[validators.required()])

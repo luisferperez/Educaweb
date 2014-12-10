@@ -110,12 +110,12 @@ class AsignaturasView(MyView):
 class TemasView(MyView):
 #    column_filters = (scaffold_filters(asignatura))
     column_labels = dict(nombre='Nombre', descripcion='Descripcion')
-    column_default_sort = {'num'}
+    column_default_sort = ('asignatura', 'num')
     action_disallowed_list = ['delete']
 
 class PreguntasView(MyView):
     
-    column_default_sort = 'tema'
+    column_default_sort =  ('asignatura', 'tema', 'num')
 
     column_choices = {
         'tipo': [
