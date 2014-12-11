@@ -10,7 +10,7 @@ from forms import LoginForm, RegistrationForm
 
 def initialize_admin_component(app):
     # Create admin
-    admin = Admin(app, 'educaWeb', index_view=MyAdminIndexView(), base_template='admin.html')
+    admin = Admin(app, 'EducaWeb', index_view=MyAdminIndexView(), base_template='admin.html')
     # Add view
     admin.add_view(UserView(Usuarios))
     admin.add_view(AsignaturasView(Asignaturas))
@@ -38,6 +38,7 @@ class MyAdminIndexView(admin.AdminIndexView):
         if login.current_user.is_authenticated():
             return redirect(url_for('.index'))
         link = '<p>Si no dispone de cuenta de usuario <a href="' + url_for('.register_view') + '">Pulse aqu&iacute para registrarse.</a></p>'
+        link = '<p>Si no recuerda su contraseña <a href="' + url_for('.register_view') + '">pulse aqu&iacute para reactivarla.</a></p>'
         self._template_args['form'] = form
         self._template_args['link'] = link
         return super(MyAdminIndexView, self).index()
@@ -67,7 +68,8 @@ class MyView(ModelView):
         return login.current_user.is_authenticated() and login.current_user.is_activado() and login.current_user.is_profesor() 
         
 class UserView(ModelView):
-#    object_id_converter = str
+    column_exclude_list = ("password")
+    form_excluded_columns = ("password")
     
     column_filters = ['login']
     
@@ -111,7 +113,9 @@ class TemasView(MyView):
 #    column_filters = (scaffold_filters(asignatura))
     column_labels = dict(nombre='Nombre', descripcion='Descripcion')
     column_default_sort = ('asignatura', 'num')
-    action_disallowed_list = ['delete']
+
+
+#    action_disallowed_list = ['delete']
 
 class PreguntasView(MyView):
     

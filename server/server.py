@@ -4,6 +4,7 @@ import config, random
 from flask import Flask, request, render_template, redirect, session, url_for
 from flask.ext import login
 from flask.ext.mongoengine import MongoEngine
+from flask.ext.mail import Mail, Message
 
 from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes
 from forms import GeneraExamenForm
@@ -16,6 +17,8 @@ app.config.from_object(config)
 
 db = MongoEngine()
 db.init_app(app)
+
+mail = Mail(app)
 
 # Initialize ddbb
 def init_ddbb():
@@ -207,3 +210,14 @@ def examenes_view(nombre=None):
         return render_template('exams/exam.html', exam=exam)
     else:        
         return render_template('exams/public_exam.html', exams = exams)
+
+@app.route('/email')
+def send_mail():
+    msg = Message(
+      'Hello',
+       sender='educaweb.uned@gmail.com',
+       recipients=
+       ['user@gmail.com.com'])
+    msg.body = "This is the email body"
+    mail.send(msg)
+    return "Sent"

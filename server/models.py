@@ -46,9 +46,9 @@ class Usuarios(Document):
     
     nombre = StringField(max_length=40)
     apellidos = StringField(max_length = 80)
-    login = StringField(max_length=80, unique=True)
+    login = StringField(required=True, max_length=80, unique=True)
     email = StringField(max_length=120)
-    password = StringField(max_length=64)
+    password = StringField(required=True, max_length=64)
     tipo = IntField(choices=TIPO)
     activado = BooleanField(default=False)
     asignaturas = ListField(ReferenceField(Asignaturas))
@@ -93,7 +93,7 @@ class Usuarios(Document):
 
 @update_modified.apply
 class Temas(Document):
-    num = IntField(unique_with = ('asignatura', 'usuario'))
+    num = IntField(required=True, unique_with = ('asignatura', 'usuario'))
     descripcion = StringField(max_length=100)
     asignatura = ReferenceField(Asignaturas, reverse_delete_rule= 'NULLIFY')
     usuario = ReferenceField(Usuarios, reverse_delete_rule= 'NULLIFY')
@@ -116,7 +116,7 @@ class Preguntas(Document):
     TIPO = ((0, 'Desarrollo'), (1, 'Test'), (2, 'Verdadero o Falso'))
 
     num = IntField(required=True, unique_with = ('asignatura', 'usuario'))    
-    texto = StringField()
+    texto = StringField(required=True)
     asignatura = ReferenceField(Asignaturas, reverse_delete_rule= 'NULLIFY')
     tema = ReferenceField(Temas)
     tipo = IntField(choices=TIPO)
@@ -138,7 +138,7 @@ class Preguntas(Document):
 
 @update_modified.apply
 class Examenes(Document):
-    nombre = StringField(unique_with = ('asignatura', 'usuario'))
+    nombre = StringField(required=True, unique_with = ('asignatura', 'usuario'))
     asignatura = ReferenceField(Asignaturas, reverse_delete_rule= 'NULLIFY')
     preguntas = ListField(ReferenceField(Preguntas))
     publico = BooleanField()
