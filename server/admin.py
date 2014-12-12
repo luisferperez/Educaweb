@@ -4,7 +4,7 @@ from flask.ext import admin, login
 from flask.ext.admin.contrib.mongoengine import ModelView
 from flask.ext.admin import Admin, expose, helpers
 
-from models import Usuarios, Temas, Preguntas, Asignaturas, Examenes, Examenes_Resueltos
+from models import Usuarios, Temas, Preguntas, Asignaturas, Examenes
 from forms import LoginForm, RegistrationForm
 
 
@@ -38,9 +38,10 @@ class MyAdminIndexView(admin.AdminIndexView):
         if login.current_user.is_authenticated():
             return redirect(url_for('.index'))
         link = '<p>Si no dispone de cuenta de usuario <a href="' + url_for('.register_view') + '">Pulse aqu&iacute para registrarse.</a></p>'
-        link = '<p>Si no recuerda su contraseña <a href="' + url_for('.register_view') + '">pulse aqu&iacute para reactivarla.</a></p>'
+        link2 = u'<p>Si no recuerda su contraseña <a href="' + url_for('rec_pass') + '">pulse aqu&iacute para reactivarla.</a></p>'
         self._template_args['form'] = form
         self._template_args['link'] = link
+        self._template_args['link2'] = link2
         return super(MyAdminIndexView, self).index()
 
     @expose('/register/', methods=('GET', 'POST'))

@@ -211,13 +211,21 @@ def examenes_view(nombre=None):
     else:        
         return render_template('exams/public_exam.html', exams = exams)
 
-@app.route('/email')
+
+@app.route('/rec_pass', methods=('GET', 'POST'))
+def rec_pass():
+#    form = request.form    
+    if request.method == 'POST' and request.form.validate():            
+        pass
+    return render_template('pass/rec_pass.html')
+
+@app.route('/email', methods=('GET', 'POST'))
 def send_mail():
     msg = Message(
       'Hello',
        sender='educaweb.uned@gmail.com',
        recipients=
-       ['user@gmail.com.com'])
+       ['luifito@gmail.com'])
     msg.body = "This is the email body"
     mail.send(msg)
     return "Sent"
