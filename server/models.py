@@ -47,7 +47,7 @@ class Usuarios(Document):
     nombre = StringField(max_length=40)
     apellidos = StringField(max_length = 80)
     login = StringField(required=True, max_length=80, unique=True)
-    email = StringField(max_length=120)
+    email = StringField(required=True, max_length=100)
     password = StringField(required=True, max_length=64)
     tipo = IntField(choices=TIPO)
     activado = BooleanField(default=False)

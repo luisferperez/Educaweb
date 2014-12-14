@@ -23,9 +23,9 @@ class LoginForm(form.Form):
 
 class RegistrationForm(form.Form):
     nombre = fields.TextField(validators=[validators.required()])
-    apellidos = fields.TextField(validators=[validators.required()])
+    apellidos = fields.TextField()
     login = fields.TextField(validators=[validators.required()])
-    email = fields.TextField()
+    email = fields.TextField(validators=[validators.required()])
     password = fields.PasswordField(validators=[validators.DataRequired(), validators.EqualTo('confirm', message='Passwords must match')])
     confirm = fields.PasswordField('Repeat Password')
 
@@ -56,3 +56,19 @@ class GeneraExamenForm(form.Form):
         if preguntas < num_preguntas:
             raise validators.ValidationError(u'No existen suficientes preguntas de la asignatura para el tipo indicado.')            
             #raise validators.ValidationError(u'No existen suficientes preguntas de la asignatura ' + str(asignatura)+ u' para el tipo indicado.')
+
+class ProfileForm(form.Form):
+    nombre = fields.StringField()
+    apellidos = fields.StringField()
+    login = fields.StringField([validators.required()])
+    email = fields.StringField("email", [validators.required()])
+    password = fields.StringField([validators.EqualTo('confirm', message='Passwords must match')])
+    confirm = fields.PasswordField('Repeat Password')
+"""
+    nombre = fields.StringField(max_length=40)
+    apellidos = fields.StringField(max_length = 80)
+    login = fields.StringField(required=True, max_length=80, unique=True)
+    email = fields.StringField(required=True, max_length=100)
+    password = fields.StringField(required=True, max_length=64)
+#    asignaturas = fields.ListField(ReferenceField(Asignaturas))
+"""

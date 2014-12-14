@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import config, random
+import config, random, string
 
 from flask import Flask, request, render_template, redirect, session, url_for
 from flask.ext import login
@@ -7,7 +7,7 @@ from flask.ext.mongoengine import MongoEngine
 from flask.ext.mail import Mail, Message
 
 from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes
-from forms import GeneraExamenForm
+from forms import GeneraExamenForm, ProfileForm, RegistrationForm
 
 #========================================#
 #    Creation of the Web Application     #
@@ -95,6 +95,7 @@ def init_login(app):
     def load_user(user_id):
         return Usuarios.objects(id=user_id).first()
 
+
 @app.route('/user/<username>')
 def show_user_profile(username):
     # show the user profile for that user
@@ -117,7 +118,6 @@ def logout_view():
 @app.errorhandler(404)
 def error_not_found(error):
     return render_template('error/page_not_found.html'), 404
-    
 
 @app.route('/genexa', methods=('GET', 'POST'))
 def genera_examen_view():
@@ -211,21 +211,64 @@ def examenes_view(nombre=None):
     else:        
         return render_template('exams/public_exam.html', exams = exams)
 
+@app.route('/mi_cuenta', methods=('GET', 'POST'))
+def cuenta_view():
+    form = RegistrationForm(request.form)   
+    
+    if request.method == 'POST' and form.validate():    
+        user = Usuarios.objects(id=login.current_user.get_id()).first()
+  #      form.populate_obj(user)
+        user.nombre = form.nombre.data
+        user.apellidos = form.apellidos.data
+        user.password = form.password.data
+        user.email = form.email.data
+        user.save()
+        return render_template("user/profile.html", user=user, save=True)
+    user = Usuarios.objects(id=login.current_user.get_id()).first()
+  #  form.populate_obj(user)
+    return render_template('user/profile.html', user=user, form=form)
+
 
 @app.route('/rec_pass', methods=('GET', 'POST'))
 def rec_pass():
-#    form = request.form    
-    if request.method == 'POST' and request.form.validate():            
-        pass
-    return render_template('pass/rec_pass.html')
+    if request.method == 'POST':            
+        login = request.form["login"]
 
-@app.route('/email', methods=('GET', 'POST'))
-def send_mail():
+        if login:
+            user = Usuarios.objects(login=login).first()
+            if user:
+                email = user.email
+                if email:
+                    passw = gen_passwd(8)
+                    user.password = passw
+                    user.save()
+                    send_email(email, passw)                    
+                    return render_template('user/rec_pass.html', email=email)
+                else:
+                    error = u"No ha introducido ningún email válido en su perfil"
+            else:
+                error = u"El usuario introducido no es válido"
+
+        else:
+            error = u"Debe introducir un usuario"
+
+        return render_template("user/rec_pass.html", error=error)
+
+    return render_template('user/rec_pass.html') 
+    
+
+def gen_passwd(n):
+    """ 
+    Generador de passwords 
+    Usando choice para seleccionar una, la fuente de datos lo da string.letters
+    Para usar tambien numeros, string.digits
+    """
+    return ''.join([random.choice(string.letters + string.digits) for i in range(n)])
+    
+def send_email(email, passw):
     msg = Message(
-      'Hello',
+      'Contraseña cambiada correctamente',
        sender='educaweb.uned@gmail.com',
-       recipients=
-       ['luifito@gmail.com'])
-    msg.body = "This is the email body"
+       recipients=[email])
+    msg.body = u"Se ha creado una nueva contraseña de Educaweb para tu cuenta. La nueva contraseña es " + passw
     mail.send(msg)
-    return "Sent"
