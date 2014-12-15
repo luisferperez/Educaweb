@@ -18,10 +18,14 @@
     {% endif %}
     <br>
     Nueva contraseña<br>
-    <input type="text" name="password"><br><br>{{ user.password }}
-{% if form.password.errors %}<div class="alert alert-danger" role="alert">{{ form.password.errors }}</div><br><br>{% endif %}
+    <input type="password" name="password" value="{{ user.password }}"><br><br>{{ user.password }}
+        {% for e in form.password.errors %}
+            <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
+        {% endfor %}
+
+
     Repita la contraseña<br>
-    <input type="text" name="confirm"><br><br>
+    <input type="password" name="confirm" value="{{ user.password }}"><br><br>
 
     {% if save %}
     Guardado
