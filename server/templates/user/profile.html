@@ -2,55 +2,49 @@
 
 {% block body %}
 <p>
-<h4>Perfil del usuario: {{ user.login }}</h4>
+<h4>Perfil del usuario: <strong>{{ user.login }}</strong></h4>
 <br>
+    {% if save %}
+    <div class="alert alert-success" role="alert">Su perfil de usuario se ha modificado correctamente</div>
+    {% endif %}
+
 <form action="{{ url_for('cuenta_view') }}" method="POST">
+    <input type="hidden" name="login" value="{{ user.login }}">
+        {% for e in form.login.errors %}
+            <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
+        {% endfor %}
     Nombre<br>
     <input type="text" name="nombre" value="{{ user.nombre }}"  maxlength="40"><br><br>
+        {% for e in form.nombre.errors %}
+            <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
+        {% endfor %}
+
     Apellidos<br>
     <input type="text" name="apellidos" value="{{ user.apellidos }}"><br><br>
+        {% for e in form.apellidos.errors %}
+            <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
+        {% endfor %}
+
     Email<br>
-    <input type="text" name="email" value="{{ user.email }}"><br>
-    {% if form.email.errors %}
+    <input type="text" name="email" value="{{ user.email }}"><br><br>
         {% for e in form.email.errors %}
             <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
         {% endfor %}
-    {% endif %}
-    <br>
+   
     Nueva contraseña<br>
-    <input type="password" name="password" value="{{ user.password }}"><br><br>{{ user.password }}
+    <input type="password" name="password" value="{{ user.password }}"><br><br>
         {% for e in form.password.errors %}
             <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
         {% endfor %}
 
-
     Repita la contraseña<br>
-    <input type="password" name="confirm" value="{{ user.password }}"><br><br>
+    <input type="password" name="confirm"><br><br>
 
-    {% if save %}
-    Guardado
-    {% endif %}
     <button class="btn btn-success" type="submit">Submit</button>
 </form>
 
 
-        <form method="POST" action="">
-            {{ form.hidden_tag() if form.hidden_tag }}
-            {% for f in form if f.type != 'CSRFTokenField' %}
-            <div>
-            {{ f.label }}{{ f.name }}{{ f.data }}
-            {{ f }}
-            {% if f.errors %}
-            <ul>
-                {% for e in f.errors %}
-                <li>{{ e }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            </div>
-            {% endfor %}
-            <button class="btn btn-success" type="submit">Submit</button>
-        </form> 
+ 
 
 <br><br>
 <a class="btn btn-primary" href="{{ url_for('admin.login_view') }}"><i class="icon-arrow-left icon-white"></i> Back</a>

@@ -58,17 +58,9 @@ class GeneraExamenForm(form.Form):
             #raise validators.ValidationError(u'No existen suficientes preguntas de la asignatura ' + str(asignatura)+ u' para el tipo indicado.')
 
 class ProfileForm(form.Form):
-    nombre = fields.StringField()
+    nombre = fields.StringField([validators.required()])
     apellidos = fields.StringField()
     login = fields.StringField([validators.required()])
-    email = fields.StringField("email", [validators.required()])
-    password = fields.StringField([validators.EqualTo('confirm', message='Passwords must match')])
+    email = fields.StringField("email", [validators.required(message=u'El email no puede estar vacío')])
+    password = fields.StringField(validators=[validators.DataRequired(), validators.EqualTo('confirm', message=u'Las contraseñas deben coincidir')])
     confirm = fields.PasswordField('Repeat Password')
-"""
-    nombre = fields.StringField(max_length=40)
-    apellidos = fields.StringField(max_length = 80)
-    login = fields.StringField(required=True, max_length=80, unique=True)
-    email = fields.StringField(required=True, max_length=100)
-    password = fields.StringField(required=True, max_length=64)
-#    asignaturas = fields.ListField(ReferenceField(Asignaturas))
-"""

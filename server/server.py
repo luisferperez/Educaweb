@@ -7,7 +7,7 @@ from flask.ext.mongoengine import MongoEngine
 from flask.ext.mail import Mail, Message
 
 from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes
-from forms import GeneraExamenForm, ProfileForm, RegistrationForm
+from forms import GeneraExamenForm, ProfileForm
 
 #========================================#
 #    Creation of the Web Application     #
@@ -213,19 +213,22 @@ def examenes_view(nombre=None):
 
 @app.route('/mi_cuenta', methods=('GET', 'POST'))
 def cuenta_view():
-    form = RegistrationForm(request.form)   
-    
-    if request.method == 'POST' and form.validate():    
-        user = Usuarios.objects(id=login.current_user.get_id()).first()
-  #      form.populate_obj(user)
+    form = ProfileForm(request.form)   
+    user = Usuarios.objects(id=login.current_user.get_id()).first()
+
+    if request.method == 'POST':
+        user.login = form.login.data
         user.nombre = form.nombre.data
         user.apellidos = form.apellidos.data
         user.password = form.password.data
         user.email = form.email.data
-        user.save()
-        return render_template("user/profile.html", user=user, save=True)
-    user = Usuarios.objects(id=login.current_user.get_id()).first()
-  #  form.populate_obj(user)
+        save = False
+        
+        if form.validate():
+            save = True
+            user.save()
+        return render_template("user/profile.html", user=user, form=form, save=save)
+
     return render_template('user/profile.html', user=user, form=form)
 
 
