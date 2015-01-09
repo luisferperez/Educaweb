@@ -69,7 +69,7 @@ class MyView(ModelView):
         return login.current_user.is_authenticated() and login.current_user.is_activado() and login.current_user.is_profesor() 
         
 class UserView(ModelView):
-#    column_exclude_list = ("password")
+    column_exclude_list = ("password")
     form_excluded_columns = ("password")
     
     column_filters = ['login']

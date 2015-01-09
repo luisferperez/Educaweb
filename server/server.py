@@ -177,13 +177,16 @@ def genera_examen_view():
 
 
 @app.route('/examenes', methods=('GET', 'POST'))
-@app.route('/examenes/<nombre>', methods=('GET', 'POST'))
-def examenes_view(nombre=None):
+@app.route('/examenes/<asignatura>/<nombre>/<usuario>', methods=('GET', 'POST'))
+def examenes_view(nombre=None, asignatura=None, usuario=None):
     exams = Examenes.public()
     
     if request.method == 'POST':
         if nombre:
-            exam = Examenes.objects(nombre=nombre).first()
+            asig = Asignaturas.objects(asignatura=asignatura).first()        
+            user = Usuarios.objects(login=usuario).first()
+            exam = Examenes.public(asignatura=asig.get_id(), nombre=nombre, usuario=user).first()
+
             return render_template('exams/exam.html', exam=exam)
         else:    
             resp = []
@@ -201,12 +204,14 @@ def examenes_view(nombre=None):
 #                <input type="radio" name="{{ pregunta.num }}" value="F">  Falsa
                     campo = pregunta.num
                     resp = resp.append(request.form[campo])
-                
-            
             
             return render_template('exams/exam.html', exam=exam, resp=resp)
+    
+    
     if nombre:
-        exam = Examenes.objects(nombre=nombre).first()
+        asig = Asignaturas.objects(asignatura=asignatura).first()        
+        user = Usuarios.objects(login=usuario).first()
+        exam = Examenes.public(asignatura=asig.get_id(), nombre=nombre, usuario=user).first()
         return render_template('exams/exam.html', exam=exam)
     else:        
         return render_template('exams/public_exam.html', exams = exams)

@@ -104,7 +104,7 @@ class Temas(Document):
 
     @queryset_manager
     def objects(doc_cls, queryset):
-       return queryset.filter(usuario=login.current_user.get_id())
+       return queryset#.filter(usuario=login.current_user.get_id())
 
 
 class Respuestas(EmbeddedDocument):
@@ -130,7 +130,7 @@ class Preguntas(Document):
 
     @queryset_manager
     def objects(doc_cls, queryset):
-       return queryset.filter(usuario=login.current_user.get_id())
+       return queryset#.filter(usuario=login.current_user.get_id())
 
     # Required for administrative interface
     def __unicode__(self):

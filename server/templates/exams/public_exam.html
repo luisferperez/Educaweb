@@ -26,7 +26,7 @@
               <td>{{ ex.asignatura }}</td>
               <td>{{ ex.usuario.get_nombre_ape() }}</td>
               <td>{{ ex.tipo }}</td>
-              <td><input type="submit" formaction="/examenes/{{ ex.nombre }}"  value="Ver"></td>
+              <td><input type="submit" formaction="/examenes/{{ ex.asignatura }}/{{ ex.nombre }}/{{ ex.usuario }}"  method="POST" value="Ver"></td>
             </tr>
         {% endfor %}
       </tbody>

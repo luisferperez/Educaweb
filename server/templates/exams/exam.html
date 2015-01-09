@@ -3,13 +3,13 @@
 {% block body %}
 
 <p>
-<h4>{{ exam.nombre }}</h4>
+<h4>Examen: {{ exam.nombre }}</h4>
 <p>
     Asignatura: {{ exam.asignatura }}
 <br>    
 
 <br>
-<form action="/examenes/{{ exam.nombre }}" method="POST">
+<form action="/examenes/{{ exam.asignatura }}/{{ exam.nombre }}/{{ exam.usuario }}" method="POST">
     {% for pregunta in exam.preguntas  %}
         <p>{{ loop.index }}.-  {{ pregunta.texto }}
         <br>{% if pregunta.tipo == 0 %}
