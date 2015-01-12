@@ -13,7 +13,7 @@
     {% for pregunta in exam.preguntas  %}
         <p>{{ loop.index }}.-  {{ pregunta.texto }}
         <br>{% if pregunta.tipo == 0 %}
-                <textarea name="resp" rows="7" cols="60">
+                <textarea name="{{ loop.index }}" rows="7" cols="60">
                 </textarea> 
             {% elif pregunta.tipo == 1 %}
                 {% for r in pregunta.respuesta %}
