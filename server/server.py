@@ -180,6 +180,8 @@ def genera_examen_view():
 @app.route('/examenes/<asignatura>/<nombre>/<usuario>', methods=('GET', 'POST'))
 def examenes_view(nombre=None, asignatura=None, usuario=None):
     exams = Examenes.public()
+
+
     
     if request.method == 'POST':
         if nombre:
@@ -187,7 +189,9 @@ def examenes_view(nombre=None, asignatura=None, usuario=None):
             user = Usuarios.objects(login=usuario).first()
             exam = Examenes.public(asignatura=asig.get_id(), nombre=nombre, usuario=user).first()
 
-            return render_template('exams/exam.html', exam=exam)
+            respuesta = request.form["1"]            
+            
+            return render_template('exams/exam.html', exam=exam, respuesta=respuesta)
         else:    
             resp = []
             exam = Examenes.objects(nombre=nombre).first()

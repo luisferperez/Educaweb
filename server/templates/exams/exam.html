@@ -8,6 +8,9 @@
     Asignatura: {{ exam.asignatura }}
 <br>    
 
+{% if respuesta %}
+    {{ respuesta }}
+{% endif %}
 <br>
 <form action="/examenes/{{ exam.asignatura }}/{{ exam.nombre }}/{{ exam.usuario }}" method="POST">
     {% for pregunta in exam.preguntas  %}
