@@ -6,7 +6,7 @@ from flask.ext import login
 from flask.ext.mongoengine import MongoEngine
 from flask.ext.mail import Mail, Message
 
-from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes
+from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes, Examenes_Resueltos
 from forms import GeneraExamenForm, ProfileForm
 
 #========================================#
@@ -180,18 +180,38 @@ def genera_examen_view():
 @app.route('/examenes/<asignatura>/<nombre>/<usuario>', methods=('GET', 'POST'))
 def examenes_view(nombre=None, asignatura=None, usuario=None):
     exams = Examenes.public()
-
-
     
     if request.method == 'POST':
         if nombre:
             asig = Asignaturas.objects(asignatura=asignatura).first()        
             user = Usuarios.objects(login=usuario).first()
             exam = Examenes.public(asignatura=asig.get_id(), nombre=nombre, usuario=user).first()
-
-            respuesta = request.form["1"]            
             
-            return render_template('exams/exam.html', exam=exam, respuesta=respuesta)
+            i = 1
+            respuestas = []            
+            for pregunta in exam.preguntas:
+                pre = "pregunta" + str(i)
+                if pregunta.tipo == 0:                
+                    respuestas.append(request.form[pre])
+                
+                
+                if pregunta.tipo == 2:
+                    pre = pre + "_v"
+                    respuestas.append(request.form[pre])
+                    pre = pre + "_f"
+                    respuestas.append(request.form[pre])
+                    
+                i = i + 1    
+                    
+            examen_resuelto = Examenes_Resueltos(examen = exam)            
+            
+            """
+            respuesta1 = request.form["1"]
+            respuestas.append(respuesta1)
+            respuesta2 = request.form["2"]
+            respuestas.append(respuesta2)
+            """         
+            return render_template('exams/exam.html', exam=exam, respuestas=respuestas)
         else:    
             resp = []
             exam = Examenes.objects(nombre=nombre).first()

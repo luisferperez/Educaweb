@@ -107,8 +107,12 @@ class Temas(Document):
        return queryset#.filter(usuario=login.current_user.get_id())
 
 
-class Respuestas(EmbeddedDocument):
+class Opciones(EmbeddedDocument):
     letra = StringField(max_length=1)
+    texto = StringField()
+
+class Respuestas(Document):
+    #letra = StringField(max_length=1)
     texto = StringField()
 
 @update_modified.apply
@@ -123,9 +127,10 @@ class Preguntas(Document):
     # Solo para la opción de verdadero o falso    
     verdadera = BooleanField() 
     # Solo para la opción de test
-    respuesta = ListField(EmbeddedDocumentField(Respuestas))
+    opciones = ListField(EmbeddedDocumentField(Opciones))
     correcta = StringField(max_length=1)
 
+    respuestas = ReferenceField(Respuestas)
     usuario = ReferenceField(Usuarios, reverse_delete_rule= 'NULLIFY')
 
     @queryset_manager
@@ -167,5 +172,4 @@ class Examenes(Document):
 @update_modified.apply
 class Examenes_Resueltos(Document):
     examen = ReferenceField(Examenes)
-#    Respuestas = ReferenceField(Respuestas)
     usuario = ReferenceField(Usuarios, reverse_delete_rule= 'NULLIFY')    
