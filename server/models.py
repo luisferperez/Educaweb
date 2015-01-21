@@ -130,7 +130,7 @@ class Preguntas(Document):
     opciones = ListField(EmbeddedDocumentField(Opciones))
     correcta = StringField(max_length=1)
 
-    respuestas = ReferenceField(Respuestas)
+    respuesta = ReferenceField(Respuestas)
     usuario = ReferenceField(Usuarios, reverse_delete_rule= 'NULLIFY')
 
     @queryset_manager

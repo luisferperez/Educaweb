@@ -187,13 +187,19 @@ def examenes_view(nombre=None, asignatura=None, usuario=None):
             user = Usuarios.objects(login=usuario).first()
             exam = Examenes.public(asignatura=asig.get_id(), nombre=nombre, usuario=user).first()
             
+            examen_resuelto = Examenes_Resueltos(examen = exam)            
+            
             i = 1
             respuestas = []            
             for pregunta in exam.preguntas:
                 pre = "pregunta" + str(i)
-                if pregunta.tipo == 0:                
-                    respuestas.append(request.form[pre])
                 
+                if pregunta.tipo == 0:
+                    respuestas.append(request.form[pre])
+                    pregunta.respuesta = request.form[pre]
+                
+                if pregunta.tipo == 1:
+                    respuestas.append(request.form.get(pre))
                 
                 if pregunta.tipo == 2:
                     pre = pre + "_v"
@@ -203,15 +209,19 @@ def examenes_view(nombre=None, asignatura=None, usuario=None):
                     
                 i = i + 1    
                     
-            examen_resuelto = Examenes_Resueltos(examen = exam)            
-            
-            """
-            respuesta1 = request.form["1"]
-            respuestas.append(respuesta1)
-            respuesta2 = request.form["2"]
-            respuestas.append(respuesta2)
-            """         
-            return render_template('exams/exam.html', exam=exam, respuestas=respuestas)
+
+
+#            respuestas = request.form
+            keys = []
+            values = []
+            f = request.form
+            for key in f.keys():
+                keys.append(key)                
+                for value in f.getlist(key):
+                    print key,":",value
+                    values.append(value)
+                    
+            return render_template('exams/exam.html', exam=exam, respuestas=respuestas, keys=keys, values=values)
         else:    
             resp = []
             exam = Examenes.objects(nombre=nombre).first()

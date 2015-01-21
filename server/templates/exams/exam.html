@@ -13,16 +13,27 @@
     {{ respuesta }}
 {% endfor %}
 
+<br>Keys:
+{% for key in keys  %}
+    {{ key }}
+{% endfor %}
+<br>Values:
+{% for value in values  %}
+    {{ value }}
+{% endfor %}
+
+
 <br>
 <form action="/examenes/{{ exam.asignatura }}/{{ exam.nombre }}/{{ exam.usuario }}" method="POST">
     {% for pregunta in exam.preguntas  %}
         <p>{{ loop.index }}.-  {{ pregunta.texto }}
+            {% set num = loop.index %}
         <br>{% if pregunta.tipo == 0 %}
                 <textarea name="pregunta{{ loop.index }}" rows="7" cols="60">
                 </textarea> 
             {% elif pregunta.tipo == 1 %}
                 {% for r in pregunta.opciones %}
-                <input type="radio" name="pregunta{{ loop.index }}" value="{{ r.letra }}">  {{ r.letra }}.- {{ r.texto }}
+                <input type="radio" name="pregunta{{ num }}" value="{{ r.letra }}">  {{ r.letra }}.- {{ r.texto }}
                 <br>
                 {% endfor %}
             {% elif pregunta.tipo == 2 %}
