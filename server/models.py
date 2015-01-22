@@ -44,7 +44,7 @@ class Asignaturas(Document):
 class Usuarios(Document):
     TIPO = ((0, 'Administrador'), (1, 'Profesor'),(2, 'Alumno'))    
     
-    nombre = StringField(max_length=40)
+    nombre = StringField(required=True, max_length=40)
     apellidos = StringField(max_length = 80)
     login = StringField(required=True, max_length=80, unique=True)
     email = StringField(required=True, max_length=100)
@@ -85,7 +85,10 @@ class Usuarios(Document):
         return self.asignaturas       
         
     def get_nombre_ape(self):
-        return self.nombre + " " + self.apellidos       
+        if self.apellidos:        
+            return self.nombre + " " + self.apellidos
+        else:
+            return self.nombre
 
     # Required for administrative interface
     def __unicode__(self):
@@ -104,7 +107,7 @@ class Temas(Document):
 
     @queryset_manager
     def objects(doc_cls, queryset):
-       return queryset#.filter(usuario=login.current_user.get_id())
+       return queryset.filter(usuario=login.current_user.get_id())
 
 
 class Opciones(EmbeddedDocument):
@@ -135,7 +138,7 @@ class Preguntas(Document):
 
     @queryset_manager
     def objects(doc_cls, queryset):
-       return queryset#.filter(usuario=login.current_user.get_id())
+       return queryset.filter(usuario=login.current_user.get_id())
 
     # Required for administrative interface
     def __unicode__(self):

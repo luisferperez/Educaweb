@@ -25,7 +25,7 @@ def init_ddbb():
     num = Usuarios.objects(login="admin").count()
     
     if num == 0:
-        Usuarios(login="admin", password="educaweb", tipo=0, activado=True).save()    
+        Usuarios(nombre="admin", login="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True).save()    
         
         # Registros de prueba -- BORRAR EN PRODUCCIÓN      
         procesadores = Asignaturas(asignatura="Procesadores del lenguaje")
@@ -43,10 +43,10 @@ def init_ddbb():
         redes = Asignaturas(asignatura="Redes")
         redes.save()
         
-        profe1 = Usuarios(login="profe1", password="profe1", tipo=1, activado=True, asignaturas={ss_oo, redes, procesadores})
+        profe1 = Usuarios(nombre="profe1", login="profe1", password="profe1", email="profe1@uned.es", tipo=1, activado=True, asignaturas={ss_oo, redes, procesadores})
         profe1.save()
 
-        luisfer = Usuarios(login="luisfer", password="luisfer", tipo=1, activado=True, asignaturas={procesadores, ia, leng})
+        luisfer = Usuarios(nombre = "luisfer", login="luisfer", password="luisfer", email="luifito@gmail.com", tipo=1, activado=True, asignaturas={procesadores, ia, leng})
         luisfer.save()
         
         Temas(num=1, descripcion="Introduccion a la IA", asignatura=ia, usuario=luisfer).save()
@@ -187,8 +187,6 @@ def examenes_view(nombre=None, asignatura=None, usuario=None):
             user = Usuarios.objects(login=usuario).first()
             exam = Examenes.public(asignatura=asig.get_id(), nombre=nombre, usuario=user).first()
             
-            examen_resuelto = Examenes_Resueltos(examen = exam)            
-            
             i = 1
             respuestas = []            
             for pregunta in exam.preguntas:
@@ -198,18 +196,20 @@ def examenes_view(nombre=None, asignatura=None, usuario=None):
                     respuestas.append(request.form[pre])
                     pregunta.respuesta = request.form[pre]
                 
-                if pregunta.tipo == 1:
+                if pregunta.tipo == 1 or pregunta.tipo == 2:
                     respuestas.append(request.form.get(pre))
+                    pregunta.respuesta = request.form[pre]
                 
-                if pregunta.tipo == 2:
+                """                if pregunta.tipo == 2:
                     pre = pre + "_v"
                     respuestas.append(request.form[pre])
                     pre = pre + "_f"
                     respuestas.append(request.form[pre])
-                    
+                   """ 
                 i = i + 1    
                     
-
+#            examen_resuelto = Examenes_Resueltos(examen = exam)
+#            examen_resuelto.save()
 
 #            respuestas = request.form
             keys = []

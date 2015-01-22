@@ -30,20 +30,50 @@
             {% set num = loop.index %}
         <br>{% if pregunta.tipo == 0 %}
                 <textarea name="pregunta{{ loop.index }}" rows="7" cols="60">
-                </textarea> 
+                {% if pregunta.respuesta %}
+                    {{ pregunta.respuesta }}                
+                {% endif %}
+                </textarea>
+                <br>
             {% elif pregunta.tipo == 1 %}
                 {% for r in pregunta.opciones %}
-                <input type="radio" name="pregunta{{ num }}" value="{{ r.letra }}">  {{ r.letra }}.- {{ r.texto }}
-                <br>
+                    {% if pregunta.respuesta == r.letra %}
+                        <input type="radio" name="pregunta{{ num }}" value="{{ r.letra }}" checked>  {{ r.letra }}.- {{ r.texto }}
+                        {% if r.letra == pregunta.correcta %}
+                            Respuesta Correcta!!!                        
+                        {% endif %}
+                        <br>
+                    {% else %}
+                        <input type="radio" name="pregunta{{ num }}" value="{{ r.letra }}">  {{ r.letra }}.- {{ r.texto }}
+                        <br>
+                    {% endif %}
                 {% endfor %}
             {% elif pregunta.tipo == 2 %}
-                <input type="radio" name="pregunta{{ loop.index }}_v" value="V">  Verdadera
+                {% if pregunta.respuesta == "V" %}
+                    <input type="radio" name="pregunta{{ num }}" value="V" checked>  Verdadera
+                    <br>
+                    <input type="radio" name="pregunta{{ num }}" value="F">  Falsa
+                    {% if pregunta.verdadera %}
+                    Correcta!!!
+                    {% endif %}
+                {% elif pregunta.respuesta == "F" %}
+                    <input type="radio" name="pregunta{{ num }}" value="V">  Verdadera
+                    <br>
+                    <input type="radio" name="pregunta{{ num }}" value="F" checked>  Falsa
+                    {% if not pregunta.verdadera %}
+                    Correcta!!!
+                    {% endif %}
+                {% else %}
+                    <input type="radio" name="pregunta{{ num }}" value="V">  Verdadera
+                    <br>
+                    <input type="radio" name="pregunta{{ num }}" value="F">  Falsa
+                {% endif %}
                 <br>
-                <input type="radio" name="pregunta{{ loop.index }}_f" value="F">  Falsa
                 <br><br>
 
             {% endif %}
     {% endfor %}
+    <br>
     <button class="btn btn-success" type="submit">Submit</button>
 </form>
 <br>
