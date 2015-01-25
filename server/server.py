@@ -6,7 +6,7 @@ from flask.ext import login
 from flask.ext.mongoengine import MongoEngine
 from flask.ext.mail import Mail, Message
 
-from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes, Examenes_Resueltos
+from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes, Opciones, Examenes_Resueltos
 from forms import GeneraExamenForm, ProfileForm
 
 #========================================#
@@ -49,7 +49,10 @@ def init_ddbb():
         luisfer = Usuarios(nombre = "luisfer", login="luisfer", password="luisfer", email="luifito@gmail.com", tipo=1, activado=True, asignaturas={procesadores, ia, leng})
         luisfer.save()
         
-        Temas(num=1, descripcion="Introduccion a la IA", asignatura=ia, usuario=luisfer).save()
+        tema1 = Temas(num=1, descripcion="Introduccion a la IA", asignatura=ia, usuario=luisfer).save()
+        opcion1 = Opciones(letra="A", texto="opcion A")
+        opcion2 = Opciones(letra="B", texto="opcion B")
+        Preguntas(num=1, texto="Pregunta 1 del tema 1 de IA", asignatura=ia, tema=tema1, tipo=1, opciones={opcion1, opcion2}, correcta="A", usuario=luisfer).save()
         
         tema1 = Temas(num=1, descripcion="Introducción", asignatura=procesadores, usuario=luisfer)
         tema1.save()
@@ -231,7 +234,6 @@ def examenes_view(nombre=None, asignatura=None, usuario=None):
                     pass
                 elif pregunta.tipo == 1:
                     for r in pregunta.respuesta:
-                #<input type="radio" name="{{ pregunta.num }}" value="{{ r.letra }}">  {{ r.letra }}.- {{ r.texto }}
                         pass
                 elif pregunta.tipo == 2:
 #                <input type="radio" name="{{ pregunta.num }}" value="V">  Verdadera
