@@ -49,26 +49,37 @@ def init_ddbb():
         luisfer = Usuarios(nombre = "luisfer", login="luisfer", password="luisfer", email="luifito@gmail.com", tipo=1, activado=True, asignaturas={procesadores, ia, leng})
         luisfer.save()
         
+        # IA - preguntas Test
         tema1 = Temas(num=1, descripcion="Introduccion a la IA", asignatura=ia, usuario=luisfer).save()
-        tema1 = Temas(num=2, descripcion="Logica", asignatura=ia, usuario=luisfer).save()
-        tema1 = Temas(num=3, descripcion="Sistemas expertos", asignatura=ia, usuario=luisfer).save()
-
+        tema2 = Temas(num=2, descripcion="Logica", asignatura=ia, usuario=luisfer).save()
+        tema3 = Temas(num=3, descripcion="Sistemas expertos", asignatura=ia, usuario=luisfer).save()
         opcion1 = Opciones(letra="A", texto="opcion A")
         opcion2 = Opciones(letra="B", texto="opcion B")
         Preguntas(num=1, texto="Pregunta 1 del tema 1 de IA", asignatura=ia, tema=tema1, tipo=1, opciones={opcion1, opcion2}, correcta="A", usuario=luisfer).save()
-        Preguntas(num=1, texto="Pregunta 1 del tema 1 de IA", asignatura=ia, tema=tema1, tipo=1, opciones={opcion1, opcion2}, correcta="A", usuario=luisfer).save()
-        Preguntas(num=1, texto="Pregunta 1 del tema 1 de IA", asignatura=ia, tema=tema1, tipo=1, opciones={opcion1, opcion2}, correcta="A", usuario=luisfer).save()
-        Preguntas(num=1, texto="Pregunta 1 del tema 1 de IA", asignatura=ia, tema=tema1, tipo=1, opciones={opcion1, opcion2}, correcta="A", usuario=luisfer).save()
-        Preguntas(num=1, texto="Pregunta 1 del tema 1 de IA", asignatura=ia, tema=tema1, tipo=1, opciones={opcion1, opcion2}, correcta="A", usuario=luisfer).save()
-        Preguntas(num=1, texto="Pregunta 1 del tema 1 de IA", asignatura=ia, tema=tema1, tipo=1, opciones={opcion1, opcion2}, correcta="A", usuario=luisfer).save()
+        Preguntas(num=2, texto="Pregunta 2 del tema 1 de IA", asignatura=ia, tema=tema1, tipo=1, opciones={opcion1, opcion2}, correcta="B", usuario=luisfer).save()
+        Preguntas(num=3, texto="Pregunta 1 del tema 2 de IA", asignatura=ia, tema=tema2, tipo=1, opciones={opcion1, opcion2}, correcta="B", usuario=luisfer).save()
+        Preguntas(num=4, texto="Pregunta 2 del tema 2 de IA", asignatura=ia, tema=tema2, tipo=1, opciones={opcion1, opcion2}, correcta="B", usuario=luisfer).save()
+        Preguntas(num=5, texto="Pregunta 1 del tema 3 de IA", asignatura=ia, tema=tema3, tipo=1, opciones={opcion1, opcion2}, correcta="A", usuario=luisfer).save()
+        Preguntas(num=6, texto="Pregunta 2 del tema 3 de IA", asignatura=ia, tema=tema3, tipo=1, opciones={opcion1, opcion2}, correcta="A", usuario=luisfer).save()
         
+        # Redes - preguntas Verdadero o falso
+        tema1 = Temas(num=1, descripcion="Redes LAN", asignatura=redes, usuario=luisfer).save()
+        tema2 = Temas(num=2, descripcion="TCP/IP", asignatura=redes, usuario=luisfer).save()
+        tema3 = Temas(num=3, descripcion="ADSL", asignatura=redes, usuario=luisfer).save()
+        Preguntas(num=1, texto="Pregunta 1 del tema 1 de Redes", asignatura=redes, tema=tema1, tipo=2, verdadera=True, usuario=luisfer).save()
+        Preguntas(num=2, texto="Pregunta 2 del tema 1 de Redes", asignatura=redes, tema=tema1, tipo=2, usuario=luisfer).save()
+        Preguntas(num=3, texto="Pregunta 1 del tema 2 de Redes", asignatura=redes, tema=tema2, tipo=2, verdadera=True, usuario=luisfer).save()
+        Preguntas(num=4, texto="Pregunta 2 del tema 2 de Redes", asignatura=redes, tema=tema2, tipo=2, usuario=luisfer).save()
+        Preguntas(num=5, texto="Pregunta 1 del tema 3 de Redes", asignatura=redes, tema=tema3, tipo=2, verdadera=True, usuario=luisfer).save()
+        Preguntas(num=6, texto="Pregunta 2 del tema 3 de Redes", asignatura=redes, tema=tema3, tipo=2, usuario=luisfer).save()
+
+        # Procesadores - preguntas desarrollo        
         tema1 = Temas(num=1, descripcion="Introducción", asignatura=procesadores, usuario=luisfer)
         tema1.save()
         tema2 = Temas(num=2, descripcion="Analisis Lexico", asignatura=procesadores, usuario=luisfer)
         tema2.save()
         tema3 = Temas(num=3, descripcion="Analisis sintactico", asignatura=procesadores, usuario=luisfer)
         tema3.save()
-        
         Preguntas(num=1, texto="Pregunta 1 del tema 1 de Procesadores a desarrollar", asignatura=procesadores, tema=tema1, tipo=0, usuario=luisfer).save()
         Preguntas(num=2, texto="Pregunta 2 del tema 1 de Procesadores a desarrollar", asignatura=procesadores, tema=tema1, tipo=0, usuario=luisfer).save()
         Preguntas(num=3, texto="Pregunta 3 del tema 1 de Procesadores a desarrollar", asignatura=procesadores, tema=tema1, tipo=0, usuario=luisfer).save()
@@ -202,26 +213,18 @@ def examenes_view(nombre=None, asignatura=None, usuario=None):
                 pre = "pregunta" + str(i)
                 
                 if pregunta.tipo == 0:
-                    respuestas.append(request.form[pre])
-                    pregunta.respuesta = request.form[pre]
+                    respuestas.append(request.form[pre].strip())
+                    pregunta.respuesta = request.form[pre].strip()
                 
-                if pregunta.tipo == 1 or pregunta.tipo == 2:
-                    respuestas.append(request.form.get(pre))
-                    pregunta.respuesta = request.form[pre]
-                
-                """                if pregunta.tipo == 2:
-                    pre = pre + "_v"
-                    respuestas.append(request.form[pre])
-                    pre = pre + "_f"
-                    respuestas.append(request.form[pre])
-                   """ 
-                i = i + 1    
-                    
-#            examen_resuelto = Examenes_Resueltos(examen = exam)
-#            examen_resuelto.save()
+                if pregunta.tipo == 1 or pregunta.tipo == 2:                  
+                    if request.form.get(pre) <> None:
+                        respuestas.append(request.form.get(pre))
+                        pregunta.respuesta = request.form.get(pre)
 
-#            respuestas = request.form
-            keys = []
+                i = i + 1                   
+            examen_resuelto = Examenes_Resueltos(examen = exam)
+            examen_resuelto.save()
+            """            keys = []
             values = []
             f = request.form
             for key in f.keys():
@@ -229,8 +232,9 @@ def examenes_view(nombre=None, asignatura=None, usuario=None):
                 for value in f.getlist(key):
                     print key,":",value
                     values.append(value)
-                    
-            return render_template('exams/exam.html', exam=exam, respuestas=respuestas, keys=keys, values=values)
+                    """
+            return render_template('exams/exam.html', exam=exam, respuestas=respuestas)
+            """        
         else:    
             resp = []
             exam = Examenes.objects(nombre=nombre).first()
@@ -248,7 +252,7 @@ def examenes_view(nombre=None, asignatura=None, usuario=None):
                     resp = resp.append(request.form[campo])
             
             return render_template('exams/exam.html', exam=exam, resp=resp)
-    
+            """
     
     if nombre:
         asig = Asignaturas.objects(asignatura=asignatura).first()        

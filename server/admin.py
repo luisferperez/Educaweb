@@ -4,7 +4,7 @@ from flask.ext import admin, login
 from flask.ext.admin.contrib.mongoengine import ModelView
 from flask.ext.admin import Admin, expose, helpers
 
-from models import Usuarios, Temas, Preguntas, Asignaturas, Examenes
+from models import Usuarios, Temas, Preguntas, Asignaturas, Examenes, Examenes_Resueltos
 from forms import LoginForm, RegistrationForm
 
 
@@ -17,7 +17,7 @@ def initialize_admin_component(app):
     admin.add_view(TemasView(Temas))
     admin.add_view(PreguntasView(Preguntas))
     admin.add_view(MyView(Examenes))
-#    admin.add_view(Exa_RView(Examenes_Resueltos))
+    admin.add_view(MyView(Examenes_Resueltos))
 
 # Create customized index view class
 class MyAdminIndexView(admin.AdminIndexView):
@@ -115,10 +115,12 @@ class TemasView(MyView):
     column_labels = dict(nombre='Nombre', descripcion='Descripcion')
     column_default_sort = ('asignatura', 'num')
 
-
 #    action_disallowed_list = ['delete']
 
+
 class PreguntasView(MyView):
+#    column_exclude_list = ("respuestas")
+#    form_excluded_columns = ("respuestas")
     
     column_default_sort =  ('asignatura', 'tema', 'num')
 

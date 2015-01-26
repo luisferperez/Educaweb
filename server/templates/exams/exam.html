@@ -7,8 +7,7 @@
 <p>
     Asignatura: {{ exam.asignatura }}
 <br>    
-
-
+{#
 {% for respuesta in respuestas  %}
     {{ respuesta }}
 {% endfor %}
@@ -21,13 +20,13 @@
 {% for value in values  %}
     {{ value }}
 {% endfor %}
-
-
+#}
 <br>
 <form action="/examenes/{{ exam.asignatura }}/{{ exam.nombre }}/{{ exam.usuario }}" method="POST">
     {% for pregunta in exam.preguntas  %}
         <p>{{ loop.index }}.-  {{ pregunta.texto }}
             {% set num = loop.index %}
+            
         <br>{% if pregunta.tipo == 0 %}
                 <textarea name="pregunta{{ loop.index }}" rows="7" cols="60">
                 {% if pregunta.respuesta %}
@@ -35,43 +34,56 @@
                 {% endif %}
                 </textarea>
                 <br>
+
             {% elif pregunta.tipo == 1 %}
-                {% for r in pregunta.opciones %}
+                {% for r in pregunta.opciones | sort(attribute='letra') %}
                     {% if pregunta.respuesta == r.letra %}
                         <input type="radio" name="pregunta{{ num }}" value="{{ r.letra }}" checked>  {{ r.letra }}.- {{ r.texto }}
-                        {% if r.letra == pregunta.correcta %}
-                            Respuesta Correcta!!!                        
-                        {% endif %}
-                        <br>
                     {% else %}
                         <input type="radio" name="pregunta{{ num }}" value="{{ r.letra }}">  {{ r.letra }}.- {{ r.texto }}
-                        <br>
                     {% endif %}
+                    <br>
                 {% endfor %}
+                {% if pregunta.respuesta == pregunta.correcta %}
+                    <span class="glyphicon glyphicon-ok" style="color:green" aria-hidden="true"> La respuesta es correcta </span>
+                    <br>
+                {% elif respuestas %}                
+                    <span class="glyphicon glyphicon-remove" style="color:red" aria-hidden="true"> La respuesta no es correcta </span>
+                    <br>
+                {% endif %}
+
             {% elif pregunta.tipo == 2 %}
                 {% if pregunta.respuesta == "V" %}
                     <input type="radio" name="pregunta{{ num }}" value="V" checked>  Verdadera
                     <br>
                     <input type="radio" name="pregunta{{ num }}" value="F">  Falsa
                     {% if pregunta.verdadera %}
-                    Correcta!!!
+                        {% set correcta = true %}
+                    {% else %}
+                        {% set correcta = false %}
                     {% endif %}
                 {% elif pregunta.respuesta == "F" %}
                     <input type="radio" name="pregunta{{ num }}" value="V">  Verdadera
                     <br>
                     <input type="radio" name="pregunta{{ num }}" value="F" checked>  Falsa
                     {% if not pregunta.verdadera %}
-                    Correcta!!!
+                        {% set correcta = true %}
+                    {% else %}
+                        {% set correcta = false %}
                     {% endif %}
                 {% else %}
-                    <input type="radio" name="pregunta{{ num }}" value="V">  Verdadera
+                    {% set correcta = false %}
+                    <input type="radio" name="pregunta{{ num }}" value="V" cheked>  Verdadera
                     <br>
                     <input type="radio" name="pregunta{{ num }}" value="F">  Falsa
                 {% endif %}
-                <br>
-                <br><br>
-
+                {% if correcta and respuestas %}
+                    <br><span class="glyphicon glyphicon-ok" style="color:green" aria-hidden="true"> La respuesta es correcta </span>
+                {% elif respuestas %}
+                    <br><span class="glyphicon glyphicon-remove" style="color:red" aria-hidden="true"> La respuesta no es correcta </span>
+                {% endif %}
             {% endif %}
+            <br>
     {% endfor %}
     <br>
     <button class="btn btn-success" type="submit">Submit</button>

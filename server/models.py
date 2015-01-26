@@ -107,12 +107,16 @@ class Temas(Document):
 
     @queryset_manager
     def objects(doc_cls, queryset):
-       return queryset.filter(usuario=login.current_user.get_id())
+       return queryset.filter(usuario=login.current_user.get_id()).order_by('num')
 
 
 class Opciones(EmbeddedDocument):
     letra = StringField(max_length=1)
     texto = StringField()
+
+    @queryset_manager
+    def objects(doc_cls, queryset):
+       return queryset.order_by('-letra')
 
 class Respuestas(Document):
     #letra = StringField(max_length=1)
