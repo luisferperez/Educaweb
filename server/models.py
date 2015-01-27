@@ -137,7 +137,7 @@ class Preguntas(Document):
     opciones = ListField(EmbeddedDocumentField(Opciones))
     correcta = StringField(max_length=1)
 
-    respuesta = ReferenceField(Respuestas)
+    respuesta = StringField()
     usuario = ReferenceField(Usuarios, reverse_delete_rule= 'NULLIFY')
 
     @queryset_manager
@@ -178,5 +178,8 @@ class Examenes(Document):
 
 @update_modified.apply
 class Examenes_Resueltos(Document):
-    examen = ReferenceField(Examenes)
+    nombre = StringField(required=True, unique_with = ('asignatura', 'usuario'))
+    asignatura = ReferenceField(Asignaturas, reverse_delete_rule= 'NULLIFY')
+    preguntas = ListField(ReferenceField(Preguntas))
+    profesor = ReferenceField(Usuarios, reverse_delete_rule= 'NULLIFY')        
     usuario = ReferenceField(Usuarios, reverse_delete_rule= 'NULLIFY')    

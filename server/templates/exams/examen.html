@@ -3,15 +3,19 @@
 {% block body %}
 
 <p>
-    Examen generado correctamente,
+    <span class="glyphicon glyphicon-ok" style="color:green" aria-hidden="true">         
+        El Examen ha sido generado correctamente.
+    </span>
     de modo {{ modo }}.
 <p>
+    Nombre: {{ nombre }}
+<br>
     Asignatura: {{ asignatura }}
 <br>    
-{{ nombre }}
+    Tipo: {{ tipo }}
 <br>
-Tipo: {{ tipo }}
-    
+    Preguntas:
+<br>
     {% for pregunta in preguntas  %}
         <p>{{ pregunta.texto }}
     {% endfor %}
@@ -20,6 +24,5 @@ Tipo: {{ tipo }}
 <p>
 <hr>
 <a class="btn btn-primary" href="/genexa"><i class="icon-arrow-left icon-white"></i> Back</a>
-
 
 {% endblock body %}

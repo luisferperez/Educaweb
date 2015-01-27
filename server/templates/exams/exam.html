@@ -78,15 +78,15 @@
                     <input type="radio" name="pregunta{{ num }}" value="F">  Falsa
                 {% endif %}
                 {% if correcta and respuestas %}
-                    <br><span class="glyphicon glyphicon-ok" style="color:green" aria-hidden="true"> La respuesta es correcta </span>
+                    <br><span class="glyphicon glyphicon-ok" style="color:green" aria-hidden="true"> Respuesta correcta </span>
                 {% elif respuestas %}
-                    <br><span class="glyphicon glyphicon-remove" style="color:red" aria-hidden="true"> La respuesta no es correcta </span>
+                    <br><span class="glyphicon glyphicon-remove" style="color:red" aria-hidden="true"> Respuesta incorrecta </span>
                 {% endif %}
             {% endif %}
             <br>
     {% endfor %}
     <br>
-    <button class="btn btn-success" type="submit">Submit</button>
+    <button class="btn btn-success" type="submit">Corregir</button>
 </form>
 <br>
 <p>

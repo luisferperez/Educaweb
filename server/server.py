@@ -215,14 +215,17 @@ def examenes_view(nombre=None, asignatura=None, usuario=None):
                 if pregunta.tipo == 0:
                     respuestas.append(request.form[pre].strip())
                     pregunta.respuesta = request.form[pre].strip()
-                
+                    #pregunta.save()
+                    
                 if pregunta.tipo == 1 or pregunta.tipo == 2:                  
                     if request.form.get(pre) <> None:
                         respuestas.append(request.form.get(pre))
                         pregunta.respuesta = request.form.get(pre)
 
                 i = i + 1                   
-            examen_resuelto = Examenes_Resueltos(examen = exam)
+
+            examen_resuelto = Examenes_Resueltos(nombre = exam.nombre, asignatura= exam.asignatura, preguntas = exam.preguntas)
+            
             examen_resuelto.save()
             """            keys = []
             values = []
