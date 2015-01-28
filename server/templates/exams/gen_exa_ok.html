@@ -1,0 +1,40 @@
+{% extends 'master.html' %}
+
+{% block panel %}              
+    <li><a href="{{ url_for('admin.index') }}">Admin Panel</a></li>
+{% endblock panel %}
+
+{% block body %}
+
+<p>
+    <span class="glyphicon glyphicon-ok" style="color:green" aria-hidden="true">         
+        El Examen ha sido generado correctamente.
+    </span>
+<p>
+    <b>Nombre:</b> {{ nombre }}
+<br>
+    <b>Asignatura:</b> {{ asignatura }}
+<br><br>
+    <b>Preguntas:</b>
+<br>
+    {% for pregunta in preguntas  %}
+        <p>{{ loop.index }}.- {{ pregunta.texto }}
+            {% if pregunta.tipo == 1 %}
+                {% for r in pregunta.opciones | sort(attribute='letra') %}
+                    <br><input type="radio" name="pregunta{{ num }}" value="{{ r.letra }}">  {{ r.letra }}.- {{ r.texto }}
+                {% endfor %}
+
+            {% elif pregunta.tipo == 2 %}
+                    <br><input type="radio" name="pregunta{{ num }}" value="V">  Verdadera
+                    <br>
+                    <input type="radio" name="pregunta{{ num }}" value="F">  Falsa
+            
+            {% endif %}
+        <br>
+    {% endfor %}
+<br>
+<p>
+<hr>
+<a class="btn btn-primary" href="/genexa"><i class="icon-arrow-left icon-white"></i> Back</a>
+
+{% endblock body %}

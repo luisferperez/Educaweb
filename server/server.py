@@ -192,7 +192,7 @@ def genera_examen_view():
         examen.preguntas = lista_preguntas
         examen.save()
 
-        return render_template('exams/examen.html', asignatura=asignatura, nombre=nombre, preguntas=lista_preguntas, tipo=tipo)
+        return render_template('exams/gen_exa_ok.html', asignatura=asignatura, nombre=nombre, preguntas=lista_preguntas, tipo=tipo)
     return render_template('exams/gen_exa.html', form=form)
 
 
@@ -224,38 +224,10 @@ def examenes_view(nombre=None, asignatura=None, usuario=None):
 
                 i = i + 1                   
 
-            examen_resuelto = Examenes_Resueltos(nombre = exam.nombre, asignatura= exam.asignatura, preguntas = exam.preguntas)
+#            examen_resuelto = Examenes_Resueltos(nombre = exam.nombre, asignatura= exam.asignatura, preguntas = exam.preguntas)            
+#            examen_resuelto.save()
             
-            examen_resuelto.save()
-            """            keys = []
-            values = []
-            f = request.form
-            for key in f.keys():
-                keys.append(key)                
-                for value in f.getlist(key):
-                    print key,":",value
-                    values.append(value)
-                    """
             return render_template('exams/exam.html', exam=exam, respuestas=respuestas)
-            """        
-        else:    
-            resp = []
-            exam = Examenes.objects(nombre=nombre).first()
-            for pregunta in exam.preguntas:
-                if pregunta.tipo == 0:
-                #<textarea name="resp" rows="7" cols="60">
-                    pass
-                elif pregunta.tipo == 1:
-                    for r in pregunta.respuesta:
-                        pass
-                elif pregunta.tipo == 2:
-#                <input type="radio" name="{{ pregunta.num }}" value="V">  Verdadera
-#                <input type="radio" name="{{ pregunta.num }}" value="F">  Falsa
-                    campo = pregunta.num
-                    resp = resp.append(request.form[campo])
-            
-            return render_template('exams/exam.html', exam=exam, resp=resp)
-            """
     
     if nombre:
         asig = Asignaturas.objects(asignatura=asignatura).first()        

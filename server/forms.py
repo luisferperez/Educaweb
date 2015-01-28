@@ -57,6 +57,9 @@ class GeneraExamenForm(form.Form):
             raise validators.ValidationError(u'No existen suficientes preguntas de la asignatura para el tipo indicado.')            
             #raise validators.ValidationError(u'No existen suficientes preguntas de la asignatura ' + str(asignatura)+ u' para el tipo indicado.')
 
+    def get_tipo(self):
+        return self.TIPO[self.tipo_examen.data][1:1]
+
 class ProfileForm(form.Form):
     nombre = fields.StringField([validators.required()])
     apellidos = fields.StringField()
