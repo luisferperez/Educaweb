@@ -6,8 +6,10 @@ from flask.ext import login
 from flask.ext.mongoengine import MongoEngine
 from flask.ext.mail import Mail, Message
 
-from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes, Opciones, Examenes_Resueltos
+from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes, Opciones
 from forms import GeneraExamenForm, ProfileForm
+from export import creaWord2
+
 
 #========================================#
 #    Creation of the Web Application     #
@@ -23,6 +25,8 @@ mail = Mail(app)
 # Initialize ddbb
 def init_ddbb():
     num = Usuarios.objects(login="admin").count()
+    
+    creaWord2()
     
     if num == 0:
         Usuarios(nombre="admin", login="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True).save()    
