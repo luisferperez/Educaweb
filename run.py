@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
-# Author: Luisfer
-""" Módulo principal desde el que se inicia la aplicación
+"""
+@author: Luis Fdo. Pérez
+
+Execute the application server
+
 """
 from server.server import init_login, init_ddbb, app
 from server.admin import initialize_admin_component

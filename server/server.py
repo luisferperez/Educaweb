@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+"""
+@author: Luis Fdo. Pérez
+
+"""
 import config, random, string
 
 from flask import Flask, request, render_template, redirect, session, url_for
@@ -17,9 +21,11 @@ from export import creaWord2
 app=Flask(__name__)
 app.config.from_object(config)
 
+# 
 db = MongoEngine()
 db.init_app(app)
 
+# Initialize the aplicattion to send mails
 mail = Mail(app)
 
 # Initialize ddbb
@@ -219,7 +225,6 @@ def examenes_view(nombre=None, asignatura=None, usuario=None):
                 if pregunta.tipo == 0:
                     respuestas.append(request.form[pre].strip())
                     pregunta.respuesta = request.form[pre].strip()
-                    #pregunta.save()
                     
                 if pregunta.tipo == 1 or pregunta.tipo == 2:                  
                     if request.form.get(pre) <> None:
