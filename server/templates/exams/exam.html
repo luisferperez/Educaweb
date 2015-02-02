@@ -7,20 +7,7 @@
 <p>
     Asignatura: {{ exam.asignatura }}
 <br>    
-{#
-{% for respuesta in respuestas  %}
-    {{ respuesta }}
-{% endfor %}
 
-<br>Keys:
-{% for key in keys  %}
-    {{ key }}
-{% endfor %}
-<br>Values:
-{% for value in values  %}
-    {{ value }}
-{% endfor %}
-#}
 <br>
 <form action="/examenes/{{ exam.asignatura }}/{{ exam.nombre }}/{{ exam.usuario }}" method="POST">
     {% for pregunta in exam.preguntas  %}

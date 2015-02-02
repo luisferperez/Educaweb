@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
-""" Módulo donde se definen los modelos de datos para la base de datos
-    de MongoDB
+""" 
+@author: Luis Fdo. Pérez
+
+Módulo donde se definen los modelos de datos para la base de datos
+de MongoDB
+
 """
 from mongoengine import Document, EmbeddedDocument, StringField, IntField, BooleanField, \
     ReferenceField, ListField, EmbeddedDocumentField, Q, queryset_manager, signals
