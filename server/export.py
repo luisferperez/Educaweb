@@ -17,19 +17,54 @@ def creaWord():
     
 """    
 
-import zipfile
+import zipfile, xml.dom.minidom
 
 def creaODT():
-    myfile = zipfile.ZipFile('plantilla.odt')
+    """
+    http://www.linuxjournal.com/article/9347?page=0,1
+    """
+    myfile = zipfile.ZipFile('server/static/plantilla.odt')
     listoffiles = myfile.infolist()
     for s in listoffiles:    
-        print s.orig_filename
+#        print s.orig_filename
+        if s.orig_filename == 'content.xml':
+            fd = open('server/static/prueba.xml','w')
+            bh = myfile.read(s.orig_filename)
+            fd.write(bh)
+            fd.close()  
     
+    myfile = zipfile.ZipFile('server/static/plantilla.odt')
+    ostr = myfile.read('content.xml')
+    doc = xml.dom.minidom.parseString(ostr)
+    paras = doc.getElementsByTagName('text:p')
+    text_in_paras = []
+    for p in paras:
+        for ch in p.childNodes:
+            if ch.nodeType == ch.TEXT_NODE:
+                text_in_paras.append(ch.data)
+#                If "Asignatura" in ch.data:
+#                        print "Encontrada asignatura"
+                print ch.data
+    
+    """
+    myodf = OdfReader(filename)
+    self.filename = filename
+    self.m_odf = zipfile.ZipFile(filename)
+    self.filelist = self.m_odf.infolist()    
+    
+    ostr = self.m_odf.read('content.xml')
+    doc = xml.dom.minidom.parseString(ostr)
+    paras = doc.getElementsByTagName('text:p')
+    print "I have ", len(paras), " paragraphs "
+    self.text_in_paras = []
+    for p in paras:
+        for ch in p.childNodes:
+            if ch.nodeType == ch.TEXT_NODE:
+                self.text_in_paras.append(ch.data)    
+    """
 
 
-
-
-
+"""
 
 #import win32com.client
 from win32com.client import Dispatch
@@ -52,7 +87,7 @@ def creaWord2():
     worddoc.Content.MoveEnd
     worddoc.Close() # Close the Word Document (a save-Dialog pops up)
     wordapp.Quit() # Close the Word Application 
-    
+   """ 
  
 class WordDocument(object):
     """
@@ -61,9 +96,9 @@ class WordDocument(object):
     http://dzone.com/snippets/script-word-python
     """
  
-    def __init__(self, visible=False):
-        self.app = Dispatch("Word.Application")
-        self.app.Visible = visible
+#    def __init__(self, visible=False):
+#        self.app = Dispatch("Word.Application")
+#        self.app.Visible = visible
  
      
     def new(self, filename=None):

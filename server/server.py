@@ -12,7 +12,7 @@ from flask.ext.mail import Mail, Message
 
 from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes, Opciones
 from forms import GeneraExamenForm, ProfileForm
-from export import creaWord2
+from export import creaODT
 
 
 #========================================#
@@ -32,7 +32,7 @@ mail = Mail(app)
 def init_ddbb():
     num = Usuarios.objects(login="admin").count()
     
-    creaWord2()
+    creaODT()
     
     # Compruebo que no existe el usuario admin
     if num == 0:
