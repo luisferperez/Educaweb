@@ -16,11 +16,12 @@ def creaWord():
     word.Application.Quit()
     
 """    
-
-import zipfile, xml.dom.minidom
+from xml.dom.minidom import parseString
+import zipfile, shutil
 
 def creaODT():
     """
+    función para exportar los examenes a un fichero tipo odt    
     http://www.linuxjournal.com/article/9347?page=0,1
     """
     myfile = zipfile.ZipFile('server/static/plantilla.odt')
@@ -31,37 +32,32 @@ def creaODT():
             fd = open('server/static/prueba.xml','w')
             bh = myfile.read(s.orig_filename)
             fd.write(bh)
-            fd.close()  
+            fd.close()
     
-    myfile = zipfile.ZipFile('server/static/plantilla.odt')
-    ostr = myfile.read('content.xml')
-    doc = xml.dom.minidom.parseString(ostr)
+
+    shutil.copy('server/static/plantilla.odt', 'server/static/plantilla2.odt')
+    myfile = zipfile.ZipFile('server/static/plantilla2.odt')
+    ostr = myfile.read('content.xml', 'w')
+    doc = parseString(ostr)
     paras = doc.getElementsByTagName('text:p')
     text_in_paras = []
     for p in paras:
         for ch in p.childNodes:
             if ch.nodeType == ch.TEXT_NODE:
                 text_in_paras.append(ch.data)
-#                If "Asignatura" in ch.data:
-#                        print "Encontrada asignatura"
+                if ch.data.count('Asignatura') > 0:
+                    print "Encontrada asignatura"
+                    ch.data = ch.data + "1"
+                    nuevo_nodo = ch
+                    p.appendChild(nuevo_nodo)
                 print ch.data
+                
+    fd = open('server/static/prueba.xml','w')
+    fd.write(ostr)
+    fd.close()
     
-    """
-    myodf = OdfReader(filename)
-    self.filename = filename
-    self.m_odf = zipfile.ZipFile(filename)
-    self.filelist = self.m_odf.infolist()    
-    
-    ostr = self.m_odf.read('content.xml')
-    doc = xml.dom.minidom.parseString(ostr)
-    paras = doc.getElementsByTagName('text:p')
-    print "I have ", len(paras), " paragraphs "
-    self.text_in_paras = []
-    for p in paras:
-        for ch in p.childNodes:
-            if ch.nodeType == ch.TEXT_NODE:
-                self.text_in_paras.append(ch.data)    
-    """
+#    myfile.write('server/static/prueba.xml', 'content.xml')
+#    myfile.close()
 
 
 """
