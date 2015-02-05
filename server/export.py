@@ -17,6 +17,7 @@ def creaWord():
     
 """    
 from xml.dom.minidom import parseString
+import xml.etree.ElementTree
 import zipfile, shutil
 
 def creaODT():
@@ -38,6 +39,7 @@ def creaODT():
     shutil.copy('server/static/plantilla.odt', 'server/static/plantilla2.odt')
     myfile = zipfile.ZipFile('server/static/plantilla2.odt')
     ostr = myfile.read('content.xml', 'w')
+    
     doc = parseString(ostr)
     paras = doc.getElementsByTagName('text:p')
     text_in_paras = []
@@ -55,7 +57,16 @@ def creaODT():
     fd = open('server/static/prueba.xml','w')
     fd.write(ostr)
     fd.close()
-    
+
+    tree = xml.etree.ElementTree.parse('server/static/prueba.xml')    
+    root = tree.getroot()
+    for child in root:
+        print child.tag, child.attrib
+        for ch in child:
+            print ch.tag, ch.attrib
+    for text in root.iter('Standard'):
+        print 'Con tree:', text.tag, text.attrib
+
 #    myfile.write('server/static/prueba.xml', 'content.xml')
 #    myfile.close()
 

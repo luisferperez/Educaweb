@@ -152,6 +152,9 @@ def error_not_found(error):
 
 @app.route('/genexa', methods=('GET', 'POST'))
 def genera_examen_view():
+    """
+    Función para la generación de exámenes de forma aleatoria
+    """    
     form = GeneraExamenForm(request.form)   
 
     asig=login.current_user.get_asignaturas()    
