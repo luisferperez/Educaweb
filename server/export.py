@@ -55,18 +55,33 @@ def creaODT():
                 print ch.data
                 
     fd = open('server/static/prueba.xml','w')
-    fd.write(ostr)
+
+    print doc.toprettyxml()
+#    myfile.write('server/static/prueba.xml', 'content.xml')
+
+    doc.writexml(fd)
+    doc.unlink()
+    
     fd.close()
 
+"""
     tree = xml.etree.ElementTree.parse('server/static/prueba.xml')    
     root = tree.getroot()
     for child in root:
-        print child.tag, child.attrib
+        print "Tag, attrib:", child.tag, child.attrib
         for ch in child:
-            print ch.tag, ch.attrib
-    for text in root.iter('Standard'):
-        print 'Con tree:', text.tag, text.attrib
+            print "tag 1:", ch.tag
+            print "at 1:", ch.attrib
+            print "text 1:", ch.text
+            if "text" in ch.tag:
+            #if ch.attrib == "text":                
+                for c in child:                
+                    print "tag, at child 2:", c.tag, c.attrib
+                    print "text 2:", c.text
 
+    for text in root.iter('{urn:oasis:names:tc:opendocument:xmlns:office:1.0}text'):
+        print 'Con tree:', text.tag, text.attrib, text.text
+"""
 #    myfile.write('server/static/prueba.xml', 'content.xml')
 #    myfile.close()
 
