@@ -17,18 +17,17 @@ def creaWord():
     
 """    
 from xml.dom.minidom import parseString
-import xml.etree.ElementTree
+#import xml.etree.ElementTree
 import zipfile, shutil
 
-def creaODT():
+def creaODT(exam):
     """
     función para exportar los examenes a un fichero tipo odt    
     http://www.linuxjournal.com/article/9347?page=0,1
     """
     myfile = zipfile.ZipFile('server/static/plantilla.odt')
     listoffiles = myfile.infolist()
-    for s in listoffiles:    
-#        print s.orig_filename
+    for s in listoffiles:
         if s.orig_filename == 'content.xml':
             fd = open('server/static/prueba.xml','w')
             bh = myfile.read(s.orig_filename)
