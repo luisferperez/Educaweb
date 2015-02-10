@@ -20,7 +20,7 @@ from xml.dom.minidom import parseString
 #import xml.etree.ElementTree
 import zipfile, shutil
 
-def creaODT(exam):
+def creaODT(exam=None):
     """
     función para exportar los examenes a un fichero tipo odt    
     http://www.linuxjournal.com/article/9347?page=0,1
