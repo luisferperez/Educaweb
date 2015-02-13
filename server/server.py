@@ -12,8 +12,10 @@ from flask.ext.mail import Mail, Message
 
 from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes, Opciones
 from forms import GeneraExamenForm, ProfileForm
-from export import creaODT
+#from export import creaODT
 
+from xml.dom.minidom import parseString
+import zipfile, shutil
 
 #========================================#
 #    Creation of the Web Application     #
@@ -32,7 +34,7 @@ mail = Mail(app)
 def init_ddbb():
     num = Usuarios.objects(login="admin").count()
     
-    creaODT()
+    #creaODT()
     
     # Compruebo que no existe el usuario admin
     if num == 0:
@@ -299,11 +301,67 @@ def rec_pass():
     return render_template('user/rec_pass.html') 
     
 
+@app.route('/export1', methods=('GET', 'POST'))
+@app.route('/export1/<exam>', methods=('GET', 'POST'))
+def export_odt(exam=None):
+    
+    if request.method == 'POST':            
+        shutil.copy('server/static/plantilla.odt', 'server/static/plantilla2.odt')
+        myfile = zipfile.ZipFile('server/static/plantilla2.odt', 'a')
+        ostr = myfile.read('content.xml', 'w')
+    
+        # Saco los datos del examen
+        if exam:
+            examen = Examenes.objects(id=exam).first()
+            asignatura = examen.asignatura
+            nombre = examen.nombre
+            preguntas = examen.preguntas
+    
+        doc = parseString(ostr)
+        paras = doc.getElementsByTagName('text:p')
+        text_in_paras = []
+        for p in paras:
+            for ch in p.childNodes:
+                if ch.nodeType == ch.TEXT_NODE:
+                    text_in_paras.append(ch.data)
+                    if ch.data.count('Asignatura') > 0:
+                        print "Encontrada asignatura"
+                        ch.data = ch.data + " " + str(asignatura)
+                        nuevo_nodo = ch
+                        p.appendChild(nuevo_nodo)
+                    elif ch.data.count('Examen') > 0:
+                        ch.data = ch.data + " " + str(nombre)
+                        nuevo_nodo = ch
+                        p.appendChild(nuevo_nodo)
+                    elif ch.data.count('Preguntas') > 0:
+                        for pregunta in preguntas:                                     
+                            nodo = doc.createTextNode(str(pregunta.texto))                        
+                            #nodo1 = ch
+                            #p.appendChild(nodo1)
+                            p.insertBefore(nodo, None)
+                            
+
+                            ch.data = str(pregunta.texto)
+                            nuevo_nodo = ch
+                            p.appendChild(nuevo_nodo)
+
+        myfile.writestr('content.xml', doc.toprettyxml())        
+
+        #prueba para crear un xml
+        fd = open('server/static/prueba.xml','w')
+        doc.writexml(fd)
+        doc.unlink()    
+        fd.close()
+        
+        
+    return str(asignatura)
+
 def gen_passwd(n):
     """ 
     Generador de passwords 
     Usando choice para seleccionar una, la fuente de datos lo da string.letters
     Para usar tambien numeros, string.digits
+    Extraido de: http://miguelangelnieto.net/?action=view&url=receta-generar-contrase%C3%B1as-aleatorias-en-python
     """
     return ''.join([random.choice(string.letters + string.digits) for i in range(n)])
     
