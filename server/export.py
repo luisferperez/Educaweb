@@ -18,13 +18,15 @@ def creaWord():
 """    
 from xml.dom.minidom import parseString
 #import xml.etree.ElementTree
-import zipfile, shutil
+import zipfile, shutil, os
 
 def creaODT(exam=None):
     """
     función para exportar los examenes a un fichero tipo odt    
     http://www.linuxjournal.com/article/9347?page=0,1
     """
+    
+    """ version 1    
     myfile = zipfile.ZipFile('server/static/plantilla.odt')
     listoffiles = myfile.infolist()
     for s in listoffiles:
@@ -33,11 +35,16 @@ def creaODT(exam=None):
             bh = myfile.read(s.orig_filename)
             fd.write(bh)
             fd.close()
+    """
     
-
+    
+    #fd = open('server/static/prueba.odt', "w")
+    #fd.close()
+    
+    
     shutil.copy('server/static/plantilla.odt', 'server/static/plantilla2.odt')
-    myfile = zipfile.ZipFile('server/static/plantilla2.odt')
-    ostr = myfile.read('content.xml', 'w')
+    myfile = zipfile.ZipFile('server/static/plantilla2.odt', 'a')
+    ostr = myfile.read('content.xml', "w")
     
     doc = parseString(ostr)
     paras = doc.getElementsByTagName('text:p')
@@ -53,15 +60,16 @@ def creaODT(exam=None):
                     p.appendChild(nuevo_nodo)
                 print ch.data
                 
-    fd = open('server/static/prueba.xml','w')
+    fd = open('server/static/content.xml','w')
 
     print doc.toprettyxml()
-#    myfile.write('server/static/prueba.xml', 'content.xml')
+#    myfile.write('server/static/content.xml')
+    myfile.writestr('content.xml', doc.toprettyxml())    
 
     doc.writexml(fd)
-    doc.unlink()
-    
+    doc.unlink()    
     fd.close()
+    
 
 """
     tree = xml.etree.ElementTree.parse('server/static/prueba.xml')    
