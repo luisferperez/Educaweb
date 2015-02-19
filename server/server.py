@@ -17,6 +17,10 @@ from forms import GeneraExamenForm, ProfileForm
 from xml.dom.minidom import parseString
 import zipfile, shutil
 
+#from Tkinter import *
+from tkFileDialog import asksaveasfilename
+
+
 #========================================#
 #    Creation of the Web Application     #
 #========================================#
@@ -27,7 +31,7 @@ app.config.from_object(config)
 db = MongoEngine()
 db.init_app(app)
 
-# Initialize the aplicattion to send mails
+# Initialize the application to send mails
 mail = Mail(app)
 
 # Initialize ddbb
@@ -305,9 +309,14 @@ def rec_pass():
 @app.route('/export1/<exam>', methods=('GET', 'POST'))
 def export_odt(exam=None):
     
+    # Cuadro de dialogo para guardar el archivo
+    archivo = asksaveasfilename(filetypes = [("Archivos ODT",".odt")])    
+    #print archivo
+    
     if request.method == 'POST':            
-        shutil.copy('server/static/plantilla.odt', 'server/static/plantilla2.odt')
-        myfile = zipfile.ZipFile('server/static/plantilla2.odt', 'a')
+       
+        shutil.copy('server/static/plantilla.odt', archivo)
+        myfile = zipfile.ZipFile(archivo, 'a')
         ostr = myfile.read('content.xml', 'w')
     
         # Saco los datos del examen
@@ -336,14 +345,14 @@ def export_odt(exam=None):
                     elif ch.data.count('Preguntas') > 0:
                         for pregunta in preguntas:                                     
                             nodo = doc.createTextNode(str(pregunta.texto))                        
-                            #nodo1 = ch
-                            #p.appendChild(nodo1)
+                            
+                            #p.appendChild(nodo)
                             p.insertBefore(nodo, None)
                             
-
-                            ch.data = str(pregunta.texto)
+                            #ch.data = str(pregunta.texto)
                             nuevo_nodo = ch
-                            p.appendChild(nuevo_nodo)
+                            #p.appendChild(nuevo_nodo)
+                            
 
         myfile.writestr('content.xml', doc.toprettyxml())        
 
