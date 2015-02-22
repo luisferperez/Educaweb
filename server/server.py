@@ -345,15 +345,18 @@ def export_odt(exam=None):
                     elif ch.data.count('Preguntas') > 0:
                         for pregunta in preguntas:                                     
                             nodo = doc.createTextNode(str(pregunta.texto))                        
+                            p.appendChild(nodo)
+                            #p.insertBefore(nodo, None)
                             
-                            #p.appendChild(nodo)
-                            p.insertBefore(nodo, None)
-                            
-                            #ch.data = str(pregunta.texto)
+                            ch.data = str(pregunta.texto)
                             nuevo_nodo = ch
-                            #p.appendChild(nuevo_nodo)
-                            
-
+                            p.appendChild(nuevo_nodo)
+                            """                         
+                            x = dom.createElement("foo")  # creates <foo />
+                            txt = dom.createTextNode("hello, world!")  # creates "hello, world!"
+                            x.appendChild(txt)  # results in <foo>hello, world!</foo>
+                            dom.childNodes[1].appendChild(x)                             
+                            """
         myfile.writestr('content.xml', doc.toprettyxml())        
 
         #prueba para crear un xml
