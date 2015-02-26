@@ -313,8 +313,7 @@ def export_odt(exam=None):
     archivo = asksaveasfilename(filetypes = [("Archivos ODT",".odt")])    
     #print archivo
     
-    if request.method == 'POST':            
-       
+    if request.method == 'POST':
         shutil.copy('server/static/plantilla.odt', archivo)
         myfile = zipfile.ZipFile(archivo, 'a')
         ostr = myfile.read('content.xml', 'w')
@@ -326,6 +325,74 @@ def export_odt(exam=None):
             nombre = examen.nombre
             preguntas = examen.preguntas
     
+        doc = parseString(ostr)
+        paras = doc.getElementsByTagName('text:p')
+        text_in_paras = []
+        for p in paras:
+            print "p.data:" +  str(p.nodeName)
+            for ch in p.childNodes:
+                if ch.nodeType == ch.TEXT_NODE:
+                    text_in_paras.append(ch.data)
+                    if ch.data.count('Asignatura') > 0:
+                        print "Encontrada asignatura"
+                        ch.data = ch.data + " " + str(asignatura)
+                        nuevo_nodo = ch
+                        p.appendChild(nuevo_nodo)
+                    elif ch.data.count('Examen') > 0:
+                        ch.data = ch.data + " " + str(nombre)
+                        nuevo_nodo = ch
+                        p.appendChild(nuevo_nodo)
+                    elif ch.data.count('Preguntas') > 0:
+                        for pregunta in preguntas:                                     
+                            """
+                            nodo = doc.createTextNode(str(pregunta.texto))                        
+                            p.appendChild(nodo)
+                            #p.insertBefore(nodo, None)
+                            
+                            ch.data = str(pregunta.texto)
+                            nuevo_nodo = ch
+                            p.appendChild(nuevo_nodo)
+                            """                      
+                            x = doc.createElement("text:p")  
+                            txt = doc.createTextNode(str(pregunta.texto))  
+                            x.appendChild(txt)  # results in <foo>hello, world!</foo>
+                            doc.childNodes[0].childNodes[3].childNodes[0].appendChild(x)
+                            
+
+        myfile.writestr('content.xml', doc.toprettyxml())
+        #prueba para crear un xml
+        fd = open('content.xml','w')
+        doc.writexml(fd)
+        doc.unlink()
+        fd.close()
+       
+        #myfile.write('server/static/content.xml', 'content.xml', zipfile.ZIP_DEFLATED)
+        myfile.close()
+                
+    return str(asignatura)
+
+
+@app.route('/export2', methods=('GET', 'POST'))
+@app.route('/export2/<exam>', methods=('GET', 'POST'))
+def export_odt2(exam=None):
+    
+    # Cuadro de dialogo para guardar el archivo
+    archivo = asksaveasfilename(filetypes = [("Archivos ODT",".odt")])    
+    #print archivo
+    
+    if request.method == 'POST':
+        shutil.copy('server/static/plantilla.odt', archivo)
+        myfile = zipfile.ZipFile(archivo, 'a')
+        ostr = myfile.read('content.xml', 'w')
+    
+        # Saco los datos del examen
+        if exam:
+            examen = Examenes.objects(id=exam).first()
+            asignatura = examen.asignatura
+            nombre = examen.nombre
+            preguntas = examen.preguntas
+    
+
         doc = parseString(ostr)
         paras = doc.getElementsByTagName('text:p')
         text_in_paras = []
@@ -344,6 +411,16 @@ def export_odt(exam=None):
                         p.appendChild(nuevo_nodo)
                     elif ch.data.count('Preguntas') > 0:
                         for pregunta in preguntas:                                     
+                            i = 1                            
+                            ch.data = str(i) + ".- " + str(pregunta.texto) + ""
+                            nuevo_nodo = ch
+                            ch.cloneNode(nuevo_nodo)
+                            ch.insertData(0, "<br>")
+                            i = i + 1
+                            txt = doc.createTextNode(str(pregunta.texto))  # creates "hello, world!"
+                            p.insertBefore(txt, None)
+                            
+                            """
                             nodo = doc.createTextNode(str(pregunta.texto))                        
                             p.appendChild(nodo)
                             #p.insertBefore(nodo, None)
@@ -351,22 +428,35 @@ def export_odt(exam=None):
                             ch.data = str(pregunta.texto)
                             nuevo_nodo = ch
                             p.appendChild(nuevo_nodo)
-                            """                         
-                            x = dom.createElement("foo")  # creates <foo />
-                            txt = dom.createTextNode("hello, world!")  # creates "hello, world!"
+                                                  
+                            x = doc.createElement("text:p")  # creates <foo />
+                            txt = doc.createTextNode(str(pregunta.texto))  # creates "hello, world!"
                             x.appendChild(txt)  # results in <foo>hello, world!</foo>
-                            dom.childNodes[1].appendChild(x)                             
+                            #doc.childNodes[1].appendChild(x)
+                            
+                            p.appendChild(x)
                             """
-        myfile.writestr('content.xml', doc.toprettyxml())        
 
+                            """
+                            x = dom.createElement("foo") # creates <foo />
+                            txt = dom.createTextNode("hello, world!") # creates "hello, world!"
+                            x.appendChild(txt) # results in <foo>hello, world!</foo>
+                            dom.childNodes[1].appendChild(x)
+                            """
+
+        myfile.writestr('content.xml', doc.toprettyxml())
         #prueba para crear un xml
-        fd = open('server/static/prueba.xml','w')
+        fd = open('content.xml','w')
         doc.writexml(fd)
-        doc.unlink()    
+        doc.unlink()
         fd.close()
+       
+        #myfile.write('server/static/content.xml', 'content.xml', zipfile.ZIP_DEFLATED)
+        myfile.close()
         
         
     return str(asignatura)
+
 
 def gen_passwd(n):
     """ 
