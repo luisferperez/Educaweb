@@ -343,6 +343,7 @@ def export_odt(exam=None):
                         nuevo_nodo = ch
                         p.appendChild(nuevo_nodo)
                     elif ch.data.count('Preguntas') > 0:
+                        i = 1                        
                         for pregunta in preguntas:                                     
                             """
                             nodo = doc.createTextNode(str(pregunta.texto))                        
@@ -352,11 +353,17 @@ def export_odt(exam=None):
                             ch.data = str(pregunta.texto)
                             nuevo_nodo = ch
                             p.appendChild(nuevo_nodo)
-                            """                      
+                            """  
+                                                        
                             x = doc.createElement("text:p")  
-                            txt = doc.createTextNode(str(pregunta.texto))  
+                            txt = doc.createTextNode(str(i) + ".- " + str(pregunta.texto))  
                             x.appendChild(txt)  # results in <foo>hello, world!</foo>
                             doc.childNodes[0].childNodes[3].childNodes[0].appendChild(x)
+                            i = i + 1
+
+                            x = doc.createElement("text:p")
+                            doc.childNodes[0].childNodes[3].childNodes[0].appendChild(x)
+                            
                             
 
         myfile.writestr('content.xml', doc.toprettyxml())
@@ -381,7 +388,7 @@ def export_odt2(exam=None):
     #print archivo
     
     if request.method == 'POST':
-        shutil.copy('server/static/plantilla.odt', archivo)
+        shutil.copy('server/static/formatos.odt', archivo)
         myfile = zipfile.ZipFile(archivo, 'a')
         ostr = myfile.read('content.xml', 'w')
     
@@ -394,12 +401,65 @@ def export_odt2(exam=None):
     
 
         doc = parseString(ostr)
+
+
+        paras = doc.getElementsByTagName('office:text')
+        print "Hola " + str(paras)
+        
+        encontrado = False        
+        
+        for p in paras:
+            #print "Texto: " + p.textContent
+            for ch in p.childNodes:
+                print "Nodename: " + str(ch.nodeName)
+                print "Nodetype: " + str(ch.nodeType)
+                if ch.nodeName == "text:p" and encontrado == False: 
+                #if ch.nodeType == ch.TEXT_NODE:
+                    x = doc.createElement("text:p") # creates <foo />
+                    txt = doc.createTextNode(str(asignatura)) # creates "hello, world!"
+                    x.appendChild(txt) # results in <foo>hello, world!</foo>
+                    x.setAttribute("text:style-name", "P1")                    
+                    p.appendChild(x)
+                    encontrado = True
+                    #doc.childNodes[1].appendChild(x)
+
+                    x = doc.createElement("text:p") # creates <foo />
+                    txt = doc.createTextNode(str(nombre)) # creates "hello, world!"
+                    x.appendChild(txt) # results in <foo>hello, world!</foo>
+                    p.appendChild(x)
+                    encontrado = True
+
+
+                    """
+                    if ch.textContent.count('Asignatura') > 0:
+                        print "Encontrada asignatura2"
+                        ch.data = ch.data + " " + str(asignatura)
+                        nuevo_nodo = ch
+                        p.appendChild(nuevo_nodo)
+                    elif ch.textContent.count('Examen') > 0:
+                        ch.data = ch.data + " " + str(nombre)
+                        nuevo_nodo = ch
+                        p.appendChild(nuevo_nodo)
+                    elif ch.textContent.count('Preguntas') > 0:
+                        i = 1                        
+                        for pregunta in preguntas:                            
+                            ch.data = str(i) + ".- " + str(pregunta.texto) + ""
+                            #nuevo_nodo = ch
+                            nuevo_nodo = ch.cloneNode(True)
+                            p.appendChild(nuevo_nodo)                            
+                            #ch.insertData(0, "<br>")
+                            i = i + 1
+                            #txt = doc.createTextNode(str(pregunta.texto))  # creates "hello, world!"
+                       """     
+
+
+
+
+        """
         paras = doc.getElementsByTagName('text:p')
-        text_in_paras = []
         for p in paras:
             for ch in p.childNodes:
                 if ch.nodeType == ch.TEXT_NODE:
-                    text_in_paras.append(ch.data)
                     if ch.data.count('Asignatura') > 0:
                         print "Encontrada asignatura"
                         ch.data = ch.data + " " + str(asignatura)
@@ -410,17 +470,18 @@ def export_odt2(exam=None):
                         nuevo_nodo = ch
                         p.appendChild(nuevo_nodo)
                     elif ch.data.count('Preguntas') > 0:
-                        for pregunta in preguntas:                                     
-                            i = 1                            
+                        i = 1                        
+                        for pregunta in preguntas:                            
                             ch.data = str(i) + ".- " + str(pregunta.texto) + ""
-                            nuevo_nodo = ch
-                            ch.cloneNode(nuevo_nodo)
-                            ch.insertData(0, "<br>")
+                            #nuevo_nodo = ch
+                            nuevo_nodo = ch.cloneNode(True)
+                            p.appendChild(nuevo_nodo)                            
+                            #ch.insertData(0, "<br>")
                             i = i + 1
-                            txt = doc.createTextNode(str(pregunta.texto))  # creates "hello, world!"
-                            p.insertBefore(txt, None)
+                            #txt = doc.createTextNode(str(pregunta.texto))  # creates "hello, world!"
+                            #p.insertBefore(txt, None)
                             
-                            """
+                            ""
                             nodo = doc.createTextNode(str(pregunta.texto))                        
                             p.appendChild(nodo)
                             #p.insertBefore(nodo, None)
@@ -435,9 +496,9 @@ def export_odt2(exam=None):
                             #doc.childNodes[1].appendChild(x)
                             
                             p.appendChild(x)
-                            """
+                            ""
 
-                            """
+                            ""
                             x = dom.createElement("foo") # creates <foo />
                             txt = dom.createTextNode("hello, world!") # creates "hello, world!"
                             x.appendChild(txt) # results in <foo>hello, world!</foo>
