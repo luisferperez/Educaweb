@@ -19,7 +19,7 @@ import zipfile, shutil
 
 #from Tkinter import *
 from tkFileDialog import asksaveasfilename
-
+from tkMessageBox import showinfo
 
 #========================================#
 #    Creation of the Web Application     #
@@ -367,6 +367,8 @@ def export_odt(exam=None):
                             
 
         myfile.writestr('content.xml', doc.toprettyxml())
+        myfile.close()
+        
         #prueba para crear un xml
         fd = open('content.xml','w')
         doc.writexml(fd)
@@ -374,9 +376,9 @@ def export_odt(exam=None):
         fd.close()
        
         #myfile.write('server/static/content.xml', 'content.xml', zipfile.ZIP_DEFLATED)
-        myfile.close()
-                
-    return str(asignatura)
+                        
+    showinfo('Archivo generado', 'El archivo se ha generado correctamente.')
+    return render_template('exams/exam.html', exam=examen)
 
 
 @app.route('/export2', methods=('GET', 'POST'))
@@ -384,8 +386,7 @@ def export_odt(exam=None):
 def export_odt2(exam=None):
     
     # Cuadro de dialogo para guardar el archivo
-    archivo = asksaveasfilename(filetypes = [("Archivos ODT",".odt")])    
-    #print archivo
+    archivo = asksaveasfilename(filetypes = [("Archivos ODT",".odt")])
     
     if request.method == 'POST':
         shutil.copy('server/static/formatos.odt', archivo)
@@ -398,125 +399,64 @@ def export_odt2(exam=None):
             asignatura = examen.asignatura
             nombre = examen.nombre
             preguntas = examen.preguntas
-    
 
         doc = parseString(ostr)
-
-
         paras = doc.getElementsByTagName('office:text')
-        print "Hola " + str(paras)
         
         encontrado = False        
         
         for p in paras:
-            #print "Texto: " + p.textContent
             for ch in p.childNodes:
                 print "Nodename: " + str(ch.nodeName)
                 print "Nodetype: " + str(ch.nodeType)
                 if ch.nodeName == "text:p" and encontrado == False: 
                 #if ch.nodeType == ch.TEXT_NODE:
-                    x = doc.createElement("text:p") # creates <foo />
-                    txt = doc.createTextNode(str(asignatura)) # creates "hello, world!"
-                    x.appendChild(txt) # results in <foo>hello, world!</foo>
-                    x.setAttribute("text:style-name", "P1")                    
-                    p.appendChild(x)
-                    encontrado = True
-                    #doc.childNodes[1].appendChild(x)
-
-                    x = doc.createElement("text:p") # creates <foo />
-                    txt = doc.createTextNode(str(nombre)) # creates "hello, world!"
-                    x.appendChild(txt) # results in <foo>hello, world!</foo>
+                    x = doc.createElement("text:p")
+                    txt = doc.createTextNode(str(asignatura))
+                    x.appendChild(txt)
+                    x.setAttribute("text:style-name", "P1")
                     p.appendChild(x)
                     encontrado = True
 
+                    x = doc.createElement("text:p")
+                    p.appendChild(x)
 
-                    """
-                    if ch.textContent.count('Asignatura') > 0:
-                        print "Encontrada asignatura2"
-                        ch.data = ch.data + " " + str(asignatura)
-                        nuevo_nodo = ch
-                        p.appendChild(nuevo_nodo)
-                    elif ch.textContent.count('Examen') > 0:
-                        ch.data = ch.data + " " + str(nombre)
-                        nuevo_nodo = ch
-                        p.appendChild(nuevo_nodo)
-                    elif ch.textContent.count('Preguntas') > 0:
-                        i = 1                        
-                        for pregunta in preguntas:                            
-                            ch.data = str(i) + ".- " + str(pregunta.texto) + ""
-                            #nuevo_nodo = ch
-                            nuevo_nodo = ch.cloneNode(True)
-                            p.appendChild(nuevo_nodo)                            
-                            #ch.insertData(0, "<br>")
-                            i = i + 1
-                            #txt = doc.createTextNode(str(pregunta.texto))  # creates "hello, world!"
-                       """     
+                    x = doc.createElement("text:p")
+                    txt = doc.createTextNode(str(nombre))
+                    x.appendChild(txt)
+                    x.setAttribute("text:style-name", "P2")
+                    p.appendChild(x)
+                    encontrado = True
 
+                    x = doc.createElement("text:p")
+                    p.appendChild(x)
 
+                    i = 1                        
+                    for pregunta in preguntas:                      
+                        x = doc.createElement("text:p")
+                        txt = doc.createTextNode(str(i) + ".- " + str(pregunta.texto))  
+                        x.appendChild(txt)
+                        p.appendChild(x)
 
+                        x = doc.createElement("text:p")
+                        p.appendChild(x)
+                        x = doc.createElement("text:p")
+                        p.appendChild(x)
 
-        """
-        paras = doc.getElementsByTagName('text:p')
-        for p in paras:
-            for ch in p.childNodes:
-                if ch.nodeType == ch.TEXT_NODE:
-                    if ch.data.count('Asignatura') > 0:
-                        print "Encontrada asignatura"
-                        ch.data = ch.data + " " + str(asignatura)
-                        nuevo_nodo = ch
-                        p.appendChild(nuevo_nodo)
-                    elif ch.data.count('Examen') > 0:
-                        ch.data = ch.data + " " + str(nombre)
-                        nuevo_nodo = ch
-                        p.appendChild(nuevo_nodo)
-                    elif ch.data.count('Preguntas') > 0:
-                        i = 1                        
-                        for pregunta in preguntas:                            
-                            ch.data = str(i) + ".- " + str(pregunta.texto) + ""
-                            #nuevo_nodo = ch
-                            nuevo_nodo = ch.cloneNode(True)
-                            p.appendChild(nuevo_nodo)                            
-                            #ch.insertData(0, "<br>")
-                            i = i + 1
-                            #txt = doc.createTextNode(str(pregunta.texto))  # creates "hello, world!"
-                            #p.insertBefore(txt, None)
-                            
-                            ""
-                            nodo = doc.createTextNode(str(pregunta.texto))                        
-                            p.appendChild(nodo)
-                            #p.insertBefore(nodo, None)
-                            
-                            ch.data = str(pregunta.texto)
-                            nuevo_nodo = ch
-                            p.appendChild(nuevo_nodo)
-                                                  
-                            x = doc.createElement("text:p")  # creates <foo />
-                            txt = doc.createTextNode(str(pregunta.texto))  # creates "hello, world!"
-                            x.appendChild(txt)  # results in <foo>hello, world!</foo>
-                            #doc.childNodes[1].appendChild(x)
-                            
-                            p.appendChild(x)
-                            ""
-
-                            ""
-                            x = dom.createElement("foo") # creates <foo />
-                            txt = dom.createTextNode("hello, world!") # creates "hello, world!"
-                            x.appendChild(txt) # results in <foo>hello, world!</foo>
-                            dom.childNodes[1].appendChild(x)
-                            """
+                        i = i + 1
 
         myfile.writestr('content.xml', doc.toprettyxml())
+        myfile.close()
+        
         #prueba para crear un xml
         fd = open('content.xml','w')
         doc.writexml(fd)
         doc.unlink()
         fd.close()
-       
+        
         #myfile.write('server/static/content.xml', 'content.xml', zipfile.ZIP_DEFLATED)
-        myfile.close()
-        
-        
-    return str(asignatura)
+    showinfo('Archivo generado', 'El archivo se ha generado correctamente.')
+    return render_template('exams/exam.html', exam=examen)
 
 
 def gen_passwd(n):
