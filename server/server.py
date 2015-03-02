@@ -19,7 +19,8 @@ import zipfile, shutil
 
 #from Tkinter import *
 from tkFileDialog import asksaveasfilename
-from tkMessageBox import showinfo
+from tkMessageBox import showinfo, showerror
+from reportlab.pdfgen import canvas
 
 #========================================#
 #    Creation of the Web Application     #
@@ -381,43 +382,46 @@ def export_odt(exam=None):
     return render_template('exams/exam.html', exam=examen)
 
 
-@app.route('/export2', methods=('GET', 'POST'))
 @app.route('/export2/<exam>', methods=('GET', 'POST'))
 def export_odt2(exam=None):
     
+    # compruebo que se han pasado los datos del examen
+    if not exam:
+        showerror('Error', 'Datos insuficientes.')
+        return None
+    
+    # Saco los datos del examen
+    examen = Examenes.objects(id=exam).first()
+    asignatura = examen.asignatura
+    nombre = examen.nombre
+    preguntas = examen.preguntas
+
     # Cuadro de dialogo para guardar el archivo
     archivo = asksaveasfilename(filetypes = [("Archivos ODT",".odt")])
-    
+    if not archivo:
+        showinfo('Proceso cancelado', 'El proceso ha sido cancelado por el usuario.')
+        return render_template('exams/exam.html', exam=examen)
+        
+        
     if request.method == 'POST':
         shutil.copy('server/static/formatos.odt', archivo)
         myfile = zipfile.ZipFile(archivo, 'a')
         ostr = myfile.read('content.xml', 'w')
     
-        # Saco los datos del examen
-        if exam:
-            examen = Examenes.objects(id=exam).first()
-            asignatura = examen.asignatura
-            nombre = examen.nombre
-            preguntas = examen.preguntas
-
         doc = parseString(ostr)
         paras = doc.getElementsByTagName('office:text')
-        
+
         encontrado = False        
         
         for p in paras:
             for ch in p.childNodes:
-                print "Nodename: " + str(ch.nodeName)
-                print "Nodetype: " + str(ch.nodeType)
                 if ch.nodeName == "text:p" and encontrado == False: 
-                #if ch.nodeType == ch.TEXT_NODE:
                     x = doc.createElement("text:p")
                     txt = doc.createTextNode(str(asignatura))
                     x.appendChild(txt)
                     x.setAttribute("text:style-name", "P1")
                     p.appendChild(x)
-                    encontrado = True
-
+                    
                     x = doc.createElement("text:p")
                     p.appendChild(x)
 
@@ -426,7 +430,6 @@ def export_odt2(exam=None):
                     x.appendChild(txt)
                     x.setAttribute("text:style-name", "P2")
                     p.appendChild(x)
-                    encontrado = True
 
                     x = doc.createElement("text:p")
                     p.appendChild(x)
@@ -444,7 +447,9 @@ def export_odt2(exam=None):
                         p.appendChild(x)
 
                         i = i + 1
-
+                        
+                    encontrado = True
+                        
         myfile.writestr('content.xml', doc.toprettyxml())
         myfile.close()
         
@@ -455,6 +460,70 @@ def export_odt2(exam=None):
         fd.close()
         
         #myfile.write('server/static/content.xml', 'content.xml', zipfile.ZIP_DEFLATED)
+    showinfo('Archivo generado', 'El archivo se ha generado correctamente.')
+    return render_template('exams/exam.html', exam=examen)
+
+@app.route('/export_pdf/<exam>', methods=('GET', 'POST'))
+def export_pdf(exam=None):
+    
+    # compruebo que se han pasado los datos del examen
+    if not exam:
+        showerror('Error', 'Datos insuficientes.')
+        return None
+    
+    # Saco los datos del examen
+    examen = Examenes.objects(id=exam).first()
+    asignatura = examen.asignatura
+    nombre = examen.nombre
+    preguntas = examen.preguntas
+
+    # Cuadro de dialogo para guardar el archivo
+    archivo = asksaveasfilename(filetypes = [("Archivos PDF",".pdf")])
+    if not archivo:
+        showinfo('Proceso cancelado', 'El proceso ha sido cancelado por el usuario.')
+        return render_template('exams/exam.html', exam=examen)
+        
+        
+    if request.method == 'POST':
+
+        aux = canvas.Canvas(archivo)
+
+        textobject = aux.beginText()
+        textobject.setTextOrigin(120, 750)
+        textobject.setFont("Times-Bold", 14)
+        uniLine = unicode(str(asignatura), 'latin-1')
+        textobject.textLine(uniLine)
+        
+        textobject.textLine()
+        textobject.textLine()
+        
+        textobject.moveCursor(-40, 20)
+        textobject.setFont("Times-Roman", 12)     
+        uniLine = unicode(str(nombre), 'latin-1')
+        textobject.textLine(uniLine)
+        
+        textobject.textLine()
+        textobject.textLine()
+
+        # ?????? textobject.setLeading          
+        
+        
+        textobject.setFillGray(0.5)
+        lineas_texto = '''
+        Hola a todos. En este post vamos a ver
+        como escribir texto con Python y ReportLab.
+        Más información en El Viaje del Navegante.
+        '''
+        lineas_texto = unicode(lineas_texto,'latin-1')
+        textobject.textLines(lineas_texto)
+        aux.drawText(textobject)
+
+        # Salvamos.
+        aux.showPage()
+        aux.save()
+
+
+
     showinfo('Archivo generado', 'El archivo se ha generado correctamente.')
     return render_template('exams/exam.html', exam=examen)
 
