@@ -17,10 +17,13 @@ from forms import GeneraExamenForm, ProfileForm
 from xml.dom.minidom import parseString
 import zipfile, shutil
 
-#from Tkinter import *
 from tkFileDialog import asksaveasfilename
 from tkMessageBox import showinfo, showerror
-from reportlab.pdfgen import canvas
+
+#from reportlab.pdfgen import canvas
+from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+from reportlab.lib.enums import TA_CENTER
+from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
 
 #========================================#
 #    Creation of the Web Application     #
@@ -483,45 +486,49 @@ def export_pdf(exam=None):
         showinfo('Proceso cancelado', 'El proceso ha sido cancelado por el usuario.')
         return render_template('exams/exam.html', exam=examen)
         
-        
     if request.method == 'POST':
-
-        aux = canvas.Canvas(archivo)
-
-        textobject = aux.beginText()
-        textobject.setTextOrigin(120, 750)
-        textobject.setFont("Times-Bold", 14)
-        uniLine = unicode(str(asignatura), 'latin-1')
-        textobject.textLine(uniLine)
+        """
+        ptext = '<font size=12>%s</font>' % formatted_time
+        Story.append(Paragraph(ptext, styles["Normal"]))
+        """
+        story = []
+        styles=getSampleStyleSheet()
+        styles.add(ParagraphStyle(name='Cabecera', alignment=TA_CENTER, fontSize=16))
+        styles.add(ParagraphStyle(name='Titulo', fontSize=12))
         
-        textobject.textLine()
-        textobject.textLine()
+        doc=SimpleDocTemplate(archivo) #,pagesize=A4,showBoundary=1)
+        #    doc=SimpleDocTemplate(archivo,pagesize=A4,showBoundary=1)
         
-        textobject.moveCursor(-40, 20)
-        textobject.setFont("Times-Roman", 12)     
-        uniLine = unicode(str(nombre), 'latin-1')
-        textobject.textLine(uniLine)
-        
-        textobject.textLine()
-        textobject.textLine()
+        #p = ParagraphStyle(styles)
 
-        # ?????? textobject.setLeading          
+        # Introduzco el nombre de la asignatura
+        para = Paragraph("<u><b>"+str(asignatura)+"</b></u>", styles['Cabecera'])
+        story.append(para)
+        story.append(Spacer(0,20))
         
-        
-        textobject.setFillGray(0.5)
-        lineas_texto = '''
-        Hola a todos. En este post vamos a ver
-        como escribir texto con Python y ReportLab.
-        Más información en El Viaje del Navegante.
-        '''
-        lineas_texto = unicode(lineas_texto,'latin-1')
-        textobject.textLines(lineas_texto)
-        aux.drawText(textobject)
+        # Introduzco el nombre del examen
+        para = Paragraph("<u>"+str(nombre)+"</u>", styles['Titulo'])
+        story.append(para)
+        story.append(Spacer(0,20))
 
-        # Salvamos.
-        aux.showPage()
-        aux.save()
-
+        # Introduzco las preguntas del examen  
+        i = 1         
+        for pregunta in preguntas:
+            texto = str(i) + ".- " + str(pregunta.texto)
+            story.append(Paragraph(texto, styles["Normal"]))
+            
+            i = i + 1
+            
+            if pregunta.tipo == 1:
+                for opcion in pregunta.opciones:
+                    texto = str(opcion.letra) + "). " + str(opcion.texto)
+                    story.append(Paragraph(texto, styles["Normal"]))
+                    
+            elif pregunta.tipo == 2:
+                pass
+            
+            story.append(Spacer(0,20))
+        doc.build(story)
 
 
     showinfo('Archivo generado', 'El archivo se ha generado correctamente.')
