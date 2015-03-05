@@ -7,7 +7,8 @@ de MongoDB
 
 """
 from mongoengine import Document, EmbeddedDocument, StringField, IntField, BooleanField, \
-    ReferenceField, ListField, EmbeddedDocumentField, Q, queryset_manager, signals
+    ReferenceField, ListField, EmbeddedDocumentField, Q, queryset_manager, signals, \
+    SortedListField
 from flask.ext import login
 
 def handler(event):
@@ -141,7 +142,7 @@ class Preguntas(Document):
     # Solo para la opción de verdadero o falso    
     verdadera = BooleanField() 
     # Solo para la opción de test
-    opciones = ListField(EmbeddedDocumentField(Opciones))
+    opciones = SortedListField(EmbeddedDocumentField(Opciones))
     correcta = StringField(max_length=1)
 
     respuesta = StringField()

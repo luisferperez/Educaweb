@@ -444,6 +444,29 @@ def export_odt2(exam=None):
                         x.appendChild(txt)
                         p.appendChild(x)
 
+                        # Para las preguntas tipo test
+                        if pregunta.tipo == 1:
+                            for opcion in pregunta.opciones:
+                                x = doc.createElement("text:p")
+                                
+                                #texto = str(opcion.letra) + ").- " + str(opcion.texto).encode('utf-8')
+                                texto = str(opcion.texto).encode('ascii')
+                                txt = doc.createTextNode(texto)
+                                x.appendChild(txt)
+                                p.appendChild(x)
+                                            
+                        # Para las preguntas tipo verdadero o falso
+                        elif pregunta.tipo == 2:
+                            x = doc.createElement("text:p")
+                            txt = doc.createTextNode("A).- Verdadero")
+                            x.appendChild(txt)
+                            p.appendChild(x)
+
+                            x = doc.createElement("text:p")
+                            txt = doc.createTextNode("B).- Falso")
+                            x.appendChild(txt)
+                            p.appendChild(x)
+
                         x = doc.createElement("text:p")
                         p.appendChild(x)
                         x = doc.createElement("text:p")
@@ -487,19 +510,12 @@ def export_pdf(exam=None):
         return render_template('exams/exam.html', exam=examen)
         
     if request.method == 'POST':
-        """
-        ptext = '<font size=12>%s</font>' % formatted_time
-        Story.append(Paragraph(ptext, styles["Normal"]))
-        """
         story = []
         styles=getSampleStyleSheet()
         styles.add(ParagraphStyle(name='Cabecera', alignment=TA_CENTER, fontSize=16))
         styles.add(ParagraphStyle(name='Titulo', fontSize=12))
         
-        doc=SimpleDocTemplate(archivo) #,pagesize=A4,showBoundary=1)
-        #    doc=SimpleDocTemplate(archivo,pagesize=A4,showBoundary=1)
-        
-        #p = ParagraphStyle(styles)
+        doc=SimpleDocTemplate(archivo)
 
         # Introduzco el nombre de la asignatura
         para = Paragraph("<u><b>"+str(asignatura)+"</b></u>", styles['Cabecera'])
@@ -519,15 +535,23 @@ def export_pdf(exam=None):
             
             i = i + 1
             
+            # Para las preguntas tipo test
             if pregunta.tipo == 1:
+                story.append(Spacer(0,7))
                 for opcion in pregunta.opciones:
-                    texto = str(opcion.letra) + "). " + str(opcion.texto)
+                    texto = opcion.letra + ").- " + opcion.texto
                     story.append(Paragraph(texto, styles["Normal"]))
-                    
-            elif pregunta.tipo == 2:
-                pass
+                    story.append(Spacer(0,7))
             
-            story.append(Spacer(0,20))
+            # Para las preguntas tipo verdadero o falso
+            elif pregunta.tipo == 2:
+                texto = "A).- Verdadero"
+                story.append(Paragraph(texto, styles["Normal"]))
+                texto = "B).- Falso"
+                story.append(Paragraph(texto, styles["Normal"]))
+
+            
+            story.append(Spacer(0,40))
         doc.build(story)
 
 

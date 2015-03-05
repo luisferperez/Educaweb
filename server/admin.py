@@ -119,7 +119,7 @@ class TemasView(MyView):
 
 
 class PreguntasView(MyView):
-#    column_exclude_list = ("respuestas")
+    column_exclude_list = ("respuesta", "opciones")
 #    form_excluded_columns = ("respuestas")
     
     column_default_sort =  ('asignatura', 'tema', 'num')
