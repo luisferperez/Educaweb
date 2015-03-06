@@ -75,8 +75,8 @@
     <br>
     <button class="btn btn-success" type="submit">Corregir</button>
 
-    <input type="submit" formaction="/export1/{{ exam.id }}"  method="POST" value="Exportar como ODT 1"></td>
-    <input type="submit" formaction="/export2/{{ exam.id }}"  method="POST" value="Exportar como ODT 2"></td>
+    <input type="image" formaction="/export1/{{ exam.id }}"  method="POST" src="/static/img/writer.gif" alt="Submit"> 
+    <input type="submit" formaction="/export2/{{ exam.id }}"  method="POST" value="Exportar como ODT 2" image="static/img/writer.gif"></td>
     <input type="submit" formaction="/export_pdf/{{ exam.id }}"  method="POST" value="Exportar como PDF"></td>
 </form>
 

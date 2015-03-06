@@ -20,7 +20,7 @@ import zipfile, shutil
 from tkFileDialog import asksaveasfilename
 from tkMessageBox import showinfo, showerror
 
-#from reportlab.pdfgen import canvas
+# Importo las librerias para el reportlab (exportación a pdf)
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.enums import TA_CENTER
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
@@ -379,7 +379,6 @@ def export_odt(exam=None):
         doc.unlink()
         fd.close()
        
-        #myfile.write('server/static/content.xml', 'content.xml', zipfile.ZIP_DEFLATED)
                         
     showinfo('Archivo generado', 'El archivo se ha generado correctamente.')
     return render_template('exams/exam.html', exam=examen)
@@ -443,14 +442,13 @@ def export_odt2(exam=None):
                         txt = doc.createTextNode(str(i) + ".- " + str(pregunta.texto))  
                         x.appendChild(txt)
                         p.appendChild(x)
-
+                        
                         # Para las preguntas tipo test
                         if pregunta.tipo == 1:
                             for opcion in pregunta.opciones:
                                 x = doc.createElement("text:p")
                                 
-                                #texto = str(opcion.letra) + ").- " + str(opcion.texto).encode('utf-8')
-                                texto = str(opcion.texto).encode('ascii')
+                                texto = opcion.letra + "). " + opcion.texto
                                 txt = doc.createTextNode(texto)
                                 x.appendChild(txt)
                                 p.appendChild(x)
@@ -475,18 +473,20 @@ def export_odt2(exam=None):
                         i = i + 1
                         
                     encontrado = True
-                        
-        myfile.writestr('content.xml', doc.toprettyxml())
-        myfile.close()
-        
+                    
+        """
         #prueba para crear un xml
         fd = open('content.xml','w')
-        doc.writexml(fd)
+        doc.writexml(fd, encoding='latin1')
         doc.unlink()
         fd.close()
+        """
         
-        #myfile.write('server/static/content.xml', 'content.xml', zipfile.ZIP_DEFLATED)
-    showinfo('Archivo generado', 'El archivo se ha generado correctamente.')
+        myfile.writestr('content.xml', doc.toprettyxml(encoding='utf-8'))
+        myfile.close()                
+        
+        showinfo('Archivo generado', 'El archivo se ha generado correctamente.')
+    
     return render_template('exams/exam.html', exam=examen)
 
 @app.route('/export_pdf/<exam>', methods=('GET', 'POST'))
