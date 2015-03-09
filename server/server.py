@@ -25,6 +25,12 @@ from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.enums import TA_CENTER
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
 
+# Librerías de odfpy
+from odf.opendocument import OpenDocumentText
+from odf.style import Style, TextProperties
+from odf.text import P, H
+
+
 #========================================#
 #    Creation of the Web Application     #
 #========================================#
@@ -313,74 +319,67 @@ def rec_pass():
 @app.route('/export1/<exam>', methods=('GET', 'POST'))
 def export_odt(exam=None):
     
+    # compruebo que se han pasado los datos del examen
+    if not exam:
+        showerror('Error', 'Datos insuficientes.')
+        return None
+    
+    # Saco los datos del examen
+    examen = Examenes.objects(id=exam).first()
+    asignatura = examen.asignatura
+    nombre = examen.nombre
+    preguntas = examen.preguntas
+
     # Cuadro de dialogo para guardar el archivo
     archivo = asksaveasfilename(filetypes = [("Archivos ODT",".odt")])    
-    #print archivo
     
-    if request.method == 'POST':
-        shutil.copy('server/static/plantilla.odt', archivo)
-        myfile = zipfile.ZipFile(archivo, 'a')
-        ostr = myfile.read('content.xml', 'w')
-    
-        # Saco los datos del examen
-        if exam:
-            examen = Examenes.objects(id=exam).first()
-            asignatura = examen.asignatura
-            nombre = examen.nombre
-            preguntas = examen.preguntas
-    
-        doc = parseString(ostr)
-        paras = doc.getElementsByTagName('text:p')
-        text_in_paras = []
-        for p in paras:
-            print "p.data:" +  str(p.nodeName)
-            for ch in p.childNodes:
-                if ch.nodeType == ch.TEXT_NODE:
-                    text_in_paras.append(ch.data)
-                    if ch.data.count('Asignatura') > 0:
-                        print "Encontrada asignatura"
-                        ch.data = ch.data + " " + str(asignatura)
-                        nuevo_nodo = ch
-                        p.appendChild(nuevo_nodo)
-                    elif ch.data.count('Examen') > 0:
-                        ch.data = ch.data + " " + str(nombre)
-                        nuevo_nodo = ch
-                        p.appendChild(nuevo_nodo)
-                    elif ch.data.count('Preguntas') > 0:
-                        i = 1                        
-                        for pregunta in preguntas:                                     
-                            """
-                            nodo = doc.createTextNode(str(pregunta.texto))                        
-                            p.appendChild(nodo)
-                            #p.insertBefore(nodo, None)
-                            
-                            ch.data = str(pregunta.texto)
-                            nuevo_nodo = ch
-                            p.appendChild(nuevo_nodo)
-                            """  
-                                                        
-                            x = doc.createElement("text:p")  
-                            txt = doc.createTextNode(str(i) + ".- " + str(pregunta.texto))  
-                            x.appendChild(txt)  # results in <foo>hello, world!</foo>
-                            doc.childNodes[0].childNodes[3].childNodes[0].appendChild(x)
-                            i = i + 1
+    if request.method == 'POST':        
+        textdoc = OpenDocumentText()
 
-                            x = doc.createElement("text:p")
-                            doc.childNodes[0].childNodes[3].childNodes[0].appendChild(x)
-                            
-                            
-
-        myfile.writestr('content.xml', doc.toprettyxml())
-        myfile.close()
+        """        
+        T1style = Style(name="T1", family="text")
+        T1style.addElement(TextProperties(fontstyle="bold",fontstyleasian="bold", fontstylecomplex="bold"))
+        textdoc.automaticstyles.addElement(T1style)
+        """    
         
-        #prueba para crear un xml
-        fd = open('content.xml','w')
-        doc.writexml(fd)
-        doc.unlink()
-        fd.close()
-       
-                        
-    showinfo('Archivo generado', 'El archivo se ha generado correctamente.')
+        h = H(outlinelevel=1, text=asignatura)
+        textdoc.text.addElement(h)
+        
+        h = H(outlinelevel=4, text=nombre)
+        textdoc.text.addElement(h)
+        
+        i = 1        
+        for pregunta in preguntas:
+            p = P(text = str(i) + ".- " + str(pregunta.texto))
+            textdoc.text.addElement(p)
+   
+            # Para las preguntas tipo test
+            if pregunta.tipo == 1:
+                for opcion in pregunta.opciones:                              
+                    texto = opcion.letra + "). " + opcion.texto
+                    p = P(text = texto)
+                    textdoc.text.addElement(p)
+                                            
+            # Para las preguntas tipo verdadero o falso
+            elif pregunta.tipo == 2:
+                texto = "A).- Verdadero"
+                p = P(text = texto)
+                textdoc.text.addElement(p)
+                
+                texto = "A).- Verdadero"
+                p = P(text = texto)
+                textdoc.text.addElement(p)
+                
+            p = P()
+            textdoc.text.addElement(p)
+            p = P()
+            textdoc.text.addElement(p)
+
+            i = i + 1
+        
+        textdoc.save(archivo)
+        
+    showinfo('Archivo generado', 'El archivo ' + archivo + ' se ha generado correctamente.')
     return render_template('exams/exam.html', exam=examen)
 
 
@@ -481,8 +480,8 @@ def export_odt2(exam=None):
         doc.unlink()
         fd.close()
         """
-        
-        myfile.writestr('content.xml', doc.toprettyxml(encoding='utf-8'))
+
+        myfile.writestr('content.xml', doc.toprettyxml(encoding='utf-8')) # Hay que hacer el "encoding" para que no se produzcan errores con las ñ y otros carecteres
         myfile.close()                
         
         showinfo('Archivo generado', 'El archivo se ha generado correctamente.')
