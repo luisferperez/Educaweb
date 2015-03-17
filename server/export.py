@@ -1,4 +1,207 @@
 # -*- coding: utf-8 -*-
+from xml.dom.minidom import parseString
+import zipfile, shutil
+
+# Importo las librerias para el reportlab (exportación a pdf)
+from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+from reportlab.lib.enums import TA_CENTER
+from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
+
+# Librerías de odfpy
+from odf.opendocument import OpenDocumentText
+from odf.text import P, H
+
+
+def exportODT(examen, archivo):
+    
+    # Saco los datos del examen
+    asignatura = examen.asignatura
+    nombre = examen.nombre
+    preguntas = examen.preguntas
+
+    textdoc = OpenDocumentText()
+
+    """        
+    T1style = Style(name="T1", family="text")
+    T1style.addElement(TextProperties(fontstyle="bold",fontstyleasian="bold", fontstylecomplex="bold"))
+    textdoc.automaticstyles.addElement(T1style)
+    """    
+        
+    h = H(outlinelevel=1, text=asignatura)
+    textdoc.text.addElement(h)
+    
+    h = H(outlinelevel=4, text=nombre)
+    textdoc.text.addElement(h)
+    
+    i = 1        
+    for pregunta in preguntas:
+        p = P(text = str(i) + ".- " + str(pregunta.texto))
+        textdoc.text.addElement(p)
+   
+        # Para las preguntas tipo test
+        if pregunta.tipo == 1:
+            for opcion in pregunta.opciones:                              
+                texto = opcion.letra + "). " + opcion.texto
+                p = P(text = texto)
+                textdoc.text.addElement(p)
+                                        
+        # Para las preguntas tipo verdadero o falso
+        elif pregunta.tipo == 2:
+            texto = "A).- Verdadero"
+            p = P(text = texto)
+            textdoc.text.addElement(p)
+            
+            texto = "A).- Verdadero"
+            p = P(text = texto)
+            textdoc.text.addElement(p)
+            
+        p = P()
+        textdoc.text.addElement(p)
+        p = P()
+        textdoc.text.addElement(p)
+
+        i = i + 1
+        
+    textdoc.save(archivo)
+        
+    return examen
+
+
+def exportODT2(examen, archivo):
+    
+    # Saco los datos del examen
+    asignatura = examen.asignatura
+    nombre = examen.nombre
+    preguntas = examen.preguntas
+
+    shutil.copy('server/static/formatos.odt', archivo)
+    myfile = zipfile.ZipFile(archivo, 'a')
+    ostr = myfile.read('content.xml', 'w')
+
+    doc = parseString(ostr)
+    paras = doc.getElementsByTagName('office:text')
+
+    encontrado = False        
+        
+    for p in paras:
+        for ch in p.childNodes:
+            if ch.nodeName == "text:p" and encontrado == False: 
+                x = doc.createElement("text:p")
+                txt = doc.createTextNode(str(asignatura))
+                x.appendChild(txt)
+                x.setAttribute("text:style-name", "P1")
+                p.appendChild(x)
+                
+                x = doc.createElement("text:p")
+                p.appendChild(x)
+
+                x = doc.createElement("text:p")
+                txt = doc.createTextNode(str(nombre))
+                x.appendChild(txt)
+                x.setAttribute("text:style-name", "P2")
+                p.appendChild(x)
+
+                x = doc.createElement("text:p")
+                p.appendChild(x)
+
+                i = 1                        
+                for pregunta in preguntas:                      
+                    x = doc.createElement("text:p")
+                    txt = doc.createTextNode(str(i) + ".- " + str(pregunta.texto))  
+                    x.appendChild(txt)
+                    p.appendChild(x)
+                    
+                    # Para las preguntas tipo test
+                    if pregunta.tipo == 1:
+                        for opcion in pregunta.opciones:
+                            x = doc.createElement("text:p")
+                            
+                            texto = opcion.letra + "). " + opcion.texto
+                            txt = doc.createTextNode(texto)
+                            x.appendChild(txt)
+                            p.appendChild(x)
+                                        
+                    # Para las preguntas tipo verdadero o falso
+                    elif pregunta.tipo == 2:
+                        x = doc.createElement("text:p")
+                        txt = doc.createTextNode("A).- Verdadero")
+                        x.appendChild(txt)
+                        p.appendChild(x)
+
+                        x = doc.createElement("text:p")
+                        txt = doc.createTextNode("B).- Falso")
+                        x.appendChild(txt)
+                        p.appendChild(x)
+
+                    x = doc.createElement("text:p")
+                    p.appendChild(x)
+                    x = doc.createElement("text:p")
+                    p.appendChild(x)
+
+                    i = i + 1
+                    
+                encontrado = True
+                    
+    myfile.writestr('content.xml', doc.toprettyxml(encoding='utf-8')) # Hay que hacer el "encoding" para que no se produzcan errores con las ñ y otros carecteres
+    myfile.close()                
+         
+    return examen
+
+def exportPDF(examen, filePDF):
+    
+    # Saco los datos del examen
+    asignatura = examen.asignatura
+    nombre = examen.nombre
+    preguntas = examen.preguntas
+
+    story = []
+    styles=getSampleStyleSheet()
+    styles.add(ParagraphStyle(name='Cabecera', alignment=TA_CENTER, fontSize=16))
+    styles.add(ParagraphStyle(name='Titulo', fontSize=12))
+    
+    doc=SimpleDocTemplate(filePDF)
+
+    # Introduzco el nombre de la asignatura
+    para = Paragraph("<u><b>"+str(asignatura)+"</b></u>", styles['Cabecera'])
+    story.append(para)
+    story.append(Spacer(0,20))
+    
+    # Introduzco el nombre del examen
+    para = Paragraph("<u>"+str(nombre)+"</u>", styles['Titulo'])
+    story.append(para)
+    story.append(Spacer(0,20))
+
+    # Introduzco las preguntas del examen  
+    i = 1         
+    for pregunta in preguntas:
+        texto = str(i) + ".- " + str(pregunta.texto)
+        story.append(Paragraph(texto, styles["Normal"]))
+        
+        i = i + 1
+        
+        # Para las preguntas tipo test
+        if pregunta.tipo == 1:
+            story.append(Spacer(0,7))
+            for opcion in pregunta.opciones:
+                texto = opcion.letra + ").- " + opcion.texto
+                story.append(Paragraph(texto, styles["Normal"]))
+                story.append(Spacer(0,7))
+        
+        # Para las preguntas tipo verdadero o falso
+        elif pregunta.tipo == 2:
+            texto = "A).- Verdadero"
+            story.append(Paragraph(texto, styles["Normal"]))
+            texto = "B).- Falso"
+            story.append(Paragraph(texto, styles["Normal"]))
+
+        
+        story.append(Spacer(0,40))
+    doc.build(story)
+
+    return examen
+
+
+
 """http://es.scribd.com/doc/75861786/Python-Excel-Word-PPoint-OutLook-Interfaces#scribd
 import pywin32
 from warnings import warn
@@ -16,81 +219,7 @@ def creaWord():
     word.Application.Quit()
     
 """    
-from xml.dom.minidom import parseString
-#import xml.etree.ElementTree
-import zipfile, shutil, os
 
-def creaODT(exam=None):
-    """
-    función para exportar los examenes a un fichero tipo odt    
-    http://www.linuxjournal.com/article/9347?page=0,1
-    """
-    
-    """ version 1    
-    myfile = zipfile.ZipFile('server/static/plantilla.odt')
-    listoffiles = myfile.infolist()
-    for s in listoffiles:
-        if s.orig_filename == 'content.xml':
-            fd = open('server/static/prueba.xml','w')
-            bh = myfile.read(s.orig_filename)
-            fd.write(bh)
-            fd.close()
-    """
-    
-    
-    #fd = open('server/static/prueba.odt', "w")
-    #fd.close()
-    
-    
-    shutil.copy('server/static/plantilla.odt', 'server/static/plantilla2.odt')
-    myfile = zipfile.ZipFile('server/static/plantilla2.odt', 'a')
-    ostr = myfile.read('content.xml', "w")
-    
-    doc = parseString(ostr)
-    paras = doc.getElementsByTagName('text:p')
-    text_in_paras = []
-    for p in paras:
-        for ch in p.childNodes:
-            if ch.nodeType == ch.TEXT_NODE:
-                text_in_paras.append(ch.data)
-                if ch.data.count('Asignatura') > 0:
-                    print "Encontrada asignatura"
-                    ch.data = ch.data + "1"
-                    nuevo_nodo = ch
-                    p.appendChild(nuevo_nodo)
-                print ch.data
-                
-    fd = open('server/static/content.xml','w')
-
-    print doc.toprettyxml()
-#    myfile.write('server/static/content.xml')
-    myfile.writestr('content.xml', doc.toprettyxml())    
-
-    doc.writexml(fd)
-    doc.unlink()    
-    fd.close()
-    
-
-"""
-    tree = xml.etree.ElementTree.parse('server/static/prueba.xml')    
-    root = tree.getroot()
-    for child in root:
-        print "Tag, attrib:", child.tag, child.attrib
-        for ch in child:
-            print "tag 1:", ch.tag
-            print "at 1:", ch.attrib
-            print "text 1:", ch.text
-            if "text" in ch.tag:
-            #if ch.attrib == "text":                
-                for c in child:                
-                    print "tag, at child 2:", c.tag, c.attrib
-                    print "text 2:", c.text
-
-    for text in root.iter('{urn:oasis:names:tc:opendocument:xmlns:office:1.0}text'):
-        print 'Con tree:', text.tag, text.attrib, text.text
-"""
-#    myfile.write('server/static/prueba.xml', 'content.xml')
-#    myfile.close()
 
 
 """
@@ -118,69 +247,3 @@ def creaWord2():
     wordapp.Quit() # Close the Word Application 
    """ 
  
-class WordDocument(object):
-    """
-    Some convenience methods for Word documents accessed
-    through COM.
-    http://dzone.com/snippets/script-word-python
-    """
- 
-#    def __init__(self, visible=False):
-#        self.app = Dispatch("Word.Application")
-#        self.app.Visible = visible
- 
-     
-    def new(self, filename=None):
-        """
-        Create a new Word document. If 'filename' specified,
-        use the file as a template.
-        """
-        self.app.Documents.Add(filename)
- 
-    def open(self, filename):
-        """
-        Open an existing Word document for editing.
-        """
-        self.app.Documents.Open(filename)
- 
-    def save(self, filename=None):
-        """
-        Save the active document. If 'filename' is given,
-        do a Save As.
-        """
-        if filename:
-            self.app.ActiveDocument.SaveAs(filename)
-        else:
-            self.app.ActiveDocument.Save()
- 
-    def save_as(self, filename):
-        return self.save(filename)
- 
-    def print_out(self):
-        """
-        Print the active document.
-        """
-        self.app.Application.PrintOut()
- 
-    def close(self):
-        """
-        Close the active document.
-        """
-        self.app.ActiveDocument.Close()
- 
-    def quit(self):
-        """
-        Quit Word.
-        """
-        return self.app.Quit()
- 
-    def find_and_replace(self, find_str, replace_str):
-        """
-        Find all occurances of 'find_str' and replace with 'replace_str'
-        in the active document.
-        """
-        self.app.Selection.HomeKey(Unit=wdStory)
-        find = self.app.Selection.Find
-        find.Text = find_str
-        while self.app.Selection.Find.Execute():
-            self.app.Selection.TypeText(Text=replace_str)

@@ -12,23 +12,11 @@ from flask.ext.mail import Mail, Message
 
 from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes, Opciones
 from forms import GeneraExamenForm, ProfileForm
-#from export import creaODT
 
-from xml.dom.minidom import parseString
-import zipfile, shutil
+from export import exportODT, exportODT2, exportPDF
 
 from tkFileDialog import asksaveasfilename
 from tkMessageBox import showinfo, showerror
-
-# Importo las librerias para el reportlab (exportación a pdf)
-from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
-from reportlab.lib.enums import TA_CENTER
-from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
-
-# Librerías de odfpy
-from odf.opendocument import OpenDocumentText
-from odf.style import Style, TextProperties
-from odf.text import P, H
 
 
 #========================================#
@@ -324,64 +312,21 @@ def export_odt(exam=None):
         showerror('Error', 'Datos insuficientes.')
         return None
     
-    # Saco los datos del examen
+    # Busco el objeto examen
     examen = Examenes.objects(id=exam).first()
-    asignatura = examen.asignatura
-    nombre = examen.nombre
-    preguntas = examen.preguntas
 
     # Cuadro de dialogo para guardar el archivo
-    archivo = asksaveasfilename(filetypes = [("Archivos ODT",".odt")])    
-    
+    archivo = asksaveasfilename(filetypes = [("Archivos ODT",".odt")])
+    if not archivo:
+        showinfo('Proceso cancelado', 'El proceso ha sido cancelado por el usuario.')
+        return render_template('exams/exam.html', exam=examen)
+
     if request.method == 'POST':        
-        textdoc = OpenDocumentText()
-
-        """        
-        T1style = Style(name="T1", family="text")
-        T1style.addElement(TextProperties(fontstyle="bold",fontstyleasian="bold", fontstylecomplex="bold"))
-        textdoc.automaticstyles.addElement(T1style)
-        """    
-        
-        h = H(outlinelevel=1, text=asignatura)
-        textdoc.text.addElement(h)
-        
-        h = H(outlinelevel=4, text=nombre)
-        textdoc.text.addElement(h)
-        
-        i = 1        
-        for pregunta in preguntas:
-            p = P(text = str(i) + ".- " + str(pregunta.texto))
-            textdoc.text.addElement(p)
-   
-            # Para las preguntas tipo test
-            if pregunta.tipo == 1:
-                for opcion in pregunta.opciones:                              
-                    texto = opcion.letra + "). " + opcion.texto
-                    p = P(text = texto)
-                    textdoc.text.addElement(p)
-                                            
-            # Para las preguntas tipo verdadero o falso
-            elif pregunta.tipo == 2:
-                texto = "A).- Verdadero"
-                p = P(text = texto)
-                textdoc.text.addElement(p)
+        exportODT(examen, archivo)
                 
-                texto = "A).- Verdadero"
-                p = P(text = texto)
-                textdoc.text.addElement(p)
-                
-            p = P()
-            textdoc.text.addElement(p)
-            p = P()
-            textdoc.text.addElement(p)
-
-            i = i + 1
-        
-        textdoc.save(archivo)
-        
     showinfo('Archivo generado', 'El archivo ' + archivo + ' se ha generado correctamente.')
     return render_template('exams/exam.html', exam=examen)
-
+    
 
 @app.route('/export2/<exam>', methods=('GET', 'POST'))
 def export_odt2(exam=None):
@@ -393,100 +338,21 @@ def export_odt2(exam=None):
     
     # Saco los datos del examen
     examen = Examenes.objects(id=exam).first()
-    asignatura = examen.asignatura
-    nombre = examen.nombre
-    preguntas = examen.preguntas
 
     # Cuadro de dialogo para guardar el archivo
-    archivo = asksaveasfilename(filetypes = [("Archivos ODT",".odt")])
-    if not archivo:
+    file_odt = asksaveasfilename(filetypes = [("Archivos ODT",".odt")])
+    if not file_odt:
         showinfo('Proceso cancelado', 'El proceso ha sido cancelado por el usuario.')
         return render_template('exams/exam.html', exam=examen)
         
         
     if request.method == 'POST':
-        shutil.copy('server/static/formatos.odt', archivo)
-        myfile = zipfile.ZipFile(archivo, 'a')
-        ostr = myfile.read('content.xml', 'w')
-    
-        doc = parseString(ostr)
-        paras = doc.getElementsByTagName('office:text')
-
-        encontrado = False        
-        
-        for p in paras:
-            for ch in p.childNodes:
-                if ch.nodeName == "text:p" and encontrado == False: 
-                    x = doc.createElement("text:p")
-                    txt = doc.createTextNode(str(asignatura))
-                    x.appendChild(txt)
-                    x.setAttribute("text:style-name", "P1")
-                    p.appendChild(x)
-                    
-                    x = doc.createElement("text:p")
-                    p.appendChild(x)
-
-                    x = doc.createElement("text:p")
-                    txt = doc.createTextNode(str(nombre))
-                    x.appendChild(txt)
-                    x.setAttribute("text:style-name", "P2")
-                    p.appendChild(x)
-
-                    x = doc.createElement("text:p")
-                    p.appendChild(x)
-
-                    i = 1                        
-                    for pregunta in preguntas:                      
-                        x = doc.createElement("text:p")
-                        txt = doc.createTextNode(str(i) + ".- " + str(pregunta.texto))  
-                        x.appendChild(txt)
-                        p.appendChild(x)
-                        
-                        # Para las preguntas tipo test
-                        if pregunta.tipo == 1:
-                            for opcion in pregunta.opciones:
-                                x = doc.createElement("text:p")
-                                
-                                texto = opcion.letra + "). " + opcion.texto
-                                txt = doc.createTextNode(texto)
-                                x.appendChild(txt)
-                                p.appendChild(x)
-                                            
-                        # Para las preguntas tipo verdadero o falso
-                        elif pregunta.tipo == 2:
-                            x = doc.createElement("text:p")
-                            txt = doc.createTextNode("A).- Verdadero")
-                            x.appendChild(txt)
-                            p.appendChild(x)
-
-                            x = doc.createElement("text:p")
-                            txt = doc.createTextNode("B).- Falso")
-                            x.appendChild(txt)
-                            p.appendChild(x)
-
-                        x = doc.createElement("text:p")
-                        p.appendChild(x)
-                        x = doc.createElement("text:p")
-                        p.appendChild(x)
-
-                        i = i + 1
-                        
-                    encontrado = True
-                    
-        """
-        #prueba para crear un xml
-        fd = open('content.xml','w')
-        doc.writexml(fd, encoding='latin1')
-        doc.unlink()
-        fd.close()
-        """
-
-        myfile.writestr('content.xml', doc.toprettyxml(encoding='utf-8')) # Hay que hacer el "encoding" para que no se produzcan errores con las ñ y otros carecteres
-        myfile.close()                
-        
+        exportODT2(examen, file_odt)
+                                   
         showinfo('Archivo generado', 'El archivo se ha generado correctamente.')
     
     return render_template('exams/exam.html', exam=examen)
+
 
 @app.route('/export_pdf/<exam>', methods=('GET', 'POST'))
 def export_pdf(exam=None):
@@ -495,64 +361,18 @@ def export_pdf(exam=None):
     if not exam:
         showerror('Error', 'Datos insuficientes.')
         return None
-    
+
     # Saco los datos del examen
     examen = Examenes.objects(id=exam).first()
-    asignatura = examen.asignatura
-    nombre = examen.nombre
-    preguntas = examen.preguntas
 
     # Cuadro de dialogo para guardar el archivo
-    archivo = asksaveasfilename(filetypes = [("Archivos PDF",".pdf")])
-    if not archivo:
+    filePDF = asksaveasfilename(filetypes = [("Archivos PDF",".pdf")])
+    if not filePDF:
         showinfo('Proceso cancelado', 'El proceso ha sido cancelado por el usuario.')
         return render_template('exams/exam.html', exam=examen)
         
     if request.method == 'POST':
-        story = []
-        styles=getSampleStyleSheet()
-        styles.add(ParagraphStyle(name='Cabecera', alignment=TA_CENTER, fontSize=16))
-        styles.add(ParagraphStyle(name='Titulo', fontSize=12))
-        
-        doc=SimpleDocTemplate(archivo)
-
-        # Introduzco el nombre de la asignatura
-        para = Paragraph("<u><b>"+str(asignatura)+"</b></u>", styles['Cabecera'])
-        story.append(para)
-        story.append(Spacer(0,20))
-        
-        # Introduzco el nombre del examen
-        para = Paragraph("<u>"+str(nombre)+"</u>", styles['Titulo'])
-        story.append(para)
-        story.append(Spacer(0,20))
-
-        # Introduzco las preguntas del examen  
-        i = 1         
-        for pregunta in preguntas:
-            texto = str(i) + ".- " + str(pregunta.texto)
-            story.append(Paragraph(texto, styles["Normal"]))
-            
-            i = i + 1
-            
-            # Para las preguntas tipo test
-            if pregunta.tipo == 1:
-                story.append(Spacer(0,7))
-                for opcion in pregunta.opciones:
-                    texto = opcion.letra + ").- " + opcion.texto
-                    story.append(Paragraph(texto, styles["Normal"]))
-                    story.append(Spacer(0,7))
-            
-            # Para las preguntas tipo verdadero o falso
-            elif pregunta.tipo == 2:
-                texto = "A).- Verdadero"
-                story.append(Paragraph(texto, styles["Normal"]))
-                texto = "B).- Falso"
-                story.append(Paragraph(texto, styles["Normal"]))
-
-            
-            story.append(Spacer(0,40))
-        doc.build(story)
-
+        exportPDF(examen, filePDF)
 
     showinfo('Archivo generado', 'El archivo se ha generado correctamente.')
     return render_template('exams/exam.html', exam=examen)
