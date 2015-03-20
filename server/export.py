@@ -51,7 +51,7 @@ def exportODT(examen, archivo):
             p = P(text = texto)
             textdoc.text.addElement(p)
             
-            texto = "A).- Verdadero"
+            texto = "B).- Falso"
             p = P(text = texto)
             textdoc.text.addElement(p)
             

@@ -20,6 +20,34 @@ alumnos para que éstos puedan resolverlos.
                 
                 <p align=right><a href="{{ url_for('logout_view') }}">Logout</a>
  
+      <div class="page-header">
+        <h1>Dropdown menus</h1>
+      </div>
+      <div class="dropdown theme-dropdown clearfix">
+        <a id="dropdownMenu1" href="#" class="sr-only dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+          <li class="active" role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+        </ul>
+      </div>
+
+      <div class="page-header">
+        <h1>Navs</h1>
+      </div>
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#">Home</a></li>
+        <li role="presentation"><a href="#">Profile</a></li>
+        <li role="presentation"><a href="#">Messages</a></li>
+      </ul>
+      <ul class="nav nav-pills" role="tablist">
+        <li role="presentation" class="active"><a href="#">Home</a></li>
+        <li role="presentation"><a href="#">Profile</a></li>
+        <li role="presentation"><a href="#">Messages</a></li>
+      </ul>
+
             {% else %}
             <p>
                 <a href="{{ url_for('admin.login_view') }}">Entrar como usuario registrado</a>&nbsp;
