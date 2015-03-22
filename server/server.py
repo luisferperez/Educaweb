@@ -34,11 +34,8 @@ mail = Mail(app)
 
 # Initialize ddbb
 def init_ddbb():
-    num = Usuarios.objects(login="admin").count()
-    
-    #creaODT()
-    
     # Compruebo que no existe el usuario admin
+    num = Usuarios.objects(login="admin").count()
     if num == 0:
         Usuarios(nombre="admin", login="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True).save()    
         

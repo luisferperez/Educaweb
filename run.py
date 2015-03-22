@@ -10,8 +10,10 @@ from server.admin import initialize_admin_component
 
 if __name__ == '__main__':
     
+    # Initialize ddbb    
     init_ddbb()
     
+    # Initialize flask-login    
     init_login(app)
 
     # Administration Panel    
