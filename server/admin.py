@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+"""
+@author: Luis Fdo. Pérez
+@co-authors: Basis code obtained from the SCC Department,
+             
+Administration Panel
+"""
 from flask import request, redirect, url_for
 from flask.ext import admin, login
 from flask.ext.admin.contrib.mongoengine import ModelView
@@ -7,20 +13,25 @@ from flask.ext.admin import Admin, expose, helpers
 from models import Usuarios, Temas, Preguntas, Asignaturas, Examenes
 from forms import LoginForm, RegistrationForm
 
-
+#==============================================================================
+# Initialization
+#==============================================================================
 def initialize_admin_component(app):
+    """ Initialize the Admin Views. """
     # Create admin
     admin = Admin(app, 'EducaWeb', index_view=MyAdminIndexView(), base_template='admin.html')
-    # Add view
+    # Add views
     admin.add_view(UserView(Usuarios))
     admin.add_view(AsignaturasView(Asignaturas))
     admin.add_view(TemasView(Temas))
     admin.add_view(PreguntasView(Preguntas))
     admin.add_view(MyView(Examenes))
-#    admin.add_view(MyView(Examenes_Resueltos))
 
+#==============================================================================
 # Create customized index view class
+#==============================================================================
 class MyAdminIndexView(admin.AdminIndexView):
+    """ View that will be used as index for Admin. """
     @expose('/')
     def index(self):
         if not login.current_user.is_authenticated():
@@ -61,14 +72,26 @@ class MyAdminIndexView(admin.AdminIndexView):
         self._template_args['link'] = link
         return super(MyAdminIndexView, self).index()
 
-class MyView(ModelView):   
+#==============================================================================
+# Base View
+#==============================================================================
+class MyView(ModelView):
+    """ View that will be used as base for other views. """
+    # the "usuario" column is not displayed
     column_exclude_list = ("usuario")
     form_excluded_columns = ("usuario")
 
+    # these views only be accessible by teachers
     def is_accessible(self):
         return login.current_user.is_authenticated() and login.current_user.is_activado() and login.current_user.is_profesor() 
         
+
+#==============================================================================
+# Views for database collections
+#==============================================================================
 class UserView(ModelView):
+        
+    # the "password" column is not displayed
     column_exclude_list = ("password")
     form_excluded_columns = ("password")
     
@@ -111,19 +134,17 @@ class AsignaturasView(MyView):
     """    
 
 class TemasView(MyView):
-#    column_filters = (scaffold_filters(asignatura))
     column_labels = dict(nombre='Nombre', descripcion='Descripcion')
     column_default_sort = ('asignatura', 'num')
 
-#    action_disallowed_list = ['delete']
 
 
 class PreguntasView(MyView):
     column_exclude_list = ("respuesta", "opciones")
-#    form_excluded_columns = ("respuestas")
     
-    column_default_sort =  ('asignatura', 'tema', 'num')
+    column_default_sort = ('asignatura', 'tema', 'num')
 
+    # Choices for the "tipo" column
     column_choices = {
         'tipo': [
             (0, 'Desarrollo'), 

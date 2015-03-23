@@ -1,20 +1,31 @@
 # -*- coding: utf-8 -*-
+"""
+@author: Luis Fdo. Pérez
+@co-authors: 
+
+Functions to export data from exams to ODT or PDF files
+"""
+
 from xml.dom.minidom import parseString
 import zipfile, shutil
 
-# Importo las librerias para el reportlab (exportación a pdf)
+# Imports from reportlab library for export to PDF files
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.enums import TA_CENTER
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
 
-# Librerías de odfpy
+# Imports from odpf library for export to ODT files
 from odf.opendocument import OpenDocumentText
 from odf.text import P, H
 
 
 def exportODT(examen, archivo):
+    """ 
+    Function to export the data exam to a odt file.
+    The input data is the exam and the ODT file to write.
+    """
     
-    # Saco los datos del examen
+    # Extract data from exam    
     asignatura = examen.asignatura
     nombre = examen.nombre
     preguntas = examen.preguntas
@@ -199,51 +210,3 @@ def exportPDF(examen, filePDF):
     doc.build(story)
 
     return examen
-
-
-
-"""http://es.scribd.com/doc/75861786/Python-Excel-Word-PPoint-OutLook-Interfaces#scribd
-import pywin32
-from warnings import warn
-
-def creaWord():
-    app = 'word'
-    word = pywin32.gencache.EnsureDispatch('%s.application' %app)
-    doc = word.Documents.Add()
-    word.Visible = True
-
-    range.InsertAfter("Hola")
-    warn(app)
-
-    doc.Close(False)
-    word.Application.Quit()
-    
-"""    
-
-
-
-"""
-
-#import win32com.client
-from win32com.client import Dispatch
-
-wdStory = 6
-
-def creaWord2():
-    import win32com.client
-    wordapp = win32com.client.Dispatch("Word.Application") # Create new Word Object
-    wordapp.Visible = 0 # Word Application should`t be visible
-    worddoc = wordapp.Documents.Add() # Create new Document Object
-    worddoc.PageSetup.Orientation = 1 # Make some Setup to the Document:
-    worddoc.PageSetup.LeftMargin = 20
-    worddoc.PageSetup.TopMargin = 20
-    worddoc.PageSetup.BottomMargin = 20
-    worddoc.PageSetup.RightMargin = 20
-    worddoc.Content.Font.Size = 11
-    worddoc.Content.Paragraphs.TabStops.Add (100)
-    worddoc.Content.Text = "Hello, I am a text!"
-    worddoc.Content.MoveEnd
-    worddoc.Close() # Close the Word Document (a save-Dialog pops up)
-    wordapp.Quit() # Close the Word Application 
-   """ 
- 

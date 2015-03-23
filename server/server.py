@@ -2,6 +2,7 @@
 """
 @author: Luis Fdo. Pérez
 
+Server of the Application
 """
 import config, random, string
 

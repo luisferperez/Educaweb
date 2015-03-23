@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
+"""
+@author: Luis Fdo. Pérez
+@co-authors: Basis code obtained from the SCC Department
 
+Forms to render HTML inputs & validate request data
+"""
 # Define login and registration forms (for flask-login)
 from wtforms import form, fields, validators
 from models import Usuarios, Preguntas, Asignaturas, Examenes
