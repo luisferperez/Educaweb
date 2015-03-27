@@ -1,58 +1,62 @@
 {% extends 'master.html' %}
 
-{% block panel %}              
-    <li><a href="{{ url_for('admin.index') }}">Admin Panel</a></li>
+{% block panel %}
+    {% if current_user.is_authenticated() %}            
+        <li><a href="{{ url_for('admin.index') }}">Admin Panel</a></li>
+    {% endif %}
 {% endblock panel %}
 
 {% block body %}
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>Bienvenido a EducaWeb!</h1>
+        <h2>Bienvenido a EducaWeb!</h2>
         <p>EducaWeb es un aplicación destinada a su uso por profesores y alumnos.
-    Los profesores podrán crear examenes y ponerlos a disposición de los 
-alumnos para que éstos puedan resolverlos.
+        Los profesores podrán crear examenes y ponerlos a disposición de los 
+        alumnos para que éstos puedan resolverlos.
       </div>
 
-        <div>
+        <div align>
             {% if current_user.is_authenticated() %}            
                 Hola {{ current_user.login }}! 
                 <br>
                 
                 <p align=right><a href="{{ url_for('logout_view') }}">Logout</a>
  
-      <div class="page-header">
-        <h1>Dropdown menus</h1>
-      </div>
-      <div class="dropdown theme-dropdown clearfix">
-        <a id="dropdownMenu1" href="#" class="sr-only dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-          <li class="active" role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-        </ul>
+
+      <div class="row">
+        <div class="col-sm-3" align="left">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Herramientas</h3>
+            </div>
+            <div class="panel-body">
+                <p><a href="{{ url_for('admin.register_view') }}">Registrarse como nuevo usuario</a>
+                <p><a href="{{ url_for('admin.login_view') }}">Entrada a la aplicacíon</a>&nbsp;
+            </div>
+          </div>
+        </div><!-- /.col-sm-4 -->
+        <div class="col-sm-3" >
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Panel de Administración</h3>
+            </div>
+            <div class="panel-body">
+                <p><a href="{{ url_for('admin.register_view') }}">Registrarse como nuevo usuario</a>
+                <p><a href="{{ url_for('admin.login_view') }}">Entrada a la aplicacíon</a>&nbsp;
+            </div>
+          </div>
+        </div><!-- /.col-sm-4 -->
+
       </div>
 
-      <div class="page-header">
-        <h1>Navs</h1>
-      </div>
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#">Home</a></li>
-        <li role="presentation"><a href="#">Profile</a></li>
-        <li role="presentation"><a href="#">Messages</a></li>
-      </ul>
-      <ul class="nav nav-pills" role="tablist">
-        <li role="presentation" class="active"><a href="#">Home</a></li>
-        <li role="presentation"><a href="#">Profile</a></li>
-        <li role="presentation"><a href="#">Messages</a></li>
-      </ul>
 
             {% else %}
-            <p>
-                <a href="{{ url_for('admin.login_view') }}">Entrar como usuario registrado</a>&nbsp;
-            </p>
-            <p>
+            <p align="center">Para hacer uso de la aplicación deberá entrar con su usuario y contraseña en el siguiente enlace:
+                <br>
+                <a href="{{ url_for('admin.login_view') }}">Entrada a la aplicacíon</a>&nbsp;
+            </p><br>
+            <p align="center">Si todavía no está registrado puede hacerlo desde aquí:
+                <br>
                 <a href="{{ url_for('admin.register_view') }}">Registrarse como nuevo usuario</a>
             </p>
             {% endif %}
