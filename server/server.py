@@ -137,8 +137,7 @@ def show_user_profile(username):
 
 @app.route('/')
 def index():
-    return redirect(url_for('admin.login_view'))
-    #return render_template('index.html')
+    return render_template('index.html')
     
 @app.route('/logout/')
 def logout_view():
@@ -240,9 +239,6 @@ def examenes_view(nombre=None, asignatura=None, usuario=None):
 
                 i = i + 1                   
 
-#            examen_resuelto = Examenes_Resueltos(nombre = exam.nombre, asignatura= exam.asignatura, preguntas = exam.preguntas)            
-#            examen_resuelto.save()
-            
             return render_template('exams/exam.html', exam=exam, respuestas=respuestas)
     
     if nombre:

@@ -1,8 +1,11 @@
 {% extends 'master.html' %}
 
 {% block body %}
+  <div class="page-header">
+    <h2>Mi cuenta de usuario</h2>
+  </div>
 <p>
-<h4>Perfil del usuario: <strong>{{ user.login }}</strong></h4>
+<h5>Perfil del usuario: <strong>{{ user.login }}</strong></h5>
 <br>
     {% if save %}
     <div class="alert alert-success" role="alert">Su perfil de usuario se ha modificado correctamente</div>

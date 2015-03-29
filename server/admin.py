@@ -49,8 +49,9 @@ class MyAdminIndexView(admin.AdminIndexView):
         if login.current_user.is_authenticated():
             return redirect(url_for('.index'))
         link = '<p>Si no dispone de cuenta de usuario <a href="' + url_for('.register_view') + '">Pulse aqu&iacute para registrarse.</a></p>'
-        link2 = u'<p>Si no recuerda su contraseña <a href="' + url_for('rec_pass') + '">pulse aqu&iacute para reactivarla.</a></p>'
+        link2 = u'<p>Si no recuerda su contraseña <a href="' + url_for('rec_pass') + '">pulse aqu&iacute para reactivarla.</a></p>'        
         self._template_args['form'] = form
+        self._template_args['legend'] = u"Entrada a la aplicación"
         self._template_args['link'] = link
         self._template_args['link2'] = link2
         return super(MyAdminIndexView, self).index()
@@ -69,6 +70,7 @@ class MyAdminIndexView(admin.AdminIndexView):
 
         link = '<p>Si ya tiene una cuenta de usuario <a href="' + url_for('.login_view') + '">Pulse aqu&iacute para iniciar sesi&oacuten.</a></p>'
         self._template_args['form'] = form
+        self._template_args['legend'] = "Nuevo usuario"
         self._template_args['link'] = link
         return super(MyAdminIndexView, self).index()
 
