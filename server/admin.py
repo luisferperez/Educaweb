@@ -47,7 +47,7 @@ class MyAdminIndexView(admin.AdminIndexView):
             login.login_user(user)
 
         if login.current_user.is_authenticated():
-            return redirect(url_for('.index'))
+            return redirect(url_for('index'))
         link = '<p>Si no dispone de cuenta de usuario <a href="' + url_for('.register_view') + '">Pulse aqu&iacute para registrarse.</a></p>'
         link2 = u'<p>Si no recuerda su contraseña <a href="' + url_for('rec_pass') + '">pulse aqu&iacute para reactivarla.</a></p>'        
         self._template_args['form'] = form

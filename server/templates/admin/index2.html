@@ -1,0 +1,65 @@
+{% extends 'master.html' %}
+
+{% block panel %}
+     {% for item in admin_view.admin.menu() %}
+       {% if item.is_accessible() and item.is_visible() and item.name != "Home"  %}
+        {% if item.is_active(admin_view) %}<li class="active">{% else %}<li>{% endif %}
+          <a href="{{ item.get_url() }}">{{ item.name }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+{% endblock panel %}
+
+{% block admin_panel %}
+
+{% endblock admin_panel %}
+
+{% block body %}
+{{ super() }}
+<div class="row-fluid">
+    <div>
+        {% if current_user.is_authenticated() %}
+        <h1>Educaweb</h1>
+        <p class="lead">
+            Bienvenido, {{ current_user.login }}
+        </p>
+            {% if not current_user.is_activado() %}
+             <div class="alert alert-warning" role="alert">
+                <p>Debe esperar a que el administrador le de permisos para 
+                    acceder a la aplicación.</p>
+            </div>
+            {% elif current_user.is_profesor %}        
+                <p>Puede generar examenes con las preguntas insertadas en la base de datos a partir del siguiente enlace:
+                <br>
+                <a href="{{ url_for('genera_examen_view') }}">Asistente para la generación de exámenes</a>
+            {% endif %}
+        {% else %}
+        <form method="POST" action="">
+            <fieldset>
+            <legend>{{ legend | safe }}:</legend>
+            {{ form.hidden_tag() if form.hidden_tag }}
+
+            {% for f in form if f.type != 'CSRFTokenField' %}
+            <div>
+            {{ f.label }}
+            {{ f }}
+            {% if f.errors %}
+            <ul>
+                {% for e in f.errors %}
+                <li>{{ e }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            </div>
+            {% endfor %}
+            <button class="btn btn-success" type="submit">Submit</button>
+            </fieldset>
+        </form>            
+        {{ link | safe }}
+        {{ link2 | safe }}
+        {% endif %}
+    </div>
+
+    <a class="btn btn-primary" href="/"><i class="icon-arrow-left icon-white"></i> Back</a>
+</div>
+{% endblock body %}

@@ -1,38 +1,66 @@
 {% extends 'master.html' %}
 
 {% block panel %}
-     {% for item in admin_view.admin.menu() %}
-       {% if item.is_accessible() and item.is_visible() and item.name != "Home"  %}
-        {% if item.is_active(admin_view) %}<li class="active">{% else %}<li>{% endif %}
-          <a href="{{ item.get_url() }}">{{ item.name }}</a>
-        </li>
-      {% endif %}
-    {% endfor %}
+    {% if current_user.is_authenticated() %}            
+        <li><a href="{{ url_for('admin.index') }}">Admin Panel</a></li>
+    {% endif %}
 {% endblock panel %}
 
-{% block admin_panel %}
-
-{% endblock admin_panel %}
-
 {% block body %}
-{{ super() }}
-<div class="row-fluid">
-    <div>
-        {% if current_user.is_authenticated() %}
-        <h1>Educaweb</h1>
-        <p class="lead">
-            Bienvenido, {{ current_user.login }}
-        </p>
-            {% if not current_user.is_activado() %}
-             <div class="alert alert-warning" role="alert">
-                <p>Debe esperar a que el administrador le de permisos para 
-                    acceder a la aplicación.</p>
+        {% if current_user.is_authenticated() %}            
+            <table style="width:100%">
+                <tr>
+                    <td>Hola, {{ current_user.nombre }}  {{ current_user.apellidos }}</td>
+                    <td style="color:grey;text-align:right">Usuario: {{ current_user.login }}  <a href="{{ url_for('logout_view') }}">  Cerrar sesión</a></td>
+            </table> 
+            <br>
+        {% endif %}
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <h2>Bienvenido a EducaWeb!</h2>
+            <p>EducaWeb es un aplicación destinada a su uso por profesores y alumnos.
+            Los profesores podrán crear examenes de forma manual o automática.
+            <br>Los exámenes se podrán poner a disposición de los 
+            alumnos para que éstos puedan resolverlos.
+        </div>
+
+        <div>
+            {% if current_user.is_authenticated() %}            
+
+      <div class="row">
+        <div class="col-sm-3" align="left">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Herramientas</h3>
             </div>
-            {% elif current_user.is_profesor %}        
-                <p>Puede generar examenes con las preguntas insertadas en la base de datos a partir del siguiente enlace:
-                <br>
-                <a href="{{ url_for('genera_examen_view') }}">Asistente para la generación de exámenes</a>
-            {% endif %}
+            <div class="panel-body">
+                <p><a href="{{ url_for('genera_examen_view') }}">Generar Exámenes</a>
+                <p><a href="{{ url_for('examenes_view') }}">Realizar Examenes</a>
+            </div>
+          </div>
+        </div><!-- /.col-sm-4 -->
+        <div class="col-sm-3" >
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Panel de Administración</h3>
+            </div>
+            <div class="panel-body">
+     {% for item in admin_view.admin.menu() %}
+       {% if item.is_accessible() and item.is_visible() and item.name != "Home"  %}
+          <p><a href="{{ item.get_url() }}">{{ item.name }}</a>
+      {% endif %}
+    {% endfor %}
+
+                <p><a href="{{ url_for('admin.register_view') }}">Registrarse como nuevo usuario</a>
+                <p><a href="{{ url_for('admin.login_view') }}">Entrada a la aplicacíon</a>&nbsp;
+            </div>
+          </div>
+        </div><!-- /.col-sm-4 -->
+      </div>
+
+
+
         {% else %}
         <form method="POST" action="">
             <fieldset>
@@ -58,8 +86,7 @@
         {{ link | safe }}
         {{ link2 | safe }}
         {% endif %}
-    </div>
 
-    <a class="btn btn-primary" href="/"><i class="icon-arrow-left icon-white"></i> Back</a>
-</div>
+        </div>
+    </div>
 {% endblock body %}
