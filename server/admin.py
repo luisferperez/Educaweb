@@ -156,9 +156,11 @@ class PreguntasView(MyView):
         ]
     }
 
+"""
 class Exa_RView(ModelView):   
     column_exclude_list = ("usuario")
     form_excluded_columns = ("usuario")
 
     def is_accessible(self):
         return login.current_user.is_authenticated() and login.current_user.is_activado()
+"""
