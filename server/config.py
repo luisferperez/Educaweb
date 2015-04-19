@@ -9,7 +9,7 @@ Global values for application config
 DEBUG = True
 
 TITLE = 'EducaWeb'
-YEAR = '2014'
+YEAR = '2014-2015'
 
 SECRET_KEY = "A0Zr98j/3yX R~XHH!jmN]LWX/,?RT"
 MONGODB_SETTINGS = {'db': 'educaweb'}
