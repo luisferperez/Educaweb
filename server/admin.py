@@ -7,7 +7,8 @@ Administration Panel
 """
 from flask import request, redirect, url_for
 from flask.ext import admin, login
-from flask.ext.admin.contrib.mongoengine import ModelView
+from flask_admin.contrib.mongoengine import ModelView
+#from flask.ext.admin.contrib.mongoengine import ModelView
 from flask.ext.admin import Admin, expose, helpers
 
 from models import Usuarios, Temas, Preguntas, Asignaturas, Examenes
@@ -19,7 +20,7 @@ from forms import LoginForm, RegistrationForm
 def initialize_admin_component(app):
     """ Initialize the Admin Views. """
     # Create admin
-    admin = Admin(app, 'EducaWeb', index_view=MyAdminIndexView(), base_template='admin.html')
+    admin = Admin(app, 'EducaWeb', index_view=MyAdminIndexView(), base_template='index.html')
     # Add views
     admin.add_view(UserView(Usuarios))
     admin.add_view(AsignaturasView(Asignaturas))
@@ -82,7 +83,11 @@ class MyView(ModelView):
     # the "usuario" column is not displayed
     column_exclude_list = ("usuario")
     form_excluded_columns = ("usuario")
-
+    
+    #list_template = 'admin/list.html'
+    #create_template = 'create.html'
+    #edit_template = 'edit.html'
+    
     # these views only be accessible by teachers
     def is_accessible(self):
         return login.current_user.is_authenticated() and login.current_user.is_activado() and login.current_user.is_profesor() 
@@ -138,7 +143,6 @@ class AsignaturasView(MyView):
 class TemasView(MyView):
     column_labels = dict(nombre='Nombre', descripcion='Descripcion')
     column_default_sort = ('asignatura', 'num')
-
 
 
 class PreguntasView(MyView):
