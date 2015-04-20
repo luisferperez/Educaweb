@@ -83,8 +83,8 @@ class MyView(ModelView):
     # the "usuario" column is not displayed
     column_exclude_list = ("usuario")
     form_excluded_columns = ("usuario")
-    
-    #list_template = 'admin/list.html'
+
+    #list_template = 'list.html'
     #create_template = 'create.html'
     #edit_template = 'edit.html'
     
