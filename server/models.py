@@ -183,13 +183,3 @@ class Examenes(Document):
 
     def get_id(self):
         return str(self.id)
-
-"""
-@update_modified.apply
-class Examenes_Resueltos(Document):
-    nombre = StringField(required=True, unique_with = ('asignatura', 'usuario'))
-    asignatura = ReferenceField(Asignaturas, reverse_delete_rule= 'NULLIFY')
-    preguntas = ListField(ReferenceField(Preguntas))
-    profesor = ReferenceField(Usuarios, reverse_delete_rule= 'NULLIFY')        
-    usuario = ReferenceField(Usuarios, reverse_delete_rule= 'NULLIFY')    
-"""
