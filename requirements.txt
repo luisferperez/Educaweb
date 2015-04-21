@@ -12,3 +12,6 @@ odfpy==0.9.6
 reportlab==3.1.44
 mongoengine==0.8.7
 pymongo==2.7.2
+
+Pillow==2.8.1
+Werkzeug==0.10.4
