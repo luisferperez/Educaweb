@@ -145,7 +145,7 @@ class Preguntas(Document):
     opciones = SortedListField(EmbeddedDocumentField(Opciones))
     correcta = StringField(max_length=1)
 
-    respuesta = StringField()
+    #respuesta = StringField()
     usuario = ReferenceField(Usuarios, reverse_delete_rule= 'NULLIFY')
 
     @queryset_manager

@@ -38,7 +38,7 @@ def init_ddbb():
     # Compruebo que no existe el usuario admin
     num = Usuarios.objects(login="admin").count()
     if num == 0:
-        Usuarios(nombre="admin", login="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True).save()    
+        Usuarios(nombre="admin", apellidos="", login="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True).save()    
         
         # Registros de prueba -- BORRAR EN PRODUCCIÓN      
         procesadores = Asignaturas(asignatura="Procesadores del lenguaje")
@@ -59,7 +59,7 @@ def init_ddbb():
         profe1 = Usuarios(nombre="profe1", login="profe1", password="profe1", email="profe1@uned.es", tipo=1, activado=True, asignaturas={ss_oo, redes, procesadores})
         profe1.save()
 
-        luisfer = Usuarios(nombre = "luisfer", login="luisfer", password="luisfer", email="luifito@gmail.com", tipo=1, activado=True, asignaturas={procesadores, ia, leng})
+        luisfer = Usuarios(nombre = "Luis F.", apellidos="Pérez", login="luisfer", password="luisfer", email="luifito@gmail.com", tipo=1, activado=True, asignaturas={procesadores, ia, leng})
         luisfer.save()
         
         # IA - preguntas Test
