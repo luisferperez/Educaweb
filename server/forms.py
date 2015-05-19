@@ -10,7 +10,7 @@ from wtforms import form, fields, validators
 from models import Usuarios, Preguntas, Asignaturas, Examenes
 
 class LoginForm(form.Form):
-    login = fields.TextField(validators=[validators.required()])
+    usuario = fields.TextField(validators=[validators.required()])
     password = fields.PasswordField(validators=[validators.required()])
 
     def validate_login(self, field):
@@ -23,19 +23,19 @@ class LoginForm(form.Form):
             raise validators.ValidationError('El password no es correcto')
 
     def get_user(self):
-        return Usuarios.objects(login=self.login.data).first()
+        return Usuarios.objects(usuario=self.usuario.data).first()
 
 
 class RegistrationForm(form.Form):
     nombre = fields.TextField(validators=[validators.required()])
     apellidos = fields.TextField()
-    login = fields.TextField(validators=[validators.required()])
+    usuario = fields.TextField(validators=[validators.required()])
     email = fields.TextField(validators=[validators.required()])
     password = fields.PasswordField(validators=[validators.DataRequired(), validators.EqualTo('confirm', message='Passwords must match')])
     confirm = fields.PasswordField('Repeat Password')
 
     def validate_login(self, field):
-        if Usuarios.objects(login=self.login.data):
+        if Usuarios.objects(usuario=self.usuario.data):
             raise validators.ValidationError('Nombre de usuario duplicado')
 
 class GeneraExamenForm(form.Form):
@@ -68,7 +68,7 @@ class GeneraExamenForm(form.Form):
 class ProfileForm(form.Form):
     nombre = fields.StringField([validators.required()])
     apellidos = fields.StringField()
-    login = fields.StringField([validators.required()])
+    usuario = fields.StringField([validators.required()])
     email = fields.StringField("email", [validators.required(message=u'El email no puede estar vacío')])
     password = fields.StringField(validators=[validators.DataRequired(), validators.EqualTo('confirm', message=u'Las contraseñas deben coincidir')])
     confirm = fields.PasswordField('Repeat Password')

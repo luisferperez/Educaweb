@@ -11,7 +11,7 @@
         <table style="width:100%">
             <tr>
                 <td>Hola, {{ current_user.nombre }}  {{ current_user.apellidos }}</td>
-                <td style="color:grey;text-align:right">Usuario: {{ current_user.login }}  <a href="{{ url_for('logout_view') }}">  Cerrar sesión</a></td>
+                <td style="color:grey;text-align:right">Usuario: {{ current_user.usuario }}  <a href="{{ url_for('logout_view') }}">  Cerrar sesión</a></td>
         </table> 
         <br>
     {% endif %}

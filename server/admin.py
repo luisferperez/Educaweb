@@ -102,9 +102,9 @@ class UserView(ModelView):
     column_exclude_list = ("password")
     form_excluded_columns = ("password")
     
-    column_filters = ['login']
+    column_filters = ['usuario']
     
-    column_searchable_list = ('login', 'email')
+    column_searchable_list = ('usuario', 'email')
 
     column_choices = {
         'tipo': [
@@ -159,12 +159,3 @@ class PreguntasView(MyView):
             
         ]
     }
-
-"""
-class Exa_RView(ModelView):   
-    column_exclude_list = ("usuario")
-    form_excluded_columns = ("usuario")
-
-    def is_accessible(self):
-        return login.current_user.is_authenticated() and login.current_user.is_activado()
-"""

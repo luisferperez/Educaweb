@@ -5,15 +5,15 @@
     <h2>Mi cuenta de usuario</h2>
   </div>
 <p>
-<h5>Perfil del usuario: <strong>{{ user.login }}</strong></h5>
+<h5>Perfil del usuario: <strong>{{ user.usuario }}</strong></h5>
 <br>
     {% if save %}
     <div class="alert alert-success" role="alert">Su perfil de usuario se ha modificado correctamente</div>
     {% endif %}
 
 <form action="{{ url_for('cuenta_view') }}" method="POST">
-    <input type="hidden" name="login" value="{{ user.login }}">
-        {% for e in form.login.errors %}
+    <input type="hidden" name="usuario" value="{{ user.usuario }}">
+        {% for e in form.usuario.errors %}
             <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
         {% endfor %}
     Nombre<br>

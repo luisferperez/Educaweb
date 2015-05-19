@@ -6,7 +6,7 @@
 Global values for application config
 """
 
-DEBUG = True
+DEBUG = False
 
 TITLE = 'EducaWeb'
 YEAR = '2014-2015'

@@ -36,9 +36,9 @@ mail = Mail(app)
 # Initialize ddbb
 def init_ddbb():
     # Compruebo que no existe el usuario admin
-    num = Usuarios.objects(login="admin").count()
+    num = Usuarios.objects(usuario="admin").count()
     if num == 0:
-        Usuarios(nombre="admin", apellidos="", login="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True).save()    
+        Usuarios(nombre="admin", apellidos="", usuario="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True).save()    
         
         # Registros de prueba -- BORRAR EN PRODUCCIÓN      
         procesadores = Asignaturas(asignatura="Procesadores del lenguaje")
@@ -56,10 +56,10 @@ def init_ddbb():
         redes = Asignaturas(asignatura="Redes")
         redes.save()
         
-        profe1 = Usuarios(nombre="profe1", login="profe1", password="profe1", email="profe1@uned.es", tipo=1, activado=True, asignaturas={ss_oo, redes, procesadores})
+        profe1 = Usuarios(nombre="profe1", usuario="profe1", password="profe1", email="profe1@uned.es", tipo=1, activado=True, asignaturas={ss_oo, redes, procesadores})
         profe1.save()
 
-        luisfer = Usuarios(nombre = "Luis F.", apellidos="Pérez", login="luisfer", password="luisfer", email="luifito@gmail.com", tipo=1, activado=True, asignaturas={procesadores, ia, leng})
+        luisfer = Usuarios(nombre = "Luis F.", apellidos="Pérez", usuario="luisfer", password="luisfer", email="luifito@gmail.com", tipo=1, activado=True, asignaturas={procesadores, ia, leng})
         luisfer.save()
         
         # IA - preguntas Test
@@ -220,7 +220,7 @@ def examenes_view(nombre=None, asignatura=None, usuario=None):
     if request.method == 'POST':
         if nombre:
             asig = Asignaturas.objects(asignatura=asignatura).first()        
-            user = Usuarios.objects(login=usuario).first()
+            user = Usuarios.objects(usuario=usuario).first()
             exam = Examenes.public(asignatura=asig.get_id(), nombre=nombre, usuario=user).first()
             
             i = 1
@@ -243,7 +243,7 @@ def examenes_view(nombre=None, asignatura=None, usuario=None):
     
     if nombre:
         asig = Asignaturas.objects(asignatura=asignatura).first()        
-        user = Usuarios.objects(login=usuario).first()
+        user = Usuarios.objects(usuario=usuario).first()
         exam = Examenes.public(asignatura=asig.get_id(), nombre=nombre, usuario=user).first()
         return render_template('exams/exam.html', exam=exam)
     else:        
@@ -255,7 +255,7 @@ def cuenta_view():
     user = Usuarios.objects(id=login.current_user.get_id()).first()
 
     if request.method == 'POST':
-        user.login = form.login.data
+        user.usuario = form.usuario.data
         user.nombre = form.nombre.data
         user.apellidos = form.apellidos.data
         user.password = form.password.data
@@ -273,10 +273,10 @@ def cuenta_view():
 @app.route('/rec_pass', methods=('GET', 'POST'))
 def rec_pass():
     if request.method == 'POST':            
-        login = request.form["login"]
+        login = request.form["usuario"]
 
         if login:
-            user = Usuarios.objects(login=login).first()
+            user = Usuarios.objects(usuario=login).first()
             if user:
                 email = user.email
                 if email:

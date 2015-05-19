@@ -54,7 +54,7 @@ class Usuarios(Document):
     
     nombre = StringField(required=True, max_length=40)
     apellidos = StringField(max_length = 80)
-    login = StringField(required=True, max_length=80, unique=True)
+    usuario = StringField(required=True, max_length=80, unique=True)
     email = StringField(required=True, max_length=100)
     password = StringField(required=True, max_length=64)
     tipo = IntField(choices=TIPO)
@@ -83,8 +83,8 @@ class Usuarios(Document):
     def get_id(self):
         return str(self.id)
         
-    def get_login(self):
-        return str(self.login)
+    def get_usuario(self):
+        return str(self.usuario)
 
     def get_tipo(self):
         return str(self.tipo)
@@ -100,7 +100,7 @@ class Usuarios(Document):
 
     # Required for administrative interface
     def __unicode__(self):
-        return self.login
+        return self.usuario
 
 @update_modified.apply
 class Temas(Document):
