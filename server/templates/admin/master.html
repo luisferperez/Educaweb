@@ -9,26 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="luisfer">
+    <meta name="author" content="Luisfer">
     <link rel="icon" href="../static/img/educaweb.png">
 
     <!-- Latest compiled and minified CSS -->
-    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
-    <!--link rel="stylesheet" href="/static/bootstrap/css/bootstrap-theme.css"-->
-    
-    <!--link rel="stylesheet" href="/static/stylesheets/style.css"-->
-    <link rel="stylesheet" href="/static/stylesheets/layout.css">
-    <!--link rel="stylesheet" href="/static/dist/css/bootstrap-theme.css"-->
-
-    <!-- Custom styles for this template -->
-    <!--link rel="stylesheet" href="/static/bootstrap/css/theme.css"-->
-
-    <!--link rel="stylesheet" href="/static/bootstrap/css/bootstrap-responsive.css"-->
-    <!--link rel="stylesheet" href="/static/admin/css/admin.css"-->
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
 
     <title>Educaweb</title>
 </head>
@@ -68,7 +55,7 @@
 
                         <ul class="nav pull-right">
 					<li class="dropdown" style="float:right">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ current_user.login }} <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ current_user.usuario }} <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="{{ url_for('logout_view') }}">Log out</a></li>
 						</ul>
@@ -114,10 +101,10 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- Optional: Include the jQuery library -->
-    <script src='../static/jquery-2.0.3.min.js'></script>
+    <script src='../../static/jquery-2.0.3.min.js'></script>
 
     <!-- Optional: Incorporate the Bootstrap JavaScript plugins -->
-    <script src='../static/bootstrap/js/bootstrap.min.js'></script
+    <script src='../../static/bootstrap/js/bootstrap.min.js'></script
 
 </body>
 
