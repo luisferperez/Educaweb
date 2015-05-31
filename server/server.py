@@ -37,10 +37,68 @@ mail = Mail(app)
 def init_ddbb():
     # Compruebo que no existe el usuario admin
     num = Usuarios.objects(usuario="admin").count()
-    if num == 0:
-        Usuarios(nombre="admin", apellidos="", usuario="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True).save()    
+    if num == 1:
+        
+        luisfer = Usuarios.objects(usuario="luisfer").first() 
         
         # Registros de prueba -- BORRAR EN PRODUCCIÓN      
+        asignaturas = ["Procesadores del lenguaje 10", "Sistemas Distribuidos"]
+        
+        temas = [ 
+            ("Introducción", "Analisis Lexico", "Analisis sintactico"), 
+            ("Fundamentos de los S.D.", "Comunicación entre procesos" )
+            ]
+            
+        preguntas = [
+            ((   ("pregunta 1 procesadores - introducción", 0),
+                ("pregunta 2 procesadores - introducción", 0)
+            ),
+            (   ("pregunta 1 procesadores - a.lex.", 0),
+                ("pregunta 2 procesadores - a-lex.", 0),
+                ("pregunta 3 procesadores - a-lex.", 0)
+            ),
+            (   ("pregunta 1 procesadores - a.sint.", 0),
+                ("pregunta 2 procesadores - a.sint.", 0)
+            )),
+            ((   ("pregunta 1 SD - fundamentos", 1),
+                ("pregunta 2 SD - fundamentos", 1)
+            ),
+            (   ("pregunta 1 SD - comunicación", 1),
+                ("pregunta 2 SD - comunicación", 1)
+            ))
+            ]
+
+        for i in range(len(asignaturas)):
+            asignatura = Asignaturas()
+            asignatura.asignatura = asignaturas[i]
+            asignatura.save()
+            
+            num_pregunta = 1
+            
+            for j in range(len(temas[i])):
+                tema = Temas()
+                tema.num = j+1
+                tema.descripcion = temas[i][j]
+                tema.asignatura = asignatura
+                tema.usuario = luisfer
+                tema.save()                
+                
+                for k in range(len(preguntas[i][j])):
+                    pregunta = Preguntas()
+                    pregunta.num = num_pregunta
+                    pregunta.texto = preguntas[i][j][k][0]
+                    pregunta.tema = tema
+                    pregunta.tipo = preguntas[i][j][k][1]
+                    pregunta.asignatura = asignatura
+                    pregunta.usuario = luisfer
+                    pregunta.save()
+                    
+                    num_pregunta = num_pregunta + 1
+
+        
+    if num == 0:       
+        Usuarios(nombre="admin", apellidos="", usuario="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True).save()        
+
         procesadores = Asignaturas(asignatura="Procesadores del lenguaje")
         procesadores.save()        
 
