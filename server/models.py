@@ -119,7 +119,7 @@ class Temas(Document):
 
 
 class Opciones(EmbeddedDocument):
-    letra = StringField(max_length=1)
+    letra = StringField(max_length=1, required=True)
     texto = StringField()
 
     @queryset_manager

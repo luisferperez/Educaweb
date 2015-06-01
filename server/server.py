@@ -37,42 +37,90 @@ mail = Mail(app)
 def init_ddbb():
     # Compruebo que no existe el usuario admin
     num = Usuarios.objects(usuario="admin").count()
-    if num == 1:
+    if num == 0:
         
-        luisfer = Usuarios.objects(usuario="luisfer").first() 
-        
+        # Grabo al usuario admin y a un profesor y a un alumno de prueba
+        admin = Usuarios(nombre="admin", apellidos="", usuario="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True)
+        admin.save()
+        profe = Usuarios(nombre="profe", apellidos="", usuario="profe1", password="profe1", email="profe1@uned.es", tipo=1, activado=True)
+        profe.save()
+        alumno = Usuarios(nombre="alumno", apellidos="", usuario="alumno1", password="alumno1", email="alumno1@uned.es", tipo=2, activado=True)
+        alumno.save()
+
         # Registros de prueba -- BORRAR EN PRODUCCIÓN      
-        asignaturas = ["Procesadores del lenguaje 10", "Sistemas Distribuidos"]
+        asignaturas = ["Procesadores del lenguaje", "Sistemas Operativos", "Inteligencia Artificial", "Redes", "Sistemas Distribuidos"]
         
         temas = [ 
             ("Introducción", "Analisis Lexico", "Analisis sintactico"), 
+            ("Fundamentos de los SO", "Sistemas Operativos multitarea"),
+            ("Introducción a la IA", "Logica", "Sistemas Expertos"), 
+            ("Redes LAN", "TCP/IP", "ADSL"), 
             ("Fundamentos de los S.D.", "Comunicación entre procesos" )
             ]
             
+        opcion1 = Opciones(letra="A", texto="opcion A")
+        opcion2 = Opciones(letra="B", texto="opcion B")
+
         preguntas = [
-            ((   ("pregunta 1 procesadores - introducción", 0),
-                ("pregunta 2 procesadores - introducción", 0)
+            (
+                (   ("pregunta 1 procesadores - introducción", 0),
+                    ("pregunta 2 procesadores - introducción", 0)
+                ),
+                (   ("pregunta 1 procesadores - a.lex.", 0),
+                    ("pregunta 2 procesadores - a-lex.", 0),
+                    ("pregunta 3 procesadores - a-lex.", 0)
+                ),
+                (   ("pregunta 1 procesadores - a.sint.", 0),
+                    ("pregunta 2 procesadores - a.sint.", 0)
+                )
             ),
-            (   ("pregunta 1 procesadores - a.lex.", 0),
-                ("pregunta 2 procesadores - a-lex.", 0),
-                ("pregunta 3 procesadores - a-lex.", 0)
+            (
+                (   ("pregunta 1 Sist. Op. - fundamentos", 0),
+                    ("pregunta 2 Sist. Op. - fundamentos", 0)
+                ),
+                (   ("pregunta 1 Sist. Op. - S.O. Multitarea", 0),
+                    ("pregunta 2 Sist. Op. - S.O. Multitarea", 0)
+                )
             ),
-            (   ("pregunta 1 procesadores - a.sint.", 0),
-                ("pregunta 2 procesadores - a.sint.", 0)
-            )),
-            ((   ("pregunta 1 SD - fundamentos", 1),
-                ("pregunta 2 SD - fundamentos", 1)
+            (
+                (   ("pregunta 1 IA - introducción", 1, (opcion1, opcion2), "A"),
+                    ("pregunta 2 IA - introducción", 1, (opcion1, opcion2), "B"),
+                    ("pregunta 3 IA - introducción", 1, (opcion1, opcion2), "B")
+                ),
+                (   ("pregunta 1 IA - Logica", 1, (opcion1, opcion2), "B"),
+                    ("pregunta 2 IA - Logica", 1, (opcion1, opcion2), "A")
+                ),
+                (   ("pregunta 1 IA - Sist. Ex.", 1, (opcion1, opcion2), "A"),
+                    ("pregunta 2 IA - Sist. Exp.", 1, (opcion1, opcion2), "A")
+                )
             ),
-            (   ("pregunta 1 SD - comunicación", 1),
-                ("pregunta 2 SD - comunicación", 1)
-            ))
+            (
+                (   ("pregunta 1 Redes - Redes LAN", 2, True),
+                    ("pregunta 2 Redes - Redes LAN", 2, False),
+                ),
+                (   ("pregunta 1 Redes - TCP/IP", 2, False),
+                    ("pregunta 2 Redes - TCP/IP", 2, False),
+                ),
+                (   ("pregunta 1 Redes - ADSL", 2, True),
+                    ("pregunta 2 Redes - ADSL", 2, True),
+                ),
+            ),
+            (
+                (   ("pregunta 1 Sist. Op. - fundamentos", 1, (opcion1, opcion2), "B"),
+                    ("pregunta 2 Sist. Op. - fundamentos", 1, (opcion1, opcion2), "A")
+                ),
+                (   ("pregunta 1 Sist. Op. - S.O. Multitarea", 1, (opcion1, opcion2), "A"),
+                    ("pregunta 2 Sist. Op. - S.O. Multitarea", 1, (opcion1, opcion2), "B")
+                )
+            )
             ]
 
         for i in range(len(asignaturas)):
             asignatura = Asignaturas()
             asignatura.asignatura = asignaturas[i]
             asignatura.save()
-            
+            profe.asignaturas = profe.asignaturas.append(asignatura)
+            alumno.asignaturas = alumno.asignaturas.append(asignatura)
             num_pregunta = 1
             
             for j in range(len(temas[i])):
@@ -80,7 +128,7 @@ def init_ddbb():
                 tema.num = j+1
                 tema.descripcion = temas[i][j]
                 tema.asignatura = asignatura
-                tema.usuario = luisfer
+                tema.usuario = profe
                 tema.save()                
                 
                 for k in range(len(preguntas[i][j])):
@@ -89,44 +137,54 @@ def init_ddbb():
                     pregunta.texto = preguntas[i][j][k][0]
                     pregunta.tema = tema
                     pregunta.tipo = preguntas[i][j][k][1]
+                    
+                    if pregunta.tipo == 1:
+                        for opcion in preguntas[i][j][k][2]:
+                            pregunta.opciones = pregunta.opciones.append(opcion)
+                        pregunta.correcta = preguntas[i][j][k][3]
+                    
+                    if pregunta.tipo == 2:
+                        pregunta.verdadera = preguntas[i][j][k][2]
+                        
                     pregunta.asignatura = asignatura
-                    pregunta.usuario = luisfer
+                    pregunta.usuario = profe
                     pregunta.save()
                     
                     num_pregunta = num_pregunta + 1
 
         
-    if num == 0:       
-        Usuarios(nombre="admin", apellidos="", usuario="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True).save()        
+    #if num == 0:       
+        #Usuarios(nombre="admin", apellidos="", usuario="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True).save()
 
-        procesadores = Asignaturas(asignatura="Procesadores del lenguaje")
-        procesadores.save()        
+        #procesadores = Asignaturas(asignatura="Procesadores del lenguaje")
+        #procesadores.save()        
 
-        ss_oo = Asignaturas(asignatura="Sistemas Operativos")
-        ss_oo.save()
+        #ss_oo = Asignaturas(asignatura="Sistemas Operativos")
+        #ss_oo.save()
        
-        leng = Asignaturas(asignatura="Lenguajes de Programación")
-        leng.save()
+        #leng = Asignaturas(asignatura="Lenguajes de Programación")
+        #leng.save()
         
-        ia = Asignaturas(asignatura="Inteligencia Artificial")
-        ia.save()
+        #ia = Asignaturas(asignatura="Inteligencia Artificial")
+        #ia.save()
         
-        redes = Asignaturas(asignatura="Redes")
-        redes.save()
+        #redes = Asignaturas(asignatura="Redes")
+        #redes.save()
         
-        profe1 = Usuarios(nombre="profe1", usuario="profe1", password="profe1", email="profe1@uned.es", tipo=1, activado=True, asignaturas={ss_oo, redes, procesadores})
-        profe1.save()
+        #profe1 = Usuarios(nombre="profe1", usuario="profe1", password="profe1", email="profe1@uned.es", tipo=1, activado=True, asignaturas={ss_oo, redes, procesadores})
+        #profe1.save()
 
-        luisfer = Usuarios(nombre = "Luis F.", apellidos="Pérez", usuario="luisfer", password="luisfer", email="luifito@gmail.com", tipo=1, activado=True, asignaturas={procesadores, ia, leng})
-        luisfer.save()
+        #luisfer = Usuarios(nombre = "Luis F.", apellidos="Pérez", usuario="luisfer", password="luisfer", email="luifito@gmail.com", tipo=1, activado=True, asignaturas={procesadores, ia, leng})
+        #luisfer.save()
         
         # IA - preguntas Test
-        tema1 = Temas(num=1, descripcion="Introduccion a la IA", asignatura=ia, usuario=luisfer).save()
-        tema2 = Temas(num=2, descripcion="Logica", asignatura=ia, usuario=luisfer).save()
-        tema3 = Temas(num=3, descripcion="Sistemas expertos", asignatura=ia, usuario=luisfer).save()
+        #tema1 = Temas(num=1, descripcion="Introduccion a la IA", asignatura=ia, usuario=luisfer).save()
+        #tema2 = Temas(num=2, descripcion="Logica", asignatura=ia, usuario=luisfer).save()
+        #tema3 = Temas(num=3, descripcion="Sistemas expertos", asignatura=ia, usuario=luisfer).save()
+        """
         opcion1 = Opciones(letra="A", texto="opcion A")
         opcion2 = Opciones(letra="B", texto="opcion B")
-        Preguntas(num=1, texto="Pregunta 1 del tema 1 de IA", asignatura=ia, tema=tema1, tipo=1, opciones={opcion1, opcion2}, correcta="A", usuario=luisfer).save()
+        Preguntas(num=1, texto="Pregunta 1 del tema 1 de IA", asignatura=ia, tema=tema1, tipo=1, opciones={opcion1, opcion2}, correcta="A", usuario=profe).save()
         Preguntas(num=2, texto="Pregunta 2 del tema 1 de IA", asignatura=ia, tema=tema1, tipo=1, opciones={opcion1, opcion2}, correcta="B", usuario=luisfer).save()
         Preguntas(num=3, texto="Pregunta 1 del tema 2 de IA", asignatura=ia, tema=tema2, tipo=1, opciones={opcion1, opcion2}, correcta="B", usuario=luisfer).save()
         Preguntas(num=4, texto="Pregunta 2 del tema 2 de IA", asignatura=ia, tema=tema2, tipo=1, opciones={opcion1, opcion2}, correcta="B", usuario=luisfer).save()
@@ -134,9 +192,9 @@ def init_ddbb():
         Preguntas(num=6, texto="Pregunta 2 del tema 3 de IA", asignatura=ia, tema=tema3, tipo=1, opciones={opcion1, opcion2}, correcta="A", usuario=luisfer).save()
         
         # Redes - preguntas Verdadero o falso
-        tema1 = Temas(num=1, descripcion="Redes LAN", asignatura=redes, usuario=luisfer).save()
-        tema2 = Temas(num=2, descripcion="TCP/IP", asignatura=redes, usuario=luisfer).save()
-        tema3 = Temas(num=3, descripcion="ADSL", asignatura=redes, usuario=luisfer).save()
+        #tema1 = Temas(num=1, descripcion="Redes LAN", asignatura=redes, usuario=luisfer).save()
+        #tema2 = Temas(num=2, descripcion="TCP/IP", asignatura=redes, usuario=luisfer).save()
+        #tema3 = Temas(num=3, descripcion="ADSL", asignatura=redes, usuario=luisfer).save()
         Preguntas(num=1, texto="Pregunta 1 del tema 1 de Redes", asignatura=redes, tema=tema1, tipo=2, verdadera=True, usuario=luisfer).save()
         Preguntas(num=2, texto="Pregunta 2 del tema 1 de Redes", asignatura=redes, tema=tema1, tipo=2, usuario=luisfer).save()
         Preguntas(num=3, texto="Pregunta 1 del tema 2 de Redes", asignatura=redes, tema=tema2, tipo=2, verdadera=True, usuario=luisfer).save()
@@ -145,12 +203,12 @@ def init_ddbb():
         Preguntas(num=6, texto="Pregunta 2 del tema 3 de Redes", asignatura=redes, tema=tema3, tipo=2, usuario=luisfer).save()
 
         # Procesadores - preguntas desarrollo        
-        tema1 = Temas(num=1, descripcion="Introducción", asignatura=procesadores, usuario=luisfer)
-        tema1.save()
-        tema2 = Temas(num=2, descripcion="Analisis Lexico", asignatura=procesadores, usuario=luisfer)
-        tema2.save()
-        tema3 = Temas(num=3, descripcion="Analisis sintactico", asignatura=procesadores, usuario=luisfer)
-        tema3.save()
+        #tema1 = Temas(num=1, descripcion="Introducción", asignatura=procesadores, usuario=luisfer)
+        #tema1.save()
+        #tema2 = Temas(num=2, descripcion="Analisis Lexico", asignatura=procesadores, usuario=luisfer)
+        #tema2.save()
+        #tema3 = Temas(num=3, descripcion="Analisis sintactico", asignatura=procesadores, usuario=luisfer)
+        #tema3.save()
         Preguntas(num=1, texto="Pregunta 1 del tema 1 de Procesadores a desarrollar", asignatura=procesadores, tema=tema1, tipo=0, usuario=luisfer).save()
         Preguntas(num=2, texto="Pregunta 2 del tema 1 de Procesadores a desarrollar", asignatura=procesadores, tema=tema1, tipo=0, usuario=luisfer).save()
         Preguntas(num=3, texto="Pregunta 3 del tema 1 de Procesadores a desarrollar", asignatura=procesadores, tema=tema1, tipo=0, usuario=luisfer).save()
@@ -174,7 +232,7 @@ def init_ddbb():
         Preguntas(num=8, texto="Pregunta 4 del tema 2 de Procesadores", asignatura=procesadores, tema=tema2, tipo=0, usuario=profe1).save()
         Preguntas(num=9, texto="Pregunta 1 del tema 3 de Procesadores", asignatura=procesadores, tema=tema3, tipo=0, usuario=profe1).save()
         Preguntas(num=10, texto="Pregunta 2 del tema 3 de Procesadores", asignatura=procesadores, tema=tema3, tipo=0, usuario=profe1).save()
-
+        """
 
 # Initialize flask-login
 def init_login(app):

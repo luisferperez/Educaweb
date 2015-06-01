@@ -31,13 +31,7 @@ def exportODT(examen, archivo):
     preguntas = examen.preguntas
 
     textdoc = OpenDocumentText()
-
-    """        
-    T1style = Style(name="T1", family="text")
-    T1style.addElement(TextProperties(fontstyle="bold",fontstyleasian="bold", fontstylecomplex="bold"))
-    textdoc.automaticstyles.addElement(T1style)
-    """    
-        
+      
     h = H(outlinelevel=1, text=asignatura)
     textdoc.text.addElement(h)
     
@@ -49,7 +43,7 @@ def exportODT(examen, archivo):
         p = P(text = str(i) + ".- " + str(pregunta.texto))
         textdoc.text.addElement(p)
    
-        # Para las preguntas tipo test
+        # For test questions
         if pregunta.tipo == 1:
             for opcion in pregunta.opciones:                              
                 texto = opcion.letra + "). " + opcion.texto

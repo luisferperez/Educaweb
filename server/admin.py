@@ -14,6 +14,8 @@ from flask.ext.admin import Admin, expose, helpers
 from models import Usuarios, Temas, Preguntas, Asignaturas, Examenes
 from forms import LoginForm, RegistrationForm
 
+
+from flask.ext.admin.form import rules
 #==============================================================================
 # Initialization
 #==============================================================================
@@ -146,9 +148,9 @@ class TemasView(MyView):
 
 
 class PreguntasView(MyView):
-    column_exclude_list = ("respuesta", "opciones")
+    #column_exclude_list = ("respuesta", "opciones")
     
-    column_default_sort = ('asignatura', 'tema', 'num')
+    #column_default_sort = ('asignatura', 'tema', 'num')
 
     # Choices for the "tipo" column
     column_choices = {
@@ -158,4 +160,17 @@ class PreguntasView(MyView):
             (2, 'Verdadero o Falso')
             
         ]
+    }
+    
+    form_subdocuments = {
+        'opciones': {
+            'form_subdocuments': {
+                None: {
+                    # Add <hr> at the end of the form
+                    #'form_rules': ('name', 'tag', 'value', rules.HTML('<hr>'))
+                    'form_rules': ('letra', 'texto',  rules.HTML('<hr>'))
+                    #'form_columns': ('letra', 'texto',)
+                }
+            }
+        }
     }
