@@ -46,8 +46,7 @@ class Asignaturas(Document):
            query = Q(asignatura= str(lista_asignaturas[0]))
            for l in lista_asignaturas[1:]:
                query |= Q(asignatura=str(l))
-           return queryset.filter(query)
-           
+               return queryset.filter(query)
 
 class Usuarios(Document):
     TIPO = ((0, 'Administrador'), (1, 'Profesor'),(2, 'Alumno'))    
@@ -126,10 +125,6 @@ class Opciones(EmbeddedDocument):
     def objects(doc_cls, queryset):
        return queryset.order_by('-letra')
 
-class Respuestas(Document):
-    #letra = StringField(max_length=1)
-    texto = StringField()
-
 @update_modified.apply
 class Preguntas(Document):
     TIPO = ((0, 'Desarrollo'), (1, 'Test'), (2, 'Verdadero o Falso'))
@@ -142,7 +137,7 @@ class Preguntas(Document):
     # Solo para la opción de verdadero o falso    
     verdadera = BooleanField() 
     # Solo para la opción de test
-    opciones = SortedListField(EmbeddedDocumentField(Opciones))
+    opciones = ListField(EmbeddedDocumentField(Opciones))
     correcta = StringField(max_length=1)
 
     #respuesta = StringField()

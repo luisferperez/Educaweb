@@ -45,9 +45,11 @@ class MyAdminIndexView(admin.AdminIndexView):
     def login_view(self):
         # handle user login
         form = LoginForm(request.form)
+        #if request.method == 'POST' and form.validate():
         if helpers.validate_form_on_submit(form):
             user = form.get_user()
-            login.login_user(user)
+            if user != None:
+                login.login_user(user)
 
         if login.current_user.is_authenticated():
             return redirect(url_for('index'))
@@ -161,15 +163,18 @@ class PreguntasView(MyView):
             
         ]
     }
-    
+
     form_subdocuments = {
         'opciones': {
             'form_subdocuments': {
                 None: {
                     # Add <hr> at the end of the form
-                    #'form_rules': ('name', 'tag', 'value', rules.HTML('<hr>'))
-                    'form_rules': ('letra', 'texto',  rules.HTML('<hr>'))
-                    #'form_columns': ('letra', 'texto',)
+                    'form_rules': ('letra', 'texto', rules.HTML('<hr>')),
+                    'form_widget_args': {
+                        'name': {
+                            'style': 'color: red'
+                        }
+                    }
                 }
             }
         }
