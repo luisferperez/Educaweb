@@ -22,7 +22,7 @@ from flask.ext.admin.form import rules
 def initialize_admin_component(app):
     """ Initialize the Admin Views. """
     # Create admin
-    admin = Admin(app, 'EducaWeb', index_view=MyAdminIndexView(), base_template='index.html')
+    admin = Admin(app, 'EducaWeb', index_view=MyAdminIndexView(), base_template='layout.html', template_mode='bootstrap3')
     # Add views
     admin.add_view(UserView(Usuarios))
     admin.add_view(AsignaturasView(Asignaturas))
@@ -88,9 +88,9 @@ class MyView(ModelView):
     column_exclude_list = ("usuario")
     form_excluded_columns = ("usuario")
 
-    #list_template = 'list.html'
-    #create_template = 'create.html'
-    #edit_template = 'edit.html'
+    list_template = 'list.html'
+    create_template = 'create.html'
+    edit_template = 'edit.html'
     
     # these views only be accessible by teachers
     def is_accessible(self):

@@ -2,7 +2,7 @@
 
 {% block panel %}
     {% if current_user.is_authenticated() and current_user.is_activado() %}            
-        <li><a href="{{ url_for('admin.index') }}">Admin Panel</a></li>
+        <li><a href="{{ url_for('admin.index') }}">Administración</a></li>
     {% endif %}
 {% endblock panel %}
 
@@ -42,17 +42,6 @@
                         <div class="panel-body">
                             <p><a href="{{ url_for('genera_examen_view') }}">Generar Exámenes</a>
                             <p><a href="{{ url_for('examenes_view') }}">Realizar Examenes</a>
-                        </div>
-                    </div>
-                </div><!-- /.col-sm-3 -->
-                <div class="col-sm-3" >
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Panel de Administración</h3>
-                        </div>
-                        <div class="panel-body">
-                            <p><a href="{{ url_for('admin.register_view') }}">Registrarse como nuevo usuario</a>
-                            <p><a href="{{ url_for('admin.login_view') }}">Entrada a la aplicacíon</a>&nbsp;
                         </div>
                     </div>
                 </div><!-- /.col-sm-3 -->

@@ -2,7 +2,11 @@
 
 {% block panel %}
     {% if current_user.is_authenticated() and current_user.is_activado() %}            
-        <li><a href="{{ url_for('admin.index') }}">Admin Panel</a></li>
+        {% for item in admin_view.admin.menu() %}
+            {% if item.is_accessible() and item.is_visible() and item.name != "Home"  %}
+                <li><a href="{{ item.get_url() }}">{{ item.name }}</a></li>
+            {% endif %}
+        {% endfor %}
     {% endif %}
 {% endblock panel %}
 
@@ -15,6 +19,8 @@
         </table> 
         <br>
     {% endif %}
+
+    {{ super() }}
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
@@ -89,6 +95,7 @@
         {{ link2 | safe }}
     {% endif %}
 
+    <a class="btn btn-primary" href="/"><i class="icon-arrow-left icon-white"></i> Back</a>
 
     </div>
 {% endblock body %}
