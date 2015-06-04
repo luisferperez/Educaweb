@@ -261,6 +261,14 @@ def logout_view():
     session.pop("usuario", None)
     return redirect(url_for('index'))
 
+@app.route('/contact/')
+def contact_view():
+    return render_template('contact.html')
+
+@app.route('/about/')
+def about_view():
+    return render_template('about.html')
+
 #=========================================#
 #    Error Handling                       #
 #=========================================#

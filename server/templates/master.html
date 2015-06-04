@@ -33,7 +33,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="{{ url_for('index')}}">Home</a></li>
-                    {% block panel %}              
+                    {% block panel %}
                     {% endblock panel %}
                     
                     {% if current_user.is_authenticated() %}
@@ -49,15 +49,18 @@
                             </ul>
                         </li>
                         {% endif %}
-                        <li><a href="{{ url_for('cuenta_view') }}">Mi cuenta</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="mailto:lperez120@alumno.uned.es">Contact<i class="icon-white icon-envelope"></i> </a></li>
+                        {% block panel_general %}
+                            <li><a href="{{ url_for('cuenta_view') }}">Mi cuenta</a></li>
+                            <li><a href="{{ url_for('contact_view') }}">Contacto</a></li>
+                            <li><a href="{{ url_for('about_view') }}">Acerca de..</a></li>
+                        {% endblock panel_general %}
 
+                        
                         <ul class="nav pull-right">
 					<li class="dropdown" style="float:right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ current_user.usuario }} <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="{{ url_for('logout_view') }}">Log out</a></li>
+							<li><a href="{{ url_for('logout_view') }}">Cerrar sesión</a></li>
 						</ul>
 					</li>
                         </ul>
@@ -78,12 +81,25 @@
         {% endblock %}
     </div>
     
-    {% endblock %}
+    {% if current_user.is_authenticated() %}
+    <div class="container theme-showcase" role="main">
+        <div class="container">    
+            <table style="width:100%">
+                <tr>
+                    <td>Hola, {{ current_user.nombre }}  {{ current_user.apellidos }}</td>
+                    <td style="color:grey;text-align:right">Usuario: {{ current_user.usuario }}  <a href="{{ url_for('logout_view') }}">  Cerrar sesión</a></td>
+            </table> 
+            <br>
+        </div>
+    </div>
+    {% endif %}
+
+    {% endblock page_body %}
 
     <div class="container theme-showcase" role="main">	
         <div class="container">
             {% block body %}
-            {% endblock %}
+            {% endblock body %}
             <hr>
             <footer>
                 <p style="text-align: center; font-style: italic; font-size: 12px">{{ config['TITLE'] }} - {{ config['YEAR'] }}</p>
