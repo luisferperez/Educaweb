@@ -2,15 +2,23 @@
 
 {% block body %}
 
-  <div class="page-header">
-    <h2>Datos de contacto</h2>
-  </div>
-<p>
+    <div class="container">
+        <div class="row"> 
+        {% block menu %}
+            {{ super() }}
+        {% endblock menu %}
 
-Para ponerse en contacto con el autor de este trabajo puedes enviar un correo a la siguiente dirección:
-<p>
-<a href="mailto:lperez120@alumno.uned.es">lperez120@alumno.uned.es<i class="icon-white icon-envelope"></i> </a>
-<br><br>
-
-<br>
+            <div class="col-md-10">
+                <div class="page-header">
+                    <h2>Datos de contacto</h2>
+                </div>
+                <p>
+                
+                Para ponerse en contacto con el autor de este trabajo puedes enviar un correo a la siguiente dirección:
+                <p>
+                <a href="mailto:lperez120@alumno.uned.es">lperez120@alumno.uned.es<i class="icon-white icon-envelope"></i> </a>
+                <br><br>
+            </div>
+        </div>
+    </div>
 {% endblock body %}

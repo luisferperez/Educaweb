@@ -11,7 +11,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">EducaWeb4</a>
+                <a class="navbar-brand" href="#">EducaWeb</a>
             </div>
 
             <div class="navbar-collapse collapse">
@@ -20,18 +20,21 @@
                     
                     {% if current_user.is_authenticated() %}
                         {% if current_user.is_activado() and not current_user.is_administrador() %}
-
-                            {% block panel %}
-                                {% if current_user.is_authenticated() and current_user.is_activado() %}            
-                                    {% for item in admin_view.admin.menu() %}
-                                        {% if item.is_accessible() and item.is_visible() and item.name != "Home"  %}
-                                            <li><a href="{{ item.get_url() }}">{{ item.name }}</a></li>
-                                        {% endif %}
-                                    {% endfor %}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Herramientas<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                {% if current_user.is_profesor() %}              
+                                    <li><a href="{{ url_for('genera_examen_view') }}">Generar Exámenes</a></li>
+                                    <li class="divider"></li>
                                 {% endif %}
-                            {% endblock panel %}
+                                    <li><a href="{{ url_for('examenes_view') }}">Realizar Examenes</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{{ url_for('cuenta_view') }}">Mi cuenta</a></li>
 
                         {% endif %}
+                        <li><a href="{{ url_for('contact_view') }}">Contacto</a></li>
+                        <li><a href="{{ url_for('about_view') }}">Acerca de..</a></li>
 
                         <ul class="nav pull-right">
 					<li class="dropdown" style="float:right">
@@ -61,10 +64,12 @@
 	    {{ layout.menu_links() }}
       </ul>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-9">
       <div id="content" class="row">
     	{% block brand %}
-    	<h2 id="brand">{{ admin_view.name|capitalize }}</h2>
+    	<h2 id="brand">  {{ admin_view.name|capitalize }}</h2>
     	{% endblock %}
     	{{ layout.messages() }}
 

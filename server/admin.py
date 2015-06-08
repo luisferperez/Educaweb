@@ -88,9 +88,9 @@ class MyView(ModelView):
     column_exclude_list = ("usuario")
     form_excluded_columns = ("usuario")
 
-    list_template = 'list.html'
-    create_template = 'create.html'
-    edit_template = 'edit.html'
+    list_template = 'admin/list.html'
+    create_template = 'admin/create.html'
+    edit_template = 'admin/edit.html'
     
     # these views only be accessible by teachers
     def is_accessible(self):

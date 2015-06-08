@@ -76,6 +76,9 @@ class Usuarios(Document):
     def is_administrador(self):
         return self.tipo == 0
 
+    def is_alumno(self):
+        return self.tipo == 2
+
     def is_activado(self):
         return self.activado
 

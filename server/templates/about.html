@@ -2,14 +2,25 @@
 
 {% block body %}
 
-  <div class="page-header">
-    <h2>Acerca de...</h2>
-  </div>
-<p>
+    <div class="container">
+        <div class="row"> 
+        {% block menu %}
+            {{ super() }}
+        {% endblock menu %}
 
-Esta aplicación ha sido realizada como trabajo fin de carrera de Ingeniería Informática de la UNED,
-por Luis Fernando Pérez Serna.
-<br><br>
+            <div class="col-md-10">
+                <div class="page-header">
+                    <h2>Acerca de...</h2>
+                </div>
+                <p>
 
-<br>
+                Esta aplicación ha sido realizada como trabajo fin de carrera de Ingeniería Informática de la UNED,
+                por Luis Fernando Pérez Serna.
+                <br><br>
+                
+                <br>
+            </div>
+        </div>
+    </div>
+
 {% endblock body %}

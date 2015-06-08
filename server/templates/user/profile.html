@@ -1,53 +1,66 @@
 {% extends 'master.html' %}
 
 {% block body %}
-  <div class="page-header">
-    <h2>Mi cuenta de usuario</h2>
-  </div>
-<p>
-<h5>Perfil del usuario: <strong>{{ user.usuario }}</strong></h5>
-<br>
-    {% if save %}
-    <div class="alert alert-success" role="alert">Su perfil de usuario se ha modificado correctamente</div>
-    {% endif %}
 
-<form action="{{ url_for('cuenta_view') }}" method="POST">
-    <input type="hidden" name="usuario" value="{{ user.usuario }}">
-        {% for e in form.usuario.errors %}
-            <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
-        {% endfor %}
-    Nombre<br>
-    <input type="text" name="nombre" value="{{ user.nombre }}"  maxlength="40"><br><br>
-        {% for e in form.nombre.errors %}
-            <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
-        {% endfor %}
+    <div class="container">
+        <div class="row"> 
 
-    Apellidos<br>
-    <input type="text" name="apellidos" value="{{ user.apellidos }}"><br><br>
-        {% for e in form.apellidos.errors %}
-            <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
-        {% endfor %}
+        {% block menu %}
+            {{ super() }}
+        {% endblock menu %}
 
-    Email<br>
-    <input type="text" name="email" value="{{ user.email }}"><br><br>
-        {% for e in form.email.errors %}
-            <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
-        {% endfor %}
-   
-    Nueva contraseña<br>
-    <input type="password" name="password" value="{{ user.password }}"><br><br>
-        {% for e in form.password.errors %}
-            <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
-        {% endfor %}
+            <div class="col-md-10">
+                <div class="page-header">
+                    <h2>Mi cuenta de usuario</h2>
+                </div>
+                <p>
 
-    Repita la contraseña<br>
-    <input type="password" name="confirm" value="{{ user.password }}"><br><br>
+                <h5>Perfil del usuario: <strong>{{ user.usuario }}</strong></h5>
+                <br>
+                    {% if save %}
+                    <div class="alert alert-success" role="alert">Su perfil de usuario se ha modificado correctamente</div>
+                    {% endif %}
+                
+                <form action="{{ url_for('cuenta_view') }}" method="POST">
+                    <input type="hidden" name="usuario" value="{{ user.usuario }}">
+                        {% for e in form.usuario.errors %}
+                            <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
+                        {% endfor %}
+                    Nombre<br>
+                    <input type="text" name="nombre" value="{{ user.nombre }}"  maxlength="40"><br><br>
+                        {% for e in form.nombre.errors %}
+                            <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
+                        {% endfor %}
+                
+                    Apellidos<br>
+                    <input type="text" name="apellidos" value="{{ user.apellidos }}"><br><br>
+                        {% for e in form.apellidos.errors %}
+                            <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
+                        {% endfor %}
+                
+                    Email<br>
+                    <input type="text" name="email" value="{{ user.email }}"><br><br>
+                        {% for e in form.email.errors %}
+                            <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
+                        {% endfor %}
+                   
+                    Nueva contraseña<br>
+                    <input type="password" name="password" value="{{ user.password }}"><br><br>
+                        {% for e in form.password.errors %}
+                            <div class="alert alert-danger" role="alert"><li>{{ e }}</li></div>
+                        {% endfor %}
+                
+                    Repita la contraseña<br>
+                    <input type="password" name="confirm" value="{{ user.password }}"><br><br>
+                
+                    <button class="btn btn-success" type="submit">Submit</button>
+                </form>                 
+                
+                <br><br>
+                <a class="btn btn-primary" href="{{ url_for('admin.login_view') }}"><i class="icon-arrow-left icon-white"></i> Back</a>
+                <br>
 
-    <button class="btn btn-success" type="submit">Submit</button>
-</form>
- 
-
-<br><br>
-<a class="btn btn-primary" href="{{ url_for('admin.login_view') }}"><i class="icon-arrow-left icon-white"></i> Back</a>
-<br>
+            </div>
+        </div>
+    </div>
 {% endblock body %}
