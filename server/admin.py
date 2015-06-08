@@ -106,6 +106,10 @@ class UserView(ModelView):
     column_exclude_list = ("password")
     form_excluded_columns = ("password")
     
+    list_template = 'admin/list.html'
+    create_template = 'admin/create.html'
+    edit_template = 'admin/edit.html'
+
     column_filters = ['usuario']
     
     column_searchable_list = ('usuario', 'email')

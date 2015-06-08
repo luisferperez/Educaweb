@@ -13,7 +13,7 @@ class LoginForm(form.Form):
     usuario = fields.TextField(validators=[validators.required()])
     password = fields.PasswordField(validators=[validators.required()])
 
-    def validate_login(self, field):
+    def validate_password(self, field):
         user = self.get_user()
 
         if user is None:

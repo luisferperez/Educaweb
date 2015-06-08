@@ -49,7 +49,7 @@
                         {% endif %}
 
                         {% block panel %}
-                            {% if not current_user.is_alumno() %}            
+                            {% if current_user.is_activado() and not current_user.is_alumno() %}            
                                 <li><a href="{{ url_for('admin.index') }}">Administración</a></li>
                             {% endif %}
                         {% endblock panel %}
@@ -108,16 +108,23 @@
                 <ul class="nav nav-pills nav-stacked">
                   <li class="active"><a href="#">Menú</a></li>
                   {% if current_user.is_authenticated() %}
-                  <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Herramientas
-                    <span class="caret"></span></a>
-                    <ul class="dropdown-menu">                                
-                      <li><a href="{{ url_for('genera_examen_view') }}">Generar Exámenes</a></li>
-                      <li><a href="{{ url_for('examenes_view') }}">Realizar Exámenes</a></li>
-                      <li><a href="#">Submenu 1-3</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="{{ url_for('admin.index') }}">Administración</a></li>
+                    {% if current_user.is_activado() and not current_user.is_administrador() %}
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Herramientas
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">                                
+                          {% if current_user.is_profesor() %}
+                          <li><a href="{{ url_for('genera_examen_view') }}">Generar Exámenes</a></li>
+                          {% endif %}
+                          <li><a href="{{ url_for('examenes_view') }}">Realizar Exámenes</a></li>
+                          <li><a href="#">Submenu 1-3</a></li>
+                        </ul>
+                      </li>
+                      {% endif %}
+                      {% if current_user.is_activado() and not current_user.is_alumno() %}            
+                        <li><a href="{{ url_for('admin.index') }}">Administración</a></li>
+                      {% endif %}
+                    
                   <li><a href="{{ url_for('cuenta_view') }}">Perfil de usuario</a></li>
                   {% else %}
                       <li><a href="{{ url_for('admin.login_view') }}">Entrar a la aplicación</a></li>

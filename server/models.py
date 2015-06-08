@@ -169,11 +169,14 @@ class Examenes(Document):
     @queryset_manager
     def public(doc_cls, queryset):
         lista_asignaturas=login.current_user.get_asignaturas()
-        query = Q(asignatura= lista_asignaturas[0].get_id())
-        for l in lista_asignaturas[1:]:
-            query |= Q(asignatura=l.get_id())
-        query &= Q(publico=True)
-        return queryset.filter(query)
+        if lista_asignaturas:        
+            query = Q(asignatura= lista_asignaturas[0].get_id())
+            for l in lista_asignaturas[1:]:
+                query |= Q(asignatura=l.get_id())
+            query &= Q(publico=True)
+            return queryset.filter(query)
+        else:
+            return queryset.filter(usuario=login.current_user.get_id())
 
     # Required for administrative interface
     def __unicode__(self):
