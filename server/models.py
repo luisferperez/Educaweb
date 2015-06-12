@@ -135,7 +135,7 @@ class Preguntas(Document):
     num = IntField(required=True, unique_with = ('asignatura', 'usuario'))    
     texto = StringField(required=True)
     asignatura = ReferenceField(Asignaturas, reverse_delete_rule= 'NULLIFY')
-    tema = ReferenceField(Temas)
+    tema = ReferenceField(Temas, reverse_delete_rule= 'NULLIFY')
     tipo = IntField(choices=TIPO)
     # Solo para la opción de verdadero o falso    
     verdadera = BooleanField() 

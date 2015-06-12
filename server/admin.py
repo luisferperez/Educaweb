@@ -154,10 +154,13 @@ class TemasView(MyView):
 
 
 class PreguntasView(MyView):
-    #column_exclude_list = ("respuesta", "opciones")
+    column_exclude_list = ('verdadera', 'correcta')
     
-    #column_default_sort = ('asignatura', 'tema', 'num')
+    column_default_sort = ('asignatura', 'num')
 
+    column_filters = ['asignatura']
+    column_searchable_list = ('asignatura')
+    
     # Choices for the "tipo" column
     column_choices = {
         'tipo': [

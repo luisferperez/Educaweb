@@ -1,29 +1,45 @@
 {% extends 'master.html' %}
 
 {% block body %}
-<p>
-<h4>Recuperación de contraseñas</h4>
-<br>    
-{% if email %}   
-    <div class="alert alert-success" role="alert">La contraseña se ha modificado correctamente. Su nueva contraseña ha sido enviada a su email: {{ email }}</div>
-{% else %}
-Inserte su nombre de usuario y el sistema le enviará un correo con una nueva contraseña
-<br> a la cuenta de correo que introdujo al registrarse.
-<br><br>
-<form action="/rec_pass" method="POST">
-    Usuario<br>
-    <input type="text" name="usuario">
 
-    {% if error %}
-        <br><br>
-        <div class="alert alert-danger" role="alert">{{ error }}</div>
-    {% else %}    
-        <br><br>
-    {% endif %}
-    <button class="btn btn-success" type="submit">Submit</button>
-</form>
-<br><br>
-{% endif %}
-<a class="btn btn-primary" href="{{ url_for('admin.login_view') }}"><i class="icon-arrow-left icon-white"></i> Back</a>
-<br>
+    <div class="container">
+        <div class="row"> 
+        {% block menu %}
+            {{ super() }}
+        {% endblock menu %}
+
+            <div class="col-md-10">
+            <p>
+            <h3>Recuperación de contraseña</h3>
+            <br>    
+            {% if email %}   
+                <div class="alert alert-success" role="alert">La contraseña se ha modificado correctamente. Su nueva contraseña ha sido enviada a su email: {{ email }}</div>
+            {% else %}
+            Inserte su nombre de usuario y el sistema le enviará un correo con una nueva contraseña
+            <br> a la cuenta de correo que introdujo al registrarse.
+            <br><br>
+            <form action="/rec_pass" method="POST">
+                Usuario<br>
+                <input type="text" name="usuario">
+            
+                {% if error %}
+                    <br><br>
+                    <div class="alert alert-danger" role="alert">{{ error }}</div>
+                {% else %}    
+                    <br><br>
+                {% endif %}
+                <button class="btn btn-success" type="submit">Submit</button>
+            </form>
+            <br><br>
+            {% endif %}
+            <br>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
 {% endblock body %}

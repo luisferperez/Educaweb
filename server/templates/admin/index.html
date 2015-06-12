@@ -16,11 +16,15 @@
                                 <li><a href="{{ item.get_url() }}">{{ item.name }}</a></li>
                             {% endif %}
                         {% endfor %}
+                    {% else %}
+                      <li><a href="{{ url_for('cuenta_view') }}">Perfil de usuario</a></li>
                     {% endif %}
                   {% else %}
                       <li><a href="{{ url_for('admin.login_view') }}">Entrar a la aplicación</a></li>
                       <li><a href="{{ url_for('admin.register_view') }}">Registrar nuevo usuario</a></li>
                   {% endif %}
+                  <li><a href="{{ url_for('contact_view') }}">Datos de Contacto</a></li>
+                  <li><a href="{{ url_for('about_view') }}">Acerca de..</a></li>
                 </ul>
             </div>
 
