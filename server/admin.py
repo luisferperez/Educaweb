@@ -8,19 +8,21 @@ Administration Panel
 from flask import request, redirect, url_for
 from flask.ext import admin, login
 from flask_admin.contrib.mongoengine import ModelView
-#from flask.ext.admin.contrib.mongoengine import ModelView
+
 from flask.ext.admin import Admin, expose, helpers
 
 from models import Usuarios, Temas, Preguntas, Asignaturas, Examenes
 from forms import LoginForm, RegistrationForm
 
-
 from flask.ext.admin.form import rules
-#==============================================================================
-# Initialization
-#==============================================================================
+#==============================================================#
+# Initialization                                               #         
+#==============================================================#
 def initialize_admin_component(app):
-    """ Initialize the Admin Views. """
+    """ 
+    Initialize the Admin Views. 
+    """
+    
     # Create admin
     admin = Admin(app, 'EducaWeb', index_view=MyAdminIndexView(), base_template='layout.html', template_mode='bootstrap3')
     # Add views
@@ -30,11 +32,14 @@ def initialize_admin_component(app):
     admin.add_view(PreguntasView(Preguntas))
     admin.add_view(MyView(Examenes))
 
-#==============================================================================
-# Create customized index view class
-#==============================================================================
+#==============================================================#
+# Create customized index view class                           #
+#==============================================================#
 class MyAdminIndexView(admin.AdminIndexView):
-    """ View that will be used as index for Admin. """
+    """ 
+    View that will be used as index for Admin. 
+    """
+    
     @expose('/')
     def index(self):
         if not login.current_user.is_authenticated():
@@ -43,9 +48,10 @@ class MyAdminIndexView(admin.AdminIndexView):
 
     @expose('/login/', methods=('GET', 'POST'))
     def login_view(self):
-        # handle user login
+        """ handle user login """
+        
         form = LoginForm(request.form)
-        #if request.method == 'POST' and form.validate():
+
         if helpers.validate_form_on_submit(form):
             user = form.get_user()
             if user != None:
@@ -63,6 +69,8 @@ class MyAdminIndexView(admin.AdminIndexView):
 
     @expose('/register/', methods=('GET', 'POST'))
     def register_view(self):
+        """ handle user register  """
+        
         form = RegistrationForm(request.form)
         if request.method == 'POST' and form.validate():
             user = Usuarios()
@@ -79,15 +87,19 @@ class MyAdminIndexView(admin.AdminIndexView):
         self._template_args['link'] = link
         return super(MyAdminIndexView, self).index()
 
-#==============================================================================
-# Base View
-#==============================================================================
+#==============================================================#
+# Base View                                                    #
+#==============================================================#
 class MyView(ModelView):
-    """ View that will be used as base for other views. """
+    """ 
+    View that will be used as base for other views. 
+    """
+    
     # the "usuario" column is not displayed
     column_exclude_list = ("usuario")
     form_excluded_columns = ("usuario")
 
+    # custom templates    
     list_template = 'admin/list.html'
     create_template = 'admin/create.html'
     edit_template = 'admin/edit.html'
@@ -97,23 +109,32 @@ class MyView(ModelView):
         return login.current_user.is_authenticated() and login.current_user.is_activado() and login.current_user.is_profesor() 
         
 
-#==============================================================================
-# Views for database collections
-#==============================================================================
+#==============================================================#
+# Views for database collections                               #
+#==============================================================#
 class UserView(ModelView):
-        
+    """
+    Users View. Entry view which lets us manage the users in the system.
+    """
+    
     # the "password" column is not displayed
     column_exclude_list = ("password")
     form_excluded_columns = ("password")
     
-    list_template = 'admin/list.html'
-    create_template = 'admin/create.html'
-    edit_template = 'admin/edit.html'
-
-    column_filters = ['usuario']
+    # users can only be created by registration    
+    can_create = False
     
-    column_searchable_list = ('usuario', 'email')
+    # custom templates
+    list_template = 'admin/list.html'
+    edit_template = 'admin/edit.html'
+    
+    # columns which can perform search filter
+    column_filters = ['usuario', 'nombre']
+    
+    # fields in which the search is performed    
+    column_searchable_list = ('nombre', 'usuario', 'email')
 
+    # Choices for the "tipo" column    
     column_choices = {
         'tipo': [
             (0, 'Administrador'),
@@ -121,45 +142,62 @@ class UserView(ModelView):
             (2, 'Alumno')
         ]
     }
-    """
-    form_overrides = dict(tipo=SelectField)
-    form_args = dict(
-        # Pass the choices to the `SelectField`
-        tipo=dict(
-            choices=[(0, 'administrador'), (1, 'profesor'), (2, 'alumno')]
-        ))
-        """    
+
+    # help text for some columns    
+    column_descriptions = dict(
+        usuario=u'Nombre de entrada a la aplicación',
+        tipo=u'Administrador, profesor o alumno',
+        activado=u'El usuario debe ser activado por el administrador para acceder a la aplicación')
+    
+    # this view is only accessible by administrators
     def is_accessible(self):
         return login.current_user.is_authenticated() and login.current_user.is_administrador()
 
-class AsignaturasView(MyView):
 
+class AsignaturasView(MyView):
+    """
+    Asignaturas View. Entry view which lets administrators manage the subjects in the system.
+    """
+
+    # columns which can perform search filter    
+    column_filters = ['asignatura']
+    
+    # this view is only accessible by administrators
     def is_accessible(self):
         return login.current_user.is_authenticated() and login.current_user.is_activado() and login.current_user.is_administrador() 
-"""      
-    def init_actions(self):
-        if login.current_user.is_profesor():
-            print "Hola, profe"
-            
-    ""    form_ajax_refs = {
-        'usuario': {
-            'fields': ['login']
-        }
-    }
-    """    
+
 
 class TemasView(MyView):
-    column_labels = dict(nombre='Nombre', descripcion='Descripcion')
-    column_default_sort = ('asignatura', 'num')
-
+    """
+    Temas View. Entry view which lets teachers manage the chapters in the system.
+    """
+    
+    # Custom labels for some columns
+    column_labels = dict(num=u'Número', descripcion=u'Descripción')
+    
+    # default order for the records list
+    #column_default_sort = ('asignatura', 'num')
+    
+    """    
+    form_ajax_refs = {
+        'asignatura': {
+            'fields': ['asignatura']
+        }
+    }
+    """
+      
 
 class PreguntasView(MyView):
-    column_exclude_list = ('verdadera', 'correcta')
+    """
+    Preguntas View. Entry view which lets teachers manage the questions in the system.
+    """
+    column_exclude_list = ('usuario', 'verdadera', 'correcta')
     
     column_default_sort = ('asignatura', 'num')
 
-    column_filters = ['asignatura']
-    column_searchable_list = ('asignatura')
+    column_descriptions = dict(
+        asignatura='Asignatura a la que corresponde la pregunta',
+        tipo='Preguntas a desarrollar, test o preguntas de tipo verdadero o falso')
     
     # Choices for the "tipo" column
     column_choices = {
@@ -167,7 +205,6 @@ class PreguntasView(MyView):
             (0, 'Desarrollo'), 
             (1, 'Test'),
             (2, 'Verdadero o Falso')
-            
         ]
     }
 

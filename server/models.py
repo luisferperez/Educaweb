@@ -46,7 +46,7 @@ class Asignaturas(Document):
            query = Q(asignatura= str(lista_asignaturas[0]))
            for l in lista_asignaturas[1:]:
                query |= Q(asignatura=str(l))
-               return queryset.filter(query)
+           return queryset.filter(query)
 
 class Usuarios(Document):
     TIPO = ((0, 'Administrador'), (1, 'Profesor'),(2, 'Alumno'))    

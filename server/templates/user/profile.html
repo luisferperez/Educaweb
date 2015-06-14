@@ -16,11 +16,17 @@
                 <p>
 
                 <h5>Perfil del usuario: <strong>{{ user.usuario }}</strong></h5>
+                <h5>Asignaturas: <strong>
+                {% for asig in user.asignaturas %}
+                      {{ asig.asignatura }}, 
+                {% endfor %}
+                </strong></h5>
                 <br>
-                    {% if save %}
+
+                {% if save %}
                     <div class="alert alert-success" role="alert">Su perfil de usuario se ha modificado correctamente</div>
-                    {% endif %}
-                
+                {% endif %}
+
                 <form action="{{ url_for('cuenta_view') }}" method="POST">
                     <input type="hidden" name="usuario" value="{{ user.usuario }}">
                         {% for e in form.usuario.errors %}
