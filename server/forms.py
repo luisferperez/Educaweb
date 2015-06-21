@@ -30,13 +30,13 @@ class RegistrationForm(form.Form):
     nombre = fields.TextField(validators=[validators.required()])
     apellidos = fields.TextField()
     usuario = fields.TextField(validators=[validators.required()])
-    email = fields.TextField(validators=[validators.required()])
+    email = fields.TextField(validators=[validators.required(), validators.Email()])
     password = fields.PasswordField(validators=[validators.DataRequired(), validators.EqualTo('confirm', message='Passwords must match')])
     confirm = fields.PasswordField('Repeat Password')
 
-    def validate_login(self, field):
+    def validate_usuario(self, field):
         if Usuarios.objects(usuario=self.usuario.data):
-            raise validators.ValidationError('Nombre de usuario duplicado')
+            raise validators.ValidationError('El nombre de usuario ya existe en el sistema.')
 
 class GeneraExamenForm(form.Form):
     TIPO = ((0, 'Desarrollo'), (1, 'Test'),(2, 'Verdadero o Falso'))
