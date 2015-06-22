@@ -15,7 +15,7 @@ if __name__ == '__main__':
     
     # Initialize flask-login    
     init_login(app)
-
+    
     # Administration Panel    
     initialize_admin_component(app)
 

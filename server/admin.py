@@ -50,13 +50,16 @@ class MyAdminIndexView(admin.AdminIndexView):
     def login_view(self):
         """ handle user login """
         
+        # User login is performed through the form "LoginForm"        
         form = LoginForm(request.form)
 
+        # if the form is validated, the login is done with the validated user
         if helpers.validate_form_on_submit(form):
             user = form.get_user()
             if user != None:
                 login.login_user(user)
 
+        # if the user login is correct, is redirected to the home page
         if login.current_user.is_authenticated():
             return redirect(url_for('index'))
         link = '<p>Si no dispone de cuenta de usuario <a href="' + url_for('.register_view') + '">Pulse aqu&iacute para registrarse.</a></p>'
@@ -71,7 +74,10 @@ class MyAdminIndexView(admin.AdminIndexView):
     def register_view(self):
         """ handle user register  """
         
+        # User registration is performed through the form "RegistrationForm"
         form = RegistrationForm(request.form)
+
+        # when the response is received and validated the form
         if request.method == 'POST' and form.validate():
             user = Usuarios()
 
@@ -176,15 +182,7 @@ class TemasView(MyView):
     column_labels = dict(num=u'Número', descripcion=u'Descripción')
     
     # default order for the records list
-    #column_default_sort = ('asignatura', 'num')
-    
-    """    
-    form_ajax_refs = {
-        'asignatura': {
-            'fields': ['asignatura']
-        }
-    }
-    """
+    column_default_sort = ('asignatura', 'num')
       
 
 class PreguntasView(MyView):
@@ -193,8 +191,10 @@ class PreguntasView(MyView):
     """
     column_exclude_list = ('usuario', 'verdadera', 'correcta')
     
+    # default order for the records list        
     column_default_sort = ('asignatura', 'num')
 
+    # help text for some columns
     column_descriptions = dict(
         asignatura='Asignatura a la que corresponde la pregunta',
         tipo='Preguntas a desarrollar, test o preguntas de tipo verdadero o falso')
@@ -208,6 +208,7 @@ class PreguntasView(MyView):
         ]
     }
 
+    # options to show the subdocuments for column "opciones"
     form_subdocuments = {
         'opciones': {
             'form_subdocuments': {

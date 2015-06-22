@@ -1,9 +1,9 @@
 Educaweb
 ========
 
-This is an application made as a project for obtaining an engineering degree in computer science from uned.
+This is an web application which has been made as a Final Degree Project for obtaining an Engineering Degree in Computer Science at UNED. The advisor of this Project has been the professor Antonio Robles-Gómez from UNED.
 
-To run this application:
+To download and run this application:
 
     Clone the repository:
 
