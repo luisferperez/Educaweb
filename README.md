@@ -22,4 +22,3 @@ To download and run this application:
     Run the application:
 
     python run.py
-

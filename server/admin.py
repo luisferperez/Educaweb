@@ -8,13 +8,12 @@ Administration Panel
 from flask import request, redirect, url_for
 from flask.ext import admin, login
 from flask_admin.contrib.mongoengine import ModelView
-
 from flask.ext.admin import Admin, expose, helpers
+from flask.ext.admin.form import rules
 
 from models import Usuarios, Temas, Preguntas, Asignaturas, Examenes
 from forms import LoginForm, RegistrationForm
 
-from flask.ext.admin.form import rules
 #==============================================================#
 # Initialization                                               #         
 #==============================================================#

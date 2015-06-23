@@ -9,6 +9,7 @@ Global values for application config
 DEBUG = False
 
 TITLE = 'EducaWeb'
+VERSION = "0.4"
 YEAR = '2014-2015'
 
 SECRET_KEY = "A0Zr98j/3yX R~XHH!jmN]LWX/,?RT"

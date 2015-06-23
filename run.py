@@ -8,9 +8,9 @@ Execute the application server
 from server.server import init_login, init_ddbb, app
 from server.admin import initialize_admin_component
 
-if __name__ == '__main__':
+if __name__ == '__main__': 
     
-    # Initialize ddbb    
+    # Initialize ddbb
     init_ddbb()
     
     # Initialize flask-login    

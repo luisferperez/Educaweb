@@ -23,9 +23,10 @@ def exportODT(examen, archivo):
     """ 
     Function to export the data exam to a odt file.
     The input data is the exam and the ODT file to write.
+    This function uses odfpy library
     """
     
-    # Extract data from exam    
+    # Extract data from exam
     asignatura = examen.asignatura
     nombre = examen.nombre
     preguntas = examen.preguntas
@@ -39,6 +40,8 @@ def exportODT(examen, archivo):
     textdoc.text.addElement(h)
     
     i = 1        
+
+    # an element is added to the object "textdoc" for each question    
     for pregunta in preguntas:
         p = P(text = str(i) + ".- " + str(pregunta.texto))
         textdoc.text.addElement(p)
@@ -50,7 +53,7 @@ def exportODT(examen, archivo):
                 p = P(text = texto)
                 textdoc.text.addElement(p)
                                         
-        # Para las preguntas tipo verdadero o falso
+        # For true or false questions
         elif pregunta.tipo == 2:
             texto = "A).- Verdadero"
             p = P(text = texto)
@@ -67,14 +70,21 @@ def exportODT(examen, archivo):
 
         i = i + 1
         
+    # Save complete file
     textdoc.save(archivo)
         
     return examen
 
 
 def exportODT2(examen, archivo):
+    """
+    Another way to export to a odt file.
+    In this case we use the zipfile and dom libraries 
+    to extract and parse the files from the odt file
+    that we use as model
+    """
     
-    # Saco los datos del examen
+    # Extract data from exam
     asignatura = examen.asignatura
     nombre = examen.nombre
     preguntas = examen.preguntas
@@ -116,7 +126,7 @@ def exportODT2(examen, archivo):
                     x.appendChild(txt)
                     p.appendChild(x)
                     
-                    # Para las preguntas tipo test
+                    # For test quiestions
                     if pregunta.tipo == 1:
                         for opcion in pregunta.opciones:
                             x = doc.createElement("text:p")
@@ -126,7 +136,7 @@ def exportODT2(examen, archivo):
                             x.appendChild(txt)
                             p.appendChild(x)
                                         
-                    # Para las preguntas tipo verdadero o falso
+                    # For true or false questions
                     elif pregunta.tipo == 2:
                         x = doc.createElement("text:p")
                         txt = doc.createTextNode("A).- Verdadero")
@@ -147,14 +157,20 @@ def exportODT2(examen, archivo):
                     
                 encontrado = True
                     
-    myfile.writestr('content.xml', doc.toprettyxml(encoding='utf-8')) # Hay que hacer el "encoding" para que no se produzcan errores con las ñ y otros carecteres
+    # You need to make the "encoding" to avoid errors with the ñ and other characters
+    myfile.writestr('content.xml', doc.toprettyxml(encoding='utf-8'))
     myfile.close()                
          
     return examen
 
 def exportPDF(examen, filePDF):
+    """ 
+    Function to export the data exam to a pdf file.
+    The input data is the exam and the PDF file to write.
+    This function uses reportlab library
+    """
     
-    # Saco los datos del examen
+    # Extract data from exam
     asignatura = examen.asignatura
     nombre = examen.nombre
     preguntas = examen.preguntas
@@ -166,17 +182,17 @@ def exportPDF(examen, filePDF):
     
     doc=SimpleDocTemplate(filePDF)
 
-    # Introduzco el nombre de la asignatura
+    # Put the name of the subject
     para = Paragraph("<u><b>"+str(asignatura)+"</b></u>", styles['Cabecera'])
     story.append(para)
     story.append(Spacer(0,20))
     
-    # Introduzco el nombre del examen
+    # Put the name of the exam
     para = Paragraph("<u>"+str(nombre)+"</u>", styles['Titulo'])
     story.append(para)
     story.append(Spacer(0,20))
 
-    # Introduzco las preguntas del examen  
+    # Put the exam questions
     i = 1         
     for pregunta in preguntas:
         texto = str(i) + ".- " + str(pregunta.texto)
@@ -184,7 +200,7 @@ def exportPDF(examen, filePDF):
         
         i = i + 1
         
-        # Para las preguntas tipo test
+        # For test questions
         if pregunta.tipo == 1:
             story.append(Spacer(0,7))
             for opcion in pregunta.opciones:
@@ -192,15 +208,15 @@ def exportPDF(examen, filePDF):
                 story.append(Paragraph(texto, styles["Normal"]))
                 story.append(Spacer(0,7))
         
-        # Para las preguntas tipo verdadero o falso
+        # For true or false questions
         elif pregunta.tipo == 2:
             texto = "A).- Verdadero"
             story.append(Paragraph(texto, styles["Normal"]))
             texto = "B).- Falso"
             story.append(Paragraph(texto, styles["Normal"]))
 
-        
         story.append(Spacer(0,40))
+
     doc.build(story)
 
     return examen
