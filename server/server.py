@@ -26,7 +26,7 @@ from tkMessageBox import showinfo, showerror
 app=Flask(__name__)
 app.config.from_object(config)
 
-# 
+# Initialize the MongoDB database
 db = MongoEngine()
 db.init_app(app)
 

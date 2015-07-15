@@ -8,7 +8,7 @@ de MongoDB
 """
 from mongoengine import Document, EmbeddedDocument, StringField, IntField, BooleanField, \
     ReferenceField, ListField, EmbeddedDocumentField, Q, queryset_manager, signals, \
-    SortedListField
+    EmailField, SortedListField
 from flask.ext import login
 
 def handler(event):
@@ -54,7 +54,7 @@ class Usuarios(Document):
     nombre = StringField(required=True, max_length=40)
     apellidos = StringField(max_length = 80)
     usuario = StringField(required=True, max_length=80, unique=True)
-    email = StringField(required=True, max_length=100)
+    email = EmailField(required=True, max_length=100)
     password = StringField(required=True, max_length=64)
     tipo = IntField(choices=TIPO)
     activado = BooleanField(default=False)
