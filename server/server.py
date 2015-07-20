@@ -42,7 +42,7 @@ def init_ddbb():
         # Grabo al usuario admin y a un profesor y a un alumno de prueba
         admin = Usuarios(nombre="admin", apellidos="", usuario="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True)
         admin.save()
-        profe = Usuarios(nombre="profe", apellidos="", usuario="profe1", password="profe1", email="profe1@uned.es", tipo=1, activado=True)
+        profe = Usuarios(nombre="profesor", apellidos="", usuario="profesor1", password="profe1", email="profe1@uned.es", tipo=1, activado=True)
         profe.save()
         alumno = Usuarios(nombre="alumno", apellidos="", usuario="alumno1", password="alumno1", email="alumno1@uned.es", tipo=2, activado=True)
         alumno.save()
@@ -120,7 +120,9 @@ def init_ddbb():
             asignatura.asignatura = asignaturas[i]
             asignatura.save()
             profe.asignaturas = profe.asignaturas.append(asignatura)
+            profe.save()
             alumno.asignaturas = alumno.asignaturas.append(asignatura)
+            alumno.save()
             num_pregunta = 1
             
             for j in range(len(temas[i])):

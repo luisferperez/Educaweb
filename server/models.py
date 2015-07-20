@@ -117,7 +117,18 @@ class Temas(Document):
 
     @queryset_manager
     def objects(doc_cls, queryset):
-       return queryset.filter(usuario=login.current_user.get_id()).order_by('num')
+        lista_asignaturas=login.current_user.get_asignaturas()
+        if lista_asignaturas:        
+            query = Q(asignatura= lista_asignaturas[0].get_id())
+            for l in lista_asignaturas[1:]:
+                query |= Q(asignatura=l.get_id())
+            query &= Q(usuario=login.current_user.get_id())
+            return queryset.filter(query)
+        else:
+            return queryset.filter(usuario=login.current_user.get_id().order_by('num'))
+
+        
+       #return queryset.filter(usuario=login.current_user.get_id()).order_by('num')
 
 
 class Opciones(EmbeddedDocument):
@@ -173,7 +184,7 @@ class Examenes(Document):
             query = Q(asignatura= lista_asignaturas[0].get_id())
             for l in lista_asignaturas[1:]:
                 query |= Q(asignatura=l.get_id())
-            query &= Q(publico=True)
+            query &= (Q(publico=True) | Q(usuario=login.current_user.get_id()))
             return queryset.filter(query)
         else:
             return queryset.filter(usuario=login.current_user.get_id())
