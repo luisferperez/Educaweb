@@ -42,14 +42,14 @@ def init_ddbb():
         # Grabo al usuario admin y a un profesor y a un alumno de prueba
         admin = Usuarios(nombre="admin", apellidos="", usuario="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True)
         admin.save()
-        profe = Usuarios(nombre="profesor", apellidos="", usuario="profesor1", password="profe1", email="profe1@uned.es", tipo=1, activado=True)
+        profe = Usuarios(nombre="profesor", apellidos="", usuario="profesor1", password="profe1", email="profesor1@uned.es", tipo=1, activado=True)
         profe.save()
         alumno = Usuarios(nombre="alumno", apellidos="", usuario="alumno1", password="alumno1", email="alumno1@uned.es", tipo=2, activado=True)
         alumno.save()
 
         # Registros de prueba -- BORRAR EN PRODUCCIÓN      
         asignaturas = ["Procesadores del lenguaje", "Sistemas Operativos", "Inteligencia Artificial", "Redes", "Sistemas Distribuidos"]
-        
+      
         temas = [ 
             ("Introducción", "Analisis Lexico", "Analisis sintactico"), 
             ("Fundamentos de los SO", "Sistemas Operativos multitarea"),
@@ -115,14 +115,14 @@ def init_ddbb():
             )
             ]
 
+        lista_asignaturas = []
         for i in range(len(asignaturas)):
             asignatura = Asignaturas()
             asignatura.asignatura = asignaturas[i]
             asignatura.save()
-            profe.asignaturas = profe.asignaturas.append(asignatura)
-            profe.save()
-            alumno.asignaturas = alumno.asignaturas.append(asignatura)
-            alumno.save()
+
+            lista_asignaturas.append(asignatura)
+
             num_pregunta = 1
             
             for j in range(len(temas[i])):
@@ -142,7 +142,7 @@ def init_ddbb():
                     
                     if pregunta.tipo == 1:
                         for opcion in preguntas[i][j][k][2]:
-                            pregunta.opciones = pregunta.opciones.append(opcion)
+                            pregunta.opciones.append(opcion)
                         pregunta.correcta = preguntas[i][j][k][3]
                     
                     if pregunta.tipo == 2:
@@ -154,6 +154,10 @@ def init_ddbb():
                     
                     num_pregunta = num_pregunta + 1
 
+        profe.asignaturas = lista_asignaturas
+        profe.save()
+        alumno.asignaturas = lista_asignaturas
+        alumno.save()
         
     #if num == 0:       
         #Usuarios(nombre="admin", apellidos="", usuario="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True).save()

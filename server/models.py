@@ -8,7 +8,7 @@ de MongoDB
 """
 from mongoengine import Document, EmbeddedDocument, StringField, IntField, BooleanField, \
     ReferenceField, ListField, EmbeddedDocumentField, Q, queryset_manager, signals, \
-    EmailField, SortedListField
+    EmailField, SortedListField, ValidationError, NULLIFY, CASCADE
 from flask.ext import login
 
 def handler(event):
@@ -108,8 +108,8 @@ class Usuarios(Document):
 class Temas(Document):
     num = IntField(required=True, unique_with = ('asignatura', 'usuario'))
     descripcion = StringField(max_length=100)
-    asignatura = ReferenceField(Asignaturas, reverse_delete_rule= 'NULLIFY')
-    usuario = ReferenceField(Usuarios, reverse_delete_rule= 'NULLIFY')
+    asignatura = ReferenceField(Asignaturas, reverse_delete_rule= NULLIFY)
+    usuario = ReferenceField(Usuarios, reverse_delete_rule= NULLIFY)
 
     # Required for administrative interface
     def __unicode__(self):
@@ -127,7 +127,14 @@ class Temas(Document):
         else:
             return queryset.filter(usuario=login.current_user.get_id().order_by('num'))
 
-        
+    """
+    def clean(self):
+        ""Make validations before save any document""
+        preguntas = Preguntas.objects(tema=self.id).count()
+        if preguntas > 0:
+            msg = 'No se puede grabar el tema.'
+            raise ValidationError(msg)
+    """
        #return queryset.filter(usuario=login.current_user.get_id()).order_by('num')
 
 
@@ -145,8 +152,8 @@ class Preguntas(Document):
 
     num = IntField(required=True, unique_with = ('asignatura', 'usuario'))    
     texto = StringField(required=True)
-    asignatura = ReferenceField(Asignaturas, reverse_delete_rule= 'NULLIFY')
-    tema = ReferenceField(Temas, reverse_delete_rule= 'NULLIFY')
+    asignatura = ReferenceField(Asignaturas, reverse_delete_rule= NULLIFY)
+    tema = ReferenceField(Temas, reverse_delete_rule= NULLIFY)
     tipo = IntField(choices=TIPO)
     # Solo para la opción de verdadero o falso    
     verdadera = BooleanField() 
@@ -155,7 +162,7 @@ class Preguntas(Document):
     correcta = StringField(max_length=1)
 
     #respuesta = StringField()
-    usuario = ReferenceField(Usuarios, reverse_delete_rule= 'NULLIFY')
+    usuario = ReferenceField(Usuarios, reverse_delete_rule= NULLIFY)
 
     @queryset_manager
     def objects(doc_cls, queryset):
@@ -168,10 +175,10 @@ class Preguntas(Document):
 @update_modified.apply
 class Examenes(Document):
     nombre = StringField(required=True, unique_with = ('asignatura', 'usuario'))
-    asignatura = ReferenceField(Asignaturas, reverse_delete_rule= 'NULLIFY')
+    asignatura = ReferenceField(Asignaturas, reverse_delete_rule= NULLIFY)
     preguntas = ListField(ReferenceField(Preguntas))
     publico = BooleanField()
-    usuario = ReferenceField(Usuarios, reverse_delete_rule= 'NULLIFY')    
+    usuario = ReferenceField(Usuarios, reverse_delete_rule= CASCADE)    
 
     @queryset_manager
     def objects(doc_cls, queryset):
