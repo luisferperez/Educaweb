@@ -18,6 +18,13 @@ from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
 from odf.opendocument import OpenDocumentText
 from odf.text import P, H
 
+def uni_text(text):
+    try:
+        text = unicode(text, 'utf-8')
+        text = str(text)
+    except TypeError:
+        return str(text)
+
 
 def exportODT(examen, archivo):
     """ 
@@ -43,20 +50,21 @@ def exportODT(examen, archivo):
 
     # an element is added to the object "textdoc" for each question    
     for pregunta in preguntas:
-        p = P(text = str(i) + ".- " + str(pregunta.texto))
+        texto = str(i) + ".- " + str(pregunta.texto.encode('utf-8'))  
+        p = P(text = texto)
         textdoc.text.addElement(p)
    
         # For test questions
         if pregunta.tipo == 1:
             for opcion in pregunta.opciones:                              
-                texto = opcion.letra + "). " + opcion.texto
-                p = P(text = texto)
+                texto = opcion.letra + "). " + opcion.texto.encode('utf-8')
+                p = P(text = texto.encode('utf-8'))
                 textdoc.text.addElement(p)
                                         
         # For true or false questions
         elif pregunta.tipo == 2:
             texto = "A).- Verdadero"
-            p = P(text = texto)
+            p = P(text = texto.encode('utf-8'))
             textdoc.text.addElement(p)
             
             texto = "B).- Falso"
@@ -122,7 +130,7 @@ def exportODT2(examen, archivo):
                 i = 1                        
                 for pregunta in preguntas:                      
                     x = doc.createElement("text:p")
-                    txt = doc.createTextNode(str(i) + ".- " + str(pregunta.texto))  
+                    txt = doc.createTextNode(str(i) + ".- " + pregunta.texto)
                     x.appendChild(txt)
                     p.appendChild(x)
                     
@@ -195,7 +203,7 @@ def exportPDF(examen, filePDF):
     # Put the exam questions
     i = 1         
     for pregunta in preguntas:
-        texto = str(i) + ".- " + str(pregunta.texto)
+        texto = str(i) + ".- " + str(pregunta.texto.encode('utf-8'))
         story.append(Paragraph(texto, styles["Normal"]))
         
         i = i + 1
@@ -204,7 +212,7 @@ def exportPDF(examen, filePDF):
         if pregunta.tipo == 1:
             story.append(Spacer(0,7))
             for opcion in pregunta.opciones:
-                texto = opcion.letra + ").- " + opcion.texto
+                texto = opcion.letra + ").- " + opcion.texto.encode('utf-8')
                 story.append(Paragraph(texto, styles["Normal"]))
                 story.append(Spacer(0,7))
         

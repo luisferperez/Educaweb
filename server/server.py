@@ -51,9 +51,9 @@ def init_ddbb():
         asignaturas = ["Procesadores del lenguaje", "Sistemas Operativos", "Inteligencia Artificial", "Redes", "Sistemas Distribuidos"]
       
         temas = [ 
-            ("Introducción", "Analisis Lexico", "Analisis sintactico"), 
+            ("Introducción", "Analisis Lexico", "Analisis sintáctico"), 
             ("Fundamentos de los SO", "Sistemas Operativos multitarea"),
-            ("Introducción a la IA", "Logica", "Sistemas Expertos"), 
+            ("Introducción a la IA", "Lógica", "Sistemas Expertos"), 
             ("Redes LAN", "TCP/IP", "ADSL"), 
             ("Fundamentos de los S.D.", "Comunicación entre procesos" )
             ]

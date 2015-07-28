@@ -42,10 +42,10 @@ class GeneraExamenForm(form.Form):
     TIPO = ((0, 'Desarrollo'), (1, 'Test'),(2, 'Verdadero o Falso'))
     MODO = ((0, 'Aleatorio'), (1, 'Preguntas por tema'))
 
-    nombre = fields.StringField('Nombre', [validators.required()])
+    nombre = fields.StringField('Nombre', [validators.required("Es necesario escribir un nombre para el examen")])
     asignatura = fields.SelectField('Asignatura:', [validators.required()])
     tipo_examen = fields.SelectField('Tipo de Examen:', coerce=int, choices=TIPO)
-    num_preguntas = fields.IntegerField(u'Número de preguntas:', [validators.required()])
+    num_preguntas = fields.IntegerField(u'Número de preguntas:', [validators.required(u"Debe especificar el número de preguntas que tendrá el examen")])
     modo = fields.SelectField('Modo de examen:', coerce=int, choices=MODO)
     publico = fields.BooleanField(u'¿Desea hacer público el examen?')
     

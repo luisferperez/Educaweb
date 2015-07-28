@@ -6,7 +6,7 @@
 Global values for application config
 """
 
-DEBUG = False
+DEBUG = True
 
 TITLE = 'EducaWeb'
 VERSION = "0.4"
