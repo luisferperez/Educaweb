@@ -48,20 +48,47 @@ def init_ddbb():
         alumno.save()
 
         # Registros de prueba -- BORRAR EN PRODUCCIÓN      
-        asignaturas = ["Procesadores del lenguaje", "Sistemas Operativos", "Inteligencia Artificial", "Redes", "Sistemas Distribuidos"]
+        asignaturas = ["Seguridad en las comunicaciones", "Procesadores del lenguaje", "Sistemas Operativos", "Inteligencia Artificial", "Redes", "Sistemas Distribuidos"]
       
         temas = [ 
-            ("Introducción", "Analisis Lexico", "Analisis sintáctico"), 
-            ("Fundamentos de los SO", "Sistemas Operativos multitarea"),
-            ("Introducción a la IA", "Lógica", "Sistemas Expertos"), 
-            ("Redes LAN", "TCP/IP", "ADSL"), 
-            ("Fundamentos de los S.D.", "Comunicación entre procesos" )
+            (u"El problema de la seguridad", u"La seguridad en los elementos físicos", u"Defensa básica ante ataques"),
+            (u"Introducción", u"Analisis Lexico", u"Analisis sintáctico"), 
+            (u"Fundamentos de los SO", u"Sistemas Operativos multitarea"),
+            (u"Introducción a la IA", u"Lógica", u"Sistemas Expertos"), 
+            (u"Redes LAN", "TCP/IP", "ADSL"), 
+            (u"Fundamentos de los S.D.", u"Comunicación entre procesos" )
             ]
             
         opcion1 = Opciones(letra="A", texto="opcion A")
         opcion2 = Opciones(letra="B", texto="opcion B")
+        op_seg1 = Opciones(letra="A", texto=u"Se debe comprar las mejores herramientas de seguridad disponibles en el mercado y formar a todo el personal en su uso")
+        op_seg2 = Opciones(letra="B", texto=u"Se debe contratar al hacker de más prestigio de la comunidad informática y hacerle responsable de la seguridad")
+        op_seg3 = Opciones(letra="C", texto=u"Se debe confiar en la suerte y hacer lo que pueda")
+        op_seg4 = Opciones(letra="D", texto=u"No hay manera de evitarlos completamente")
+        op_seg5 = Opciones(letra="A", texto=u"Debe ser completamente secreta, excepto para un grupo de élite")
+        op_seg6 = Opciones(letra="B", texto=u"Debe incluir mecanismos de respuesta, frente a posibles ataques")
+        op_seg7 = Opciones(letra="C", texto=u"Debe conseguir que los usuarios no tengan que conocerla")
+        op_seg8 = Opciones(letra="D", texto=u"Debe cubrir solo los aspectos de sistemas operativos de la organización")
+        op_seg9 = Opciones(letra="A", texto=u"Un sistema que permite, en tiempo real, detectar determinados tipos de ataques y alertar sobre ellos, a la vez que, en algunos casos, puede pararlos.")
+        op_seg10 = Opciones(letra="B", texto=u"Un sistema cerrado de TV, que consigue detectar a cualquier ladrón informático que trate de penetrar en la organización.")
+        op_seg11 = Opciones(letra="C", texto=u"Un sistema de localización de posibles atacantes en internet.")
+        op_seg12 = Opciones(letra="D", texto=u"Un sistema que permite conocer cualquier envío no deseado de información por las redes de comunicaciones.")
+        
 
         preguntas = [
+            (
+                (   (u"Para evitar completamente cualquier tipo de ataque informático a los sistemas:", 1, (op_seg1, op_seg2, op_seg3, op_seg4), "D"),
+                    (u"La política de seguridad de una organización debe tener alguna de las siguientes características:", 1, (op_seg5, op_seg6, op_seg7, op_seg8), "B"),
+                    (u"En el contexto de seguridad de las comunicaciones, un sistema de detección de intrusiones es:", 1, (op_seg9, op_seg10, op_seg11, op_seg12), "A"),
+                ),
+                (   ("pregunta 1 seguridad - a.lex.", 0),
+                    ("pregunta 2 seguridad - a-lex.", 0),
+                    ("pregunta 3 seguridad - a-lex.", 0)
+                ),
+                (   ("pregunta 1 seguridad - a.sint.", 0),
+                    ("pregunta 2 seguridad - a.sint.", 0)
+                )
+            ),
             (
                 (   ("pregunta 1 procesadores - introducción", 0),
                     ("pregunta 2 procesadores - introducción", 0)
