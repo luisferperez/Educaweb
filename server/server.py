@@ -10,15 +10,12 @@ from flask import Flask, request, render_template, redirect, session, url_for
 from flask.ext import login
 from flask.ext.mongoengine import MongoEngine
 from flask.ext.mail import Mail, Message
-
-from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes, Opciones
-from forms import GeneraExamenForm, ProfileForm
-
-from export import exportODT, exportODT2, exportPDF
-
 from tkFileDialog import asksaveasfilename
 from tkMessageBox import showinfo, showerror
 
+from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes, Opciones
+from forms import GeneraExamenForm, ProfileForm
+from export import exportODT, exportODT2, exportPDF
 
 #========================================#
 #    Creation of the Web Application     #

@@ -139,7 +139,7 @@ class UserView(ModelView):
     # fields in which the search is performed    
     column_searchable_list = ('nombre', 'usuario', 'email')
 
-    # Choices for the "tipo" column    
+    # Choices for the column of the user type
     column_choices = {
         'tipo': [
             (0, 'Administrador'),
@@ -161,7 +161,7 @@ class UserView(ModelView):
 
 class AsignaturasView(MyView):
     """
-    Asignaturas View. Entry view which lets administrators manage the subjects in the system.
+    Subjects View. Entry view which lets administrators manage the subjects in the system.
     """
 
     # columns which can perform search filter    
@@ -174,7 +174,7 @@ class AsignaturasView(MyView):
 
 class TemasView(MyView):
     """
-    Temas View. Entry view which lets teachers manage the chapters in the system.
+    Chapters View. Entry view which lets teachers manage the chapters in the system.
     """
     
     # Custom labels for some columns
@@ -186,7 +186,7 @@ class TemasView(MyView):
 
 class PreguntasView(MyView):
     """
-    Preguntas View. Entry view which lets teachers manage the questions in the system.
+    Questions View. Entry view which lets teachers manage the questions in the system.
     """
     column_exclude_list = ('usuario', 'verdadera', 'correcta')
     
@@ -198,7 +198,7 @@ class PreguntasView(MyView):
         asignatura='Asignatura a la que corresponde la pregunta',
         tipo='Preguntas a desarrollar, test o preguntas de tipo verdadero o falso')
     
-    # Choices for the "tipo" column
+    # Choices for the column of the question type
     column_choices = {
         'tipo': [
             (0, 'Desarrollo'), 

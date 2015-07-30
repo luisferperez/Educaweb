@@ -6,7 +6,6 @@
 Functions to export data from exams to ODT or PDF files
 """
 
-from xml.dom.minidom import parseString
 import zipfile, shutil
 
 # Imports from reportlab library for export to PDF files
@@ -14,16 +13,10 @@ from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.enums import TA_CENTER
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
 
-# Imports from odpf library for export to ODT files
+# Imports for export to ODT files
 from odf.opendocument import OpenDocumentText
 from odf.text import P, H
-
-def uni_text(text):
-    try:
-        text = unicode(text, 'utf-8')
-        text = str(text)
-    except TypeError:
-        return str(text)
+from xml.dom.minidom import parseString
 
 
 def exportODT(examen, archivo):
