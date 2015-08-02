@@ -2,13 +2,12 @@
 """ 
 @author: Luis Fdo. Pérez
 
-Módulo donde se definen los modelos de datos para la base de datos
-de MongoDB
+Module where data models are defined for the MongoDB database
 
 """
 from mongoengine import Document, EmbeddedDocument, StringField, IntField, BooleanField, \
     ReferenceField, ListField, EmbeddedDocumentField, Q, queryset_manager, signals, \
-    EmailField, SortedListField, ValidationError, NULLIFY, CASCADE
+    EmailField, ValidationError, NULLIFY, CASCADE #, SortedListField
 from flask.ext import login
 
 def handler(event):
@@ -27,6 +26,9 @@ def update_modified(sender, document):
         document.usuario = login.current_user.to_dbref()    
 
 class Asignaturas(Document):
+    """ 
+    Data model for the collection of subjects. 
+    """    
     asignatura = StringField(max_length=100, unique=True)
 
     def get_id(self):
@@ -36,19 +38,22 @@ class Asignaturas(Document):
     def __unicode__(self):
         return self.asignatura
 
-
     @queryset_manager
     def objects(doc_cls, queryset):
        if login.current_user.is_administrador():
            return queryset
-       else:
+       else:          
            lista_asignaturas=login.current_user.get_asignaturas()
-           query = Q(asignatura= str(lista_asignaturas[0]))
+           query = Q(asignatura= lista_asignaturas[0].get_id())
            for l in lista_asignaturas[1:]:
-               query |= Q(asignatura=str(l))
+               query |= Q(asignatura=l.get_id())
            return queryset.filter(query)
+           
 
 class Usuarios(Document):
+    """ 
+    Data model for the collection of users.
+    """      
     TIPO = ((0, 'Administrador'), (1, 'Profesor'),(2, 'Alumno'))    
     
     nombre = StringField(required=True, max_length=40)
@@ -104,12 +109,16 @@ class Usuarios(Document):
     def __unicode__(self):
         return self.usuario
 
+
 @update_modified.apply
 class Temas(Document):
+    """ 
+    Data model for the collection of chapters.
+    """      
     num = IntField(required=True, unique_with = ('asignatura', 'usuario'))
     descripcion = StringField(max_length=100)
-    asignatura = ReferenceField(Asignaturas, reverse_delete_rule= NULLIFY)
-    usuario = ReferenceField(Usuarios, reverse_delete_rule= NULLIFY)
+    asignatura = ReferenceField(Asignaturas, reverse_delete_rule = NULLIFY)
+    usuario = ReferenceField(Usuarios, reverse_delete_rule = NULLIFY)
 
     # Required for administrative interface
     def __unicode__(self):
@@ -125,20 +134,13 @@ class Temas(Document):
             query &= Q(usuario=login.current_user.get_id())
             return queryset.filter(query)
         else:
-            return queryset.filter(usuario=login.current_user.get_id().order_by('num'))
-
-    """
-    def clean(self):
-        ""Make validations before save any document""
-        preguntas = Preguntas.objects(tema=self.id).count()
-        if preguntas > 0:
-            msg = 'No se puede grabar el tema.'
-            raise ValidationError(msg)
-    """
-       #return queryset.filter(usuario=login.current_user.get_id()).order_by('num')
+            return queryset.filter(usuario=login.current_user.get_id())
 
 
 class Opciones(EmbeddedDocument):
+    """
+    Data model for options for multiple choice questions.
+    """
     letra = StringField(max_length=1, required=True)
     texto = StringField()
 
@@ -148,21 +150,22 @@ class Opciones(EmbeddedDocument):
 
 @update_modified.apply
 class Preguntas(Document):
+    """
+    Class that defines the data model for collection of questions.
+    """
     TIPO = ((0, 'Desarrollo'), (1, 'Test'), (2, 'Verdadero o Falso'))
 
     num = IntField(required=True, unique_with = ('asignatura', 'usuario'))    
     texto = StringField(required=True)
     asignatura = ReferenceField(Asignaturas, reverse_delete_rule= NULLIFY)
-    tema = ReferenceField(Temas, reverse_delete_rule= NULLIFY)
+    tema = ReferenceField(Temas, required=True, reverse_delete_rule= NULLIFY)
     tipo = IntField(choices=TIPO)
+    usuario = ReferenceField(Usuarios, reverse_delete_rule= NULLIFY)
     # Solo para la opción de verdadero o falso    
     verdadera = BooleanField() 
     # Solo para la opción de test
     opciones = ListField(EmbeddedDocumentField(Opciones))
     correcta = StringField(max_length=1)
-
-    #respuesta = StringField()
-    usuario = ReferenceField(Usuarios, reverse_delete_rule= NULLIFY)
 
     @queryset_manager
     def objects(doc_cls, queryset):
@@ -171,9 +174,25 @@ class Preguntas(Document):
     # Required for administrative interface
     def __unicode__(self):
         return str(self.asignatura) + " - " + str(self.num)
+        
+    
+    def clean(self):
+        """Make validations before save any document"""
+        if self.asignatura <> self.tema.asignatura:
+            msg = u'Error: La asignatura no se corresponde con la asignatura del tema seleccionado.'
+            raise ValidationError(msg)
+        
+        if self.tipo == 1 and len(self.opciones) < 2:
+            raise ValidationError(u'Debe especificar al menos dos opciones para una pregunta de tipo test.')
+            
+        if self.tipo == 1 and not self.correcta:
+            raise ValidationError(u'Debe especificar la respuesta correcta en una pregunta de tipo test.')
 
 @update_modified.apply
 class Examenes(Document):
+    """
+    Class that defines the data model for collection of exams.
+    """    
     nombre = StringField(required=True, unique_with = ('asignatura', 'usuario'))
     asignatura = ReferenceField(Asignaturas, reverse_delete_rule= NULLIFY)
     preguntas = ListField(ReferenceField(Preguntas))

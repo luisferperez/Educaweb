@@ -313,7 +313,7 @@ def genera_examen_view():
     """    
     form = GeneraExamenForm(request.form)   
 
-    asig=login.current_user.get_asignaturas()    
+    asig=login.current_user.get_asignaturas()
     form.asignatura.choices = [(g.asignatura, g.asignatura) for g in asig]
     
     if request.method == 'POST' and form.validate():        
@@ -328,7 +328,6 @@ def genera_examen_view():
 
         # Random mode    
         if form.modo.data==0:
-            #modo = "aleatorio"            
             lista_preguntas = random.sample(lista_preguntas, num_preguntas)
 
         else:
