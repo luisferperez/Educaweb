@@ -130,11 +130,11 @@ def init_ddbb():
                 ),
             ),
             (
-                (   ("pregunta 1 Sist. Op. - fundamentos", 1, (opcion1, opcion2), "B"),
-                    ("pregunta 2 Sist. Op. - fundamentos", 1, (opcion1, opcion2), "A")
+                (   ("pregunta 1 Sist. Dist. - fundamentos", 1, (opcion1, opcion2), "B"),
+                    ("pregunta 2 Sist. Dist. - fundamentos", 1, (opcion1, opcion2), "A")
                 ),
-                (   ("pregunta 1 Sist. Op. - S.O. Multitarea", 1, (opcion1, opcion2), "A"),
-                    ("pregunta 2 Sist. Op. - S.O. Multitarea", 1, (opcion1, opcion2), "B")
+                (   ("pregunta 1 Sist. Dist. - Com. entre procesos", 1, (opcion1, opcion2), "A"),
+                    ("pregunta 2 Sist. Dist. - Com. entre procesos", 1, (opcion1, opcion2), "B")
                 )
             )
             ]

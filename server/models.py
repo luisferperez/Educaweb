@@ -7,7 +7,7 @@ Module where data models are defined for the MongoDB database
 """
 from mongoengine import Document, EmbeddedDocument, StringField, IntField, BooleanField, \
     ReferenceField, ListField, EmbeddedDocumentField, Q, queryset_manager, signals, \
-    EmailField, ValidationError, NULLIFY, CASCADE #, SortedListField
+    EmailField, ValidationError, OperationError, NULLIFY, CASCADE, PULL, DENY #, SortedListField
 from flask.ext import login
 
 def handler(event):
@@ -63,7 +63,7 @@ class Usuarios(Document):
     password = StringField(required=True, max_length=64)
     tipo = IntField(choices=TIPO)
     activado = BooleanField(default=False)
-    asignaturas = ListField(ReferenceField(Asignaturas))
+    asignaturas = ListField(ReferenceField(Asignaturas, reverse_delete_rule = PULL))
     
     # Flask-Login integration
     def is_authenticated(self):
@@ -118,7 +118,10 @@ class Temas(Document):
     num = IntField(required=True, unique_with = ('asignatura', 'usuario'))
     descripcion = StringField(max_length=100)
     asignatura = ReferenceField(Asignaturas, reverse_delete_rule = NULLIFY)
-    usuario = ReferenceField(Usuarios, reverse_delete_rule = NULLIFY)
+    usuario = ReferenceField(Usuarios, reverse_delete_rule = CASCADE)
+
+    def get_id(self):
+        return str(self.id)
 
     # Required for administrative interface
     def __unicode__(self):
@@ -136,7 +139,12 @@ class Temas(Document):
         else:
             return queryset.filter(usuario=login.current_user.get_id())
 
-
+    @classmethod
+    def delete(self, **write_concern):
+        if Preguntas.objects(asignatura=self.asignatura.get_id()).count() > 0:
+            raise OperationError(u'Existen preguntas con este tema.')
+        #self.delete()
+        
 class Opciones(EmbeddedDocument):
     """
     Data model for options for multiple choice questions.
@@ -157,13 +165,13 @@ class Preguntas(Document):
 
     num = IntField(required=True, unique_with = ('asignatura', 'usuario'))    
     texto = StringField(required=True)
-    asignatura = ReferenceField(Asignaturas, reverse_delete_rule= NULLIFY)
-    tema = ReferenceField(Temas, required=True, reverse_delete_rule= NULLIFY)
+    asignatura = ReferenceField(Asignaturas, reverse_delete_rule= DENY)
+    tema = ReferenceField(Temas, required=True, reverse_delete_rule= DENY)
     tipo = IntField(choices=TIPO)
-    usuario = ReferenceField(Usuarios, reverse_delete_rule= NULLIFY)
-    # Solo para la opción de verdadero o falso    
+    usuario = ReferenceField(Usuarios, reverse_delete_rule= CASCADE)
+    # Only for true or false questions
     verdadera = BooleanField() 
-    # Solo para la opción de test
+    # Only for multiple choice questions
     opciones = ListField(EmbeddedDocumentField(Opciones))
     correcta = StringField(max_length=1)
 
