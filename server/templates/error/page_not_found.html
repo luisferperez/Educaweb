@@ -2,11 +2,25 @@
 
 {% block title %}Page Not Found{% endblock title %}
 
-{% block main %}
+{% block body %}
     <div class="container">
-        <div class="hero-unit">
-            <h2>Welcome!</h2>
-            <p>Sorry for your inconveniece. This page is not found.</<p>
+        <div class="row"> 
+        {% block menu %}
+            {{ super() }}
+        {% endblock menu %}
+
+            <div class="col-md-10">
+                <div class="page-header">
+                    <h2 style="color:blue">¡Error!</h2>
+                </div>
+                <p><div class="alert alert-danger" role="alert">
+                <p>Sentimos los incovenientes. Esta página no se encuentra o ha sido eliminada.</p>
+                </div></p>
+
+                <br><br>                
+                <br>
+            </div>
         </div>
     </div>
-{% endblock main %}
+
+{% endblock body %}

@@ -12,6 +12,7 @@ from flask.ext.mongoengine import MongoEngine
 from flask.ext.mail import Mail, Message
 from tkFileDialog import asksaveasfilename
 from tkMessageBox import showinfo, showerror
+from mongoengine import OperationError
 
 from models import Usuarios, Asignaturas, Temas, Preguntas, Examenes, Opciones
 from forms import GeneraExamenForm, ProfileForm
@@ -306,6 +307,11 @@ def about_view():
 def error_not_found(error):
     return render_template('error/page_not_found.html'), 404
 
+@app.errorhandler(OperationError)
+def error_mongo(e):
+    msg_error = u'El documento no puede ser borrado por existir otros documentos relacionados.'
+    return render_template('error/error_msg.html', error=msg_error)
+
 @app.route('/genexa', methods=('GET', 'POST'))
 def genera_examen_view():
     """
@@ -314,6 +320,10 @@ def genera_examen_view():
     form = GeneraExamenForm(request.form)   
 
     asig=login.current_user.get_asignaturas()
+    if not asig:
+        msg_error = u"El usuario no tiene actualmente asignada ninguna asignatura, por lo que no \
+        es posible generar exámenes de forma automática."
+        return render_template('error/error_msg.html', error=msg_error)
     form.asignatura.choices = [(g.asignatura, g.asignatura) for g in asig]
     
     if request.method == 'POST' and form.validate():        

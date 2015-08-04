@@ -7,7 +7,7 @@ Module where data models are defined for the MongoDB database
 """
 from mongoengine import Document, EmbeddedDocument, StringField, IntField, BooleanField, \
     ReferenceField, ListField, EmbeddedDocumentField, Q, queryset_manager, signals, \
-    EmailField, ValidationError, OperationError, NULLIFY, CASCADE, PULL, DENY #, SortedListField
+    EmailField, ValidationError, CASCADE, PULL, DENY #, SortedListField
 from flask.ext import login
 
 def handler(event):
@@ -42,13 +42,12 @@ class Asignaturas(Document):
     def objects(doc_cls, queryset):
        if login.current_user.is_administrador():
            return queryset
-       else:          
+       else:
            lista_asignaturas=login.current_user.get_asignaturas()
-           query = Q(asignatura= lista_asignaturas[0].get_id())
+           query = Q(asignatura= str(lista_asignaturas[0]))
            for l in lista_asignaturas[1:]:
-               query |= Q(asignatura=l.get_id())
+               query |= Q(asignatura=str(l))
            return queryset.filter(query)
-           
 
 class Usuarios(Document):
     """ 
@@ -117,7 +116,7 @@ class Temas(Document):
     """      
     num = IntField(required=True, unique_with = ('asignatura', 'usuario'))
     descripcion = StringField(max_length=100)
-    asignatura = ReferenceField(Asignaturas, reverse_delete_rule = NULLIFY)
+    asignatura = ReferenceField(Asignaturas, reverse_delete_rule = DENY)
     usuario = ReferenceField(Usuarios, reverse_delete_rule = CASCADE)
 
     def get_id(self):
@@ -139,11 +138,13 @@ class Temas(Document):
         else:
             return queryset.filter(usuario=login.current_user.get_id())
 
-    @classmethod
+    """
+    #@classmethod
     def delete(self, **write_concern):
-        if Preguntas.objects(asignatura=self.asignatura.get_id()).count() > 0:
-            raise OperationError(u'Existen preguntas con este tema.')
-        #self.delete()
+        preguntas = Preguntas.objects(tema=self.get_id()).count()
+        if preguntas > 0:
+            raise OperationError(u'Existen ' + str(preguntas) + ' preguntas con este tema.')
+    """
         
 class Opciones(EmbeddedDocument):
     """
@@ -202,8 +203,8 @@ class Examenes(Document):
     Class that defines the data model for collection of exams.
     """    
     nombre = StringField(required=True, unique_with = ('asignatura', 'usuario'))
-    asignatura = ReferenceField(Asignaturas, reverse_delete_rule= NULLIFY)
-    preguntas = ListField(ReferenceField(Preguntas))
+    asignatura = ReferenceField(Asignaturas, reverse_delete_rule= DENY)
+    preguntas = ListField(ReferenceField(Preguntas, reverse_delete_rule= DENY))
     publico = BooleanField()
     usuario = ReferenceField(Usuarios, reverse_delete_rule= CASCADE)    
 
