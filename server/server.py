@@ -312,6 +312,8 @@ def error_mongo(e):
     msg_error = u'El documento no puede ser borrado por existir otros documentos relacionados.'
     return render_template('error/error_msg.html', error=msg_error)
 
+
+
 @app.route('/genexa', methods=('GET', 'POST'))
 def genera_examen_view():
     """

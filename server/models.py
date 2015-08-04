@@ -7,7 +7,7 @@ Module where data models are defined for the MongoDB database
 """
 from mongoengine import Document, EmbeddedDocument, StringField, IntField, BooleanField, \
     ReferenceField, ListField, EmbeddedDocumentField, Q, queryset_manager, signals, \
-    EmailField, ValidationError, CASCADE, PULL, DENY #, SortedListField
+    EmailField, ValidationError, CASCADE, PULL, DENY
 from flask.ext import login
 
 def handler(event):
