@@ -39,11 +39,11 @@ def init_ddbb():
         
         # Grabo al usuario admin y a un profesor y a un alumno de prueba
         admin = Usuarios(nombre="admin", apellidos="", usuario="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True)
-        admin.save()
+        admin.save(validate=False)
         profe = Usuarios(nombre="profesor", apellidos="", usuario="profesor1", password="profe1", email="profesor1@uned.es", tipo=1, activado=True)
-        profe.save()
+        profe.save(validate=False)
         alumno = Usuarios(nombre="alumno", apellidos="", usuario="alumno1", password="alumno1", email="alumno1@uned.es", tipo=2, activado=True)
-        alumno.save()
+        alumno.save(validate=False)
 
         # Registros de prueba -- BORRAR EN PRODUCCIÓN      
         asignaturas = ["Seguridad en las comunicaciones", "Procesadores del lenguaje", "Sistemas Operativos", "Inteligencia Artificial", "Redes", "Sistemas Distribuidos"]
@@ -180,9 +180,9 @@ def init_ddbb():
                     num_pregunta = num_pregunta + 1
 
         profe.asignaturas = lista_asignaturas
-        profe.save()
+        profe.save(validate=False)
         alumno.asignaturas = lista_asignaturas
-        alumno.save()
+        alumno.save(validate=False)
         
     #if num == 0:       
         #Usuarios(nombre="admin", apellidos="", usuario="admin", password="educaweb", email="admin@uned.es", tipo=0, activado=True).save()

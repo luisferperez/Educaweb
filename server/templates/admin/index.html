@@ -23,8 +23,6 @@
                       <li><a href="{{ url_for('admin.login_view') }}">Entrar a la aplicación</a></li>
                       <li><a href="{{ url_for('admin.register_view') }}">Registrar nuevo usuario</a></li>
                   {% endif %}
-                  <li><a href="{{ url_for('contact_view') }}">Datos de Contacto</a></li>
-                  <li><a href="{{ url_for('about_view') }}">Acerca de..</a></li>
                 </ul>
             </div>
 
@@ -33,7 +31,7 @@
                     {% if current_user.is_activado() %}
                         <!-- Main jumbotron for a primary marketing message or call to action -->
                         <div class="jumbotron">
-                            <h3>Panel de Administración</h3>
+                            <h2>Panel de Administración</h2>
                             <p>En esta parte podrá gestionar los principales datos de la aplicación.
                             Seleccione en el menú de la izquierda los datos que desee consultar, modificar o eliminar de la base de datos.
                         </div>

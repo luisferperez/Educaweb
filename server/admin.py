@@ -157,7 +157,7 @@ class UserView(ModelView):
     # this view is only accessible by administrators
     def is_accessible(self):
         return login.current_user.is_authenticated() and login.current_user.is_administrador()
-
+        
 
 class AsignaturasView(MyView):
     """

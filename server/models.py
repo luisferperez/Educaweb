@@ -7,8 +7,9 @@ Module where data models are defined for the MongoDB database
 """
 from mongoengine import Document, EmbeddedDocument, StringField, IntField, BooleanField, \
     ReferenceField, ListField, EmbeddedDocumentField, Q, queryset_manager, signals, \
-    EmailField, ValidationError, CASCADE, PULL, DENY
+    EmailField, ValidationError, CASCADE, PULL, DENY, NULLIFY
 from flask.ext import login
+from flask.ext.admin import helpers
 
 def handler(event):
     """Signal decorator to allow use of callback functions as class decorators."""
@@ -44,10 +45,13 @@ class Asignaturas(Document):
            return queryset
        else:
            lista_asignaturas=login.current_user.get_asignaturas()
-           query = Q(asignatura= str(lista_asignaturas[0]))
-           for l in lista_asignaturas[1:]:
-               query |= Q(asignatura=str(l))
-           return queryset.filter(query)
+           if lista_asignaturas:
+               query = Q(asignatura= str(lista_asignaturas[0]))
+               for l in lista_asignaturas[1:]:
+                   query |= Q(asignatura=str(l))
+               return queryset.filter(query)
+           else:
+               return
 
 class Usuarios(Document):
     """ 
@@ -62,8 +66,8 @@ class Usuarios(Document):
     password = StringField(required=True, max_length=64)
     tipo = IntField(choices=TIPO)
     activado = BooleanField(default=False)
-    asignaturas = ListField(ReferenceField(Asignaturas, reverse_delete_rule = PULL))
-    
+    asignaturas = ListField(ReferenceField(Asignaturas, reverse_delete_rule = PULL), default=())
+
     # Flask-Login integration
     def is_authenticated(self):
         return True
@@ -108,6 +112,12 @@ class Usuarios(Document):
     def __unicode__(self):
         return self.usuario
 
+    
+    def clean(self):
+        """Make validations before save any document"""
+        a = helpers.get_form_data()
+        if a.getlist('asignaturas')== []:
+            self.asignaturas = []            
 
 @update_modified.apply
 class Temas(Document):
@@ -137,14 +147,8 @@ class Temas(Document):
             return queryset.filter(query)
         else:
             return queryset.filter(usuario=login.current_user.get_id())
-
-    """
-    #@classmethod
-    def delete(self, **write_concern):
-        preguntas = Preguntas.objects(tema=self.get_id()).count()
-        if preguntas > 0:
-            raise OperationError(u'Existen ' + str(preguntas) + ' preguntas con este tema.')
-    """
+    
+  
         
 class Opciones(EmbeddedDocument):
     """
@@ -166,7 +170,7 @@ class Preguntas(Document):
 
     num = IntField(required=True, unique_with = ('asignatura', 'usuario'))    
     texto = StringField(required=True)
-    asignatura = ReferenceField(Asignaturas, reverse_delete_rule= DENY)
+    asignatura = ReferenceField(Asignaturas, required=True, reverse_delete_rule = CASCADE)
     tema = ReferenceField(Temas, required=True, reverse_delete_rule= DENY)
     tipo = IntField(choices=TIPO)
     usuario = ReferenceField(Usuarios, reverse_delete_rule= CASCADE)
@@ -203,8 +207,8 @@ class Examenes(Document):
     Class that defines the data model for collection of exams.
     """    
     nombre = StringField(required=True, unique_with = ('asignatura', 'usuario'))
-    asignatura = ReferenceField(Asignaturas, reverse_delete_rule= DENY)
-    preguntas = ListField(ReferenceField(Preguntas, reverse_delete_rule= DENY))
+    asignatura = ReferenceField(Asignaturas, required=True, reverse_delete_rule=CASCADE)
+    preguntas = ListField(ReferenceField(Preguntas, reverse_delete_rule=PULL))
     publico = BooleanField()
     usuario = ReferenceField(Usuarios, reverse_delete_rule= CASCADE)    
 
@@ -230,3 +234,10 @@ class Examenes(Document):
 
     def get_id(self):
         return str(self.id)
+        
+    def clean(self):
+        """Make validations before save any document"""
+        a = helpers.get_form_data()
+        if a.getlist('preguntas')== []:
+            self.preguntas = []            
+        
