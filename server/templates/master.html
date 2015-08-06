@@ -46,7 +46,8 @@
                                 <li><a href="{{ url_for('genera_examen_view') }}">Generar Exámenes</a></li>
                                 <li class="divider"></li>
                             {% endif %}
-                                <li><a href="{{ url_for('examenes_view') }}">Realizar Examenes</a></li>
+                                <li><a href="{{ url_for('examenes_view') }}">Realizar Exámenes</a></li>
+                                <li><a href="/examenes/export">Exportar Exámenes</a></li>
                             </ul>
                         </li>
                         {% endif %}
@@ -107,9 +108,9 @@
         <div class="container">
             {% block body %}
             {% block menu %}
-            <div class="col-md-2" role="navigation" style="background-color:lavender;">
+            <div class="col-md-2" role="navigation" style="background-color:lightcyan;">
                 <ul class="nav nav-pills nav-stacked">
-                  <li class="active"><a href="#">Menú</a></li>
+                  <li class="active"><a style="background-color:darkcyan;" href="#">Menú</a></li>
                   {% if current_user.is_authenticated() %}
                     {% if current_user.is_activado() and not current_user.is_administrador() %}
                       <li class="dropdown">

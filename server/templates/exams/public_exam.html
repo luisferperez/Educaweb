@@ -26,7 +26,12 @@
               <td>{{ ex.asignatura }}</td>
               <td>{{ ex.usuario.get_nombre_ape() }}</td>
               <td>{{ ex.tipo }}</td>
-              <td><input type="submit" formaction="/examenes/{{ ex.asignatura }}/{{ ex.nombre }}/{{ ex.usuario }}"  method="POST" value="Ver"></td>
+                {% if export %}
+                    <td><input type="image" formaction="/export2/1/{{ ex.id }}"  method="POST" src="/static/img/writer.gif" alt="Exportar a ODT"></td>
+                    <td><input type="image" formaction="/export_pdf/1/{{ ex.id }}"  method="POST" src="/static/img/pdf.gif" alt="Exportar a PDF"></td>
+                {% else %}
+                    <td><input type="submit" formaction="/examenes/{{ ex.asignatura }}/{{ ex.nombre }}/{{ ex.usuario }}"  method="POST" value="Ver"></td>      
+                {% endif %}
             </tr>
         {% endfor %}
       </tbody>

@@ -8,7 +8,7 @@
         <div class="row"> 
             <div class="col-md-2" role="navigation" style="background-color:lavender;">
                 <ul class="nav nav-pills nav-stacked">
-                  <li class="active"><a href="#">Menú</a></li>
+                  <li class="active" ><a href="#">Menú</a></li>
                   {% if current_user.is_authenticated() %}
                     {% if current_user.is_activado() %}            
                         {% for item in admin_view.admin.menu() %}
@@ -30,7 +30,7 @@
                 {% if current_user.is_authenticated() %}            
                     {% if current_user.is_activado() %}
                         <!-- Main jumbotron for a primary marketing message or call to action -->
-                        <div class="jumbotron">
+                        <div class="jumbotron" style="background-color:lavender;">
                             <h2>Panel de Administración</h2>
                             <p>En esta parte podrá gestionar los principales datos de la aplicación.
                             Seleccione en el menú de la izquierda los datos que desee consultar, modificar o eliminar de la base de datos.
