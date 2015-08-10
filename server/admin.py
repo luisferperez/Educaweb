@@ -99,7 +99,6 @@ class MyView(ModelView):
     """ 
     View that will be used as base for other views. 
     """
-    
     # the "usuario" column is not displayed
     column_exclude_list = ("usuario")
     form_excluded_columns = ("usuario")
@@ -121,7 +120,6 @@ class UserView(ModelView):
     """
     Users View. Entry view which lets us manage the users in the system.
     """
-    
     # the "password" column is not displayed
     column_exclude_list = ("password")
     form_excluded_columns = ("password")
@@ -163,7 +161,6 @@ class AsignaturasView(MyView):
     """
     Subjects View. Entry view which lets administrators manage the subjects in the system.
     """
-
     # columns which can perform search filter    
     column_filters = ['asignatura']
     
@@ -176,7 +173,6 @@ class TemasView(MyView):
     """
     Chapters View. Entry view which lets teachers manage the chapters in the system.
     """
-    
     # Custom labels for some columns
     column_labels = dict(num=u'Número', descripcion=u'Descripción')
     
@@ -198,7 +194,7 @@ class PreguntasView(MyView):
         asignatura='Asignatura a la que corresponde la pregunta',
         tipo='Preguntas a desarrollar, test o preguntas de tipo verdadero o falso')
     
-    # Choices for the column of the question type
+    # choices for the column of the question type
     column_choices = {
         'tipo': [
             (0, 'Desarrollo'), 

@@ -39,28 +39,27 @@ def exportODT(examen, archivo):
     h = H(outlinelevel=4, text=nombre)
     textdoc.text.addElement(h)
     
-    i = 1        
-
-    # an element is added to the object "textdoc" for each question    
+    # an element is added to the object "textdoc" for each question
+    i = 1
     for pregunta in preguntas:
-        texto = str(i) + ".- " + str(pregunta.texto.encode('utf-8'))  
+        texto = str(i) + ".- " + pregunta.texto
         p = P(text = texto)
         textdoc.text.addElement(p)
    
         # For test questions
         if pregunta.tipo == 1:
-            for opcion in pregunta.opciones:                              
-                texto = opcion.letra + "). " + opcion.texto.encode('utf-8')
-                p = P(text = texto.encode('utf-8'))
+            for opcion in pregunta.opciones:
+                texto = opcion.letra + ") " + opcion.texto
+                p = P(text = texto)
                 textdoc.text.addElement(p)
                                         
         # For true or false questions
         elif pregunta.tipo == 2:
-            texto = "A).- Verdadero"
+            texto = "A) Verdadero"
             p = P(text = texto.encode('utf-8'))
             textdoc.text.addElement(p)
             
-            texto = "B).- Falso"
+            texto = "B) Falso"
             p = P(text = texto)
             textdoc.text.addElement(p)
             
@@ -205,15 +204,16 @@ def exportPDF(examen, filePDF):
         if pregunta.tipo == 1:
             story.append(Spacer(0,7))
             for opcion in pregunta.opciones:
-                texto = opcion.letra + ").- " + opcion.texto.encode('utf-8')
+                texto = opcion.letra + ") " + opcion.texto
+                texto = str(texto.encode('utf-8'))
                 story.append(Paragraph(texto, styles["Normal"]))
                 story.append(Spacer(0,7))
         
         # For true or false questions
         elif pregunta.tipo == 2:
-            texto = "A).- Verdadero"
+            texto = "A) Verdadero"
             story.append(Paragraph(texto, styles["Normal"]))
-            texto = "B).- Falso"
+            texto = "B) Falso"
             story.append(Paragraph(texto, styles["Normal"]))
 
         story.append(Spacer(0,40))

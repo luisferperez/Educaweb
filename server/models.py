@@ -148,8 +148,6 @@ class Temas(Document):
         else:
             return queryset.filter(usuario=login.current_user.get_id())
     
-  
-        
 class Opciones(EmbeddedDocument):
     """
     Data model for options for multiple choice questions.
@@ -238,6 +236,6 @@ class Examenes(Document):
     def clean(self):
         """Make validations before save any document"""
         a = helpers.get_form_data()
-        if a.getlist('preguntas')== []:
+        if a.getlist('preguntas') == []:
             self.preguntas = []            
         

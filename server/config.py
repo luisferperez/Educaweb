@@ -3,10 +3,10 @@
 @author: Luis Fdo. Pérez
 @co-authors: 
 
-Global values for application config
+Global values for application configuration
 """
 
-DEBUG = True
+DEBUG = False
 
 TITLE = 'EducaWeb'
 VERSION = "0.4"
