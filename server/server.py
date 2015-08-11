@@ -46,19 +46,17 @@ def init_ddbb():
         alumno.save(clean=False)
 
         # test records    
-        asignaturas = ["Seguridad en las comunicaciones", "Procesadores del lenguaje", "Sistemas Operativos", "Inteligencia Artificial", "Redes", "Sistemas Distribuidos"]
+        asignaturas = ["Seguridad en las comunicaciones", "Sistemas Distribuidos", "Procesadores del lenguaje", "Sistemas Operativos", "Inteligencia Artificial", "Redes"]
       
         temas = [ 
             (u"El problema de la seguridad", u"La seguridad en los elementos físicos", u"Defensa básica ante ataques"),
+            (u"Fundamentos de los S.D.", u"Comunicación entre procesos", u"Tema 3"),
             (u"Introducción", u"Analisis Lexico", u"Analisis sintáctico"), 
             (u"Fundamentos de los SO", u"Sistemas Operativos multitarea"),
             (u"Introducción a la IA", u"Lógica", u"Sistemas Expertos"), 
-            (u"Redes LAN", "TCP/IP", "ADSL"), 
-            (u"Fundamentos de los S.D.", u"Comunicación entre procesos" )
+            (u"Redes LAN", "TCP/IP", "ADSL")
             ]
             
-        opcion1 = Opciones(letra="A", texto="opcion A")
-        opcion2 = Opciones(letra="B", texto="opcion B")
         op_seg1 = Opciones(letra="A", texto=u"Se debe comprar las mejores herramientas de seguridad disponibles en el mercado y formar a todo el personal en su uso")
         op_seg2 = Opciones(letra="B", texto=u"Se debe contratar al hacker de más prestigio de la comunidad informática y hacerle responsable de la seguridad")
         op_seg3 = Opciones(letra="C", texto=u"Se debe confiar en la suerte y hacer lo que pueda")
@@ -71,7 +69,6 @@ def init_ddbb():
         op_seg10 = Opciones(letra="B", texto=u"Un sistema cerrado de TV, que consigue detectar a cualquier ladrón informático que trate de penetrar en la organización.")
         op_seg11 = Opciones(letra="C", texto=u"Un sistema de localización de posibles atacantes en internet.")
         op_seg12 = Opciones(letra="D", texto=u"Un sistema que permite conocer cualquier envío no deseado de información por las redes de comunicaciones.")
-        
         op_seg13 = Opciones(letra="A", texto=u"Porque implementan hasta el nivel 3 de la arquitectura OSI, y los hubs solo hasta el nivel 1.")
         op_seg14 = Opciones(letra="B", texto=u"No son necesariamente más seguros. Depende de su configuración concreta.")
         op_seg15 = Opciones(letra="C", texto=u"Tienen mecanismos físicos de seguridad adicionales.")
@@ -97,6 +94,9 @@ def init_ddbb():
         op_seg35 = Opciones(letra="C", texto=u"2 clases distintas: mensajes de aplicaciones con transporte TCP y de aplicaciones con transporte UDP.")
         op_seg36 = Opciones(letra="D", texto=u"Muchas clases distintas, dependiendo de la aplicación y el protocolo de encaminamiento.")
 
+        opcion1 = Opciones(letra="A", texto="opcion A")
+        opcion2 = Opciones(letra="B", texto="opcion B")
+
         preguntas = [
             (
                 (   (u"Para evitar completamente cualquier tipo de ataque informático a los sistemas:", 1, (op_seg1, op_seg2, op_seg3, op_seg4), "D"),
@@ -111,6 +111,23 @@ def init_ddbb():
                     (u"La seguridad de los datos frente a accesos no autorizados la garantiza cualquier sistema de ficheros de cualquier sistema operativo:", 1, (op_seg29, op_seg30, op_seg31, op_seg32), "B"),
                     (u"Los mensajes IP pueden ser de:", 1, (op_seg33, op_seg34, op_seg35, op_seg36), "B"),
                 )
+            ),
+            (
+                (   (u"La computación móvil es la realización de tareas de cómputo mientras el usuario está en movimiento o en otro lugar distinto a su entorno habitual.", 2, True),
+                    (u"La computación ubicua requiere que los dispositivos estén fuera de su entorno habitual", 2, False),
+                    (u"Un servicio es la parte de un sistema de computadores que gestiona una colección de recursos relacionados y presenta una funcionalidad a los usuario y aplicaciones.", 2, True),
+                    (u"El servidor es quien interpreta el texto HTML y el navegador es quien informa al servidor sobre el tipo de contenido que devuelve.", 2, False),
+                    (u"El propósito de un URL es identificar un recurso de tal forma que permita al navegador localizarlo en los servidores web.", 2, True)
+                ),
+                (   (u"La comunicación usando UDP adolece de fallos por omisión.", 2, True),
+                    (u"La comunicación usando TCP garantiza la entrega ordenada del mensaje.", 2, True),
+                    (u"Sun RPC implementa el modelo de programación basado en invocación a un método remoto.", 2, False)
+                ),
+                (   (u"Los sistemas de archivos no son responsables de la protección de los archivos.", False),
+                    (u"En un sistema de archivos distribuido, los cambios en un archivo por un cliente no deben interferir con la operación de otros clientes que acceden o cambian simultáneamente el mismo archivo.", 2, True),
+                    (u"En un sistema de archivos distribuido, un archivo puede estar representado por varias copias de su contenido en diferentes ubicaciones.", 2, True),
+                    (u"En AFS se tranfieren archivos completos entre los computadores del servidor y del cliente y haciendo caché de ellos entre los servidores hasta que el cliente reciba una versión más actualizada.", 2, False)
+                )                
             ),
             (
                 (   ("pregunta 1 procesadores - introducción", 0),
@@ -154,14 +171,6 @@ def init_ddbb():
                 (   ("pregunta 1 Redes - ADSL", 2, True),
                     ("pregunta 2 Redes - ADSL", 2, True),
                 ),
-            ),
-            (
-                (   ("pregunta 1 Sist. Dist. - fundamentos", 1, (opcion1, opcion2), "B"),
-                    ("pregunta 2 Sist. Dist. - fundamentos", 1, (opcion1, opcion2), "A")
-                ),
-                (   ("pregunta 1 Sist. Dist. - Com. entre procesos", 1, (opcion1, opcion2), "A"),
-                    ("pregunta 2 Sist. Dist. - Com. entre procesos", 1, (opcion1, opcion2), "B")
-                )
             )
             ]
 
