@@ -24,8 +24,18 @@ def handler(event):
 @handler(signals.pre_save)
 def update_modified(sender, document):
     if login.current_user:    
-        document.usuario = login.current_user.to_dbref()    
+        document.usuario = login.current_user.to_dbref()
 
+@handler(signals.pre_delete)
+def delete_asig(sender, document):
+    existen = Preguntas.todas(asignatura=document.get_id()).count()
+    if existen > 0:
+        print "Hay preguntas:", existen
+    else:
+        print "No hay preguntas.", existen
+
+
+@delete_asig.apply
 class Asignaturas(Document):
     """ 
     Data model for the collection of subjects. 
@@ -53,6 +63,17 @@ class Asignaturas(Document):
            else:
                return
 
+    @classmethod
+    def pre_delete(cls, sender, document, **kwargs):
+        existen = Preguntas.objects(asignatura=document.get_id()).count()
+        print document.get_id()
+        if existen > 0:
+            print "Hay preguntas:", existen
+        else:
+            print "No hay preguntas.", existen
+
+#signals.pre_delete.connect(Asignaturas.pre_delete, sender=Asignaturas)
+                
 class Usuarios(Document):
     """ 
     Data model for the collection of users.
@@ -181,6 +202,10 @@ class Preguntas(Document):
     @queryset_manager
     def objects(doc_cls, queryset):
        return queryset.filter(usuario=login.current_user.get_id())
+
+    @queryset_manager
+    def todas(doc_cls, queryset):
+       return queryset
 
     # Required for administrative interface
     def __unicode__(self):
