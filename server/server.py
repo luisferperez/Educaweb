@@ -289,7 +289,7 @@ def genera_examen_view():
         asignatura = Asignaturas.objects(asignatura=form.asignatura.data).first()
         tipo = form.tipo_examen.data
         
-        lista_preguntas = Preguntas.objects(asignatura= asignatura.get_id(), tipo=tipo)
+        lista_preguntas = Preguntas.user_objects(asignatura= asignatura.get_id(), tipo=tipo)
         num_preguntas = form.num_preguntas.data
         nombre = form.nombre.data
         
@@ -304,13 +304,13 @@ def genera_examen_view():
         else:
             lista = []
             lista_preguntas = []
-            lista_temas = Temas.objects(asignatura = asignatura.get_id())
+            lista_temas = Temas.user_objects(asignatura = asignatura.get_id())
             num_temas = len(lista_temas)
             
             # A list of questions is created for each chapter and randomly rearranges
             # and are included as well in another list
             for tema in lista_temas:
-                preguntas = Preguntas.objects(asignatura= asignatura.get_id(), tipo=tipo, tema=tema)
+                preguntas = Preguntas.user_objects(asignatura= asignatura.get_id(), tipo=tipo, tema=tema)
                 preguntas = random.sample(preguntas, len(preguntas))
                 lista.append(preguntas)
             random.shuffle(lista)
@@ -462,6 +462,7 @@ def export_odt(exam=None, template=None, modo=None):
     else:
         showinfo('Proceso cancelado', 'El proceso ha sido cancelado por el usuario.')
 
+    # Back to page from which the function is called    
     if template:
         exams = Examenes.public()
         return render_template('exams/public_exam.html', exams=exams, export='export')
@@ -491,6 +492,7 @@ def export_pdf(exam=None, template=None):
     else:
         showinfo('Proceso cancelado', 'El proceso ha sido cancelado por el usuario.')
         
+    # Back to page from which the function is called        
     if template:
         exams = Examenes.public()
         return render_template('exams/public_exam.html', exams=exams, export='export')

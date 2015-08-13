@@ -64,7 +64,7 @@ class GeneraExamenForm(form.Form):
     def validate_nombre(self, field):
         """ Function to validate that the name of the exam has not been used for the same subject """
         asignatura = Asignaturas.objects(asignatura=self.asignatura.data).first()        
-        if Examenes.objects(nombre=self.nombre.data, asignatura=asignatura):
+        if Examenes.user_objects(nombre=self.nombre.data, asignatura=asignatura):
             raise validators.ValidationError(u'El nombre del examen ya ha sido usado')
 
     def validate_num_preguntas(self, field):
@@ -72,7 +72,7 @@ class GeneraExamenForm(form.Form):
         asignatura = Asignaturas.objects(asignatura=self.asignatura.data).first()
         tipo = self.tipo_examen.data
         num_preguntas = self.num_preguntas.data
-        preguntas = Preguntas.objects(asignatura=asignatura.get_id(), tipo=tipo).count()
+        preguntas = Preguntas.user_objects(asignatura=asignatura.get_id(), tipo=tipo).count()
         if preguntas < num_preguntas:
             raise validators.ValidationError(u'No existen suficientes preguntas de la asignatura para el tipo indicado.')
 

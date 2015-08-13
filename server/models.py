@@ -26,16 +26,6 @@ def update_modified(sender, document):
     if login.current_user:    
         document.usuario = login.current_user.to_dbref()
 
-@handler(signals.pre_delete)
-def delete_asig(sender, document):
-    existen = Preguntas.todas(asignatura=document.get_id()).count()
-    if existen > 0:
-        print "Hay preguntas:", existen
-    else:
-        print "No hay preguntas.", existen
-
-
-@delete_asig.apply
 class Asignaturas(Document):
     """ 
     Data model for the collection of subjects. 
@@ -62,17 +52,6 @@ class Asignaturas(Document):
                return queryset.filter(query)
            else:
                return
-
-    @classmethod
-    def pre_delete(cls, sender, document, **kwargs):
-        existen = Preguntas.objects(asignatura=document.get_id()).count()
-        print document.get_id()
-        if existen > 0:
-            print "Hay preguntas:", existen
-        else:
-            print "No hay preguntas.", existen
-
-#signals.pre_delete.connect(Asignaturas.pre_delete, sender=Asignaturas)
                 
 class Usuarios(Document):
     """ 
@@ -113,7 +92,7 @@ class Usuarios(Document):
 
     def get_id(self):
         return str(self.id)
-        
+        Temas
     def get_usuario(self):
         return str(self.usuario)
 
@@ -133,7 +112,6 @@ class Usuarios(Document):
     def __unicode__(self):
         return self.usuario
 
-    
     def clean(self):
         """Make validations before save any document"""
         a = helpers.get_form_data()
@@ -148,7 +126,7 @@ class Temas(Document):
     num = IntField(required=True, unique_with = ('asignatura', 'usuario'))
     descripcion = StringField(max_length=100)
     asignatura = ReferenceField(Asignaturas, reverse_delete_rule = DENY)
-    usuario = ReferenceField(Usuarios, reverse_delete_rule = CASCADE)
+    usuario = ReferenceField(Usuarios, reverse_delete_rule = DENY)
 
     def get_id(self):
         return str(self.id)
@@ -157,8 +135,9 @@ class Temas(Document):
     def __unicode__(self):
         return str(self.asignatura) + "- Tema " + str(self.num) + " - " + self.descripcion
 
+    # query for show user chapters
     @queryset_manager
-    def objects(doc_cls, queryset):
+    def user_objects(doc_cls, queryset):
         lista_asignaturas=login.current_user.get_asignaturas()
         if lista_asignaturas:        
             query = Q(asignatura= lista_asignaturas[0].get_id())
@@ -199,19 +178,15 @@ class Preguntas(Document):
     opciones = ListField(EmbeddedDocumentField(Opciones))
     correcta = StringField(max_length=1)
 
+    # query for show user questions
     @queryset_manager
-    def objects(doc_cls, queryset):
+    def user_objects(doc_cls, queryset):
        return queryset.filter(usuario=login.current_user.get_id())
-
-    @queryset_manager
-    def todas(doc_cls, queryset):
-       return queryset
 
     # Required for administrative interface
     def __unicode__(self):
         return str(self.asignatura) + " - " + str(self.num)
         
-    
     def clean(self):
         """Make validations before save any document"""
         if self.asignatura <> self.tema.asignatura:
@@ -231,14 +206,16 @@ class Examenes(Document):
     """    
     nombre = StringField(required=True, unique_with = ('asignatura', 'usuario'))
     asignatura = ReferenceField(Asignaturas, required=True, reverse_delete_rule=CASCADE)
-    preguntas = ListField(ReferenceField(Preguntas, reverse_delete_rule=PULL))
+    preguntas = ListField(ReferenceField(Preguntas, reverse_delete_rule=DENY))
     publico = BooleanField()
     usuario = ReferenceField(Usuarios, reverse_delete_rule= CASCADE)    
 
+    # query for show user exams
     @queryset_manager
-    def objects(doc_cls, queryset):
+    def user_objects(doc_cls, queryset):
        return queryset.filter(usuario=login.current_user.get_id())
 
+    # query for show user and public exams
     @queryset_manager
     def public(doc_cls, queryset):
         lista_asignaturas=login.current_user.get_asignaturas()
@@ -262,5 +239,4 @@ class Examenes(Document):
         """Make validations before save any document"""
         a = helpers.get_form_data()
         if a.getlist('preguntas') == []:
-            self.preguntas = []            
-        
+            self.preguntas = []
