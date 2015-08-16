@@ -7,7 +7,7 @@ Module where data models are defined for the MongoDB database
 """
 from mongoengine import Document, EmbeddedDocument, StringField, IntField, BooleanField, \
     ReferenceField, ListField, EmbeddedDocumentField, Q, queryset_manager, signals, \
-    EmailField, ValidationError, CASCADE, PULL, DENY, NULLIFY
+    EmailField, ValidationError, CASCADE, PULL, DENY
 from flask.ext import login
 from flask.ext.admin import helpers
 
@@ -125,8 +125,8 @@ class Temas(Document):
     """      
     num = IntField(required=True, unique_with = ('asignatura', 'usuario'))
     descripcion = StringField(max_length=100)
-    asignatura = ReferenceField(Asignaturas, reverse_delete_rule = DENY)
-    usuario = ReferenceField(Usuarios, reverse_delete_rule = DENY)
+    asignatura = ReferenceField(Asignaturas, required=True, reverse_delete_rule = DENY)
+    usuario = ReferenceField(Usuarios, reverse_delete_rule = CASCADE)
 
     def get_id(self):
         return str(self.id)
@@ -168,10 +168,10 @@ class Preguntas(Document):
 
     num = IntField(required=True, unique_with = ('asignatura', 'usuario'))    
     texto = StringField(required=True)
-    asignatura = ReferenceField(Asignaturas, required=True, reverse_delete_rule = CASCADE)
+    asignatura = ReferenceField(Asignaturas, required=True)
     tema = ReferenceField(Temas, required=True, reverse_delete_rule= DENY)
     tipo = IntField(choices=TIPO)
-    usuario = ReferenceField(Usuarios, reverse_delete_rule= CASCADE)
+    usuario = ReferenceField(Usuarios, reverse_delete_rule = CASCADE)
     # Only for true or false questions
     verdadera = BooleanField() 
     # Only for multiple choice questions
@@ -205,10 +205,10 @@ class Examenes(Document):
     Class that defines the data model for collection of exams.
     """    
     nombre = StringField(required=True, unique_with = ('asignatura', 'usuario'))
-    asignatura = ReferenceField(Asignaturas, required=True, reverse_delete_rule=CASCADE)
+    asignatura = ReferenceField(Asignaturas, required=True)
     preguntas = ListField(ReferenceField(Preguntas, reverse_delete_rule=DENY))
     publico = BooleanField()
-    usuario = ReferenceField(Usuarios, reverse_delete_rule= CASCADE)    
+    usuario = ReferenceField(Usuarios, reverse_delete_rule = CASCADE)    
 
     # query for show user exams
     @queryset_manager

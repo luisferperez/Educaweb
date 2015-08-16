@@ -46,15 +46,14 @@ def init_ddbb():
         alumno.save(clean=False)
 
         # test records    
-        asignaturas = ["Seguridad en las comunicaciones", "Sistemas Distribuidos", "Procesadores del lenguaje", "Sistemas Operativos", "Inteligencia Artificial", "Redes"]
+        asignaturas = ["Seguridad en las comunicaciones", "Sistemas Distribuidos", "Redes", "Procesadores del lenguaje", "Inteligencia Artificial"]
       
         temas = [ 
             (u"El problema de la seguridad", u"La seguridad en los elementos físicos", u"Defensa básica ante ataques"),
             (u"Fundamentos de los S.D.", u"Comunicación entre procesos", u"Servicios de archivos distribuidos"),
-            (u"Introducción", u"Analisis Lexico", u"Analisis sintáctico"), 
-            (u"Fundamentos de los SO", u"Sistemas Operativos multitarea"),
-            (u"Introducción a la IA", u"Lógica", u"Sistemas Expertos"), 
-            (u"Redes LAN", "TCP/IP", "ADSL")
+            (u"Conceptos básicos de redes", "Redes de área local y área metropolitana", "Redes de área extensa", "Redes de acceso"),
+            (u"Introducción", u"Analisis Lexico", u"Analisis sintáctico"),
+            (u"Introducción a la IA", u"Lógica", u"Sistemas Expertos")
             ]
             
         op_seg1 = Opciones(letra="A", texto=u"Se debe comprar las mejores herramientas de seguridad disponibles en el mercado y formar a todo el personal en su uso")
@@ -94,9 +93,6 @@ def init_ddbb():
         op_seg35 = Opciones(letra="C", texto=u"2 clases distintas: mensajes de aplicaciones con transporte TCP y de aplicaciones con transporte UDP.")
         op_seg36 = Opciones(letra="D", texto=u"Muchas clases distintas, dependiendo de la aplicación y el protocolo de encaminamiento.")
 
-        opcion1 = Opciones(letra="A", texto="opcion A")
-        opcion2 = Opciones(letra="B", texto="opcion B")
-
         preguntas = [
             (
                 (   (u"Para evitar completamente cualquier tipo de ataque informático a los sistemas:", 1, (op_seg1, op_seg2, op_seg3, op_seg4), "D"),
@@ -130,47 +126,29 @@ def init_ddbb():
                 )                
             ),
             (
-                (   ("pregunta 1 procesadores - introducción", 0),
-                    ("pregunta 2 procesadores - introducción", 0)
+                (   
                 ),
-                (   ("pregunta 1 procesadores - a.lex.", 0),
-                    ("pregunta 2 procesadores - a-lex.", 0),
-                    ("pregunta 3 procesadores - a-lex.", 0)
+                (   (u"¿Qué longitud máxima de cable UTP de Categoría 5 recomendaría para operar a una velocidad de 100 Mbps?", 0),
+                    (u"Un cable STP de 2 pares se utiliza para transportar señales telefónicas, ¿cómo realizaría la instalación de una red de área local que operase a una velocidad de 10 Mbps", 0),
                 ),
-                (   ("pregunta 1 procesadores - a.sint.", 0),
-                    ("pregunta 2 procesadores - a.sint.", 0)
-                )
+                (   (u"En una red Frame Relay indique los procedimientos que conoce para recuperación de la congestión.", 0),
+                    (u"En su opinión, ¿las capas 4-7 del MR-OSI resultan muy afectadas po RDSI?", 0),
+                ),
+                (   (u"Indique las velocidades que se pueden obtener en una conexión ADSL, en función de los parámetros clave que las determinan.", 0),
+                    (u"Describa el estado de la normalización en las redes de cable, y analice los organismos que participan en la realización de especificaciones.", 0),
+                    (u"Describa los componentes, funciones y operación de una red de cable.", 0),
+                    (u"Exprese cuáles son las características principales de un acceso LMDS.", 0)
+                ),
             ),
             (
-                (   ("pregunta 1 Sist. Op. - fundamentos", 0),
-                    ("pregunta 2 Sist. Op. - fundamentos", 0)
-                ),
-                (   ("pregunta 1 Sist. Op. - S.O. Multitarea", 0),
-                    ("pregunta 2 Sist. Op. - S.O. Multitarea", 0)
-                )
+                ( ),
+                ( ),
+                ( )
             ),
             (
-                (   ("pregunta 1 IA - introducción", 1, (opcion1, opcion2), "A"),
-                    ("pregunta 2 IA - introducción", 1, (opcion1, opcion2), "B"),
-                    ("pregunta 3 IA - introducción", 1, (opcion1, opcion2), "B")
-                ),
-                (   ("pregunta 1 IA - Logica", 1, (opcion1, opcion2), "B"),
-                    ("pregunta 2 IA - Logica", 1, (opcion1, opcion2), "A")
-                ),
-                (   ("pregunta 1 IA - Sist. Ex.", 1, (opcion1, opcion2), "A"),
-                    ("pregunta 2 IA - Sist. Exp.", 1, (opcion1, opcion2), "A")
-                )
-            ),
-            (
-                (   ("pregunta 1 Redes - Redes LAN", 2, True),
-                    ("pregunta 2 Redes - Redes LAN", 2, False),
-                ),
-                (   ("pregunta 1 Redes - TCP/IP", 2, False),
-                    ("pregunta 2 Redes - TCP/IP", 2, False),
-                ),
-                (   ("pregunta 1 Redes - ADSL", 2, True),
-                    ("pregunta 2 Redes - ADSL", 2, True),
-                ),
+                ( ),
+                ( ),
+                ( )
             )
             ]
 
@@ -218,7 +196,6 @@ def init_ddbb():
         alumno.asignaturas = lista_asignaturas
         alumno.save(clean=False)
         
-    #if num == 0:       
 
 #==================================================#
 #  Initialize Flask-Login to handle user sessions  #
