@@ -126,7 +126,7 @@ def exportODT2(examen, archivo):
                     x.appendChild(txt)
                     p.appendChild(x)
                     
-                    # For test quiestions
+                    # For test questions
                     if pregunta.tipo == 1:
                         for opcion in pregunta.opciones:
                             x = doc.createElement("text:p")

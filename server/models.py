@@ -131,6 +131,9 @@ class Temas(Document):
     def get_id(self):
         return str(self.id)
 
+    # Required for administrative interface
+    def __unicode__(self):
+        return str(self.asignatura) + "- Tema " + str(self.num) + " - " + self.descripcion
 
     # query for show user chapters
     @queryset_manager
