@@ -52,13 +52,13 @@ class GeneraExamenForm(form.Form):
     Form used for entering data for automatically generating tests.
     """
     TIPO = ((0, 'Desarrollo'), (1, 'Test'),(2, 'Verdadero o Falso'))
-    MODO = ((0, 'Aleatorio'), (1, 'Preguntas por tema'))
+    MODO = ((0, 'Aleatorio'), (1, 'Equitativo por temas'))
 
     nombre = fields.StringField('Nombre', [validators.required(u'Es necesario escribir un nombre para el examen')])
     asignatura = fields.SelectField('Asignatura:', [validators.required(u'Es necesario introducir la asignatura del examen.')])
     tipo_examen = fields.SelectField('Tipo de Examen:', coerce=int, choices=TIPO)
     num_preguntas = fields.IntegerField(u'Número de preguntas:', [validators.required(u'Debe especificar el número de preguntas que tendrá el examen')])
-    modo = fields.SelectField('Modo de examen:', coerce=int, choices=MODO)
+    modo = fields.SelectField(u'Modo de generación:', coerce=int, choices=MODO)
     publico = fields.BooleanField(u'¿Desea hacer público el examen?')
     
     def validate_nombre(self, field):

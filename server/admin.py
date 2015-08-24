@@ -7,7 +7,7 @@ Administration Panel
 """
 from flask import request, redirect, url_for
 from flask.ext import admin, login
-from flask_admin.contrib.mongoengine import ModelView
+from flask_admin.contrib.mongoengine import ModelView, filters
 from flask.ext.admin import Admin, expose, helpers
 from flask.ext.admin.form import rules
 
@@ -21,7 +21,6 @@ def initialize_admin_component(app):
     """ 
     Initialize the Admin Views. 
     """
-    
     # Create admin interface
     admin = Admin(app, 'EducaWeb', index_view=MyAdminIndexView(), base_template='layout.html', template_mode='bootstrap3')
     # Add views
@@ -178,8 +177,13 @@ class TemasView(MyView):
     
     # default order for the records list
     column_default_sort = ('asignatura', 'num')
-      
 
+    # columns which can perform search filter    
+    column_filters = (filters.FilterLike(Asignaturas.asignatura, 'asignatura',), 'descripcion')
+    
+    filters.FilterConverter()
+    #filters.Q()
+#filters.FilterInList()
 class PreguntasView(MyView):
     """
     Questions View. Entry view which lets teachers manage the questions in the system.
@@ -194,6 +198,9 @@ class PreguntasView(MyView):
         asignatura='Asignatura a la que corresponde la pregunta',
         tipo='Preguntas a desarrollar, test o preguntas de tipo verdadero o falso')
     
+    # fields in which the search is performed    
+    column_searchable_list = ('texto',)
+
     # choices for the column of the question type
     column_choices = {
         'tipo': [

@@ -45,9 +45,10 @@
                             {% if current_user.is_profesor() %}              
                                 <li><a href="{{ url_for('genera_examen_view') }}">Generar Exámenes</a></li>
                                 <li class="divider"></li>
-                            {% endif %}
-                                <li><a href="{{ url_for('examenes_view') }}">Realizar Exámenes</a></li>
                                 <li><a href="/examenes/export">Exportar Exámenes</a></li>
+                            {% else %}
+                                <li><a href="{{ url_for('examenes_view') }}">Realizar Exámenes</a></li>
+                            {% endif %}    
                             </ul>
                         </li>
                         {% endif %}
@@ -92,11 +93,10 @@
     <div class="container theme-showcase" role="main">
         <div class="container">    
             <table style="width:100%">
-                <tr>
-                    <td>Hola, {{ current_user.nombre }}  {{ current_user.apellidos }}</td>
+                <tr>                    
                     <td style="color:grey;text-align:right">Usuario: {{ current_user.usuario }}  <a href="{{ url_for('logout_view') }}">  Cerrar sesión</a></td>
             </table> 
-            <br>
+            
         </div>
     </div>
     {% endif %}
@@ -108,6 +108,7 @@
         <div class="container">
             {% block body %}
             {% block menu %}
+            
             <div class="col-md-2" role="navigation" style="background-color:lightcyan;">
                 <ul class="nav nav-pills nav-stacked">
                   <li class="active"><a style="background-color:darkcyan;" href="#">Menú</a></li>
@@ -118,10 +119,11 @@
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu">                                
                           {% if current_user.is_profesor() %}
-                          <li><a href="{{ url_for('genera_examen_view') }}">Generar Exámenes</a></li>
+                              <li><a href="{{ url_for('genera_examen_view') }}">Generar Exámenes</a></li>
+                              <li><a href="/examenes/export">Exportar Exámenes</a></li>
+                          {% else %}
+                              <li><a href="{{ url_for('examenes_view') }}">Realizar Exámenes</a></li>
                           {% endif %}
-                          <li><a href="{{ url_for('examenes_view') }}">Realizar Exámenes</a></li>
-                          <li><a href="#">Submenu 1-3</a></li>
                         </ul>
                       </li>
                       {% endif %}

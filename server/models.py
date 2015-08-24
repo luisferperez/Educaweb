@@ -236,7 +236,13 @@ class Examenes(Document):
         return str(self.id)
         
     def clean(self):
-        """Make validations before save any document"""
+        """Make validations before save any document"""        
         a = helpers.get_form_data()
         if a.getlist('preguntas') == []:
             self.preguntas = []
+
+        preguntas = self.preguntas
+        for pregunta in preguntas:
+            if self.asignatura <> pregunta.asignatura:
+                msg = u'Error: La asignatura no se corresponde con la asignatura de las preguntas seleccionadas.'
+                raise ValidationError(msg)
