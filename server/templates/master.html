@@ -12,8 +12,6 @@
     <meta name="author" content="Luisfer">
     <link rel="icon" href="../static/img/educaweb.png">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
 
@@ -109,9 +107,9 @@
             {% block body %}
             {% block menu %}
             
-            <div class="col-md-2" role="navigation" style="background-color:lightcyan;">
+            <div class="col-md-2" role="navigation" style="background-color:powderblue;">
                 <ul class="nav nav-pills nav-stacked">
-                  <li class="active"><a style="background-color:darkcyan;" href="#">Menú</a></li>
+                  <li class="active"><a href="#">Menú</a></li>
                   {% if current_user.is_authenticated() %}
                     {% if current_user.is_activado() and not current_user.is_administrador() %}
                       <li class="dropdown">

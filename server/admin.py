@@ -181,9 +181,8 @@ class TemasView(MyView):
     # columns which can perform search filter    
     column_filters = (filters.FilterLike(Asignaturas.asignatura, 'asignatura',), 'descripcion')
     
-    filters.FilterConverter()
-    #filters.Q()
-#filters.FilterInList()
+    #filters.FilterConverter()
+
 class PreguntasView(MyView):
     """
     Questions View. Entry view which lets teachers manage the questions in the system.
