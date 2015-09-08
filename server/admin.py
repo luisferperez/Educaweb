@@ -179,7 +179,7 @@ class TemasView(MyView):
     column_default_sort = ('asignatura', 'num')
 
     # columns which can perform search filter    
-    column_filters = (filters.FilterLike(Asignaturas.asignatura, 'asignatura',), 'descripcion')
+    #column_filters = (filters.FilterLike(Asignaturas.asignatura, 'asignatura',), 'descripcion')
     
     #filters.FilterConverter()
 
