@@ -1,0 +1,51 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module export</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>export</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/luisfer/Documentos/workspace/Educaweb/server/export.py">/home/luisfer/Documentos/workspace/Educaweb/server/export.py</a></font></td></tr></table>
+    <p><tt>@author:&nbsp;Luis&nbsp;Fdo.&nbsp;Pérez<br>
+@co-authors:&nbsp;<br>
+&nbsp;<br>
+Functions&nbsp;to&nbsp;export&nbsp;data&nbsp;from&nbsp;exams&nbsp;to&nbsp;ODT&nbsp;or&nbsp;PDF&nbsp;files</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="shutil.html">shutil</a><br>
+</td><td width="25%" valign=top><a href="zipfile.html">zipfile</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-exportODT"><strong>exportODT</strong></a>(examen, archivo)</dt><dd><tt>Function&nbsp;to&nbsp;export&nbsp;the&nbsp;data&nbsp;exam&nbsp;to&nbsp;a&nbsp;odt&nbsp;file.<br>
+The&nbsp;input&nbsp;data&nbsp;is&nbsp;the&nbsp;exam&nbsp;and&nbsp;the&nbsp;ODT&nbsp;file&nbsp;to&nbsp;write.<br>
+This&nbsp;function&nbsp;uses&nbsp;odfpy&nbsp;library</tt></dd></dl>
+ <dl><dt><a name="-exportODT2"><strong>exportODT2</strong></a>(examen, archivo)</dt><dd><tt>Another&nbsp;way&nbsp;to&nbsp;export&nbsp;to&nbsp;a&nbsp;odt&nbsp;file.<br>
+In&nbsp;this&nbsp;case&nbsp;we&nbsp;use&nbsp;the&nbsp;zipfile&nbsp;and&nbsp;dom&nbsp;libraries&nbsp;<br>
+to&nbsp;extract&nbsp;and&nbsp;parse&nbsp;the&nbsp;files&nbsp;from&nbsp;the&nbsp;odt&nbsp;file<br>
+that&nbsp;we&nbsp;use&nbsp;as&nbsp;model</tt></dd></dl>
+ <dl><dt><a name="-exportPDF"><strong>exportPDF</strong></a>(examen, filePDF)</dt><dd><tt>Function&nbsp;to&nbsp;export&nbsp;the&nbsp;data&nbsp;exam&nbsp;to&nbsp;a&nbsp;pdf&nbsp;file.<br>
+The&nbsp;input&nbsp;data&nbsp;is&nbsp;the&nbsp;exam&nbsp;and&nbsp;the&nbsp;PDF&nbsp;file&nbsp;to&nbsp;write.<br>
+This&nbsp;function&nbsp;uses&nbsp;reportlab&nbsp;library</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>TA_CENTER</strong> = 1</td></tr></table>
+</body></html>

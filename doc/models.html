@@ -1,0 +1,2257 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module models</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>models</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/luisfer/Documentos/workspace/Educaweb/server/models.py">/home/luisfer/Documentos/workspace/Educaweb/server/models.py</a></font></td></tr></table>
+    <p><tt>@author:&nbsp;Luis&nbsp;Fdo.&nbsp;Pérez<br>
+&nbsp;<br>
+Module&nbsp;where&nbsp;data&nbsp;models&nbsp;are&nbsp;defined&nbsp;for&nbsp;the&nbsp;MongoDB&nbsp;database</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="flask_admin.helpers.html">flask_admin.helpers</a><br>
+</td><td width="25%" valign=top><a href="flask_login.html">flask_login</a><br>
+</td><td width="25%" valign=top><a href="mongoengine.signals.html">mongoengine.signals</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="mongoengine.document.html#Document">mongoengine.document.Document</a>(<a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="models.html#Asignaturas">Asignaturas</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#Examenes">Examenes</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#Preguntas">Preguntas</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#Temas">Temas</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#Usuarios">Usuarios</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="mongoengine.document.html#EmbeddedDocument">mongoengine.document.EmbeddedDocument</a>(<a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="models.html#Opciones">Opciones</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Asignaturas">class <strong>Asignaturas</strong></a>(<a href="mongoengine.document.html#Document">mongoengine.document.Document</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Data&nbsp;model&nbsp;for&nbsp;the&nbsp;collection&nbsp;of&nbsp;subjects.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#Asignaturas">Asignaturas</a></dd>
+<dd><a href="mongoengine.document.html#Document">mongoengine.document.Document</a></dd>
+<dd><a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Asignaturas-__unicode__"><strong>__unicode__</strong></a>(self)</dt><dd><tt>#&nbsp;Required&nbsp;for&nbsp;administrative&nbsp;interface</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-get_id"><strong>get_id</strong></a>(self)</dt></dl>
+
+<dl><dt><strong>objects</strong></dt>
+<dd><tt>The&nbsp;default&nbsp;QuerySet&nbsp;Manager.<br>
+&nbsp;<br>
+Custom&nbsp;QuerySet&nbsp;Manager&nbsp;functions&nbsp;can&nbsp;extend&nbsp;this&nbsp;class&nbsp;and&nbsp;users&nbsp;can<br>
+add&nbsp;extra&nbsp;queryset&nbsp;functionality.&nbsp;&nbsp;Any&nbsp;custom&nbsp;manager&nbsp;methods&nbsp;must&nbsp;accept&nbsp;a<br>
+:class:`~mongoengine.Document`&nbsp;class&nbsp;as&nbsp;its&nbsp;first&nbsp;argument,&nbsp;and&nbsp;a<br>
+:class:`~mongoengine.queryset.QuerySet`&nbsp;as&nbsp;its&nbsp;second&nbsp;argument.<br>
+&nbsp;<br>
+The&nbsp;method&nbsp;function&nbsp;should&nbsp;return&nbsp;a&nbsp;:class:`~mongoengine.queryset.QuerySet`<br>
+,&nbsp;probably&nbsp;the&nbsp;same&nbsp;one&nbsp;that&nbsp;was&nbsp;passed&nbsp;in,&nbsp;but&nbsp;modified&nbsp;in&nbsp;some&nbsp;way.</tt></dd>
+</dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>asignatura</strong></dt>
+<dd><tt>A&nbsp;unicode&nbsp;string&nbsp;field.</tt></dd>
+</dl>
+<dl><dt><strong>id</strong></dt>
+<dd><tt>A&nbsp;field&nbsp;wrapper&nbsp;around&nbsp;MongoDB's&nbsp;ObjectIds.</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+
+<dl><dt><strong>_auto_id_field</strong> = True</dl>
+
+<dl><dt><strong>_class_name</strong> = 'Asignaturas'</dl>
+
+<dl><dt><strong>_collection</strong> = None</dl>
+
+<dl><dt><strong>_db_field_map</strong> = {'asignatura': 'asignatura'}</dl>
+
+<dl><dt><strong>_fields</strong> = {'asignatura': &lt;mongoengine.fields.StringField object&gt;, 'id': &lt;mongoengine.base.fields.ObjectIdField object&gt;}</dl>
+
+<dl><dt><strong>_fields_ordered</strong> = ('id', 'asignatura')</dl>
+
+<dl><dt><strong>_is_base_cls</strong> = False</dl>
+
+<dl><dt><strong>_is_document</strong> = True</dl>
+
+<dl><dt><strong>_meta</strong> = {'index_background': False, 'ordering': [], 'abs...uras'): 4}, 'max_size': None, 'index_opts': None}</dl>
+
+<dl><dt><strong>_reverse_db_field_map</strong> = {'asignatura': 'asignatura'}</dl>
+
+<dl><dt><strong>_subclasses</strong> = ('Asignaturas',)</dl>
+
+<dl><dt><strong>_superclasses</strong> = ()</dl>
+
+<dl><dt><strong>_types</strong> = ('Asignaturas',)</dl>
+
+<hr>
+Methods inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><a name="Asignaturas-_reload"><strong>_reload</strong></a>(self, key, value)</dt><dd><tt>Used&nbsp;by&nbsp;:meth:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>.reload`&nbsp;to&nbsp;ensure&nbsp;the<br>
+correct&nbsp;instance&nbsp;is&nbsp;linked&nbsp;to&nbsp;self.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-cascade_save"><strong>cascade_save</strong></a>(self, *args, **kwargs)</dt><dd><tt>Recursively&nbsp;saves&nbsp;any&nbsp;references&nbsp;/<br>
+generic&nbsp;references&nbsp;on&nbsp;an&nbsp;objects</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-delete"><strong>delete</strong></a>(self, **write_concern)</dt><dd><tt>Delete&nbsp;the&nbsp;:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`&nbsp;from&nbsp;the&nbsp;database.&nbsp;This<br>
+will&nbsp;only&nbsp;take&nbsp;effect&nbsp;if&nbsp;the&nbsp;document&nbsp;has&nbsp;been&nbsp;previously&nbsp;saved.<br>
+&nbsp;<br>
+:param&nbsp;write_concern:&nbsp;Extra&nbsp;keyword&nbsp;arguments&nbsp;are&nbsp;passed&nbsp;down&nbsp;which<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;options&nbsp;for&nbsp;the&nbsp;resultant<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``getLastError``&nbsp;command.&nbsp;&nbsp;For&nbsp;example,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``<a href="#Asignaturas-save">save</a>(...,&nbsp;write_concern={w:&nbsp;2,&nbsp;fsync:&nbsp;True},&nbsp;...)``&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wait&nbsp;until&nbsp;at&nbsp;least&nbsp;two&nbsp;servers&nbsp;have&nbsp;recorded&nbsp;the&nbsp;write&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;force&nbsp;an&nbsp;fsync&nbsp;on&nbsp;the&nbsp;primary&nbsp;server.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-reload"><strong>reload</strong></a>(self, max_depth<font color="#909090">=1</font>)</dt><dd><tt>Reloads&nbsp;all&nbsp;attributes&nbsp;from&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+..&nbsp;versionadded::&nbsp;0.1.2<br>
+..&nbsp;versionchanged::&nbsp;0.6&nbsp;&nbsp;Now&nbsp;chainable</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-save"><strong>save</strong></a>(self, force_insert<font color="#909090">=False</font>, validate<font color="#909090">=True</font>, clean<font color="#909090">=True</font>, write_concern<font color="#909090">=None</font>, cascade<font color="#909090">=None</font>, cascade_kwargs<font color="#909090">=None</font>, _refs<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Save&nbsp;the&nbsp;:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`&nbsp;to&nbsp;the&nbsp;database.&nbsp;If&nbsp;the<br>
+document&nbsp;already&nbsp;exists,&nbsp;it&nbsp;will&nbsp;be&nbsp;updated,&nbsp;otherwise&nbsp;it&nbsp;will&nbsp;be<br>
+created.<br>
+&nbsp;<br>
+:param&nbsp;force_insert:&nbsp;only&nbsp;try&nbsp;to&nbsp;create&nbsp;a&nbsp;new&nbsp;document,&nbsp;don't&nbsp;allow<br>
+&nbsp;&nbsp;&nbsp;&nbsp;updates&nbsp;of&nbsp;existing&nbsp;documents<br>
+:param&nbsp;validate:&nbsp;validates&nbsp;the&nbsp;document;&nbsp;set&nbsp;to&nbsp;``False``&nbsp;to&nbsp;skip.<br>
+:param&nbsp;clean:&nbsp;call&nbsp;the&nbsp;document&nbsp;clean&nbsp;method,&nbsp;requires&nbsp;`validate`&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;True.<br>
+:param&nbsp;write_concern:&nbsp;Extra&nbsp;keyword&nbsp;arguments&nbsp;are&nbsp;passed&nbsp;down&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:meth:`~pymongo.collection.Collection.save`&nbsp;OR<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:meth:`~pymongo.collection.Collection.insert`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;which&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;options&nbsp;for&nbsp;the&nbsp;resultant<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``getLastError``&nbsp;command.&nbsp;&nbsp;For&nbsp;example,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``<a href="#Asignaturas-save">save</a>(...,&nbsp;write_concern={w:&nbsp;2,&nbsp;fsync:&nbsp;True},&nbsp;...)``&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wait&nbsp;until&nbsp;at&nbsp;least&nbsp;two&nbsp;servers&nbsp;have&nbsp;recorded&nbsp;the&nbsp;write&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;force&nbsp;an&nbsp;fsync&nbsp;on&nbsp;the&nbsp;primary&nbsp;server.<br>
+:param&nbsp;cascade:&nbsp;Sets&nbsp;the&nbsp;flag&nbsp;for&nbsp;cascading&nbsp;saves.&nbsp;&nbsp;You&nbsp;can&nbsp;set&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;by&nbsp;setting&nbsp;"cascade"&nbsp;in&nbsp;the&nbsp;document&nbsp;__meta__<br>
+:param&nbsp;cascade_kwargs:&nbsp;(optional)&nbsp;kwargs&nbsp;dictionary&nbsp;to&nbsp;be&nbsp;passed&nbsp;throw<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;cascading&nbsp;saves.&nbsp;&nbsp;Implies&nbsp;``cascade=True``.<br>
+:param&nbsp;_refs:&nbsp;A&nbsp;list&nbsp;of&nbsp;processed&nbsp;references&nbsp;used&nbsp;in&nbsp;cascading&nbsp;saves<br>
+&nbsp;<br>
+..&nbsp;versionchanged::&nbsp;0.5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;existing&nbsp;documents&nbsp;it&nbsp;only&nbsp;saves&nbsp;changed&nbsp;fields&nbsp;using<br>
+&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;/&nbsp;unset.&nbsp;&nbsp;Saves&nbsp;are&nbsp;cascaded&nbsp;and&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:class:`~bson.dbref.DBRef`&nbsp;objects&nbsp;that&nbsp;have&nbsp;changes&nbsp;are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;saved&nbsp;as&nbsp;well.<br>
+..&nbsp;versionchanged::&nbsp;0.6<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Added&nbsp;cascading&nbsp;saves<br>
+..&nbsp;versionchanged::&nbsp;0.8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Cascade&nbsp;saves&nbsp;are&nbsp;optional&nbsp;and&nbsp;default&nbsp;to&nbsp;False.&nbsp;&nbsp;If&nbsp;you&nbsp;want<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fine&nbsp;grain&nbsp;control&nbsp;then&nbsp;you&nbsp;can&nbsp;turn&nbsp;off&nbsp;using&nbsp;document<br>
+&nbsp;&nbsp;&nbsp;&nbsp;meta['cascade']&nbsp;=&nbsp;True.&nbsp;&nbsp;Also&nbsp;you&nbsp;can&nbsp;pass&nbsp;different&nbsp;kwargs&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;cascade&nbsp;save&nbsp;using&nbsp;cascade_kwargs&nbsp;which&nbsp;overwrites&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;existing&nbsp;kwargs&nbsp;with&nbsp;custom&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-select_related"><strong>select_related</strong></a>(self, max_depth<font color="#909090">=1</font>)</dt><dd><tt>Handles&nbsp;dereferencing&nbsp;of&nbsp;:class:`~bson.dbref.DBRef`&nbsp;objects&nbsp;to<br>
+a&nbsp;maximum&nbsp;depth&nbsp;in&nbsp;order&nbsp;to&nbsp;cut&nbsp;down&nbsp;the&nbsp;number&nbsp;queries&nbsp;to&nbsp;mongodb.<br>
+&nbsp;<br>
+..&nbsp;versionadded::&nbsp;0.5</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-switch_collection"><strong>switch_collection</strong></a>(self, collection_name)</dt><dd><tt>Temporarily&nbsp;switch&nbsp;the&nbsp;collection&nbsp;for&nbsp;a&nbsp;document&nbsp;instance.<br>
+&nbsp;<br>
+Only&nbsp;really&nbsp;useful&nbsp;for&nbsp;archiving&nbsp;off&nbsp;data&nbsp;and&nbsp;calling&nbsp;`<a href="#Asignaturas-save">save</a>()`::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user&nbsp;=&nbsp;User.objects.get(id=user_id)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Asignaturas-switch_collection">switch_collection</a>('old-users')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Asignaturas-save">save</a>()<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;need&nbsp;to&nbsp;read&nbsp;from&nbsp;another&nbsp;database&nbsp;see<br>
+:class:`~mongoengine.context_managers.switch_db`<br>
+&nbsp;<br>
+:param&nbsp;collection_name:&nbsp;The&nbsp;database&nbsp;alias&nbsp;to&nbsp;use&nbsp;for&nbsp;saving&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-switch_db"><strong>switch_db</strong></a>(self, db_alias)</dt><dd><tt>Temporarily&nbsp;switch&nbsp;the&nbsp;database&nbsp;for&nbsp;a&nbsp;document&nbsp;instance.<br>
+&nbsp;<br>
+Only&nbsp;really&nbsp;useful&nbsp;for&nbsp;archiving&nbsp;off&nbsp;data&nbsp;and&nbsp;calling&nbsp;`<a href="#Asignaturas-save">save</a>()`::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user&nbsp;=&nbsp;User.objects.get(id=user_id)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Asignaturas-switch_db">switch_db</a>('archive-db')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Asignaturas-save">save</a>()<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;need&nbsp;to&nbsp;read&nbsp;from&nbsp;another&nbsp;database&nbsp;see<br>
+:class:`~mongoengine.context_managers.switch_db`<br>
+&nbsp;<br>
+:param&nbsp;db_alias:&nbsp;The&nbsp;database&nbsp;alias&nbsp;to&nbsp;use&nbsp;for&nbsp;saving&nbsp;the&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-to_dbref"><strong>to_dbref</strong></a>(self)</dt><dd><tt>Returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;:class:`~bson.dbref.DBRef`&nbsp;useful&nbsp;in<br>
+`__raw__`&nbsp;queries.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-update"><strong>update</strong></a>(self, **kwargs)</dt><dd><tt>Performs&nbsp;an&nbsp;update&nbsp;on&nbsp;the&nbsp;:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`<br>
+A&nbsp;convenience&nbsp;wrapper&nbsp;to&nbsp;:meth:`~mongoengine.QuerySet.update`.<br>
+&nbsp;<br>
+Raises&nbsp;:class:`OperationError`&nbsp;if&nbsp;called&nbsp;on&nbsp;an&nbsp;object&nbsp;that&nbsp;has&nbsp;not&nbsp;yet<br>
+been&nbsp;saved.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><a name="Asignaturas-_get_collection"><strong>_get_collection</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;collection&nbsp;for&nbsp;the&nbsp;document.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-_get_db"><strong>_get_db</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Some&nbsp;Model&nbsp;using&nbsp;other&nbsp;db_alias</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-compare_indexes"><strong>compare_indexes</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Compares&nbsp;the&nbsp;indexes&nbsp;defined&nbsp;in&nbsp;MongoEngine&nbsp;with&nbsp;the&nbsp;ones&nbsp;existing<br>
+in&nbsp;the&nbsp;database.&nbsp;Returns&nbsp;any&nbsp;missing/extra&nbsp;indexes.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-drop_collection"><strong>drop_collection</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Drops&nbsp;the&nbsp;entire&nbsp;collection&nbsp;associated&nbsp;with&nbsp;this<br>
+:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`&nbsp;type&nbsp;from&nbsp;the&nbsp;database.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-ensure_index"><strong>ensure_index</strong></a>(cls, key_or_list, drop_dups<font color="#909090">=False</font>, background<font color="#909090">=False</font>, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Ensure&nbsp;that&nbsp;the&nbsp;given&nbsp;indexes&nbsp;are&nbsp;in&nbsp;place.<br>
+&nbsp;<br>
+:param&nbsp;key_or_list:&nbsp;a&nbsp;single&nbsp;index&nbsp;key&nbsp;or&nbsp;a&nbsp;list&nbsp;of&nbsp;index&nbsp;keys&nbsp;(to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;construct&nbsp;a&nbsp;multi-field&nbsp;index);&nbsp;keys&nbsp;may&nbsp;be&nbsp;prefixed&nbsp;with&nbsp;a&nbsp;**+**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;a&nbsp;**-**&nbsp;to&nbsp;determine&nbsp;the&nbsp;index&nbsp;ordering</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-ensure_indexes"><strong>ensure_indexes</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Checks&nbsp;the&nbsp;document&nbsp;meta&nbsp;data&nbsp;and&nbsp;ensures&nbsp;all&nbsp;the&nbsp;indexes&nbsp;exist.<br>
+&nbsp;<br>
+Global&nbsp;defaults&nbsp;can&nbsp;be&nbsp;set&nbsp;in&nbsp;the&nbsp;meta&nbsp;-&nbsp;see&nbsp;:doc:`guide/defining-documents`<br>
+&nbsp;<br>
+..&nbsp;note::&nbsp;You&nbsp;can&nbsp;disable&nbsp;automatic&nbsp;index&nbsp;creation&nbsp;by&nbsp;setting<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_create_index`&nbsp;to&nbsp;False&nbsp;in&nbsp;the&nbsp;documents&nbsp;meta&nbsp;data</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-list_indexes"><strong>list_indexes</strong></a>(cls, go_up<font color="#909090">=True</font>, go_down<font color="#909090">=True</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Lists&nbsp;all&nbsp;of&nbsp;the&nbsp;indexes&nbsp;that&nbsp;should&nbsp;be&nbsp;created&nbsp;for&nbsp;given<br>
+collection.&nbsp;It&nbsp;includes&nbsp;all&nbsp;the&nbsp;indexes&nbsp;from&nbsp;super-&nbsp;and&nbsp;sub-classes.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-register_delete_rule"><strong>register_delete_rule</strong></a>(cls, document_cls, field_name, rule)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>This&nbsp;method&nbsp;registers&nbsp;the&nbsp;delete&nbsp;rules&nbsp;to&nbsp;apply&nbsp;when&nbsp;removing&nbsp;this<br>
+object.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><strong>_object_key</strong></dt>
+<dd><tt>Dict&nbsp;to&nbsp;identify&nbsp;object&nbsp;in&nbsp;collection</tt></dd>
+</dl>
+<dl><dt><strong>_qs</strong></dt>
+<dd><tt>Returns&nbsp;the&nbsp;queryset&nbsp;to&nbsp;use&nbsp;for&nbsp;updating&nbsp;/&nbsp;reloading&nbsp;/&nbsp;deletions</tt></dd>
+</dl>
+<dl><dt><strong>pk</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><strong>__metaclass__</strong> = &lt;class 'mongoengine.base.metaclasses.TopLevelDocumentMetaclass'&gt;<dd><tt>Metaclass&nbsp;for&nbsp;top-level&nbsp;documents&nbsp;(i.e.&nbsp;documents&nbsp;that&nbsp;have&nbsp;their&nbsp;own<br>
+collection&nbsp;in&nbsp;the&nbsp;database.</tt></dl>
+
+<dl><dt><strong>my_metaclass</strong> = &lt;class 'mongoengine.base.metaclasses.TopLevelDocumentMetaclass'&gt;<dd><tt>Metaclass&nbsp;for&nbsp;top-level&nbsp;documents&nbsp;(i.e.&nbsp;documents&nbsp;that&nbsp;have&nbsp;their&nbsp;own<br>
+collection&nbsp;in&nbsp;the&nbsp;database.</tt></dl>
+
+<hr>
+Methods inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><a name="Asignaturas-_BaseDocument__expand_dynamic_values"><strong>_BaseDocument__expand_dynamic_values</strong></a> = __expand_dynamic_values(self, name, value)</dt><dd><tt>expand&nbsp;any&nbsp;dynamic&nbsp;values&nbsp;to&nbsp;their&nbsp;correct&nbsp;types&nbsp;/&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-_BaseDocument__get_field_display"><strong>_BaseDocument__get_field_display</strong></a> = __get_field_display(self, field)</dt><dd><tt>Returns&nbsp;the&nbsp;display&nbsp;value&nbsp;for&nbsp;a&nbsp;choice&nbsp;field</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-_BaseDocument__set_field_display"><strong>_BaseDocument__set_field_display</strong></a> = __set_field_display(self)</dt><dd><tt>Dynamically&nbsp;set&nbsp;the&nbsp;display&nbsp;value&nbsp;for&nbsp;a&nbsp;field&nbsp;with&nbsp;choices</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-__contains__"><strong>__contains__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="Asignaturas-__delattr__"><strong>__delattr__</strong></a>(self, *args, **kwargs)</dt><dd><tt>Handle&nbsp;deletions&nbsp;of&nbsp;fields</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-__eq__"><strong>__eq__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Asignaturas-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><tt>Dictionary-style&nbsp;field&nbsp;access,&nbsp;return&nbsp;a&nbsp;field's&nbsp;value&nbsp;if&nbsp;present.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-__getstate__"><strong>__getstate__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Asignaturas-__hash__"><strong>__hash__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Asignaturas-__init__"><strong>__init__</strong></a>(self, *args, **values)</dt><dd><tt>Initialise&nbsp;a&nbsp;document&nbsp;or&nbsp;embedded&nbsp;document<br>
+&nbsp;<br>
+:param&nbsp;__auto_convert:&nbsp;Try&nbsp;and&nbsp;will&nbsp;cast&nbsp;python&nbsp;objects&nbsp;to&nbsp;Object&nbsp;types<br>
+:param&nbsp;values:&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;values&nbsp;for&nbsp;the&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Asignaturas-__len__"><strong>__len__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Asignaturas-__ne__"><strong>__ne__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Asignaturas-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Asignaturas-__setattr__"><strong>__setattr__</strong></a>(self, name, value)</dt></dl>
+
+<dl><dt><a name="Asignaturas-__setitem__"><strong>__setitem__</strong></a>(self, name, value)</dt><dd><tt>Dictionary-style&nbsp;field&nbsp;access,&nbsp;set&nbsp;a&nbsp;field's&nbsp;value.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-__setstate__"><strong>__setstate__</strong></a>(self, data)</dt></dl>
+
+<dl><dt><a name="Asignaturas-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Asignaturas-_clear_changed_fields"><strong>_clear_changed_fields</strong></a>(self)</dt><dd><tt>Using&nbsp;get_changed_fields&nbsp;iterate&nbsp;and&nbsp;remove&nbsp;any&nbsp;fields&nbsp;that&nbsp;are<br>
+marked&nbsp;as&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-_delta"><strong>_delta</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;delta&nbsp;(set,&nbsp;unset)&nbsp;of&nbsp;the&nbsp;changes&nbsp;for&nbsp;a&nbsp;document.<br>
+Gets&nbsp;any&nbsp;values&nbsp;that&nbsp;have&nbsp;been&nbsp;explicitly&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-_get_changed_fields"><strong>_get_changed_fields</strong></a>(self, inspected<font color="#909090">=None</font>)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;fields&nbsp;that&nbsp;have&nbsp;explicitly&nbsp;been&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-_mark_as_changed"><strong>_mark_as_changed</strong></a>(self, key)</dt><dd><tt>Marks&nbsp;a&nbsp;key&nbsp;as&nbsp;explicitly&nbsp;changed&nbsp;by&nbsp;the&nbsp;user</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-_nestable_types_changed_fields"><strong>_nestable_types_changed_fields</strong></a>(self, changed_fields, key, data, inspected)</dt></dl>
+
+<dl><dt><a name="Asignaturas-clean"><strong>clean</strong></a>(self)</dt><dd><tt>Hook&nbsp;for&nbsp;doing&nbsp;document&nbsp;level&nbsp;data&nbsp;cleaning&nbsp;before&nbsp;validation&nbsp;is&nbsp;run.<br>
+&nbsp;<br>
+Any&nbsp;ValidationError&nbsp;raised&nbsp;by&nbsp;this&nbsp;method&nbsp;will&nbsp;not&nbsp;be&nbsp;associated&nbsp;with<br>
+a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will&nbsp;have&nbsp;a&nbsp;special-case&nbsp;association&nbsp;with&nbsp;the<br>
+field&nbsp;defined&nbsp;by&nbsp;NON_FIELD_ERRORS.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-to_json"><strong>to_json</strong></a>(self, *args, **kwargs)</dt><dd><tt>Converts&nbsp;a&nbsp;document&nbsp;to&nbsp;JSON</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-to_mongo"><strong>to_mongo</strong></a>(self)</dt><dd><tt>Return&nbsp;as&nbsp;SON&nbsp;data&nbsp;ready&nbsp;for&nbsp;use&nbsp;with&nbsp;MongoDB.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-validate"><strong>validate</strong></a>(self, clean<font color="#909090">=True</font>)</dt><dd><tt>Ensure&nbsp;that&nbsp;all&nbsp;fields'&nbsp;values&nbsp;are&nbsp;valid&nbsp;and&nbsp;that&nbsp;required&nbsp;fields<br>
+are&nbsp;present.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><a name="Asignaturas-_build_index_spec"><strong>_build_index_spec</strong></a>(cls, spec)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Build&nbsp;a&nbsp;PyMongo&nbsp;index&nbsp;spec&nbsp;from&nbsp;a&nbsp;MongoEngine&nbsp;index&nbsp;spec.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-_build_index_specs"><strong>_build_index_specs</strong></a>(cls, meta_indexes)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Generate&nbsp;and&nbsp;merge&nbsp;the&nbsp;full&nbsp;index&nbsp;specs</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-_from_son"><strong>_from_son</strong></a>(cls, son, _auto_dereference<font color="#909090">=True</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Create&nbsp;an&nbsp;instance&nbsp;of&nbsp;a&nbsp;<a href="mongoengine.document.html#Document">Document</a>&nbsp;(subclass)&nbsp;from&nbsp;a&nbsp;PyMongo&nbsp;SON.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-_geo_indices"><strong>_geo_indices</strong></a>(cls, inspected<font color="#909090">=None</font>, parent_field<font color="#909090">=None</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt></dl>
+
+<dl><dt><a name="Asignaturas-_get_collection_name"><strong>_get_collection_name</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;collection&nbsp;name&nbsp;for&nbsp;this&nbsp;class.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-_lookup_field"><strong>_lookup_field</strong></a>(cls, parts)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Lookup&nbsp;a&nbsp;field&nbsp;based&nbsp;on&nbsp;its&nbsp;attribute&nbsp;and&nbsp;return&nbsp;a&nbsp;list&nbsp;containing<br>
+the&nbsp;field's&nbsp;parents&nbsp;and&nbsp;the&nbsp;field.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-_translate_field_name"><strong>_translate_field_name</strong></a>(cls, field, sep<font color="#909090">='.'</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Translate&nbsp;a&nbsp;field&nbsp;attribute&nbsp;name&nbsp;to&nbsp;a&nbsp;database&nbsp;field&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-_unique_with_indexes"><strong>_unique_with_indexes</strong></a>(cls, namespace<font color="#909090">=''</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Find&nbsp;and&nbsp;set&nbsp;unique&nbsp;indexes</tt></dd></dl>
+
+<dl><dt><a name="Asignaturas-from_json"><strong>from_json</strong></a>(cls, json_data)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Converts&nbsp;json&nbsp;data&nbsp;to&nbsp;an&nbsp;unsaved&nbsp;document&nbsp;instance</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><strong>_created</strong> = True</dl>
+
+<dl><dt><strong>_dynamic</strong> = False</dl>
+
+<dl><dt><strong>_dynamic_lock</strong> = True</dl>
+
+<dl><dt><strong>_initialised</strong> = False</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Examenes">class <strong>Examenes</strong></a>(<a href="mongoengine.document.html#Document">mongoengine.document.Document</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;that&nbsp;defines&nbsp;the&nbsp;data&nbsp;model&nbsp;for&nbsp;collection&nbsp;of&nbsp;exams.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#Examenes">Examenes</a></dd>
+<dd><a href="mongoengine.document.html#Document">mongoengine.document.Document</a></dd>
+<dd><a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Examenes-__unicode__"><strong>__unicode__</strong></a>(self)</dt><dd><tt>#&nbsp;Required&nbsp;for&nbsp;administrative&nbsp;interface</tt></dd></dl>
+
+<dl><dt><a name="Examenes-clean"><strong>clean</strong></a>(self)</dt><dd><tt>Make&nbsp;validations&nbsp;before&nbsp;save&nbsp;any&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Examenes-get_id"><strong>get_id</strong></a>(self)</dt></dl>
+
+<dl><dt><strong>objects</strong></dt>
+<dd><tt>The&nbsp;default&nbsp;QuerySet&nbsp;Manager.<br>
+&nbsp;<br>
+Custom&nbsp;QuerySet&nbsp;Manager&nbsp;functions&nbsp;can&nbsp;extend&nbsp;this&nbsp;class&nbsp;and&nbsp;users&nbsp;can<br>
+add&nbsp;extra&nbsp;queryset&nbsp;functionality.&nbsp;&nbsp;Any&nbsp;custom&nbsp;manager&nbsp;methods&nbsp;must&nbsp;accept&nbsp;a<br>
+:class:`~mongoengine.Document`&nbsp;class&nbsp;as&nbsp;its&nbsp;first&nbsp;argument,&nbsp;and&nbsp;a<br>
+:class:`~mongoengine.queryset.QuerySet`&nbsp;as&nbsp;its&nbsp;second&nbsp;argument.<br>
+&nbsp;<br>
+The&nbsp;method&nbsp;function&nbsp;should&nbsp;return&nbsp;a&nbsp;:class:`~mongoengine.queryset.QuerySet`<br>
+,&nbsp;probably&nbsp;the&nbsp;same&nbsp;one&nbsp;that&nbsp;was&nbsp;passed&nbsp;in,&nbsp;but&nbsp;modified&nbsp;in&nbsp;some&nbsp;way.</tt></dd>
+</dl>
+
+<dl><dt><strong>public</strong></dt>
+<dd><tt>The&nbsp;default&nbsp;QuerySet&nbsp;Manager.<br>
+&nbsp;<br>
+Custom&nbsp;QuerySet&nbsp;Manager&nbsp;functions&nbsp;can&nbsp;extend&nbsp;this&nbsp;class&nbsp;and&nbsp;users&nbsp;can<br>
+add&nbsp;extra&nbsp;queryset&nbsp;functionality.&nbsp;&nbsp;Any&nbsp;custom&nbsp;manager&nbsp;methods&nbsp;must&nbsp;accept&nbsp;a<br>
+:class:`~mongoengine.Document`&nbsp;class&nbsp;as&nbsp;its&nbsp;first&nbsp;argument,&nbsp;and&nbsp;a<br>
+:class:`~mongoengine.queryset.QuerySet`&nbsp;as&nbsp;its&nbsp;second&nbsp;argument.<br>
+&nbsp;<br>
+The&nbsp;method&nbsp;function&nbsp;should&nbsp;return&nbsp;a&nbsp;:class:`~mongoengine.queryset.QuerySet`<br>
+,&nbsp;probably&nbsp;the&nbsp;same&nbsp;one&nbsp;that&nbsp;was&nbsp;passed&nbsp;in,&nbsp;but&nbsp;modified&nbsp;in&nbsp;some&nbsp;way.</tt></dd>
+</dl>
+
+<dl><dt><strong>user_objects</strong></dt>
+<dd><tt>The&nbsp;default&nbsp;QuerySet&nbsp;Manager.<br>
+&nbsp;<br>
+Custom&nbsp;QuerySet&nbsp;Manager&nbsp;functions&nbsp;can&nbsp;extend&nbsp;this&nbsp;class&nbsp;and&nbsp;users&nbsp;can<br>
+add&nbsp;extra&nbsp;queryset&nbsp;functionality.&nbsp;&nbsp;Any&nbsp;custom&nbsp;manager&nbsp;methods&nbsp;must&nbsp;accept&nbsp;a<br>
+:class:`~mongoengine.Document`&nbsp;class&nbsp;as&nbsp;its&nbsp;first&nbsp;argument,&nbsp;and&nbsp;a<br>
+:class:`~mongoengine.queryset.QuerySet`&nbsp;as&nbsp;its&nbsp;second&nbsp;argument.<br>
+&nbsp;<br>
+The&nbsp;method&nbsp;function&nbsp;should&nbsp;return&nbsp;a&nbsp;:class:`~mongoengine.queryset.QuerySet`<br>
+,&nbsp;probably&nbsp;the&nbsp;same&nbsp;one&nbsp;that&nbsp;was&nbsp;passed&nbsp;in,&nbsp;but&nbsp;modified&nbsp;in&nbsp;some&nbsp;way.</tt></dd>
+</dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>asignatura</strong></dt>
+<dd><tt>A&nbsp;reference&nbsp;to&nbsp;a&nbsp;document&nbsp;that&nbsp;will&nbsp;be&nbsp;automatically&nbsp;dereferenced&nbsp;on<br>
+access&nbsp;(lazily).<br>
+&nbsp;<br>
+Use&nbsp;the&nbsp;`reverse_delete_rule`&nbsp;to&nbsp;handle&nbsp;what&nbsp;should&nbsp;happen&nbsp;if&nbsp;the&nbsp;document<br>
+the&nbsp;field&nbsp;is&nbsp;referencing&nbsp;is&nbsp;deleted.&nbsp;&nbsp;EmbeddedDocuments,&nbsp;DictFields&nbsp;and<br>
+MapFields&nbsp;do&nbsp;not&nbsp;support&nbsp;reverse_delete_rules&nbsp;and&nbsp;an&nbsp;`InvalidDocumentError`<br>
+will&nbsp;be&nbsp;raised&nbsp;if&nbsp;trying&nbsp;to&nbsp;set&nbsp;on&nbsp;one&nbsp;of&nbsp;these&nbsp;Document&nbsp;/&nbsp;Field&nbsp;types.<br>
+&nbsp;<br>
+The&nbsp;options&nbsp;are:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;DO_NOTHING&nbsp;&nbsp;-&nbsp;don't&nbsp;do&nbsp;anything&nbsp;(default).<br>
+&nbsp;&nbsp;*&nbsp;NULLIFY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Updates&nbsp;the&nbsp;reference&nbsp;to&nbsp;null.<br>
+&nbsp;&nbsp;*&nbsp;CASCADE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Deletes&nbsp;the&nbsp;documents&nbsp;associated&nbsp;with&nbsp;the&nbsp;reference.<br>
+&nbsp;&nbsp;*&nbsp;DENY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Prevent&nbsp;the&nbsp;deletion&nbsp;of&nbsp;the&nbsp;reference&nbsp;object.<br>
+&nbsp;&nbsp;*&nbsp;PULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Pull&nbsp;the&nbsp;reference&nbsp;from&nbsp;a&nbsp;:class:`~mongoengine.fields.ListField`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;references<br>
+&nbsp;<br>
+Alternative&nbsp;syntax&nbsp;for&nbsp;registering&nbsp;delete&nbsp;rules&nbsp;(useful&nbsp;when&nbsp;implementing<br>
+bi-directional&nbsp;delete&nbsp;rules)<br>
+&nbsp;<br>
+..&nbsp;code-block::&nbsp;python<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;Bar(Document):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;=&nbsp;StringField()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo&nbsp;=&nbsp;ReferenceField('Foo')<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Bar.register_delete_rule(Foo,&nbsp;'bar',&nbsp;NULLIFY)<br>
+&nbsp;<br>
+..&nbsp;note&nbsp;::<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`reverse_delete_rules`&nbsp;do&nbsp;not&nbsp;trigger&nbsp;pre&nbsp;/&nbsp;post&nbsp;delete&nbsp;signals&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;triggered.<br>
+&nbsp;<br>
+..&nbsp;versionchanged::&nbsp;0.5&nbsp;added&nbsp;`reverse_delete_rule`</tt></dd>
+</dl>
+<dl><dt><strong>id</strong></dt>
+<dd><tt>A&nbsp;field&nbsp;wrapper&nbsp;around&nbsp;MongoDB's&nbsp;ObjectIds.</tt></dd>
+</dl>
+<dl><dt><strong>nombre</strong></dt>
+<dd><tt>A&nbsp;unicode&nbsp;string&nbsp;field.</tt></dd>
+</dl>
+<dl><dt><strong>preguntas</strong></dt>
+<dd><tt>A&nbsp;list&nbsp;field&nbsp;that&nbsp;wraps&nbsp;a&nbsp;standard&nbsp;field,&nbsp;allowing&nbsp;multiple&nbsp;instances<br>
+of&nbsp;the&nbsp;field&nbsp;to&nbsp;be&nbsp;used&nbsp;as&nbsp;a&nbsp;list&nbsp;in&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+If&nbsp;using&nbsp;with&nbsp;ReferenceFields&nbsp;see:&nbsp;:ref:`one-to-many-with-listfields`<br>
+&nbsp;<br>
+..&nbsp;note::<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Required&nbsp;means&nbsp;it&nbsp;cannot&nbsp;be&nbsp;empty&nbsp;-&nbsp;as&nbsp;the&nbsp;default&nbsp;for&nbsp;ListFields&nbsp;is&nbsp;[]</tt></dd>
+</dl>
+<dl><dt><strong>publico</strong></dt>
+<dd><tt>A&nbsp;boolean&nbsp;field&nbsp;type.<br>
+&nbsp;<br>
+..&nbsp;versionadded::&nbsp;0.1.2</tt></dd>
+</dl>
+<dl><dt><strong>usuario</strong></dt>
+<dd><tt>A&nbsp;reference&nbsp;to&nbsp;a&nbsp;document&nbsp;that&nbsp;will&nbsp;be&nbsp;automatically&nbsp;dereferenced&nbsp;on<br>
+access&nbsp;(lazily).<br>
+&nbsp;<br>
+Use&nbsp;the&nbsp;`reverse_delete_rule`&nbsp;to&nbsp;handle&nbsp;what&nbsp;should&nbsp;happen&nbsp;if&nbsp;the&nbsp;document<br>
+the&nbsp;field&nbsp;is&nbsp;referencing&nbsp;is&nbsp;deleted.&nbsp;&nbsp;EmbeddedDocuments,&nbsp;DictFields&nbsp;and<br>
+MapFields&nbsp;do&nbsp;not&nbsp;support&nbsp;reverse_delete_rules&nbsp;and&nbsp;an&nbsp;`InvalidDocumentError`<br>
+will&nbsp;be&nbsp;raised&nbsp;if&nbsp;trying&nbsp;to&nbsp;set&nbsp;on&nbsp;one&nbsp;of&nbsp;these&nbsp;Document&nbsp;/&nbsp;Field&nbsp;types.<br>
+&nbsp;<br>
+The&nbsp;options&nbsp;are:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;DO_NOTHING&nbsp;&nbsp;-&nbsp;don't&nbsp;do&nbsp;anything&nbsp;(default).<br>
+&nbsp;&nbsp;*&nbsp;NULLIFY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Updates&nbsp;the&nbsp;reference&nbsp;to&nbsp;null.<br>
+&nbsp;&nbsp;*&nbsp;CASCADE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Deletes&nbsp;the&nbsp;documents&nbsp;associated&nbsp;with&nbsp;the&nbsp;reference.<br>
+&nbsp;&nbsp;*&nbsp;DENY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Prevent&nbsp;the&nbsp;deletion&nbsp;of&nbsp;the&nbsp;reference&nbsp;object.<br>
+&nbsp;&nbsp;*&nbsp;PULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Pull&nbsp;the&nbsp;reference&nbsp;from&nbsp;a&nbsp;:class:`~mongoengine.fields.ListField`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;references<br>
+&nbsp;<br>
+Alternative&nbsp;syntax&nbsp;for&nbsp;registering&nbsp;delete&nbsp;rules&nbsp;(useful&nbsp;when&nbsp;implementing<br>
+bi-directional&nbsp;delete&nbsp;rules)<br>
+&nbsp;<br>
+..&nbsp;code-block::&nbsp;python<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;Bar(Document):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;=&nbsp;StringField()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo&nbsp;=&nbsp;ReferenceField('Foo')<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Bar.register_delete_rule(Foo,&nbsp;'bar',&nbsp;NULLIFY)<br>
+&nbsp;<br>
+..&nbsp;note&nbsp;::<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`reverse_delete_rules`&nbsp;do&nbsp;not&nbsp;trigger&nbsp;pre&nbsp;/&nbsp;post&nbsp;delete&nbsp;signals&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;triggered.<br>
+&nbsp;<br>
+..&nbsp;versionchanged::&nbsp;0.5&nbsp;added&nbsp;`reverse_delete_rule`</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+
+<dl><dt><strong>_auto_id_field</strong> = True</dl>
+
+<dl><dt><strong>_class_name</strong> = 'Examenes'</dl>
+
+<dl><dt><strong>_collection</strong> = None</dl>
+
+<dl><dt><strong>_db_field_map</strong> = {'asignatura': 'asignatura', 'nombre': 'nombre', 'preguntas': 'preguntas', 'publico': 'publico', 'usuario': 'usuario'}</dl>
+
+<dl><dt><strong>_fields</strong> = {'asignatura': &lt;mongoengine.fields.ReferenceField object&gt;, 'id': &lt;mongoengine.base.fields.ObjectIdField object&gt;, 'nombre': &lt;mongoengine.fields.StringField object&gt;, 'preguntas': &lt;mongoengine.fields.ListField object&gt;, 'publico': &lt;mongoengine.fields.BooleanField object&gt;, 'usuario': &lt;mongoengine.fields.ReferenceField object&gt;}</dl>
+
+<dl><dt><strong>_fields_ordered</strong> = ('id', 'nombre', 'asignatura', 'preguntas', 'publico', 'usuario')</dl>
+
+<dl><dt><strong>_is_base_cls</strong> = False</dl>
+
+<dl><dt><strong>_is_document</strong> = True</dl>
+
+<dl><dt><strong>_meta</strong> = {'index_background': False, 'ordering': [], 'abs...les': None, 'max_size': None, 'index_opts': None}</dl>
+
+<dl><dt><strong>_reverse_db_field_map</strong> = {'asignatura': 'asignatura', 'nombre': 'nombre', 'preguntas': 'preguntas', 'publico': 'publico', 'usuario': 'usuario'}</dl>
+
+<dl><dt><strong>_subclasses</strong> = ('Examenes',)</dl>
+
+<dl><dt><strong>_superclasses</strong> = ()</dl>
+
+<dl><dt><strong>_types</strong> = ('Examenes',)</dl>
+
+<hr>
+Methods inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><a name="Examenes-_reload"><strong>_reload</strong></a>(self, key, value)</dt><dd><tt>Used&nbsp;by&nbsp;:meth:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>.reload`&nbsp;to&nbsp;ensure&nbsp;the<br>
+correct&nbsp;instance&nbsp;is&nbsp;linked&nbsp;to&nbsp;self.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-cascade_save"><strong>cascade_save</strong></a>(self, *args, **kwargs)</dt><dd><tt>Recursively&nbsp;saves&nbsp;any&nbsp;references&nbsp;/<br>
+generic&nbsp;references&nbsp;on&nbsp;an&nbsp;objects</tt></dd></dl>
+
+<dl><dt><a name="Examenes-delete"><strong>delete</strong></a>(self, **write_concern)</dt><dd><tt>Delete&nbsp;the&nbsp;:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`&nbsp;from&nbsp;the&nbsp;database.&nbsp;This<br>
+will&nbsp;only&nbsp;take&nbsp;effect&nbsp;if&nbsp;the&nbsp;document&nbsp;has&nbsp;been&nbsp;previously&nbsp;saved.<br>
+&nbsp;<br>
+:param&nbsp;write_concern:&nbsp;Extra&nbsp;keyword&nbsp;arguments&nbsp;are&nbsp;passed&nbsp;down&nbsp;which<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;options&nbsp;for&nbsp;the&nbsp;resultant<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``getLastError``&nbsp;command.&nbsp;&nbsp;For&nbsp;example,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``<a href="#Examenes-save">save</a>(...,&nbsp;write_concern={w:&nbsp;2,&nbsp;fsync:&nbsp;True},&nbsp;...)``&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wait&nbsp;until&nbsp;at&nbsp;least&nbsp;two&nbsp;servers&nbsp;have&nbsp;recorded&nbsp;the&nbsp;write&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;force&nbsp;an&nbsp;fsync&nbsp;on&nbsp;the&nbsp;primary&nbsp;server.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-reload"><strong>reload</strong></a>(self, max_depth<font color="#909090">=1</font>)</dt><dd><tt>Reloads&nbsp;all&nbsp;attributes&nbsp;from&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+..&nbsp;versionadded::&nbsp;0.1.2<br>
+..&nbsp;versionchanged::&nbsp;0.6&nbsp;&nbsp;Now&nbsp;chainable</tt></dd></dl>
+
+<dl><dt><a name="Examenes-save"><strong>save</strong></a>(self, force_insert<font color="#909090">=False</font>, validate<font color="#909090">=True</font>, clean<font color="#909090">=True</font>, write_concern<font color="#909090">=None</font>, cascade<font color="#909090">=None</font>, cascade_kwargs<font color="#909090">=None</font>, _refs<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Save&nbsp;the&nbsp;:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`&nbsp;to&nbsp;the&nbsp;database.&nbsp;If&nbsp;the<br>
+document&nbsp;already&nbsp;exists,&nbsp;it&nbsp;will&nbsp;be&nbsp;updated,&nbsp;otherwise&nbsp;it&nbsp;will&nbsp;be<br>
+created.<br>
+&nbsp;<br>
+:param&nbsp;force_insert:&nbsp;only&nbsp;try&nbsp;to&nbsp;create&nbsp;a&nbsp;new&nbsp;document,&nbsp;don't&nbsp;allow<br>
+&nbsp;&nbsp;&nbsp;&nbsp;updates&nbsp;of&nbsp;existing&nbsp;documents<br>
+:param&nbsp;validate:&nbsp;validates&nbsp;the&nbsp;document;&nbsp;set&nbsp;to&nbsp;``False``&nbsp;to&nbsp;skip.<br>
+:param&nbsp;clean:&nbsp;call&nbsp;the&nbsp;document&nbsp;clean&nbsp;method,&nbsp;requires&nbsp;`validate`&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;True.<br>
+:param&nbsp;write_concern:&nbsp;Extra&nbsp;keyword&nbsp;arguments&nbsp;are&nbsp;passed&nbsp;down&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:meth:`~pymongo.collection.Collection.save`&nbsp;OR<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:meth:`~pymongo.collection.Collection.insert`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;which&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;options&nbsp;for&nbsp;the&nbsp;resultant<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``getLastError``&nbsp;command.&nbsp;&nbsp;For&nbsp;example,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``<a href="#Examenes-save">save</a>(...,&nbsp;write_concern={w:&nbsp;2,&nbsp;fsync:&nbsp;True},&nbsp;...)``&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wait&nbsp;until&nbsp;at&nbsp;least&nbsp;two&nbsp;servers&nbsp;have&nbsp;recorded&nbsp;the&nbsp;write&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;force&nbsp;an&nbsp;fsync&nbsp;on&nbsp;the&nbsp;primary&nbsp;server.<br>
+:param&nbsp;cascade:&nbsp;Sets&nbsp;the&nbsp;flag&nbsp;for&nbsp;cascading&nbsp;saves.&nbsp;&nbsp;You&nbsp;can&nbsp;set&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;by&nbsp;setting&nbsp;"cascade"&nbsp;in&nbsp;the&nbsp;document&nbsp;__meta__<br>
+:param&nbsp;cascade_kwargs:&nbsp;(optional)&nbsp;kwargs&nbsp;dictionary&nbsp;to&nbsp;be&nbsp;passed&nbsp;throw<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;cascading&nbsp;saves.&nbsp;&nbsp;Implies&nbsp;``cascade=True``.<br>
+:param&nbsp;_refs:&nbsp;A&nbsp;list&nbsp;of&nbsp;processed&nbsp;references&nbsp;used&nbsp;in&nbsp;cascading&nbsp;saves<br>
+&nbsp;<br>
+..&nbsp;versionchanged::&nbsp;0.5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;existing&nbsp;documents&nbsp;it&nbsp;only&nbsp;saves&nbsp;changed&nbsp;fields&nbsp;using<br>
+&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;/&nbsp;unset.&nbsp;&nbsp;Saves&nbsp;are&nbsp;cascaded&nbsp;and&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:class:`~bson.dbref.DBRef`&nbsp;objects&nbsp;that&nbsp;have&nbsp;changes&nbsp;are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;saved&nbsp;as&nbsp;well.<br>
+..&nbsp;versionchanged::&nbsp;0.6<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Added&nbsp;cascading&nbsp;saves<br>
+..&nbsp;versionchanged::&nbsp;0.8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Cascade&nbsp;saves&nbsp;are&nbsp;optional&nbsp;and&nbsp;default&nbsp;to&nbsp;False.&nbsp;&nbsp;If&nbsp;you&nbsp;want<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fine&nbsp;grain&nbsp;control&nbsp;then&nbsp;you&nbsp;can&nbsp;turn&nbsp;off&nbsp;using&nbsp;document<br>
+&nbsp;&nbsp;&nbsp;&nbsp;meta['cascade']&nbsp;=&nbsp;True.&nbsp;&nbsp;Also&nbsp;you&nbsp;can&nbsp;pass&nbsp;different&nbsp;kwargs&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;cascade&nbsp;save&nbsp;using&nbsp;cascade_kwargs&nbsp;which&nbsp;overwrites&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;existing&nbsp;kwargs&nbsp;with&nbsp;custom&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-select_related"><strong>select_related</strong></a>(self, max_depth<font color="#909090">=1</font>)</dt><dd><tt>Handles&nbsp;dereferencing&nbsp;of&nbsp;:class:`~bson.dbref.DBRef`&nbsp;objects&nbsp;to<br>
+a&nbsp;maximum&nbsp;depth&nbsp;in&nbsp;order&nbsp;to&nbsp;cut&nbsp;down&nbsp;the&nbsp;number&nbsp;queries&nbsp;to&nbsp;mongodb.<br>
+&nbsp;<br>
+..&nbsp;versionadded::&nbsp;0.5</tt></dd></dl>
+
+<dl><dt><a name="Examenes-switch_collection"><strong>switch_collection</strong></a>(self, collection_name)</dt><dd><tt>Temporarily&nbsp;switch&nbsp;the&nbsp;collection&nbsp;for&nbsp;a&nbsp;document&nbsp;instance.<br>
+&nbsp;<br>
+Only&nbsp;really&nbsp;useful&nbsp;for&nbsp;archiving&nbsp;off&nbsp;data&nbsp;and&nbsp;calling&nbsp;`<a href="#Examenes-save">save</a>()`::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user&nbsp;=&nbsp;User.objects.get(id=user_id)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Examenes-switch_collection">switch_collection</a>('old-users')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Examenes-save">save</a>()<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;need&nbsp;to&nbsp;read&nbsp;from&nbsp;another&nbsp;database&nbsp;see<br>
+:class:`~mongoengine.context_managers.switch_db`<br>
+&nbsp;<br>
+:param&nbsp;collection_name:&nbsp;The&nbsp;database&nbsp;alias&nbsp;to&nbsp;use&nbsp;for&nbsp;saving&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Examenes-switch_db"><strong>switch_db</strong></a>(self, db_alias)</dt><dd><tt>Temporarily&nbsp;switch&nbsp;the&nbsp;database&nbsp;for&nbsp;a&nbsp;document&nbsp;instance.<br>
+&nbsp;<br>
+Only&nbsp;really&nbsp;useful&nbsp;for&nbsp;archiving&nbsp;off&nbsp;data&nbsp;and&nbsp;calling&nbsp;`<a href="#Examenes-save">save</a>()`::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user&nbsp;=&nbsp;User.objects.get(id=user_id)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Examenes-switch_db">switch_db</a>('archive-db')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Examenes-save">save</a>()<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;need&nbsp;to&nbsp;read&nbsp;from&nbsp;another&nbsp;database&nbsp;see<br>
+:class:`~mongoengine.context_managers.switch_db`<br>
+&nbsp;<br>
+:param&nbsp;db_alias:&nbsp;The&nbsp;database&nbsp;alias&nbsp;to&nbsp;use&nbsp;for&nbsp;saving&nbsp;the&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Examenes-to_dbref"><strong>to_dbref</strong></a>(self)</dt><dd><tt>Returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;:class:`~bson.dbref.DBRef`&nbsp;useful&nbsp;in<br>
+`__raw__`&nbsp;queries.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-update"><strong>update</strong></a>(self, **kwargs)</dt><dd><tt>Performs&nbsp;an&nbsp;update&nbsp;on&nbsp;the&nbsp;:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`<br>
+A&nbsp;convenience&nbsp;wrapper&nbsp;to&nbsp;:meth:`~mongoengine.QuerySet.update`.<br>
+&nbsp;<br>
+Raises&nbsp;:class:`OperationError`&nbsp;if&nbsp;called&nbsp;on&nbsp;an&nbsp;object&nbsp;that&nbsp;has&nbsp;not&nbsp;yet<br>
+been&nbsp;saved.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><a name="Examenes-_get_collection"><strong>_get_collection</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;collection&nbsp;for&nbsp;the&nbsp;document.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-_get_db"><strong>_get_db</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Some&nbsp;Model&nbsp;using&nbsp;other&nbsp;db_alias</tt></dd></dl>
+
+<dl><dt><a name="Examenes-compare_indexes"><strong>compare_indexes</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Compares&nbsp;the&nbsp;indexes&nbsp;defined&nbsp;in&nbsp;MongoEngine&nbsp;with&nbsp;the&nbsp;ones&nbsp;existing<br>
+in&nbsp;the&nbsp;database.&nbsp;Returns&nbsp;any&nbsp;missing/extra&nbsp;indexes.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-drop_collection"><strong>drop_collection</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Drops&nbsp;the&nbsp;entire&nbsp;collection&nbsp;associated&nbsp;with&nbsp;this<br>
+:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`&nbsp;type&nbsp;from&nbsp;the&nbsp;database.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-ensure_index"><strong>ensure_index</strong></a>(cls, key_or_list, drop_dups<font color="#909090">=False</font>, background<font color="#909090">=False</font>, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Ensure&nbsp;that&nbsp;the&nbsp;given&nbsp;indexes&nbsp;are&nbsp;in&nbsp;place.<br>
+&nbsp;<br>
+:param&nbsp;key_or_list:&nbsp;a&nbsp;single&nbsp;index&nbsp;key&nbsp;or&nbsp;a&nbsp;list&nbsp;of&nbsp;index&nbsp;keys&nbsp;(to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;construct&nbsp;a&nbsp;multi-field&nbsp;index);&nbsp;keys&nbsp;may&nbsp;be&nbsp;prefixed&nbsp;with&nbsp;a&nbsp;**+**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;a&nbsp;**-**&nbsp;to&nbsp;determine&nbsp;the&nbsp;index&nbsp;ordering</tt></dd></dl>
+
+<dl><dt><a name="Examenes-ensure_indexes"><strong>ensure_indexes</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Checks&nbsp;the&nbsp;document&nbsp;meta&nbsp;data&nbsp;and&nbsp;ensures&nbsp;all&nbsp;the&nbsp;indexes&nbsp;exist.<br>
+&nbsp;<br>
+Global&nbsp;defaults&nbsp;can&nbsp;be&nbsp;set&nbsp;in&nbsp;the&nbsp;meta&nbsp;-&nbsp;see&nbsp;:doc:`guide/defining-documents`<br>
+&nbsp;<br>
+..&nbsp;note::&nbsp;You&nbsp;can&nbsp;disable&nbsp;automatic&nbsp;index&nbsp;creation&nbsp;by&nbsp;setting<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_create_index`&nbsp;to&nbsp;False&nbsp;in&nbsp;the&nbsp;documents&nbsp;meta&nbsp;data</tt></dd></dl>
+
+<dl><dt><a name="Examenes-list_indexes"><strong>list_indexes</strong></a>(cls, go_up<font color="#909090">=True</font>, go_down<font color="#909090">=True</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Lists&nbsp;all&nbsp;of&nbsp;the&nbsp;indexes&nbsp;that&nbsp;should&nbsp;be&nbsp;created&nbsp;for&nbsp;given<br>
+collection.&nbsp;It&nbsp;includes&nbsp;all&nbsp;the&nbsp;indexes&nbsp;from&nbsp;super-&nbsp;and&nbsp;sub-classes.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-register_delete_rule"><strong>register_delete_rule</strong></a>(cls, document_cls, field_name, rule)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>This&nbsp;method&nbsp;registers&nbsp;the&nbsp;delete&nbsp;rules&nbsp;to&nbsp;apply&nbsp;when&nbsp;removing&nbsp;this<br>
+object.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><strong>_object_key</strong></dt>
+<dd><tt>Dict&nbsp;to&nbsp;identify&nbsp;object&nbsp;in&nbsp;collection</tt></dd>
+</dl>
+<dl><dt><strong>_qs</strong></dt>
+<dd><tt>Returns&nbsp;the&nbsp;queryset&nbsp;to&nbsp;use&nbsp;for&nbsp;updating&nbsp;/&nbsp;reloading&nbsp;/&nbsp;deletions</tt></dd>
+</dl>
+<dl><dt><strong>pk</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><strong>__metaclass__</strong> = &lt;class 'mongoengine.base.metaclasses.TopLevelDocumentMetaclass'&gt;<dd><tt>Metaclass&nbsp;for&nbsp;top-level&nbsp;documents&nbsp;(i.e.&nbsp;documents&nbsp;that&nbsp;have&nbsp;their&nbsp;own<br>
+collection&nbsp;in&nbsp;the&nbsp;database.</tt></dl>
+
+<dl><dt><strong>my_metaclass</strong> = &lt;class 'mongoengine.base.metaclasses.TopLevelDocumentMetaclass'&gt;<dd><tt>Metaclass&nbsp;for&nbsp;top-level&nbsp;documents&nbsp;(i.e.&nbsp;documents&nbsp;that&nbsp;have&nbsp;their&nbsp;own<br>
+collection&nbsp;in&nbsp;the&nbsp;database.</tt></dl>
+
+<hr>
+Methods inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><a name="Examenes-_BaseDocument__expand_dynamic_values"><strong>_BaseDocument__expand_dynamic_values</strong></a> = __expand_dynamic_values(self, name, value)</dt><dd><tt>expand&nbsp;any&nbsp;dynamic&nbsp;values&nbsp;to&nbsp;their&nbsp;correct&nbsp;types&nbsp;/&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="Examenes-_BaseDocument__get_field_display"><strong>_BaseDocument__get_field_display</strong></a> = __get_field_display(self, field)</dt><dd><tt>Returns&nbsp;the&nbsp;display&nbsp;value&nbsp;for&nbsp;a&nbsp;choice&nbsp;field</tt></dd></dl>
+
+<dl><dt><a name="Examenes-_BaseDocument__set_field_display"><strong>_BaseDocument__set_field_display</strong></a> = __set_field_display(self)</dt><dd><tt>Dynamically&nbsp;set&nbsp;the&nbsp;display&nbsp;value&nbsp;for&nbsp;a&nbsp;field&nbsp;with&nbsp;choices</tt></dd></dl>
+
+<dl><dt><a name="Examenes-__contains__"><strong>__contains__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="Examenes-__delattr__"><strong>__delattr__</strong></a>(self, *args, **kwargs)</dt><dd><tt>Handle&nbsp;deletions&nbsp;of&nbsp;fields</tt></dd></dl>
+
+<dl><dt><a name="Examenes-__eq__"><strong>__eq__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Examenes-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><tt>Dictionary-style&nbsp;field&nbsp;access,&nbsp;return&nbsp;a&nbsp;field's&nbsp;value&nbsp;if&nbsp;present.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-__getstate__"><strong>__getstate__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Examenes-__hash__"><strong>__hash__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Examenes-__init__"><strong>__init__</strong></a>(self, *args, **values)</dt><dd><tt>Initialise&nbsp;a&nbsp;document&nbsp;or&nbsp;embedded&nbsp;document<br>
+&nbsp;<br>
+:param&nbsp;__auto_convert:&nbsp;Try&nbsp;and&nbsp;will&nbsp;cast&nbsp;python&nbsp;objects&nbsp;to&nbsp;Object&nbsp;types<br>
+:param&nbsp;values:&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;values&nbsp;for&nbsp;the&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Examenes-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Examenes-__len__"><strong>__len__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Examenes-__ne__"><strong>__ne__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Examenes-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Examenes-__setattr__"><strong>__setattr__</strong></a>(self, name, value)</dt></dl>
+
+<dl><dt><a name="Examenes-__setitem__"><strong>__setitem__</strong></a>(self, name, value)</dt><dd><tt>Dictionary-style&nbsp;field&nbsp;access,&nbsp;set&nbsp;a&nbsp;field's&nbsp;value.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-__setstate__"><strong>__setstate__</strong></a>(self, data)</dt></dl>
+
+<dl><dt><a name="Examenes-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Examenes-_clear_changed_fields"><strong>_clear_changed_fields</strong></a>(self)</dt><dd><tt>Using&nbsp;get_changed_fields&nbsp;iterate&nbsp;and&nbsp;remove&nbsp;any&nbsp;fields&nbsp;that&nbsp;are<br>
+marked&nbsp;as&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="Examenes-_delta"><strong>_delta</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;delta&nbsp;(set,&nbsp;unset)&nbsp;of&nbsp;the&nbsp;changes&nbsp;for&nbsp;a&nbsp;document.<br>
+Gets&nbsp;any&nbsp;values&nbsp;that&nbsp;have&nbsp;been&nbsp;explicitly&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-_get_changed_fields"><strong>_get_changed_fields</strong></a>(self, inspected<font color="#909090">=None</font>)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;fields&nbsp;that&nbsp;have&nbsp;explicitly&nbsp;been&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-_mark_as_changed"><strong>_mark_as_changed</strong></a>(self, key)</dt><dd><tt>Marks&nbsp;a&nbsp;key&nbsp;as&nbsp;explicitly&nbsp;changed&nbsp;by&nbsp;the&nbsp;user</tt></dd></dl>
+
+<dl><dt><a name="Examenes-_nestable_types_changed_fields"><strong>_nestable_types_changed_fields</strong></a>(self, changed_fields, key, data, inspected)</dt></dl>
+
+<dl><dt><a name="Examenes-to_json"><strong>to_json</strong></a>(self, *args, **kwargs)</dt><dd><tt>Converts&nbsp;a&nbsp;document&nbsp;to&nbsp;JSON</tt></dd></dl>
+
+<dl><dt><a name="Examenes-to_mongo"><strong>to_mongo</strong></a>(self)</dt><dd><tt>Return&nbsp;as&nbsp;SON&nbsp;data&nbsp;ready&nbsp;for&nbsp;use&nbsp;with&nbsp;MongoDB.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-validate"><strong>validate</strong></a>(self, clean<font color="#909090">=True</font>)</dt><dd><tt>Ensure&nbsp;that&nbsp;all&nbsp;fields'&nbsp;values&nbsp;are&nbsp;valid&nbsp;and&nbsp;that&nbsp;required&nbsp;fields<br>
+are&nbsp;present.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><a name="Examenes-_build_index_spec"><strong>_build_index_spec</strong></a>(cls, spec)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Build&nbsp;a&nbsp;PyMongo&nbsp;index&nbsp;spec&nbsp;from&nbsp;a&nbsp;MongoEngine&nbsp;index&nbsp;spec.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-_build_index_specs"><strong>_build_index_specs</strong></a>(cls, meta_indexes)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Generate&nbsp;and&nbsp;merge&nbsp;the&nbsp;full&nbsp;index&nbsp;specs</tt></dd></dl>
+
+<dl><dt><a name="Examenes-_from_son"><strong>_from_son</strong></a>(cls, son, _auto_dereference<font color="#909090">=True</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Create&nbsp;an&nbsp;instance&nbsp;of&nbsp;a&nbsp;<a href="mongoengine.document.html#Document">Document</a>&nbsp;(subclass)&nbsp;from&nbsp;a&nbsp;PyMongo&nbsp;SON.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-_geo_indices"><strong>_geo_indices</strong></a>(cls, inspected<font color="#909090">=None</font>, parent_field<font color="#909090">=None</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt></dl>
+
+<dl><dt><a name="Examenes-_get_collection_name"><strong>_get_collection_name</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;collection&nbsp;name&nbsp;for&nbsp;this&nbsp;class.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-_lookup_field"><strong>_lookup_field</strong></a>(cls, parts)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Lookup&nbsp;a&nbsp;field&nbsp;based&nbsp;on&nbsp;its&nbsp;attribute&nbsp;and&nbsp;return&nbsp;a&nbsp;list&nbsp;containing<br>
+the&nbsp;field's&nbsp;parents&nbsp;and&nbsp;the&nbsp;field.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-_translate_field_name"><strong>_translate_field_name</strong></a>(cls, field, sep<font color="#909090">='.'</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Translate&nbsp;a&nbsp;field&nbsp;attribute&nbsp;name&nbsp;to&nbsp;a&nbsp;database&nbsp;field&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="Examenes-_unique_with_indexes"><strong>_unique_with_indexes</strong></a>(cls, namespace<font color="#909090">=''</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Find&nbsp;and&nbsp;set&nbsp;unique&nbsp;indexes</tt></dd></dl>
+
+<dl><dt><a name="Examenes-from_json"><strong>from_json</strong></a>(cls, json_data)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Converts&nbsp;json&nbsp;data&nbsp;to&nbsp;an&nbsp;unsaved&nbsp;document&nbsp;instance</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><strong>_created</strong> = True</dl>
+
+<dl><dt><strong>_dynamic</strong> = False</dl>
+
+<dl><dt><strong>_dynamic_lock</strong> = True</dl>
+
+<dl><dt><strong>_initialised</strong> = False</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Opciones">class <strong>Opciones</strong></a>(<a href="mongoengine.document.html#EmbeddedDocument">mongoengine.document.EmbeddedDocument</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Data&nbsp;model&nbsp;for&nbsp;options&nbsp;for&nbsp;multiple&nbsp;choice&nbsp;questions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#Opciones">Opciones</a></dd>
+<dd><a href="mongoengine.document.html#EmbeddedDocument">mongoengine.document.EmbeddedDocument</a></dd>
+<dd><a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><strong>objects</strong></dt>
+<dd><tt>The&nbsp;default&nbsp;QuerySet&nbsp;Manager.<br>
+&nbsp;<br>
+Custom&nbsp;QuerySet&nbsp;Manager&nbsp;functions&nbsp;can&nbsp;extend&nbsp;this&nbsp;class&nbsp;and&nbsp;users&nbsp;can<br>
+add&nbsp;extra&nbsp;queryset&nbsp;functionality.&nbsp;&nbsp;Any&nbsp;custom&nbsp;manager&nbsp;methods&nbsp;must&nbsp;accept&nbsp;a<br>
+:class:`~mongoengine.Document`&nbsp;class&nbsp;as&nbsp;its&nbsp;first&nbsp;argument,&nbsp;and&nbsp;a<br>
+:class:`~mongoengine.queryset.QuerySet`&nbsp;as&nbsp;its&nbsp;second&nbsp;argument.<br>
+&nbsp;<br>
+The&nbsp;method&nbsp;function&nbsp;should&nbsp;return&nbsp;a&nbsp;:class:`~mongoengine.queryset.QuerySet`<br>
+,&nbsp;probably&nbsp;the&nbsp;same&nbsp;one&nbsp;that&nbsp;was&nbsp;passed&nbsp;in,&nbsp;but&nbsp;modified&nbsp;in&nbsp;some&nbsp;way.</tt></dd>
+</dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>letra</strong></dt>
+<dd><tt>A&nbsp;unicode&nbsp;string&nbsp;field.</tt></dd>
+</dl>
+<dl><dt><strong>texto</strong></dt>
+<dd><tt>A&nbsp;unicode&nbsp;string&nbsp;field.</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>_class_name</strong> = 'Opciones'</dl>
+
+<dl><dt><strong>_db_field_map</strong> = {'letra': 'letra', 'texto': 'texto'}</dl>
+
+<dl><dt><strong>_fields</strong> = {'letra': &lt;mongoengine.fields.StringField object&gt;, 'texto': &lt;mongoengine.fields.StringField object&gt;}</dl>
+
+<dl><dt><strong>_fields_ordered</strong> = ('letra', 'texto')</dl>
+
+<dl><dt><strong>_is_document</strong> = False</dl>
+
+<dl><dt><strong>_meta</strong> = {}</dl>
+
+<dl><dt><strong>_reverse_db_field_map</strong> = {'letra': 'letra', 'texto': 'texto'}</dl>
+
+<dl><dt><strong>_subclasses</strong> = ('Opciones',)</dl>
+
+<dl><dt><strong>_superclasses</strong> = ()</dl>
+
+<dl><dt><strong>_types</strong> = ('Opciones',)</dl>
+
+<hr>
+Methods inherited from <a href="mongoengine.document.html#EmbeddedDocument">mongoengine.document.EmbeddedDocument</a>:<br>
+<dl><dt><a name="Opciones-__eq__"><strong>__eq__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Opciones-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Opciones-__ne__"><strong>__ne__</strong></a>(self, other)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="mongoengine.document.html#EmbeddedDocument">mongoengine.document.EmbeddedDocument</a>:<br>
+<dl><dt><strong>__metaclass__</strong> = &lt;class 'mongoengine.base.metaclasses.DocumentMetaclass'&gt;<dd><tt>Metaclass&nbsp;for&nbsp;all&nbsp;documents.</tt></dl>
+
+<dl><dt><strong>_instance</strong> = None</dl>
+
+<dl><dt><strong>my_metaclass</strong> = &lt;class 'mongoengine.base.metaclasses.DocumentMetaclass'&gt;<dd><tt>Metaclass&nbsp;for&nbsp;all&nbsp;documents.</tt></dl>
+
+<hr>
+Methods inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><a name="Opciones-_BaseDocument__expand_dynamic_values"><strong>_BaseDocument__expand_dynamic_values</strong></a> = __expand_dynamic_values(self, name, value)</dt><dd><tt>expand&nbsp;any&nbsp;dynamic&nbsp;values&nbsp;to&nbsp;their&nbsp;correct&nbsp;types&nbsp;/&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="Opciones-_BaseDocument__get_field_display"><strong>_BaseDocument__get_field_display</strong></a> = __get_field_display(self, field)</dt><dd><tt>Returns&nbsp;the&nbsp;display&nbsp;value&nbsp;for&nbsp;a&nbsp;choice&nbsp;field</tt></dd></dl>
+
+<dl><dt><a name="Opciones-_BaseDocument__set_field_display"><strong>_BaseDocument__set_field_display</strong></a> = __set_field_display(self)</dt><dd><tt>Dynamically&nbsp;set&nbsp;the&nbsp;display&nbsp;value&nbsp;for&nbsp;a&nbsp;field&nbsp;with&nbsp;choices</tt></dd></dl>
+
+<dl><dt><a name="Opciones-__contains__"><strong>__contains__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="Opciones-__delattr__"><strong>__delattr__</strong></a>(self, *args, **kwargs)</dt><dd><tt>Handle&nbsp;deletions&nbsp;of&nbsp;fields</tt></dd></dl>
+
+<dl><dt><a name="Opciones-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><tt>Dictionary-style&nbsp;field&nbsp;access,&nbsp;return&nbsp;a&nbsp;field's&nbsp;value&nbsp;if&nbsp;present.</tt></dd></dl>
+
+<dl><dt><a name="Opciones-__getstate__"><strong>__getstate__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Opciones-__hash__"><strong>__hash__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Opciones-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Opciones-__len__"><strong>__len__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Opciones-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Opciones-__setattr__"><strong>__setattr__</strong></a>(self, name, value)</dt></dl>
+
+<dl><dt><a name="Opciones-__setitem__"><strong>__setitem__</strong></a>(self, name, value)</dt><dd><tt>Dictionary-style&nbsp;field&nbsp;access,&nbsp;set&nbsp;a&nbsp;field's&nbsp;value.</tt></dd></dl>
+
+<dl><dt><a name="Opciones-__setstate__"><strong>__setstate__</strong></a>(self, data)</dt></dl>
+
+<dl><dt><a name="Opciones-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Opciones-_clear_changed_fields"><strong>_clear_changed_fields</strong></a>(self)</dt><dd><tt>Using&nbsp;get_changed_fields&nbsp;iterate&nbsp;and&nbsp;remove&nbsp;any&nbsp;fields&nbsp;that&nbsp;are<br>
+marked&nbsp;as&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="Opciones-_delta"><strong>_delta</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;delta&nbsp;(set,&nbsp;unset)&nbsp;of&nbsp;the&nbsp;changes&nbsp;for&nbsp;a&nbsp;document.<br>
+Gets&nbsp;any&nbsp;values&nbsp;that&nbsp;have&nbsp;been&nbsp;explicitly&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="Opciones-_get_changed_fields"><strong>_get_changed_fields</strong></a>(self, inspected<font color="#909090">=None</font>)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;fields&nbsp;that&nbsp;have&nbsp;explicitly&nbsp;been&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="Opciones-_mark_as_changed"><strong>_mark_as_changed</strong></a>(self, key)</dt><dd><tt>Marks&nbsp;a&nbsp;key&nbsp;as&nbsp;explicitly&nbsp;changed&nbsp;by&nbsp;the&nbsp;user</tt></dd></dl>
+
+<dl><dt><a name="Opciones-_nestable_types_changed_fields"><strong>_nestable_types_changed_fields</strong></a>(self, changed_fields, key, data, inspected)</dt></dl>
+
+<dl><dt><a name="Opciones-clean"><strong>clean</strong></a>(self)</dt><dd><tt>Hook&nbsp;for&nbsp;doing&nbsp;document&nbsp;level&nbsp;data&nbsp;cleaning&nbsp;before&nbsp;validation&nbsp;is&nbsp;run.<br>
+&nbsp;<br>
+Any&nbsp;ValidationError&nbsp;raised&nbsp;by&nbsp;this&nbsp;method&nbsp;will&nbsp;not&nbsp;be&nbsp;associated&nbsp;with<br>
+a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will&nbsp;have&nbsp;a&nbsp;special-case&nbsp;association&nbsp;with&nbsp;the<br>
+field&nbsp;defined&nbsp;by&nbsp;NON_FIELD_ERRORS.</tt></dd></dl>
+
+<dl><dt><a name="Opciones-to_json"><strong>to_json</strong></a>(self, *args, **kwargs)</dt><dd><tt>Converts&nbsp;a&nbsp;document&nbsp;to&nbsp;JSON</tt></dd></dl>
+
+<dl><dt><a name="Opciones-to_mongo"><strong>to_mongo</strong></a>(self)</dt><dd><tt>Return&nbsp;as&nbsp;SON&nbsp;data&nbsp;ready&nbsp;for&nbsp;use&nbsp;with&nbsp;MongoDB.</tt></dd></dl>
+
+<dl><dt><a name="Opciones-validate"><strong>validate</strong></a>(self, clean<font color="#909090">=True</font>)</dt><dd><tt>Ensure&nbsp;that&nbsp;all&nbsp;fields'&nbsp;values&nbsp;are&nbsp;valid&nbsp;and&nbsp;that&nbsp;required&nbsp;fields<br>
+are&nbsp;present.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><a name="Opciones-_build_index_spec"><strong>_build_index_spec</strong></a>(cls, spec)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#DocumentMetaclass">mongoengine.base.metaclasses.DocumentMetaclass</a></font></font></dt><dd><tt>Build&nbsp;a&nbsp;PyMongo&nbsp;index&nbsp;spec&nbsp;from&nbsp;a&nbsp;MongoEngine&nbsp;index&nbsp;spec.</tt></dd></dl>
+
+<dl><dt><a name="Opciones-_build_index_specs"><strong>_build_index_specs</strong></a>(cls, meta_indexes)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#DocumentMetaclass">mongoengine.base.metaclasses.DocumentMetaclass</a></font></font></dt><dd><tt>Generate&nbsp;and&nbsp;merge&nbsp;the&nbsp;full&nbsp;index&nbsp;specs</tt></dd></dl>
+
+<dl><dt><a name="Opciones-_from_son"><strong>_from_son</strong></a>(cls, son, _auto_dereference<font color="#909090">=True</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#DocumentMetaclass">mongoengine.base.metaclasses.DocumentMetaclass</a></font></font></dt><dd><tt>Create&nbsp;an&nbsp;instance&nbsp;of&nbsp;a&nbsp;<a href="mongoengine.document.html#Document">Document</a>&nbsp;(subclass)&nbsp;from&nbsp;a&nbsp;PyMongo&nbsp;SON.</tt></dd></dl>
+
+<dl><dt><a name="Opciones-_geo_indices"><strong>_geo_indices</strong></a>(cls, inspected<font color="#909090">=None</font>, parent_field<font color="#909090">=None</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#DocumentMetaclass">mongoengine.base.metaclasses.DocumentMetaclass</a></font></font></dt></dl>
+
+<dl><dt><a name="Opciones-_get_collection_name"><strong>_get_collection_name</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#DocumentMetaclass">mongoengine.base.metaclasses.DocumentMetaclass</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;collection&nbsp;name&nbsp;for&nbsp;this&nbsp;class.</tt></dd></dl>
+
+<dl><dt><a name="Opciones-_lookup_field"><strong>_lookup_field</strong></a>(cls, parts)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#DocumentMetaclass">mongoengine.base.metaclasses.DocumentMetaclass</a></font></font></dt><dd><tt>Lookup&nbsp;a&nbsp;field&nbsp;based&nbsp;on&nbsp;its&nbsp;attribute&nbsp;and&nbsp;return&nbsp;a&nbsp;list&nbsp;containing<br>
+the&nbsp;field's&nbsp;parents&nbsp;and&nbsp;the&nbsp;field.</tt></dd></dl>
+
+<dl><dt><a name="Opciones-_translate_field_name"><strong>_translate_field_name</strong></a>(cls, field, sep<font color="#909090">='.'</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#DocumentMetaclass">mongoengine.base.metaclasses.DocumentMetaclass</a></font></font></dt><dd><tt>Translate&nbsp;a&nbsp;field&nbsp;attribute&nbsp;name&nbsp;to&nbsp;a&nbsp;database&nbsp;field&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="Opciones-_unique_with_indexes"><strong>_unique_with_indexes</strong></a>(cls, namespace<font color="#909090">=''</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#DocumentMetaclass">mongoengine.base.metaclasses.DocumentMetaclass</a></font></font></dt><dd><tt>Find&nbsp;and&nbsp;set&nbsp;unique&nbsp;indexes</tt></dd></dl>
+
+<dl><dt><a name="Opciones-from_json"><strong>from_json</strong></a>(cls, json_data)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#DocumentMetaclass">mongoengine.base.metaclasses.DocumentMetaclass</a></font></font></dt><dd><tt>Converts&nbsp;json&nbsp;data&nbsp;to&nbsp;an&nbsp;unsaved&nbsp;document&nbsp;instance</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><strong>_created</strong> = True</dl>
+
+<dl><dt><strong>_dynamic</strong> = False</dl>
+
+<dl><dt><strong>_dynamic_lock</strong> = True</dl>
+
+<dl><dt><strong>_initialised</strong> = False</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Preguntas">class <strong>Preguntas</strong></a>(<a href="mongoengine.document.html#Document">mongoengine.document.Document</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;that&nbsp;defines&nbsp;the&nbsp;data&nbsp;model&nbsp;for&nbsp;collection&nbsp;of&nbsp;questions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#Preguntas">Preguntas</a></dd>
+<dd><a href="mongoengine.document.html#Document">mongoengine.document.Document</a></dd>
+<dd><a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Preguntas-__unicode__"><strong>__unicode__</strong></a>(self)</dt><dd><tt>#&nbsp;Required&nbsp;for&nbsp;administrative&nbsp;interface</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-clean"><strong>clean</strong></a>(self)</dt><dd><tt>Make&nbsp;validations&nbsp;before&nbsp;save&nbsp;any&nbsp;document</tt></dd></dl>
+
+<dl><dt><strong>objects</strong></dt>
+<dd><tt>The&nbsp;default&nbsp;QuerySet&nbsp;Manager.<br>
+&nbsp;<br>
+Custom&nbsp;QuerySet&nbsp;Manager&nbsp;functions&nbsp;can&nbsp;extend&nbsp;this&nbsp;class&nbsp;and&nbsp;users&nbsp;can<br>
+add&nbsp;extra&nbsp;queryset&nbsp;functionality.&nbsp;&nbsp;Any&nbsp;custom&nbsp;manager&nbsp;methods&nbsp;must&nbsp;accept&nbsp;a<br>
+:class:`~mongoengine.Document`&nbsp;class&nbsp;as&nbsp;its&nbsp;first&nbsp;argument,&nbsp;and&nbsp;a<br>
+:class:`~mongoengine.queryset.QuerySet`&nbsp;as&nbsp;its&nbsp;second&nbsp;argument.<br>
+&nbsp;<br>
+The&nbsp;method&nbsp;function&nbsp;should&nbsp;return&nbsp;a&nbsp;:class:`~mongoengine.queryset.QuerySet`<br>
+,&nbsp;probably&nbsp;the&nbsp;same&nbsp;one&nbsp;that&nbsp;was&nbsp;passed&nbsp;in,&nbsp;but&nbsp;modified&nbsp;in&nbsp;some&nbsp;way.</tt></dd>
+</dl>
+
+<dl><dt><strong>user_objects</strong></dt>
+<dd><tt>The&nbsp;default&nbsp;QuerySet&nbsp;Manager.<br>
+&nbsp;<br>
+Custom&nbsp;QuerySet&nbsp;Manager&nbsp;functions&nbsp;can&nbsp;extend&nbsp;this&nbsp;class&nbsp;and&nbsp;users&nbsp;can<br>
+add&nbsp;extra&nbsp;queryset&nbsp;functionality.&nbsp;&nbsp;Any&nbsp;custom&nbsp;manager&nbsp;methods&nbsp;must&nbsp;accept&nbsp;a<br>
+:class:`~mongoengine.Document`&nbsp;class&nbsp;as&nbsp;its&nbsp;first&nbsp;argument,&nbsp;and&nbsp;a<br>
+:class:`~mongoengine.queryset.QuerySet`&nbsp;as&nbsp;its&nbsp;second&nbsp;argument.<br>
+&nbsp;<br>
+The&nbsp;method&nbsp;function&nbsp;should&nbsp;return&nbsp;a&nbsp;:class:`~mongoengine.queryset.QuerySet`<br>
+,&nbsp;probably&nbsp;the&nbsp;same&nbsp;one&nbsp;that&nbsp;was&nbsp;passed&nbsp;in,&nbsp;but&nbsp;modified&nbsp;in&nbsp;some&nbsp;way.</tt></dd>
+</dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>asignatura</strong></dt>
+<dd><tt>A&nbsp;reference&nbsp;to&nbsp;a&nbsp;document&nbsp;that&nbsp;will&nbsp;be&nbsp;automatically&nbsp;dereferenced&nbsp;on<br>
+access&nbsp;(lazily).<br>
+&nbsp;<br>
+Use&nbsp;the&nbsp;`reverse_delete_rule`&nbsp;to&nbsp;handle&nbsp;what&nbsp;should&nbsp;happen&nbsp;if&nbsp;the&nbsp;document<br>
+the&nbsp;field&nbsp;is&nbsp;referencing&nbsp;is&nbsp;deleted.&nbsp;&nbsp;EmbeddedDocuments,&nbsp;DictFields&nbsp;and<br>
+MapFields&nbsp;do&nbsp;not&nbsp;support&nbsp;reverse_delete_rules&nbsp;and&nbsp;an&nbsp;`InvalidDocumentError`<br>
+will&nbsp;be&nbsp;raised&nbsp;if&nbsp;trying&nbsp;to&nbsp;set&nbsp;on&nbsp;one&nbsp;of&nbsp;these&nbsp;Document&nbsp;/&nbsp;Field&nbsp;types.<br>
+&nbsp;<br>
+The&nbsp;options&nbsp;are:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;DO_NOTHING&nbsp;&nbsp;-&nbsp;don't&nbsp;do&nbsp;anything&nbsp;(default).<br>
+&nbsp;&nbsp;*&nbsp;NULLIFY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Updates&nbsp;the&nbsp;reference&nbsp;to&nbsp;null.<br>
+&nbsp;&nbsp;*&nbsp;CASCADE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Deletes&nbsp;the&nbsp;documents&nbsp;associated&nbsp;with&nbsp;the&nbsp;reference.<br>
+&nbsp;&nbsp;*&nbsp;DENY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Prevent&nbsp;the&nbsp;deletion&nbsp;of&nbsp;the&nbsp;reference&nbsp;object.<br>
+&nbsp;&nbsp;*&nbsp;PULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Pull&nbsp;the&nbsp;reference&nbsp;from&nbsp;a&nbsp;:class:`~mongoengine.fields.ListField`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;references<br>
+&nbsp;<br>
+Alternative&nbsp;syntax&nbsp;for&nbsp;registering&nbsp;delete&nbsp;rules&nbsp;(useful&nbsp;when&nbsp;implementing<br>
+bi-directional&nbsp;delete&nbsp;rules)<br>
+&nbsp;<br>
+..&nbsp;code-block::&nbsp;python<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;Bar(Document):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;=&nbsp;StringField()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo&nbsp;=&nbsp;ReferenceField('Foo')<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Bar.register_delete_rule(Foo,&nbsp;'bar',&nbsp;NULLIFY)<br>
+&nbsp;<br>
+..&nbsp;note&nbsp;::<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`reverse_delete_rules`&nbsp;do&nbsp;not&nbsp;trigger&nbsp;pre&nbsp;/&nbsp;post&nbsp;delete&nbsp;signals&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;triggered.<br>
+&nbsp;<br>
+..&nbsp;versionchanged::&nbsp;0.5&nbsp;added&nbsp;`reverse_delete_rule`</tt></dd>
+</dl>
+<dl><dt><strong>correcta</strong></dt>
+<dd><tt>A&nbsp;unicode&nbsp;string&nbsp;field.</tt></dd>
+</dl>
+<dl><dt><strong>id</strong></dt>
+<dd><tt>A&nbsp;field&nbsp;wrapper&nbsp;around&nbsp;MongoDB's&nbsp;ObjectIds.</tt></dd>
+</dl>
+<dl><dt><strong>num</strong></dt>
+<dd><tt>An&nbsp;32-bit&nbsp;integer&nbsp;field.</tt></dd>
+</dl>
+<dl><dt><strong>opciones</strong></dt>
+<dd><tt>A&nbsp;list&nbsp;field&nbsp;that&nbsp;wraps&nbsp;a&nbsp;standard&nbsp;field,&nbsp;allowing&nbsp;multiple&nbsp;instances<br>
+of&nbsp;the&nbsp;field&nbsp;to&nbsp;be&nbsp;used&nbsp;as&nbsp;a&nbsp;list&nbsp;in&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+If&nbsp;using&nbsp;with&nbsp;ReferenceFields&nbsp;see:&nbsp;:ref:`one-to-many-with-listfields`<br>
+&nbsp;<br>
+..&nbsp;note::<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Required&nbsp;means&nbsp;it&nbsp;cannot&nbsp;be&nbsp;empty&nbsp;-&nbsp;as&nbsp;the&nbsp;default&nbsp;for&nbsp;ListFields&nbsp;is&nbsp;[]</tt></dd>
+</dl>
+<dl><dt><strong>tema</strong></dt>
+<dd><tt>A&nbsp;reference&nbsp;to&nbsp;a&nbsp;document&nbsp;that&nbsp;will&nbsp;be&nbsp;automatically&nbsp;dereferenced&nbsp;on<br>
+access&nbsp;(lazily).<br>
+&nbsp;<br>
+Use&nbsp;the&nbsp;`reverse_delete_rule`&nbsp;to&nbsp;handle&nbsp;what&nbsp;should&nbsp;happen&nbsp;if&nbsp;the&nbsp;document<br>
+the&nbsp;field&nbsp;is&nbsp;referencing&nbsp;is&nbsp;deleted.&nbsp;&nbsp;EmbeddedDocuments,&nbsp;DictFields&nbsp;and<br>
+MapFields&nbsp;do&nbsp;not&nbsp;support&nbsp;reverse_delete_rules&nbsp;and&nbsp;an&nbsp;`InvalidDocumentError`<br>
+will&nbsp;be&nbsp;raised&nbsp;if&nbsp;trying&nbsp;to&nbsp;set&nbsp;on&nbsp;one&nbsp;of&nbsp;these&nbsp;Document&nbsp;/&nbsp;Field&nbsp;types.<br>
+&nbsp;<br>
+The&nbsp;options&nbsp;are:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;DO_NOTHING&nbsp;&nbsp;-&nbsp;don't&nbsp;do&nbsp;anything&nbsp;(default).<br>
+&nbsp;&nbsp;*&nbsp;NULLIFY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Updates&nbsp;the&nbsp;reference&nbsp;to&nbsp;null.<br>
+&nbsp;&nbsp;*&nbsp;CASCADE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Deletes&nbsp;the&nbsp;documents&nbsp;associated&nbsp;with&nbsp;the&nbsp;reference.<br>
+&nbsp;&nbsp;*&nbsp;DENY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Prevent&nbsp;the&nbsp;deletion&nbsp;of&nbsp;the&nbsp;reference&nbsp;object.<br>
+&nbsp;&nbsp;*&nbsp;PULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Pull&nbsp;the&nbsp;reference&nbsp;from&nbsp;a&nbsp;:class:`~mongoengine.fields.ListField`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;references<br>
+&nbsp;<br>
+Alternative&nbsp;syntax&nbsp;for&nbsp;registering&nbsp;delete&nbsp;rules&nbsp;(useful&nbsp;when&nbsp;implementing<br>
+bi-directional&nbsp;delete&nbsp;rules)<br>
+&nbsp;<br>
+..&nbsp;code-block::&nbsp;python<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;Bar(Document):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;=&nbsp;StringField()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo&nbsp;=&nbsp;ReferenceField('Foo')<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Bar.register_delete_rule(Foo,&nbsp;'bar',&nbsp;NULLIFY)<br>
+&nbsp;<br>
+..&nbsp;note&nbsp;::<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`reverse_delete_rules`&nbsp;do&nbsp;not&nbsp;trigger&nbsp;pre&nbsp;/&nbsp;post&nbsp;delete&nbsp;signals&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;triggered.<br>
+&nbsp;<br>
+..&nbsp;versionchanged::&nbsp;0.5&nbsp;added&nbsp;`reverse_delete_rule`</tt></dd>
+</dl>
+<dl><dt><strong>texto</strong></dt>
+<dd><tt>A&nbsp;unicode&nbsp;string&nbsp;field.</tt></dd>
+</dl>
+<dl><dt><strong>tipo</strong></dt>
+<dd><tt>An&nbsp;32-bit&nbsp;integer&nbsp;field.</tt></dd>
+</dl>
+<dl><dt><strong>usuario</strong></dt>
+<dd><tt>A&nbsp;reference&nbsp;to&nbsp;a&nbsp;document&nbsp;that&nbsp;will&nbsp;be&nbsp;automatically&nbsp;dereferenced&nbsp;on<br>
+access&nbsp;(lazily).<br>
+&nbsp;<br>
+Use&nbsp;the&nbsp;`reverse_delete_rule`&nbsp;to&nbsp;handle&nbsp;what&nbsp;should&nbsp;happen&nbsp;if&nbsp;the&nbsp;document<br>
+the&nbsp;field&nbsp;is&nbsp;referencing&nbsp;is&nbsp;deleted.&nbsp;&nbsp;EmbeddedDocuments,&nbsp;DictFields&nbsp;and<br>
+MapFields&nbsp;do&nbsp;not&nbsp;support&nbsp;reverse_delete_rules&nbsp;and&nbsp;an&nbsp;`InvalidDocumentError`<br>
+will&nbsp;be&nbsp;raised&nbsp;if&nbsp;trying&nbsp;to&nbsp;set&nbsp;on&nbsp;one&nbsp;of&nbsp;these&nbsp;Document&nbsp;/&nbsp;Field&nbsp;types.<br>
+&nbsp;<br>
+The&nbsp;options&nbsp;are:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;DO_NOTHING&nbsp;&nbsp;-&nbsp;don't&nbsp;do&nbsp;anything&nbsp;(default).<br>
+&nbsp;&nbsp;*&nbsp;NULLIFY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Updates&nbsp;the&nbsp;reference&nbsp;to&nbsp;null.<br>
+&nbsp;&nbsp;*&nbsp;CASCADE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Deletes&nbsp;the&nbsp;documents&nbsp;associated&nbsp;with&nbsp;the&nbsp;reference.<br>
+&nbsp;&nbsp;*&nbsp;DENY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Prevent&nbsp;the&nbsp;deletion&nbsp;of&nbsp;the&nbsp;reference&nbsp;object.<br>
+&nbsp;&nbsp;*&nbsp;PULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Pull&nbsp;the&nbsp;reference&nbsp;from&nbsp;a&nbsp;:class:`~mongoengine.fields.ListField`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;references<br>
+&nbsp;<br>
+Alternative&nbsp;syntax&nbsp;for&nbsp;registering&nbsp;delete&nbsp;rules&nbsp;(useful&nbsp;when&nbsp;implementing<br>
+bi-directional&nbsp;delete&nbsp;rules)<br>
+&nbsp;<br>
+..&nbsp;code-block::&nbsp;python<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;Bar(Document):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;=&nbsp;StringField()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo&nbsp;=&nbsp;ReferenceField('Foo')<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Bar.register_delete_rule(Foo,&nbsp;'bar',&nbsp;NULLIFY)<br>
+&nbsp;<br>
+..&nbsp;note&nbsp;::<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`reverse_delete_rules`&nbsp;do&nbsp;not&nbsp;trigger&nbsp;pre&nbsp;/&nbsp;post&nbsp;delete&nbsp;signals&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;triggered.<br>
+&nbsp;<br>
+..&nbsp;versionchanged::&nbsp;0.5&nbsp;added&nbsp;`reverse_delete_rule`</tt></dd>
+</dl>
+<dl><dt><strong>verdadera</strong></dt>
+<dd><tt>A&nbsp;boolean&nbsp;field&nbsp;type.<br>
+&nbsp;<br>
+..&nbsp;versionadded::&nbsp;0.1.2</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+
+<dl><dt><strong>TIPO</strong> = ((0, 'Desarrollo'), (1, 'Test'), (2, 'Verdadero o Falso'))</dl>
+
+<dl><dt><strong>_auto_id_field</strong> = True</dl>
+
+<dl><dt><strong>_class_name</strong> = 'Preguntas'</dl>
+
+<dl><dt><strong>_collection</strong> = None</dl>
+
+<dl><dt><strong>_db_field_map</strong> = {'asignatura': 'asignatura', 'correcta': 'correcta', 'num': 'num', 'opciones': 'opciones', 'tema': 'tema', 'texto': 'texto', 'tipo': 'tipo', 'usuario': 'usuario', 'verdadera': 'verdadera'}</dl>
+
+<dl><dt><strong>_fields</strong> = {'asignatura': &lt;mongoengine.fields.ReferenceField object&gt;, 'correcta': &lt;mongoengine.fields.StringField object&gt;, 'id': &lt;mongoengine.base.fields.ObjectIdField object&gt;, 'num': &lt;mongoengine.fields.IntField object&gt;, 'opciones': &lt;mongoengine.fields.ListField object&gt;, 'tema': &lt;mongoengine.fields.ReferenceField object&gt;, 'texto': &lt;mongoengine.fields.StringField object&gt;, 'tipo': &lt;mongoengine.fields.IntField object&gt;, 'usuario': &lt;mongoengine.fields.ReferenceField object&gt;, 'verdadera': &lt;mongoengine.fields.BooleanField object&gt;}</dl>
+
+<dl><dt><strong>_fields_ordered</strong> = ('id', 'num', 'texto', 'asignatura', 'tema', 'tipo', 'usuario', 'verdadera', 'opciones', 'correcta')</dl>
+
+<dl><dt><strong>_is_base_cls</strong> = False</dl>
+
+<dl><dt><strong>_is_document</strong> = True</dl>
+
+<dl><dt><strong>_meta</strong> = {'index_background': False, 'ordering': [], 'abs...ntas'): 3}, 'max_size': None, 'index_opts': None}</dl>
+
+<dl><dt><strong>_reverse_db_field_map</strong> = {'asignatura': 'asignatura', 'correcta': 'correcta', 'num': 'num', 'opciones': 'opciones', 'tema': 'tema', 'texto': 'texto', 'tipo': 'tipo', 'usuario': 'usuario', 'verdadera': 'verdadera'}</dl>
+
+<dl><dt><strong>_subclasses</strong> = ('Preguntas',)</dl>
+
+<dl><dt><strong>_superclasses</strong> = ()</dl>
+
+<dl><dt><strong>_types</strong> = ('Preguntas',)</dl>
+
+<hr>
+Methods inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><a name="Preguntas-_reload"><strong>_reload</strong></a>(self, key, value)</dt><dd><tt>Used&nbsp;by&nbsp;:meth:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>.reload`&nbsp;to&nbsp;ensure&nbsp;the<br>
+correct&nbsp;instance&nbsp;is&nbsp;linked&nbsp;to&nbsp;self.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-cascade_save"><strong>cascade_save</strong></a>(self, *args, **kwargs)</dt><dd><tt>Recursively&nbsp;saves&nbsp;any&nbsp;references&nbsp;/<br>
+generic&nbsp;references&nbsp;on&nbsp;an&nbsp;objects</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-delete"><strong>delete</strong></a>(self, **write_concern)</dt><dd><tt>Delete&nbsp;the&nbsp;:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`&nbsp;from&nbsp;the&nbsp;database.&nbsp;This<br>
+will&nbsp;only&nbsp;take&nbsp;effect&nbsp;if&nbsp;the&nbsp;document&nbsp;has&nbsp;been&nbsp;previously&nbsp;saved.<br>
+&nbsp;<br>
+:param&nbsp;write_concern:&nbsp;Extra&nbsp;keyword&nbsp;arguments&nbsp;are&nbsp;passed&nbsp;down&nbsp;which<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;options&nbsp;for&nbsp;the&nbsp;resultant<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``getLastError``&nbsp;command.&nbsp;&nbsp;For&nbsp;example,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``<a href="#Preguntas-save">save</a>(...,&nbsp;write_concern={w:&nbsp;2,&nbsp;fsync:&nbsp;True},&nbsp;...)``&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wait&nbsp;until&nbsp;at&nbsp;least&nbsp;two&nbsp;servers&nbsp;have&nbsp;recorded&nbsp;the&nbsp;write&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;force&nbsp;an&nbsp;fsync&nbsp;on&nbsp;the&nbsp;primary&nbsp;server.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-reload"><strong>reload</strong></a>(self, max_depth<font color="#909090">=1</font>)</dt><dd><tt>Reloads&nbsp;all&nbsp;attributes&nbsp;from&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+..&nbsp;versionadded::&nbsp;0.1.2<br>
+..&nbsp;versionchanged::&nbsp;0.6&nbsp;&nbsp;Now&nbsp;chainable</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-save"><strong>save</strong></a>(self, force_insert<font color="#909090">=False</font>, validate<font color="#909090">=True</font>, clean<font color="#909090">=True</font>, write_concern<font color="#909090">=None</font>, cascade<font color="#909090">=None</font>, cascade_kwargs<font color="#909090">=None</font>, _refs<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Save&nbsp;the&nbsp;:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`&nbsp;to&nbsp;the&nbsp;database.&nbsp;If&nbsp;the<br>
+document&nbsp;already&nbsp;exists,&nbsp;it&nbsp;will&nbsp;be&nbsp;updated,&nbsp;otherwise&nbsp;it&nbsp;will&nbsp;be<br>
+created.<br>
+&nbsp;<br>
+:param&nbsp;force_insert:&nbsp;only&nbsp;try&nbsp;to&nbsp;create&nbsp;a&nbsp;new&nbsp;document,&nbsp;don't&nbsp;allow<br>
+&nbsp;&nbsp;&nbsp;&nbsp;updates&nbsp;of&nbsp;existing&nbsp;documents<br>
+:param&nbsp;validate:&nbsp;validates&nbsp;the&nbsp;document;&nbsp;set&nbsp;to&nbsp;``False``&nbsp;to&nbsp;skip.<br>
+:param&nbsp;clean:&nbsp;call&nbsp;the&nbsp;document&nbsp;clean&nbsp;method,&nbsp;requires&nbsp;`validate`&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;True.<br>
+:param&nbsp;write_concern:&nbsp;Extra&nbsp;keyword&nbsp;arguments&nbsp;are&nbsp;passed&nbsp;down&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:meth:`~pymongo.collection.Collection.save`&nbsp;OR<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:meth:`~pymongo.collection.Collection.insert`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;which&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;options&nbsp;for&nbsp;the&nbsp;resultant<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``getLastError``&nbsp;command.&nbsp;&nbsp;For&nbsp;example,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``<a href="#Preguntas-save">save</a>(...,&nbsp;write_concern={w:&nbsp;2,&nbsp;fsync:&nbsp;True},&nbsp;...)``&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wait&nbsp;until&nbsp;at&nbsp;least&nbsp;two&nbsp;servers&nbsp;have&nbsp;recorded&nbsp;the&nbsp;write&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;force&nbsp;an&nbsp;fsync&nbsp;on&nbsp;the&nbsp;primary&nbsp;server.<br>
+:param&nbsp;cascade:&nbsp;Sets&nbsp;the&nbsp;flag&nbsp;for&nbsp;cascading&nbsp;saves.&nbsp;&nbsp;You&nbsp;can&nbsp;set&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;by&nbsp;setting&nbsp;"cascade"&nbsp;in&nbsp;the&nbsp;document&nbsp;__meta__<br>
+:param&nbsp;cascade_kwargs:&nbsp;(optional)&nbsp;kwargs&nbsp;dictionary&nbsp;to&nbsp;be&nbsp;passed&nbsp;throw<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;cascading&nbsp;saves.&nbsp;&nbsp;Implies&nbsp;``cascade=True``.<br>
+:param&nbsp;_refs:&nbsp;A&nbsp;list&nbsp;of&nbsp;processed&nbsp;references&nbsp;used&nbsp;in&nbsp;cascading&nbsp;saves<br>
+&nbsp;<br>
+..&nbsp;versionchanged::&nbsp;0.5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;existing&nbsp;documents&nbsp;it&nbsp;only&nbsp;saves&nbsp;changed&nbsp;fields&nbsp;using<br>
+&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;/&nbsp;unset.&nbsp;&nbsp;Saves&nbsp;are&nbsp;cascaded&nbsp;and&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:class:`~bson.dbref.DBRef`&nbsp;objects&nbsp;that&nbsp;have&nbsp;changes&nbsp;are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;saved&nbsp;as&nbsp;well.<br>
+..&nbsp;versionchanged::&nbsp;0.6<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Added&nbsp;cascading&nbsp;saves<br>
+..&nbsp;versionchanged::&nbsp;0.8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Cascade&nbsp;saves&nbsp;are&nbsp;optional&nbsp;and&nbsp;default&nbsp;to&nbsp;False.&nbsp;&nbsp;If&nbsp;you&nbsp;want<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fine&nbsp;grain&nbsp;control&nbsp;then&nbsp;you&nbsp;can&nbsp;turn&nbsp;off&nbsp;using&nbsp;document<br>
+&nbsp;&nbsp;&nbsp;&nbsp;meta['cascade']&nbsp;=&nbsp;True.&nbsp;&nbsp;Also&nbsp;you&nbsp;can&nbsp;pass&nbsp;different&nbsp;kwargs&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;cascade&nbsp;save&nbsp;using&nbsp;cascade_kwargs&nbsp;which&nbsp;overwrites&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;existing&nbsp;kwargs&nbsp;with&nbsp;custom&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-select_related"><strong>select_related</strong></a>(self, max_depth<font color="#909090">=1</font>)</dt><dd><tt>Handles&nbsp;dereferencing&nbsp;of&nbsp;:class:`~bson.dbref.DBRef`&nbsp;objects&nbsp;to<br>
+a&nbsp;maximum&nbsp;depth&nbsp;in&nbsp;order&nbsp;to&nbsp;cut&nbsp;down&nbsp;the&nbsp;number&nbsp;queries&nbsp;to&nbsp;mongodb.<br>
+&nbsp;<br>
+..&nbsp;versionadded::&nbsp;0.5</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-switch_collection"><strong>switch_collection</strong></a>(self, collection_name)</dt><dd><tt>Temporarily&nbsp;switch&nbsp;the&nbsp;collection&nbsp;for&nbsp;a&nbsp;document&nbsp;instance.<br>
+&nbsp;<br>
+Only&nbsp;really&nbsp;useful&nbsp;for&nbsp;archiving&nbsp;off&nbsp;data&nbsp;and&nbsp;calling&nbsp;`<a href="#Preguntas-save">save</a>()`::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user&nbsp;=&nbsp;User.objects.get(id=user_id)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Preguntas-switch_collection">switch_collection</a>('old-users')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Preguntas-save">save</a>()<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;need&nbsp;to&nbsp;read&nbsp;from&nbsp;another&nbsp;database&nbsp;see<br>
+:class:`~mongoengine.context_managers.switch_db`<br>
+&nbsp;<br>
+:param&nbsp;collection_name:&nbsp;The&nbsp;database&nbsp;alias&nbsp;to&nbsp;use&nbsp;for&nbsp;saving&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-switch_db"><strong>switch_db</strong></a>(self, db_alias)</dt><dd><tt>Temporarily&nbsp;switch&nbsp;the&nbsp;database&nbsp;for&nbsp;a&nbsp;document&nbsp;instance.<br>
+&nbsp;<br>
+Only&nbsp;really&nbsp;useful&nbsp;for&nbsp;archiving&nbsp;off&nbsp;data&nbsp;and&nbsp;calling&nbsp;`<a href="#Preguntas-save">save</a>()`::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user&nbsp;=&nbsp;User.objects.get(id=user_id)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Preguntas-switch_db">switch_db</a>('archive-db')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Preguntas-save">save</a>()<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;need&nbsp;to&nbsp;read&nbsp;from&nbsp;another&nbsp;database&nbsp;see<br>
+:class:`~mongoengine.context_managers.switch_db`<br>
+&nbsp;<br>
+:param&nbsp;db_alias:&nbsp;The&nbsp;database&nbsp;alias&nbsp;to&nbsp;use&nbsp;for&nbsp;saving&nbsp;the&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-to_dbref"><strong>to_dbref</strong></a>(self)</dt><dd><tt>Returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;:class:`~bson.dbref.DBRef`&nbsp;useful&nbsp;in<br>
+`__raw__`&nbsp;queries.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-update"><strong>update</strong></a>(self, **kwargs)</dt><dd><tt>Performs&nbsp;an&nbsp;update&nbsp;on&nbsp;the&nbsp;:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`<br>
+A&nbsp;convenience&nbsp;wrapper&nbsp;to&nbsp;:meth:`~mongoengine.QuerySet.update`.<br>
+&nbsp;<br>
+Raises&nbsp;:class:`OperationError`&nbsp;if&nbsp;called&nbsp;on&nbsp;an&nbsp;object&nbsp;that&nbsp;has&nbsp;not&nbsp;yet<br>
+been&nbsp;saved.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><a name="Preguntas-_get_collection"><strong>_get_collection</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;collection&nbsp;for&nbsp;the&nbsp;document.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-_get_db"><strong>_get_db</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Some&nbsp;Model&nbsp;using&nbsp;other&nbsp;db_alias</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-compare_indexes"><strong>compare_indexes</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Compares&nbsp;the&nbsp;indexes&nbsp;defined&nbsp;in&nbsp;MongoEngine&nbsp;with&nbsp;the&nbsp;ones&nbsp;existing<br>
+in&nbsp;the&nbsp;database.&nbsp;Returns&nbsp;any&nbsp;missing/extra&nbsp;indexes.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-drop_collection"><strong>drop_collection</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Drops&nbsp;the&nbsp;entire&nbsp;collection&nbsp;associated&nbsp;with&nbsp;this<br>
+:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`&nbsp;type&nbsp;from&nbsp;the&nbsp;database.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-ensure_index"><strong>ensure_index</strong></a>(cls, key_or_list, drop_dups<font color="#909090">=False</font>, background<font color="#909090">=False</font>, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Ensure&nbsp;that&nbsp;the&nbsp;given&nbsp;indexes&nbsp;are&nbsp;in&nbsp;place.<br>
+&nbsp;<br>
+:param&nbsp;key_or_list:&nbsp;a&nbsp;single&nbsp;index&nbsp;key&nbsp;or&nbsp;a&nbsp;list&nbsp;of&nbsp;index&nbsp;keys&nbsp;(to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;construct&nbsp;a&nbsp;multi-field&nbsp;index);&nbsp;keys&nbsp;may&nbsp;be&nbsp;prefixed&nbsp;with&nbsp;a&nbsp;**+**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;a&nbsp;**-**&nbsp;to&nbsp;determine&nbsp;the&nbsp;index&nbsp;ordering</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-ensure_indexes"><strong>ensure_indexes</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Checks&nbsp;the&nbsp;document&nbsp;meta&nbsp;data&nbsp;and&nbsp;ensures&nbsp;all&nbsp;the&nbsp;indexes&nbsp;exist.<br>
+&nbsp;<br>
+Global&nbsp;defaults&nbsp;can&nbsp;be&nbsp;set&nbsp;in&nbsp;the&nbsp;meta&nbsp;-&nbsp;see&nbsp;:doc:`guide/defining-documents`<br>
+&nbsp;<br>
+..&nbsp;note::&nbsp;You&nbsp;can&nbsp;disable&nbsp;automatic&nbsp;index&nbsp;creation&nbsp;by&nbsp;setting<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_create_index`&nbsp;to&nbsp;False&nbsp;in&nbsp;the&nbsp;documents&nbsp;meta&nbsp;data</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-list_indexes"><strong>list_indexes</strong></a>(cls, go_up<font color="#909090">=True</font>, go_down<font color="#909090">=True</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Lists&nbsp;all&nbsp;of&nbsp;the&nbsp;indexes&nbsp;that&nbsp;should&nbsp;be&nbsp;created&nbsp;for&nbsp;given<br>
+collection.&nbsp;It&nbsp;includes&nbsp;all&nbsp;the&nbsp;indexes&nbsp;from&nbsp;super-&nbsp;and&nbsp;sub-classes.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-register_delete_rule"><strong>register_delete_rule</strong></a>(cls, document_cls, field_name, rule)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>This&nbsp;method&nbsp;registers&nbsp;the&nbsp;delete&nbsp;rules&nbsp;to&nbsp;apply&nbsp;when&nbsp;removing&nbsp;this<br>
+object.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><strong>_object_key</strong></dt>
+<dd><tt>Dict&nbsp;to&nbsp;identify&nbsp;object&nbsp;in&nbsp;collection</tt></dd>
+</dl>
+<dl><dt><strong>_qs</strong></dt>
+<dd><tt>Returns&nbsp;the&nbsp;queryset&nbsp;to&nbsp;use&nbsp;for&nbsp;updating&nbsp;/&nbsp;reloading&nbsp;/&nbsp;deletions</tt></dd>
+</dl>
+<dl><dt><strong>pk</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><strong>__metaclass__</strong> = &lt;class 'mongoengine.base.metaclasses.TopLevelDocumentMetaclass'&gt;<dd><tt>Metaclass&nbsp;for&nbsp;top-level&nbsp;documents&nbsp;(i.e.&nbsp;documents&nbsp;that&nbsp;have&nbsp;their&nbsp;own<br>
+collection&nbsp;in&nbsp;the&nbsp;database.</tt></dl>
+
+<dl><dt><strong>my_metaclass</strong> = &lt;class 'mongoengine.base.metaclasses.TopLevelDocumentMetaclass'&gt;<dd><tt>Metaclass&nbsp;for&nbsp;top-level&nbsp;documents&nbsp;(i.e.&nbsp;documents&nbsp;that&nbsp;have&nbsp;their&nbsp;own<br>
+collection&nbsp;in&nbsp;the&nbsp;database.</tt></dl>
+
+<hr>
+Methods inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><a name="Preguntas-_BaseDocument__expand_dynamic_values"><strong>_BaseDocument__expand_dynamic_values</strong></a> = __expand_dynamic_values(self, name, value)</dt><dd><tt>expand&nbsp;any&nbsp;dynamic&nbsp;values&nbsp;to&nbsp;their&nbsp;correct&nbsp;types&nbsp;/&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-_BaseDocument__get_field_display"><strong>_BaseDocument__get_field_display</strong></a> = __get_field_display(self, field)</dt><dd><tt>Returns&nbsp;the&nbsp;display&nbsp;value&nbsp;for&nbsp;a&nbsp;choice&nbsp;field</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-_BaseDocument__set_field_display"><strong>_BaseDocument__set_field_display</strong></a> = __set_field_display(self)</dt><dd><tt>Dynamically&nbsp;set&nbsp;the&nbsp;display&nbsp;value&nbsp;for&nbsp;a&nbsp;field&nbsp;with&nbsp;choices</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-__contains__"><strong>__contains__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="Preguntas-__delattr__"><strong>__delattr__</strong></a>(self, *args, **kwargs)</dt><dd><tt>Handle&nbsp;deletions&nbsp;of&nbsp;fields</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-__eq__"><strong>__eq__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Preguntas-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><tt>Dictionary-style&nbsp;field&nbsp;access,&nbsp;return&nbsp;a&nbsp;field's&nbsp;value&nbsp;if&nbsp;present.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-__getstate__"><strong>__getstate__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Preguntas-__hash__"><strong>__hash__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Preguntas-__init__"><strong>__init__</strong></a>(self, *args, **values)</dt><dd><tt>Initialise&nbsp;a&nbsp;document&nbsp;or&nbsp;embedded&nbsp;document<br>
+&nbsp;<br>
+:param&nbsp;__auto_convert:&nbsp;Try&nbsp;and&nbsp;will&nbsp;cast&nbsp;python&nbsp;objects&nbsp;to&nbsp;Object&nbsp;types<br>
+:param&nbsp;values:&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;values&nbsp;for&nbsp;the&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Preguntas-__len__"><strong>__len__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Preguntas-__ne__"><strong>__ne__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Preguntas-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Preguntas-__setattr__"><strong>__setattr__</strong></a>(self, name, value)</dt></dl>
+
+<dl><dt><a name="Preguntas-__setitem__"><strong>__setitem__</strong></a>(self, name, value)</dt><dd><tt>Dictionary-style&nbsp;field&nbsp;access,&nbsp;set&nbsp;a&nbsp;field's&nbsp;value.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-__setstate__"><strong>__setstate__</strong></a>(self, data)</dt></dl>
+
+<dl><dt><a name="Preguntas-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Preguntas-_clear_changed_fields"><strong>_clear_changed_fields</strong></a>(self)</dt><dd><tt>Using&nbsp;get_changed_fields&nbsp;iterate&nbsp;and&nbsp;remove&nbsp;any&nbsp;fields&nbsp;that&nbsp;are<br>
+marked&nbsp;as&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-_delta"><strong>_delta</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;delta&nbsp;(set,&nbsp;unset)&nbsp;of&nbsp;the&nbsp;changes&nbsp;for&nbsp;a&nbsp;document.<br>
+Gets&nbsp;any&nbsp;values&nbsp;that&nbsp;have&nbsp;been&nbsp;explicitly&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-_get_changed_fields"><strong>_get_changed_fields</strong></a>(self, inspected<font color="#909090">=None</font>)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;fields&nbsp;that&nbsp;have&nbsp;explicitly&nbsp;been&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-_mark_as_changed"><strong>_mark_as_changed</strong></a>(self, key)</dt><dd><tt>Marks&nbsp;a&nbsp;key&nbsp;as&nbsp;explicitly&nbsp;changed&nbsp;by&nbsp;the&nbsp;user</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-_nestable_types_changed_fields"><strong>_nestable_types_changed_fields</strong></a>(self, changed_fields, key, data, inspected)</dt></dl>
+
+<dl><dt><a name="Preguntas-to_json"><strong>to_json</strong></a>(self, *args, **kwargs)</dt><dd><tt>Converts&nbsp;a&nbsp;document&nbsp;to&nbsp;JSON</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-to_mongo"><strong>to_mongo</strong></a>(self)</dt><dd><tt>Return&nbsp;as&nbsp;SON&nbsp;data&nbsp;ready&nbsp;for&nbsp;use&nbsp;with&nbsp;MongoDB.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-validate"><strong>validate</strong></a>(self, clean<font color="#909090">=True</font>)</dt><dd><tt>Ensure&nbsp;that&nbsp;all&nbsp;fields'&nbsp;values&nbsp;are&nbsp;valid&nbsp;and&nbsp;that&nbsp;required&nbsp;fields<br>
+are&nbsp;present.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><a name="Preguntas-_build_index_spec"><strong>_build_index_spec</strong></a>(cls, spec)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Build&nbsp;a&nbsp;PyMongo&nbsp;index&nbsp;spec&nbsp;from&nbsp;a&nbsp;MongoEngine&nbsp;index&nbsp;spec.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-_build_index_specs"><strong>_build_index_specs</strong></a>(cls, meta_indexes)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Generate&nbsp;and&nbsp;merge&nbsp;the&nbsp;full&nbsp;index&nbsp;specs</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-_from_son"><strong>_from_son</strong></a>(cls, son, _auto_dereference<font color="#909090">=True</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Create&nbsp;an&nbsp;instance&nbsp;of&nbsp;a&nbsp;<a href="mongoengine.document.html#Document">Document</a>&nbsp;(subclass)&nbsp;from&nbsp;a&nbsp;PyMongo&nbsp;SON.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-_geo_indices"><strong>_geo_indices</strong></a>(cls, inspected<font color="#909090">=None</font>, parent_field<font color="#909090">=None</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt></dl>
+
+<dl><dt><a name="Preguntas-_get_collection_name"><strong>_get_collection_name</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;collection&nbsp;name&nbsp;for&nbsp;this&nbsp;class.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-_lookup_field"><strong>_lookup_field</strong></a>(cls, parts)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Lookup&nbsp;a&nbsp;field&nbsp;based&nbsp;on&nbsp;its&nbsp;attribute&nbsp;and&nbsp;return&nbsp;a&nbsp;list&nbsp;containing<br>
+the&nbsp;field's&nbsp;parents&nbsp;and&nbsp;the&nbsp;field.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-_translate_field_name"><strong>_translate_field_name</strong></a>(cls, field, sep<font color="#909090">='.'</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Translate&nbsp;a&nbsp;field&nbsp;attribute&nbsp;name&nbsp;to&nbsp;a&nbsp;database&nbsp;field&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-_unique_with_indexes"><strong>_unique_with_indexes</strong></a>(cls, namespace<font color="#909090">=''</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Find&nbsp;and&nbsp;set&nbsp;unique&nbsp;indexes</tt></dd></dl>
+
+<dl><dt><a name="Preguntas-from_json"><strong>from_json</strong></a>(cls, json_data)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Converts&nbsp;json&nbsp;data&nbsp;to&nbsp;an&nbsp;unsaved&nbsp;document&nbsp;instance</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><strong>_created</strong> = True</dl>
+
+<dl><dt><strong>_dynamic</strong> = False</dl>
+
+<dl><dt><strong>_dynamic_lock</strong> = True</dl>
+
+<dl><dt><strong>_initialised</strong> = False</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Temas">class <strong>Temas</strong></a>(<a href="mongoengine.document.html#Document">mongoengine.document.Document</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Data&nbsp;model&nbsp;for&nbsp;the&nbsp;collection&nbsp;of&nbsp;chapters.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#Temas">Temas</a></dd>
+<dd><a href="mongoengine.document.html#Document">mongoengine.document.Document</a></dd>
+<dd><a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Temas-__unicode__"><strong>__unicode__</strong></a>(self)</dt><dd><tt>#&nbsp;Required&nbsp;for&nbsp;administrative&nbsp;interface</tt></dd></dl>
+
+<dl><dt><a name="Temas-get_id"><strong>get_id</strong></a>(self)</dt></dl>
+
+<dl><dt><strong>objects</strong></dt>
+<dd><tt>The&nbsp;default&nbsp;QuerySet&nbsp;Manager.<br>
+&nbsp;<br>
+Custom&nbsp;QuerySet&nbsp;Manager&nbsp;functions&nbsp;can&nbsp;extend&nbsp;this&nbsp;class&nbsp;and&nbsp;users&nbsp;can<br>
+add&nbsp;extra&nbsp;queryset&nbsp;functionality.&nbsp;&nbsp;Any&nbsp;custom&nbsp;manager&nbsp;methods&nbsp;must&nbsp;accept&nbsp;a<br>
+:class:`~mongoengine.Document`&nbsp;class&nbsp;as&nbsp;its&nbsp;first&nbsp;argument,&nbsp;and&nbsp;a<br>
+:class:`~mongoengine.queryset.QuerySet`&nbsp;as&nbsp;its&nbsp;second&nbsp;argument.<br>
+&nbsp;<br>
+The&nbsp;method&nbsp;function&nbsp;should&nbsp;return&nbsp;a&nbsp;:class:`~mongoengine.queryset.QuerySet`<br>
+,&nbsp;probably&nbsp;the&nbsp;same&nbsp;one&nbsp;that&nbsp;was&nbsp;passed&nbsp;in,&nbsp;but&nbsp;modified&nbsp;in&nbsp;some&nbsp;way.</tt></dd>
+</dl>
+
+<dl><dt><strong>user_objects</strong></dt>
+<dd><tt>The&nbsp;default&nbsp;QuerySet&nbsp;Manager.<br>
+&nbsp;<br>
+Custom&nbsp;QuerySet&nbsp;Manager&nbsp;functions&nbsp;can&nbsp;extend&nbsp;this&nbsp;class&nbsp;and&nbsp;users&nbsp;can<br>
+add&nbsp;extra&nbsp;queryset&nbsp;functionality.&nbsp;&nbsp;Any&nbsp;custom&nbsp;manager&nbsp;methods&nbsp;must&nbsp;accept&nbsp;a<br>
+:class:`~mongoengine.Document`&nbsp;class&nbsp;as&nbsp;its&nbsp;first&nbsp;argument,&nbsp;and&nbsp;a<br>
+:class:`~mongoengine.queryset.QuerySet`&nbsp;as&nbsp;its&nbsp;second&nbsp;argument.<br>
+&nbsp;<br>
+The&nbsp;method&nbsp;function&nbsp;should&nbsp;return&nbsp;a&nbsp;:class:`~mongoengine.queryset.QuerySet`<br>
+,&nbsp;probably&nbsp;the&nbsp;same&nbsp;one&nbsp;that&nbsp;was&nbsp;passed&nbsp;in,&nbsp;but&nbsp;modified&nbsp;in&nbsp;some&nbsp;way.</tt></dd>
+</dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>asignatura</strong></dt>
+<dd><tt>A&nbsp;reference&nbsp;to&nbsp;a&nbsp;document&nbsp;that&nbsp;will&nbsp;be&nbsp;automatically&nbsp;dereferenced&nbsp;on<br>
+access&nbsp;(lazily).<br>
+&nbsp;<br>
+Use&nbsp;the&nbsp;`reverse_delete_rule`&nbsp;to&nbsp;handle&nbsp;what&nbsp;should&nbsp;happen&nbsp;if&nbsp;the&nbsp;document<br>
+the&nbsp;field&nbsp;is&nbsp;referencing&nbsp;is&nbsp;deleted.&nbsp;&nbsp;EmbeddedDocuments,&nbsp;DictFields&nbsp;and<br>
+MapFields&nbsp;do&nbsp;not&nbsp;support&nbsp;reverse_delete_rules&nbsp;and&nbsp;an&nbsp;`InvalidDocumentError`<br>
+will&nbsp;be&nbsp;raised&nbsp;if&nbsp;trying&nbsp;to&nbsp;set&nbsp;on&nbsp;one&nbsp;of&nbsp;these&nbsp;Document&nbsp;/&nbsp;Field&nbsp;types.<br>
+&nbsp;<br>
+The&nbsp;options&nbsp;are:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;DO_NOTHING&nbsp;&nbsp;-&nbsp;don't&nbsp;do&nbsp;anything&nbsp;(default).<br>
+&nbsp;&nbsp;*&nbsp;NULLIFY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Updates&nbsp;the&nbsp;reference&nbsp;to&nbsp;null.<br>
+&nbsp;&nbsp;*&nbsp;CASCADE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Deletes&nbsp;the&nbsp;documents&nbsp;associated&nbsp;with&nbsp;the&nbsp;reference.<br>
+&nbsp;&nbsp;*&nbsp;DENY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Prevent&nbsp;the&nbsp;deletion&nbsp;of&nbsp;the&nbsp;reference&nbsp;object.<br>
+&nbsp;&nbsp;*&nbsp;PULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Pull&nbsp;the&nbsp;reference&nbsp;from&nbsp;a&nbsp;:class:`~mongoengine.fields.ListField`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;references<br>
+&nbsp;<br>
+Alternative&nbsp;syntax&nbsp;for&nbsp;registering&nbsp;delete&nbsp;rules&nbsp;(useful&nbsp;when&nbsp;implementing<br>
+bi-directional&nbsp;delete&nbsp;rules)<br>
+&nbsp;<br>
+..&nbsp;code-block::&nbsp;python<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;Bar(Document):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;=&nbsp;StringField()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo&nbsp;=&nbsp;ReferenceField('Foo')<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Bar.register_delete_rule(Foo,&nbsp;'bar',&nbsp;NULLIFY)<br>
+&nbsp;<br>
+..&nbsp;note&nbsp;::<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`reverse_delete_rules`&nbsp;do&nbsp;not&nbsp;trigger&nbsp;pre&nbsp;/&nbsp;post&nbsp;delete&nbsp;signals&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;triggered.<br>
+&nbsp;<br>
+..&nbsp;versionchanged::&nbsp;0.5&nbsp;added&nbsp;`reverse_delete_rule`</tt></dd>
+</dl>
+<dl><dt><strong>descripcion</strong></dt>
+<dd><tt>A&nbsp;unicode&nbsp;string&nbsp;field.</tt></dd>
+</dl>
+<dl><dt><strong>id</strong></dt>
+<dd><tt>A&nbsp;field&nbsp;wrapper&nbsp;around&nbsp;MongoDB's&nbsp;ObjectIds.</tt></dd>
+</dl>
+<dl><dt><strong>num</strong></dt>
+<dd><tt>An&nbsp;32-bit&nbsp;integer&nbsp;field.</tt></dd>
+</dl>
+<dl><dt><strong>usuario</strong></dt>
+<dd><tt>A&nbsp;reference&nbsp;to&nbsp;a&nbsp;document&nbsp;that&nbsp;will&nbsp;be&nbsp;automatically&nbsp;dereferenced&nbsp;on<br>
+access&nbsp;(lazily).<br>
+&nbsp;<br>
+Use&nbsp;the&nbsp;`reverse_delete_rule`&nbsp;to&nbsp;handle&nbsp;what&nbsp;should&nbsp;happen&nbsp;if&nbsp;the&nbsp;document<br>
+the&nbsp;field&nbsp;is&nbsp;referencing&nbsp;is&nbsp;deleted.&nbsp;&nbsp;EmbeddedDocuments,&nbsp;DictFields&nbsp;and<br>
+MapFields&nbsp;do&nbsp;not&nbsp;support&nbsp;reverse_delete_rules&nbsp;and&nbsp;an&nbsp;`InvalidDocumentError`<br>
+will&nbsp;be&nbsp;raised&nbsp;if&nbsp;trying&nbsp;to&nbsp;set&nbsp;on&nbsp;one&nbsp;of&nbsp;these&nbsp;Document&nbsp;/&nbsp;Field&nbsp;types.<br>
+&nbsp;<br>
+The&nbsp;options&nbsp;are:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;DO_NOTHING&nbsp;&nbsp;-&nbsp;don't&nbsp;do&nbsp;anything&nbsp;(default).<br>
+&nbsp;&nbsp;*&nbsp;NULLIFY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Updates&nbsp;the&nbsp;reference&nbsp;to&nbsp;null.<br>
+&nbsp;&nbsp;*&nbsp;CASCADE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Deletes&nbsp;the&nbsp;documents&nbsp;associated&nbsp;with&nbsp;the&nbsp;reference.<br>
+&nbsp;&nbsp;*&nbsp;DENY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Prevent&nbsp;the&nbsp;deletion&nbsp;of&nbsp;the&nbsp;reference&nbsp;object.<br>
+&nbsp;&nbsp;*&nbsp;PULL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Pull&nbsp;the&nbsp;reference&nbsp;from&nbsp;a&nbsp;:class:`~mongoengine.fields.ListField`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;references<br>
+&nbsp;<br>
+Alternative&nbsp;syntax&nbsp;for&nbsp;registering&nbsp;delete&nbsp;rules&nbsp;(useful&nbsp;when&nbsp;implementing<br>
+bi-directional&nbsp;delete&nbsp;rules)<br>
+&nbsp;<br>
+..&nbsp;code-block::&nbsp;python<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;Bar(Document):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content&nbsp;=&nbsp;StringField()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foo&nbsp;=&nbsp;ReferenceField('Foo')<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Bar.register_delete_rule(Foo,&nbsp;'bar',&nbsp;NULLIFY)<br>
+&nbsp;<br>
+..&nbsp;note&nbsp;::<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`reverse_delete_rules`&nbsp;do&nbsp;not&nbsp;trigger&nbsp;pre&nbsp;/&nbsp;post&nbsp;delete&nbsp;signals&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;triggered.<br>
+&nbsp;<br>
+..&nbsp;versionchanged::&nbsp;0.5&nbsp;added&nbsp;`reverse_delete_rule`</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+
+<dl><dt><strong>_auto_id_field</strong> = True</dl>
+
+<dl><dt><strong>_class_name</strong> = 'Temas'</dl>
+
+<dl><dt><strong>_collection</strong> = None</dl>
+
+<dl><dt><strong>_db_field_map</strong> = {'asignatura': 'asignatura', 'descripcion': 'descripcion', 'num': 'num', 'usuario': 'usuario'}</dl>
+
+<dl><dt><strong>_fields</strong> = {'asignatura': &lt;mongoengine.fields.ReferenceField object&gt;, 'descripcion': &lt;mongoengine.fields.StringField object&gt;, 'id': &lt;mongoengine.base.fields.ObjectIdField object&gt;, 'num': &lt;mongoengine.fields.IntField object&gt;, 'usuario': &lt;mongoengine.fields.ReferenceField object&gt;}</dl>
+
+<dl><dt><strong>_fields_ordered</strong> = ('id', 'num', 'descripcion', 'asignatura', 'usuario')</dl>
+
+<dl><dt><strong>_is_base_cls</strong> = False</dl>
+
+<dl><dt><strong>_is_document</strong> = True</dl>
+
+<dl><dt><strong>_meta</strong> = {'index_background': False, 'ordering': [], 'abs...tema'): 3}, 'max_size': None, 'index_opts': None}</dl>
+
+<dl><dt><strong>_reverse_db_field_map</strong> = {'asignatura': 'asignatura', 'descripcion': 'descripcion', 'num': 'num', 'usuario': 'usuario'}</dl>
+
+<dl><dt><strong>_subclasses</strong> = ('Temas',)</dl>
+
+<dl><dt><strong>_superclasses</strong> = ()</dl>
+
+<dl><dt><strong>_types</strong> = ('Temas',)</dl>
+
+<hr>
+Methods inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><a name="Temas-_reload"><strong>_reload</strong></a>(self, key, value)</dt><dd><tt>Used&nbsp;by&nbsp;:meth:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>.reload`&nbsp;to&nbsp;ensure&nbsp;the<br>
+correct&nbsp;instance&nbsp;is&nbsp;linked&nbsp;to&nbsp;self.</tt></dd></dl>
+
+<dl><dt><a name="Temas-cascade_save"><strong>cascade_save</strong></a>(self, *args, **kwargs)</dt><dd><tt>Recursively&nbsp;saves&nbsp;any&nbsp;references&nbsp;/<br>
+generic&nbsp;references&nbsp;on&nbsp;an&nbsp;objects</tt></dd></dl>
+
+<dl><dt><a name="Temas-delete"><strong>delete</strong></a>(self, **write_concern)</dt><dd><tt>Delete&nbsp;the&nbsp;:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`&nbsp;from&nbsp;the&nbsp;database.&nbsp;This<br>
+will&nbsp;only&nbsp;take&nbsp;effect&nbsp;if&nbsp;the&nbsp;document&nbsp;has&nbsp;been&nbsp;previously&nbsp;saved.<br>
+&nbsp;<br>
+:param&nbsp;write_concern:&nbsp;Extra&nbsp;keyword&nbsp;arguments&nbsp;are&nbsp;passed&nbsp;down&nbsp;which<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;options&nbsp;for&nbsp;the&nbsp;resultant<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``getLastError``&nbsp;command.&nbsp;&nbsp;For&nbsp;example,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``<a href="#Temas-save">save</a>(...,&nbsp;write_concern={w:&nbsp;2,&nbsp;fsync:&nbsp;True},&nbsp;...)``&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wait&nbsp;until&nbsp;at&nbsp;least&nbsp;two&nbsp;servers&nbsp;have&nbsp;recorded&nbsp;the&nbsp;write&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;force&nbsp;an&nbsp;fsync&nbsp;on&nbsp;the&nbsp;primary&nbsp;server.</tt></dd></dl>
+
+<dl><dt><a name="Temas-reload"><strong>reload</strong></a>(self, max_depth<font color="#909090">=1</font>)</dt><dd><tt>Reloads&nbsp;all&nbsp;attributes&nbsp;from&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+..&nbsp;versionadded::&nbsp;0.1.2<br>
+..&nbsp;versionchanged::&nbsp;0.6&nbsp;&nbsp;Now&nbsp;chainable</tt></dd></dl>
+
+<dl><dt><a name="Temas-save"><strong>save</strong></a>(self, force_insert<font color="#909090">=False</font>, validate<font color="#909090">=True</font>, clean<font color="#909090">=True</font>, write_concern<font color="#909090">=None</font>, cascade<font color="#909090">=None</font>, cascade_kwargs<font color="#909090">=None</font>, _refs<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Save&nbsp;the&nbsp;:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`&nbsp;to&nbsp;the&nbsp;database.&nbsp;If&nbsp;the<br>
+document&nbsp;already&nbsp;exists,&nbsp;it&nbsp;will&nbsp;be&nbsp;updated,&nbsp;otherwise&nbsp;it&nbsp;will&nbsp;be<br>
+created.<br>
+&nbsp;<br>
+:param&nbsp;force_insert:&nbsp;only&nbsp;try&nbsp;to&nbsp;create&nbsp;a&nbsp;new&nbsp;document,&nbsp;don't&nbsp;allow<br>
+&nbsp;&nbsp;&nbsp;&nbsp;updates&nbsp;of&nbsp;existing&nbsp;documents<br>
+:param&nbsp;validate:&nbsp;validates&nbsp;the&nbsp;document;&nbsp;set&nbsp;to&nbsp;``False``&nbsp;to&nbsp;skip.<br>
+:param&nbsp;clean:&nbsp;call&nbsp;the&nbsp;document&nbsp;clean&nbsp;method,&nbsp;requires&nbsp;`validate`&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;True.<br>
+:param&nbsp;write_concern:&nbsp;Extra&nbsp;keyword&nbsp;arguments&nbsp;are&nbsp;passed&nbsp;down&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:meth:`~pymongo.collection.Collection.save`&nbsp;OR<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:meth:`~pymongo.collection.Collection.insert`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;which&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;options&nbsp;for&nbsp;the&nbsp;resultant<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``getLastError``&nbsp;command.&nbsp;&nbsp;For&nbsp;example,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``<a href="#Temas-save">save</a>(...,&nbsp;write_concern={w:&nbsp;2,&nbsp;fsync:&nbsp;True},&nbsp;...)``&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wait&nbsp;until&nbsp;at&nbsp;least&nbsp;two&nbsp;servers&nbsp;have&nbsp;recorded&nbsp;the&nbsp;write&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;force&nbsp;an&nbsp;fsync&nbsp;on&nbsp;the&nbsp;primary&nbsp;server.<br>
+:param&nbsp;cascade:&nbsp;Sets&nbsp;the&nbsp;flag&nbsp;for&nbsp;cascading&nbsp;saves.&nbsp;&nbsp;You&nbsp;can&nbsp;set&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;by&nbsp;setting&nbsp;"cascade"&nbsp;in&nbsp;the&nbsp;document&nbsp;__meta__<br>
+:param&nbsp;cascade_kwargs:&nbsp;(optional)&nbsp;kwargs&nbsp;dictionary&nbsp;to&nbsp;be&nbsp;passed&nbsp;throw<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;cascading&nbsp;saves.&nbsp;&nbsp;Implies&nbsp;``cascade=True``.<br>
+:param&nbsp;_refs:&nbsp;A&nbsp;list&nbsp;of&nbsp;processed&nbsp;references&nbsp;used&nbsp;in&nbsp;cascading&nbsp;saves<br>
+&nbsp;<br>
+..&nbsp;versionchanged::&nbsp;0.5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;existing&nbsp;documents&nbsp;it&nbsp;only&nbsp;saves&nbsp;changed&nbsp;fields&nbsp;using<br>
+&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;/&nbsp;unset.&nbsp;&nbsp;Saves&nbsp;are&nbsp;cascaded&nbsp;and&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:class:`~bson.dbref.DBRef`&nbsp;objects&nbsp;that&nbsp;have&nbsp;changes&nbsp;are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;saved&nbsp;as&nbsp;well.<br>
+..&nbsp;versionchanged::&nbsp;0.6<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Added&nbsp;cascading&nbsp;saves<br>
+..&nbsp;versionchanged::&nbsp;0.8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Cascade&nbsp;saves&nbsp;are&nbsp;optional&nbsp;and&nbsp;default&nbsp;to&nbsp;False.&nbsp;&nbsp;If&nbsp;you&nbsp;want<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fine&nbsp;grain&nbsp;control&nbsp;then&nbsp;you&nbsp;can&nbsp;turn&nbsp;off&nbsp;using&nbsp;document<br>
+&nbsp;&nbsp;&nbsp;&nbsp;meta['cascade']&nbsp;=&nbsp;True.&nbsp;&nbsp;Also&nbsp;you&nbsp;can&nbsp;pass&nbsp;different&nbsp;kwargs&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;cascade&nbsp;save&nbsp;using&nbsp;cascade_kwargs&nbsp;which&nbsp;overwrites&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;existing&nbsp;kwargs&nbsp;with&nbsp;custom&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="Temas-select_related"><strong>select_related</strong></a>(self, max_depth<font color="#909090">=1</font>)</dt><dd><tt>Handles&nbsp;dereferencing&nbsp;of&nbsp;:class:`~bson.dbref.DBRef`&nbsp;objects&nbsp;to<br>
+a&nbsp;maximum&nbsp;depth&nbsp;in&nbsp;order&nbsp;to&nbsp;cut&nbsp;down&nbsp;the&nbsp;number&nbsp;queries&nbsp;to&nbsp;mongodb.<br>
+&nbsp;<br>
+..&nbsp;versionadded::&nbsp;0.5</tt></dd></dl>
+
+<dl><dt><a name="Temas-switch_collection"><strong>switch_collection</strong></a>(self, collection_name)</dt><dd><tt>Temporarily&nbsp;switch&nbsp;the&nbsp;collection&nbsp;for&nbsp;a&nbsp;document&nbsp;instance.<br>
+&nbsp;<br>
+Only&nbsp;really&nbsp;useful&nbsp;for&nbsp;archiving&nbsp;off&nbsp;data&nbsp;and&nbsp;calling&nbsp;`<a href="#Temas-save">save</a>()`::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user&nbsp;=&nbsp;User.objects.get(id=user_id)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Temas-switch_collection">switch_collection</a>('old-users')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Temas-save">save</a>()<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;need&nbsp;to&nbsp;read&nbsp;from&nbsp;another&nbsp;database&nbsp;see<br>
+:class:`~mongoengine.context_managers.switch_db`<br>
+&nbsp;<br>
+:param&nbsp;collection_name:&nbsp;The&nbsp;database&nbsp;alias&nbsp;to&nbsp;use&nbsp;for&nbsp;saving&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Temas-switch_db"><strong>switch_db</strong></a>(self, db_alias)</dt><dd><tt>Temporarily&nbsp;switch&nbsp;the&nbsp;database&nbsp;for&nbsp;a&nbsp;document&nbsp;instance.<br>
+&nbsp;<br>
+Only&nbsp;really&nbsp;useful&nbsp;for&nbsp;archiving&nbsp;off&nbsp;data&nbsp;and&nbsp;calling&nbsp;`<a href="#Temas-save">save</a>()`::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user&nbsp;=&nbsp;User.objects.get(id=user_id)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Temas-switch_db">switch_db</a>('archive-db')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Temas-save">save</a>()<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;need&nbsp;to&nbsp;read&nbsp;from&nbsp;another&nbsp;database&nbsp;see<br>
+:class:`~mongoengine.context_managers.switch_db`<br>
+&nbsp;<br>
+:param&nbsp;db_alias:&nbsp;The&nbsp;database&nbsp;alias&nbsp;to&nbsp;use&nbsp;for&nbsp;saving&nbsp;the&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Temas-to_dbref"><strong>to_dbref</strong></a>(self)</dt><dd><tt>Returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;:class:`~bson.dbref.DBRef`&nbsp;useful&nbsp;in<br>
+`__raw__`&nbsp;queries.</tt></dd></dl>
+
+<dl><dt><a name="Temas-update"><strong>update</strong></a>(self, **kwargs)</dt><dd><tt>Performs&nbsp;an&nbsp;update&nbsp;on&nbsp;the&nbsp;:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`<br>
+A&nbsp;convenience&nbsp;wrapper&nbsp;to&nbsp;:meth:`~mongoengine.QuerySet.update`.<br>
+&nbsp;<br>
+Raises&nbsp;:class:`OperationError`&nbsp;if&nbsp;called&nbsp;on&nbsp;an&nbsp;object&nbsp;that&nbsp;has&nbsp;not&nbsp;yet<br>
+been&nbsp;saved.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><a name="Temas-_get_collection"><strong>_get_collection</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;collection&nbsp;for&nbsp;the&nbsp;document.</tt></dd></dl>
+
+<dl><dt><a name="Temas-_get_db"><strong>_get_db</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Some&nbsp;Model&nbsp;using&nbsp;other&nbsp;db_alias</tt></dd></dl>
+
+<dl><dt><a name="Temas-compare_indexes"><strong>compare_indexes</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Compares&nbsp;the&nbsp;indexes&nbsp;defined&nbsp;in&nbsp;MongoEngine&nbsp;with&nbsp;the&nbsp;ones&nbsp;existing<br>
+in&nbsp;the&nbsp;database.&nbsp;Returns&nbsp;any&nbsp;missing/extra&nbsp;indexes.</tt></dd></dl>
+
+<dl><dt><a name="Temas-drop_collection"><strong>drop_collection</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Drops&nbsp;the&nbsp;entire&nbsp;collection&nbsp;associated&nbsp;with&nbsp;this<br>
+:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`&nbsp;type&nbsp;from&nbsp;the&nbsp;database.</tt></dd></dl>
+
+<dl><dt><a name="Temas-ensure_index"><strong>ensure_index</strong></a>(cls, key_or_list, drop_dups<font color="#909090">=False</font>, background<font color="#909090">=False</font>, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Ensure&nbsp;that&nbsp;the&nbsp;given&nbsp;indexes&nbsp;are&nbsp;in&nbsp;place.<br>
+&nbsp;<br>
+:param&nbsp;key_or_list:&nbsp;a&nbsp;single&nbsp;index&nbsp;key&nbsp;or&nbsp;a&nbsp;list&nbsp;of&nbsp;index&nbsp;keys&nbsp;(to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;construct&nbsp;a&nbsp;multi-field&nbsp;index);&nbsp;keys&nbsp;may&nbsp;be&nbsp;prefixed&nbsp;with&nbsp;a&nbsp;**+**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;a&nbsp;**-**&nbsp;to&nbsp;determine&nbsp;the&nbsp;index&nbsp;ordering</tt></dd></dl>
+
+<dl><dt><a name="Temas-ensure_indexes"><strong>ensure_indexes</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Checks&nbsp;the&nbsp;document&nbsp;meta&nbsp;data&nbsp;and&nbsp;ensures&nbsp;all&nbsp;the&nbsp;indexes&nbsp;exist.<br>
+&nbsp;<br>
+Global&nbsp;defaults&nbsp;can&nbsp;be&nbsp;set&nbsp;in&nbsp;the&nbsp;meta&nbsp;-&nbsp;see&nbsp;:doc:`guide/defining-documents`<br>
+&nbsp;<br>
+..&nbsp;note::&nbsp;You&nbsp;can&nbsp;disable&nbsp;automatic&nbsp;index&nbsp;creation&nbsp;by&nbsp;setting<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_create_index`&nbsp;to&nbsp;False&nbsp;in&nbsp;the&nbsp;documents&nbsp;meta&nbsp;data</tt></dd></dl>
+
+<dl><dt><a name="Temas-list_indexes"><strong>list_indexes</strong></a>(cls, go_up<font color="#909090">=True</font>, go_down<font color="#909090">=True</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Lists&nbsp;all&nbsp;of&nbsp;the&nbsp;indexes&nbsp;that&nbsp;should&nbsp;be&nbsp;created&nbsp;for&nbsp;given<br>
+collection.&nbsp;It&nbsp;includes&nbsp;all&nbsp;the&nbsp;indexes&nbsp;from&nbsp;super-&nbsp;and&nbsp;sub-classes.</tt></dd></dl>
+
+<dl><dt><a name="Temas-register_delete_rule"><strong>register_delete_rule</strong></a>(cls, document_cls, field_name, rule)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>This&nbsp;method&nbsp;registers&nbsp;the&nbsp;delete&nbsp;rules&nbsp;to&nbsp;apply&nbsp;when&nbsp;removing&nbsp;this<br>
+object.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><strong>_object_key</strong></dt>
+<dd><tt>Dict&nbsp;to&nbsp;identify&nbsp;object&nbsp;in&nbsp;collection</tt></dd>
+</dl>
+<dl><dt><strong>_qs</strong></dt>
+<dd><tt>Returns&nbsp;the&nbsp;queryset&nbsp;to&nbsp;use&nbsp;for&nbsp;updating&nbsp;/&nbsp;reloading&nbsp;/&nbsp;deletions</tt></dd>
+</dl>
+<dl><dt><strong>pk</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><strong>__metaclass__</strong> = &lt;class 'mongoengine.base.metaclasses.TopLevelDocumentMetaclass'&gt;<dd><tt>Metaclass&nbsp;for&nbsp;top-level&nbsp;documents&nbsp;(i.e.&nbsp;documents&nbsp;that&nbsp;have&nbsp;their&nbsp;own<br>
+collection&nbsp;in&nbsp;the&nbsp;database.</tt></dl>
+
+<dl><dt><strong>my_metaclass</strong> = &lt;class 'mongoengine.base.metaclasses.TopLevelDocumentMetaclass'&gt;<dd><tt>Metaclass&nbsp;for&nbsp;top-level&nbsp;documents&nbsp;(i.e.&nbsp;documents&nbsp;that&nbsp;have&nbsp;their&nbsp;own<br>
+collection&nbsp;in&nbsp;the&nbsp;database.</tt></dl>
+
+<hr>
+Methods inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><a name="Temas-_BaseDocument__expand_dynamic_values"><strong>_BaseDocument__expand_dynamic_values</strong></a> = __expand_dynamic_values(self, name, value)</dt><dd><tt>expand&nbsp;any&nbsp;dynamic&nbsp;values&nbsp;to&nbsp;their&nbsp;correct&nbsp;types&nbsp;/&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="Temas-_BaseDocument__get_field_display"><strong>_BaseDocument__get_field_display</strong></a> = __get_field_display(self, field)</dt><dd><tt>Returns&nbsp;the&nbsp;display&nbsp;value&nbsp;for&nbsp;a&nbsp;choice&nbsp;field</tt></dd></dl>
+
+<dl><dt><a name="Temas-_BaseDocument__set_field_display"><strong>_BaseDocument__set_field_display</strong></a> = __set_field_display(self)</dt><dd><tt>Dynamically&nbsp;set&nbsp;the&nbsp;display&nbsp;value&nbsp;for&nbsp;a&nbsp;field&nbsp;with&nbsp;choices</tt></dd></dl>
+
+<dl><dt><a name="Temas-__contains__"><strong>__contains__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="Temas-__delattr__"><strong>__delattr__</strong></a>(self, *args, **kwargs)</dt><dd><tt>Handle&nbsp;deletions&nbsp;of&nbsp;fields</tt></dd></dl>
+
+<dl><dt><a name="Temas-__eq__"><strong>__eq__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Temas-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><tt>Dictionary-style&nbsp;field&nbsp;access,&nbsp;return&nbsp;a&nbsp;field's&nbsp;value&nbsp;if&nbsp;present.</tt></dd></dl>
+
+<dl><dt><a name="Temas-__getstate__"><strong>__getstate__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Temas-__hash__"><strong>__hash__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Temas-__init__"><strong>__init__</strong></a>(self, *args, **values)</dt><dd><tt>Initialise&nbsp;a&nbsp;document&nbsp;or&nbsp;embedded&nbsp;document<br>
+&nbsp;<br>
+:param&nbsp;__auto_convert:&nbsp;Try&nbsp;and&nbsp;will&nbsp;cast&nbsp;python&nbsp;objects&nbsp;to&nbsp;Object&nbsp;types<br>
+:param&nbsp;values:&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;values&nbsp;for&nbsp;the&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Temas-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Temas-__len__"><strong>__len__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Temas-__ne__"><strong>__ne__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Temas-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Temas-__setattr__"><strong>__setattr__</strong></a>(self, name, value)</dt></dl>
+
+<dl><dt><a name="Temas-__setitem__"><strong>__setitem__</strong></a>(self, name, value)</dt><dd><tt>Dictionary-style&nbsp;field&nbsp;access,&nbsp;set&nbsp;a&nbsp;field's&nbsp;value.</tt></dd></dl>
+
+<dl><dt><a name="Temas-__setstate__"><strong>__setstate__</strong></a>(self, data)</dt></dl>
+
+<dl><dt><a name="Temas-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Temas-_clear_changed_fields"><strong>_clear_changed_fields</strong></a>(self)</dt><dd><tt>Using&nbsp;get_changed_fields&nbsp;iterate&nbsp;and&nbsp;remove&nbsp;any&nbsp;fields&nbsp;that&nbsp;are<br>
+marked&nbsp;as&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="Temas-_delta"><strong>_delta</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;delta&nbsp;(set,&nbsp;unset)&nbsp;of&nbsp;the&nbsp;changes&nbsp;for&nbsp;a&nbsp;document.<br>
+Gets&nbsp;any&nbsp;values&nbsp;that&nbsp;have&nbsp;been&nbsp;explicitly&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="Temas-_get_changed_fields"><strong>_get_changed_fields</strong></a>(self, inspected<font color="#909090">=None</font>)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;fields&nbsp;that&nbsp;have&nbsp;explicitly&nbsp;been&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="Temas-_mark_as_changed"><strong>_mark_as_changed</strong></a>(self, key)</dt><dd><tt>Marks&nbsp;a&nbsp;key&nbsp;as&nbsp;explicitly&nbsp;changed&nbsp;by&nbsp;the&nbsp;user</tt></dd></dl>
+
+<dl><dt><a name="Temas-_nestable_types_changed_fields"><strong>_nestable_types_changed_fields</strong></a>(self, changed_fields, key, data, inspected)</dt></dl>
+
+<dl><dt><a name="Temas-clean"><strong>clean</strong></a>(self)</dt><dd><tt>Hook&nbsp;for&nbsp;doing&nbsp;document&nbsp;level&nbsp;data&nbsp;cleaning&nbsp;before&nbsp;validation&nbsp;is&nbsp;run.<br>
+&nbsp;<br>
+Any&nbsp;ValidationError&nbsp;raised&nbsp;by&nbsp;this&nbsp;method&nbsp;will&nbsp;not&nbsp;be&nbsp;associated&nbsp;with<br>
+a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will&nbsp;have&nbsp;a&nbsp;special-case&nbsp;association&nbsp;with&nbsp;the<br>
+field&nbsp;defined&nbsp;by&nbsp;NON_FIELD_ERRORS.</tt></dd></dl>
+
+<dl><dt><a name="Temas-to_json"><strong>to_json</strong></a>(self, *args, **kwargs)</dt><dd><tt>Converts&nbsp;a&nbsp;document&nbsp;to&nbsp;JSON</tt></dd></dl>
+
+<dl><dt><a name="Temas-to_mongo"><strong>to_mongo</strong></a>(self)</dt><dd><tt>Return&nbsp;as&nbsp;SON&nbsp;data&nbsp;ready&nbsp;for&nbsp;use&nbsp;with&nbsp;MongoDB.</tt></dd></dl>
+
+<dl><dt><a name="Temas-validate"><strong>validate</strong></a>(self, clean<font color="#909090">=True</font>)</dt><dd><tt>Ensure&nbsp;that&nbsp;all&nbsp;fields'&nbsp;values&nbsp;are&nbsp;valid&nbsp;and&nbsp;that&nbsp;required&nbsp;fields<br>
+are&nbsp;present.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><a name="Temas-_build_index_spec"><strong>_build_index_spec</strong></a>(cls, spec)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Build&nbsp;a&nbsp;PyMongo&nbsp;index&nbsp;spec&nbsp;from&nbsp;a&nbsp;MongoEngine&nbsp;index&nbsp;spec.</tt></dd></dl>
+
+<dl><dt><a name="Temas-_build_index_specs"><strong>_build_index_specs</strong></a>(cls, meta_indexes)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Generate&nbsp;and&nbsp;merge&nbsp;the&nbsp;full&nbsp;index&nbsp;specs</tt></dd></dl>
+
+<dl><dt><a name="Temas-_from_son"><strong>_from_son</strong></a>(cls, son, _auto_dereference<font color="#909090">=True</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Create&nbsp;an&nbsp;instance&nbsp;of&nbsp;a&nbsp;<a href="mongoengine.document.html#Document">Document</a>&nbsp;(subclass)&nbsp;from&nbsp;a&nbsp;PyMongo&nbsp;SON.</tt></dd></dl>
+
+<dl><dt><a name="Temas-_geo_indices"><strong>_geo_indices</strong></a>(cls, inspected<font color="#909090">=None</font>, parent_field<font color="#909090">=None</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt></dl>
+
+<dl><dt><a name="Temas-_get_collection_name"><strong>_get_collection_name</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;collection&nbsp;name&nbsp;for&nbsp;this&nbsp;class.</tt></dd></dl>
+
+<dl><dt><a name="Temas-_lookup_field"><strong>_lookup_field</strong></a>(cls, parts)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Lookup&nbsp;a&nbsp;field&nbsp;based&nbsp;on&nbsp;its&nbsp;attribute&nbsp;and&nbsp;return&nbsp;a&nbsp;list&nbsp;containing<br>
+the&nbsp;field's&nbsp;parents&nbsp;and&nbsp;the&nbsp;field.</tt></dd></dl>
+
+<dl><dt><a name="Temas-_translate_field_name"><strong>_translate_field_name</strong></a>(cls, field, sep<font color="#909090">='.'</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Translate&nbsp;a&nbsp;field&nbsp;attribute&nbsp;name&nbsp;to&nbsp;a&nbsp;database&nbsp;field&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="Temas-_unique_with_indexes"><strong>_unique_with_indexes</strong></a>(cls, namespace<font color="#909090">=''</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Find&nbsp;and&nbsp;set&nbsp;unique&nbsp;indexes</tt></dd></dl>
+
+<dl><dt><a name="Temas-from_json"><strong>from_json</strong></a>(cls, json_data)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Converts&nbsp;json&nbsp;data&nbsp;to&nbsp;an&nbsp;unsaved&nbsp;document&nbsp;instance</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><strong>_created</strong> = True</dl>
+
+<dl><dt><strong>_dynamic</strong> = False</dl>
+
+<dl><dt><strong>_dynamic_lock</strong> = True</dl>
+
+<dl><dt><strong>_initialised</strong> = False</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Usuarios">class <strong>Usuarios</strong></a>(<a href="mongoengine.document.html#Document">mongoengine.document.Document</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Data&nbsp;model&nbsp;for&nbsp;the&nbsp;collection&nbsp;of&nbsp;users.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#Usuarios">Usuarios</a></dd>
+<dd><a href="mongoengine.document.html#Document">mongoengine.document.Document</a></dd>
+<dd><a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Usuarios-__unicode__"><strong>__unicode__</strong></a>(self)</dt><dd><tt>#&nbsp;Required&nbsp;for&nbsp;administrative&nbsp;interface</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-clean"><strong>clean</strong></a>(self)</dt><dd><tt>Make&nbsp;validations&nbsp;before&nbsp;save&nbsp;any&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-get_asignaturas"><strong>get_asignaturas</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-get_id"><strong>get_id</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-get_nombre_ape"><strong>get_nombre_ape</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-get_tipo"><strong>get_tipo</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-get_usuario"><strong>get_usuario</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-is_activado"><strong>is_activado</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-is_active"><strong>is_active</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-is_administrador"><strong>is_administrador</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-is_alumno"><strong>is_alumno</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-is_anonymous"><strong>is_anonymous</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-is_authenticated"><strong>is_authenticated</strong></a>(self)</dt><dd><tt>#&nbsp;Flask-Login&nbsp;integration</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-is_profesor"><strong>is_profesor</strong></a>(self)</dt></dl>
+
+<dl><dt><strong>objects</strong></dt>
+<dd><tt>The&nbsp;default&nbsp;QuerySet&nbsp;Manager.<br>
+&nbsp;<br>
+Custom&nbsp;QuerySet&nbsp;Manager&nbsp;functions&nbsp;can&nbsp;extend&nbsp;this&nbsp;class&nbsp;and&nbsp;users&nbsp;can<br>
+add&nbsp;extra&nbsp;queryset&nbsp;functionality.&nbsp;&nbsp;Any&nbsp;custom&nbsp;manager&nbsp;methods&nbsp;must&nbsp;accept&nbsp;a<br>
+:class:`~mongoengine.Document`&nbsp;class&nbsp;as&nbsp;its&nbsp;first&nbsp;argument,&nbsp;and&nbsp;a<br>
+:class:`~mongoengine.queryset.QuerySet`&nbsp;as&nbsp;its&nbsp;second&nbsp;argument.<br>
+&nbsp;<br>
+The&nbsp;method&nbsp;function&nbsp;should&nbsp;return&nbsp;a&nbsp;:class:`~mongoengine.queryset.QuerySet`<br>
+,&nbsp;probably&nbsp;the&nbsp;same&nbsp;one&nbsp;that&nbsp;was&nbsp;passed&nbsp;in,&nbsp;but&nbsp;modified&nbsp;in&nbsp;some&nbsp;way.</tt></dd>
+</dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>activado</strong></dt>
+<dd><tt>A&nbsp;boolean&nbsp;field&nbsp;type.<br>
+&nbsp;<br>
+..&nbsp;versionadded::&nbsp;0.1.2</tt></dd>
+</dl>
+<dl><dt><strong>apellidos</strong></dt>
+<dd><tt>A&nbsp;unicode&nbsp;string&nbsp;field.</tt></dd>
+</dl>
+<dl><dt><strong>asignaturas</strong></dt>
+<dd><tt>A&nbsp;list&nbsp;field&nbsp;that&nbsp;wraps&nbsp;a&nbsp;standard&nbsp;field,&nbsp;allowing&nbsp;multiple&nbsp;instances<br>
+of&nbsp;the&nbsp;field&nbsp;to&nbsp;be&nbsp;used&nbsp;as&nbsp;a&nbsp;list&nbsp;in&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+If&nbsp;using&nbsp;with&nbsp;ReferenceFields&nbsp;see:&nbsp;:ref:`one-to-many-with-listfields`<br>
+&nbsp;<br>
+..&nbsp;note::<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Required&nbsp;means&nbsp;it&nbsp;cannot&nbsp;be&nbsp;empty&nbsp;-&nbsp;as&nbsp;the&nbsp;default&nbsp;for&nbsp;ListFields&nbsp;is&nbsp;[]</tt></dd>
+</dl>
+<dl><dt><strong>email</strong></dt>
+<dd><tt>A&nbsp;field&nbsp;that&nbsp;validates&nbsp;input&nbsp;as&nbsp;an&nbsp;E-Mail-Address.<br>
+&nbsp;<br>
+..&nbsp;versionadded::&nbsp;0.4</tt></dd>
+</dl>
+<dl><dt><strong>id</strong></dt>
+<dd><tt>A&nbsp;field&nbsp;wrapper&nbsp;around&nbsp;MongoDB's&nbsp;ObjectIds.</tt></dd>
+</dl>
+<dl><dt><strong>nombre</strong></dt>
+<dd><tt>A&nbsp;unicode&nbsp;string&nbsp;field.</tt></dd>
+</dl>
+<dl><dt><strong>password</strong></dt>
+<dd><tt>A&nbsp;unicode&nbsp;string&nbsp;field.</tt></dd>
+</dl>
+<dl><dt><strong>tipo</strong></dt>
+<dd><tt>An&nbsp;32-bit&nbsp;integer&nbsp;field.</tt></dd>
+</dl>
+<dl><dt><strong>usuario</strong></dt>
+<dd><tt>A&nbsp;unicode&nbsp;string&nbsp;field.</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+
+<dl><dt><strong>TIPO</strong> = ((0, 'Administrador'), (1, 'Profesor'), (2, 'Alumno'))</dl>
+
+<dl><dt><strong>_auto_id_field</strong> = True</dl>
+
+<dl><dt><strong>_class_name</strong> = 'Usuarios'</dl>
+
+<dl><dt><strong>_collection</strong> = None</dl>
+
+<dl><dt><strong>_db_field_map</strong> = {'activado': 'activado', 'apellidos': 'apellidos', 'asignaturas': 'asignaturas', 'email': 'email', 'nombre': 'nombre', 'password': 'password', 'tipo': 'tipo', 'usuario': 'usuario'}</dl>
+
+<dl><dt><strong>_fields</strong> = {'activado': &lt;mongoengine.fields.BooleanField object&gt;, 'apellidos': &lt;mongoengine.fields.StringField object&gt;, 'asignaturas': &lt;mongoengine.fields.ListField object&gt;, 'email': &lt;mongoengine.fields.EmailField object&gt;, 'id': &lt;mongoengine.base.fields.ObjectIdField object&gt;, 'nombre': &lt;mongoengine.fields.StringField object&gt;, 'password': &lt;mongoengine.fields.StringField object&gt;, 'tipo': &lt;mongoengine.fields.IntField object&gt;, 'usuario': &lt;mongoengine.fields.StringField object&gt;}</dl>
+
+<dl><dt><strong>_fields_ordered</strong> = ('id', 'nombre', 'apellidos', 'usuario', 'email', 'password', 'tipo', 'activado', 'asignaturas')</dl>
+
+<dl><dt><strong>_is_base_cls</strong> = False</dl>
+
+<dl><dt><strong>_is_document</strong> = True</dl>
+
+<dl><dt><strong>_meta</strong> = {'index_background': False, 'ordering': [], 'abs...ario'): 2}, 'max_size': None, 'index_opts': None}</dl>
+
+<dl><dt><strong>_reverse_db_field_map</strong> = {'activado': 'activado', 'apellidos': 'apellidos', 'asignaturas': 'asignaturas', 'email': 'email', 'nombre': 'nombre', 'password': 'password', 'tipo': 'tipo', 'usuario': 'usuario'}</dl>
+
+<dl><dt><strong>_subclasses</strong> = ('Usuarios',)</dl>
+
+<dl><dt><strong>_superclasses</strong> = ()</dl>
+
+<dl><dt><strong>_types</strong> = ('Usuarios',)</dl>
+
+<hr>
+Methods inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><a name="Usuarios-_reload"><strong>_reload</strong></a>(self, key, value)</dt><dd><tt>Used&nbsp;by&nbsp;:meth:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>.reload`&nbsp;to&nbsp;ensure&nbsp;the<br>
+correct&nbsp;instance&nbsp;is&nbsp;linked&nbsp;to&nbsp;self.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-cascade_save"><strong>cascade_save</strong></a>(self, *args, **kwargs)</dt><dd><tt>Recursively&nbsp;saves&nbsp;any&nbsp;references&nbsp;/<br>
+generic&nbsp;references&nbsp;on&nbsp;an&nbsp;objects</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-delete"><strong>delete</strong></a>(self, **write_concern)</dt><dd><tt>Delete&nbsp;the&nbsp;:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`&nbsp;from&nbsp;the&nbsp;database.&nbsp;This<br>
+will&nbsp;only&nbsp;take&nbsp;effect&nbsp;if&nbsp;the&nbsp;document&nbsp;has&nbsp;been&nbsp;previously&nbsp;saved.<br>
+&nbsp;<br>
+:param&nbsp;write_concern:&nbsp;Extra&nbsp;keyword&nbsp;arguments&nbsp;are&nbsp;passed&nbsp;down&nbsp;which<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;options&nbsp;for&nbsp;the&nbsp;resultant<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``getLastError``&nbsp;command.&nbsp;&nbsp;For&nbsp;example,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``<a href="#Usuarios-save">save</a>(...,&nbsp;write_concern={w:&nbsp;2,&nbsp;fsync:&nbsp;True},&nbsp;...)``&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wait&nbsp;until&nbsp;at&nbsp;least&nbsp;two&nbsp;servers&nbsp;have&nbsp;recorded&nbsp;the&nbsp;write&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;force&nbsp;an&nbsp;fsync&nbsp;on&nbsp;the&nbsp;primary&nbsp;server.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-reload"><strong>reload</strong></a>(self, max_depth<font color="#909090">=1</font>)</dt><dd><tt>Reloads&nbsp;all&nbsp;attributes&nbsp;from&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+..&nbsp;versionadded::&nbsp;0.1.2<br>
+..&nbsp;versionchanged::&nbsp;0.6&nbsp;&nbsp;Now&nbsp;chainable</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-save"><strong>save</strong></a>(self, force_insert<font color="#909090">=False</font>, validate<font color="#909090">=True</font>, clean<font color="#909090">=True</font>, write_concern<font color="#909090">=None</font>, cascade<font color="#909090">=None</font>, cascade_kwargs<font color="#909090">=None</font>, _refs<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Save&nbsp;the&nbsp;:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`&nbsp;to&nbsp;the&nbsp;database.&nbsp;If&nbsp;the<br>
+document&nbsp;already&nbsp;exists,&nbsp;it&nbsp;will&nbsp;be&nbsp;updated,&nbsp;otherwise&nbsp;it&nbsp;will&nbsp;be<br>
+created.<br>
+&nbsp;<br>
+:param&nbsp;force_insert:&nbsp;only&nbsp;try&nbsp;to&nbsp;create&nbsp;a&nbsp;new&nbsp;document,&nbsp;don't&nbsp;allow<br>
+&nbsp;&nbsp;&nbsp;&nbsp;updates&nbsp;of&nbsp;existing&nbsp;documents<br>
+:param&nbsp;validate:&nbsp;validates&nbsp;the&nbsp;document;&nbsp;set&nbsp;to&nbsp;``False``&nbsp;to&nbsp;skip.<br>
+:param&nbsp;clean:&nbsp;call&nbsp;the&nbsp;document&nbsp;clean&nbsp;method,&nbsp;requires&nbsp;`validate`&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;True.<br>
+:param&nbsp;write_concern:&nbsp;Extra&nbsp;keyword&nbsp;arguments&nbsp;are&nbsp;passed&nbsp;down&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:meth:`~pymongo.collection.Collection.save`&nbsp;OR<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:meth:`~pymongo.collection.Collection.insert`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;which&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;options&nbsp;for&nbsp;the&nbsp;resultant<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``getLastError``&nbsp;command.&nbsp;&nbsp;For&nbsp;example,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;``<a href="#Usuarios-save">save</a>(...,&nbsp;write_concern={w:&nbsp;2,&nbsp;fsync:&nbsp;True},&nbsp;...)``&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wait&nbsp;until&nbsp;at&nbsp;least&nbsp;two&nbsp;servers&nbsp;have&nbsp;recorded&nbsp;the&nbsp;write&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;force&nbsp;an&nbsp;fsync&nbsp;on&nbsp;the&nbsp;primary&nbsp;server.<br>
+:param&nbsp;cascade:&nbsp;Sets&nbsp;the&nbsp;flag&nbsp;for&nbsp;cascading&nbsp;saves.&nbsp;&nbsp;You&nbsp;can&nbsp;set&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;by&nbsp;setting&nbsp;"cascade"&nbsp;in&nbsp;the&nbsp;document&nbsp;__meta__<br>
+:param&nbsp;cascade_kwargs:&nbsp;(optional)&nbsp;kwargs&nbsp;dictionary&nbsp;to&nbsp;be&nbsp;passed&nbsp;throw<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;cascading&nbsp;saves.&nbsp;&nbsp;Implies&nbsp;``cascade=True``.<br>
+:param&nbsp;_refs:&nbsp;A&nbsp;list&nbsp;of&nbsp;processed&nbsp;references&nbsp;used&nbsp;in&nbsp;cascading&nbsp;saves<br>
+&nbsp;<br>
+..&nbsp;versionchanged::&nbsp;0.5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;existing&nbsp;documents&nbsp;it&nbsp;only&nbsp;saves&nbsp;changed&nbsp;fields&nbsp;using<br>
+&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;/&nbsp;unset.&nbsp;&nbsp;Saves&nbsp;are&nbsp;cascaded&nbsp;and&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:class:`~bson.dbref.DBRef`&nbsp;objects&nbsp;that&nbsp;have&nbsp;changes&nbsp;are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;saved&nbsp;as&nbsp;well.<br>
+..&nbsp;versionchanged::&nbsp;0.6<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Added&nbsp;cascading&nbsp;saves<br>
+..&nbsp;versionchanged::&nbsp;0.8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Cascade&nbsp;saves&nbsp;are&nbsp;optional&nbsp;and&nbsp;default&nbsp;to&nbsp;False.&nbsp;&nbsp;If&nbsp;you&nbsp;want<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fine&nbsp;grain&nbsp;control&nbsp;then&nbsp;you&nbsp;can&nbsp;turn&nbsp;off&nbsp;using&nbsp;document<br>
+&nbsp;&nbsp;&nbsp;&nbsp;meta['cascade']&nbsp;=&nbsp;True.&nbsp;&nbsp;Also&nbsp;you&nbsp;can&nbsp;pass&nbsp;different&nbsp;kwargs&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;cascade&nbsp;save&nbsp;using&nbsp;cascade_kwargs&nbsp;which&nbsp;overwrites&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;existing&nbsp;kwargs&nbsp;with&nbsp;custom&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-select_related"><strong>select_related</strong></a>(self, max_depth<font color="#909090">=1</font>)</dt><dd><tt>Handles&nbsp;dereferencing&nbsp;of&nbsp;:class:`~bson.dbref.DBRef`&nbsp;objects&nbsp;to<br>
+a&nbsp;maximum&nbsp;depth&nbsp;in&nbsp;order&nbsp;to&nbsp;cut&nbsp;down&nbsp;the&nbsp;number&nbsp;queries&nbsp;to&nbsp;mongodb.<br>
+&nbsp;<br>
+..&nbsp;versionadded::&nbsp;0.5</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-switch_collection"><strong>switch_collection</strong></a>(self, collection_name)</dt><dd><tt>Temporarily&nbsp;switch&nbsp;the&nbsp;collection&nbsp;for&nbsp;a&nbsp;document&nbsp;instance.<br>
+&nbsp;<br>
+Only&nbsp;really&nbsp;useful&nbsp;for&nbsp;archiving&nbsp;off&nbsp;data&nbsp;and&nbsp;calling&nbsp;`<a href="#Usuarios-save">save</a>()`::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user&nbsp;=&nbsp;User.objects.get(id=user_id)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Usuarios-switch_collection">switch_collection</a>('old-users')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Usuarios-save">save</a>()<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;need&nbsp;to&nbsp;read&nbsp;from&nbsp;another&nbsp;database&nbsp;see<br>
+:class:`~mongoengine.context_managers.switch_db`<br>
+&nbsp;<br>
+:param&nbsp;collection_name:&nbsp;The&nbsp;database&nbsp;alias&nbsp;to&nbsp;use&nbsp;for&nbsp;saving&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-switch_db"><strong>switch_db</strong></a>(self, db_alias)</dt><dd><tt>Temporarily&nbsp;switch&nbsp;the&nbsp;database&nbsp;for&nbsp;a&nbsp;document&nbsp;instance.<br>
+&nbsp;<br>
+Only&nbsp;really&nbsp;useful&nbsp;for&nbsp;archiving&nbsp;off&nbsp;data&nbsp;and&nbsp;calling&nbsp;`<a href="#Usuarios-save">save</a>()`::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user&nbsp;=&nbsp;User.objects.get(id=user_id)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Usuarios-switch_db">switch_db</a>('archive-db')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user.<a href="#Usuarios-save">save</a>()<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;need&nbsp;to&nbsp;read&nbsp;from&nbsp;another&nbsp;database&nbsp;see<br>
+:class:`~mongoengine.context_managers.switch_db`<br>
+&nbsp;<br>
+:param&nbsp;db_alias:&nbsp;The&nbsp;database&nbsp;alias&nbsp;to&nbsp;use&nbsp;for&nbsp;saving&nbsp;the&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-to_dbref"><strong>to_dbref</strong></a>(self)</dt><dd><tt>Returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;:class:`~bson.dbref.DBRef`&nbsp;useful&nbsp;in<br>
+`__raw__`&nbsp;queries.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-update"><strong>update</strong></a>(self, **kwargs)</dt><dd><tt>Performs&nbsp;an&nbsp;update&nbsp;on&nbsp;the&nbsp;:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`<br>
+A&nbsp;convenience&nbsp;wrapper&nbsp;to&nbsp;:meth:`~mongoengine.QuerySet.update`.<br>
+&nbsp;<br>
+Raises&nbsp;:class:`OperationError`&nbsp;if&nbsp;called&nbsp;on&nbsp;an&nbsp;object&nbsp;that&nbsp;has&nbsp;not&nbsp;yet<br>
+been&nbsp;saved.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><a name="Usuarios-_get_collection"><strong>_get_collection</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;collection&nbsp;for&nbsp;the&nbsp;document.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-_get_db"><strong>_get_db</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Some&nbsp;Model&nbsp;using&nbsp;other&nbsp;db_alias</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-compare_indexes"><strong>compare_indexes</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Compares&nbsp;the&nbsp;indexes&nbsp;defined&nbsp;in&nbsp;MongoEngine&nbsp;with&nbsp;the&nbsp;ones&nbsp;existing<br>
+in&nbsp;the&nbsp;database.&nbsp;Returns&nbsp;any&nbsp;missing/extra&nbsp;indexes.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-drop_collection"><strong>drop_collection</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Drops&nbsp;the&nbsp;entire&nbsp;collection&nbsp;associated&nbsp;with&nbsp;this<br>
+:class:`~mongoengine.<a href="mongoengine.document.html#Document">Document</a>`&nbsp;type&nbsp;from&nbsp;the&nbsp;database.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-ensure_index"><strong>ensure_index</strong></a>(cls, key_or_list, drop_dups<font color="#909090">=False</font>, background<font color="#909090">=False</font>, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Ensure&nbsp;that&nbsp;the&nbsp;given&nbsp;indexes&nbsp;are&nbsp;in&nbsp;place.<br>
+&nbsp;<br>
+:param&nbsp;key_or_list:&nbsp;a&nbsp;single&nbsp;index&nbsp;key&nbsp;or&nbsp;a&nbsp;list&nbsp;of&nbsp;index&nbsp;keys&nbsp;(to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;construct&nbsp;a&nbsp;multi-field&nbsp;index);&nbsp;keys&nbsp;may&nbsp;be&nbsp;prefixed&nbsp;with&nbsp;a&nbsp;**+**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;a&nbsp;**-**&nbsp;to&nbsp;determine&nbsp;the&nbsp;index&nbsp;ordering</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-ensure_indexes"><strong>ensure_indexes</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Checks&nbsp;the&nbsp;document&nbsp;meta&nbsp;data&nbsp;and&nbsp;ensures&nbsp;all&nbsp;the&nbsp;indexes&nbsp;exist.<br>
+&nbsp;<br>
+Global&nbsp;defaults&nbsp;can&nbsp;be&nbsp;set&nbsp;in&nbsp;the&nbsp;meta&nbsp;-&nbsp;see&nbsp;:doc:`guide/defining-documents`<br>
+&nbsp;<br>
+..&nbsp;note::&nbsp;You&nbsp;can&nbsp;disable&nbsp;automatic&nbsp;index&nbsp;creation&nbsp;by&nbsp;setting<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_create_index`&nbsp;to&nbsp;False&nbsp;in&nbsp;the&nbsp;documents&nbsp;meta&nbsp;data</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-list_indexes"><strong>list_indexes</strong></a>(cls, go_up<font color="#909090">=True</font>, go_down<font color="#909090">=True</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Lists&nbsp;all&nbsp;of&nbsp;the&nbsp;indexes&nbsp;that&nbsp;should&nbsp;be&nbsp;created&nbsp;for&nbsp;given<br>
+collection.&nbsp;It&nbsp;includes&nbsp;all&nbsp;the&nbsp;indexes&nbsp;from&nbsp;super-&nbsp;and&nbsp;sub-classes.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-register_delete_rule"><strong>register_delete_rule</strong></a>(cls, document_cls, field_name, rule)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>This&nbsp;method&nbsp;registers&nbsp;the&nbsp;delete&nbsp;rules&nbsp;to&nbsp;apply&nbsp;when&nbsp;removing&nbsp;this<br>
+object.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><strong>_object_key</strong></dt>
+<dd><tt>Dict&nbsp;to&nbsp;identify&nbsp;object&nbsp;in&nbsp;collection</tt></dd>
+</dl>
+<dl><dt><strong>_qs</strong></dt>
+<dd><tt>Returns&nbsp;the&nbsp;queryset&nbsp;to&nbsp;use&nbsp;for&nbsp;updating&nbsp;/&nbsp;reloading&nbsp;/&nbsp;deletions</tt></dd>
+</dl>
+<dl><dt><strong>pk</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mongoengine.document.html#Document">mongoengine.document.Document</a>:<br>
+<dl><dt><strong>__metaclass__</strong> = &lt;class 'mongoengine.base.metaclasses.TopLevelDocumentMetaclass'&gt;<dd><tt>Metaclass&nbsp;for&nbsp;top-level&nbsp;documents&nbsp;(i.e.&nbsp;documents&nbsp;that&nbsp;have&nbsp;their&nbsp;own<br>
+collection&nbsp;in&nbsp;the&nbsp;database.</tt></dl>
+
+<dl><dt><strong>my_metaclass</strong> = &lt;class 'mongoengine.base.metaclasses.TopLevelDocumentMetaclass'&gt;<dd><tt>Metaclass&nbsp;for&nbsp;top-level&nbsp;documents&nbsp;(i.e.&nbsp;documents&nbsp;that&nbsp;have&nbsp;their&nbsp;own<br>
+collection&nbsp;in&nbsp;the&nbsp;database.</tt></dl>
+
+<hr>
+Methods inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><a name="Usuarios-_BaseDocument__expand_dynamic_values"><strong>_BaseDocument__expand_dynamic_values</strong></a> = __expand_dynamic_values(self, name, value)</dt><dd><tt>expand&nbsp;any&nbsp;dynamic&nbsp;values&nbsp;to&nbsp;their&nbsp;correct&nbsp;types&nbsp;/&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-_BaseDocument__get_field_display"><strong>_BaseDocument__get_field_display</strong></a> = __get_field_display(self, field)</dt><dd><tt>Returns&nbsp;the&nbsp;display&nbsp;value&nbsp;for&nbsp;a&nbsp;choice&nbsp;field</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-_BaseDocument__set_field_display"><strong>_BaseDocument__set_field_display</strong></a> = __set_field_display(self)</dt><dd><tt>Dynamically&nbsp;set&nbsp;the&nbsp;display&nbsp;value&nbsp;for&nbsp;a&nbsp;field&nbsp;with&nbsp;choices</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-__contains__"><strong>__contains__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="Usuarios-__delattr__"><strong>__delattr__</strong></a>(self, *args, **kwargs)</dt><dd><tt>Handle&nbsp;deletions&nbsp;of&nbsp;fields</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-__eq__"><strong>__eq__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Usuarios-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><tt>Dictionary-style&nbsp;field&nbsp;access,&nbsp;return&nbsp;a&nbsp;field's&nbsp;value&nbsp;if&nbsp;present.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-__getstate__"><strong>__getstate__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-__hash__"><strong>__hash__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-__init__"><strong>__init__</strong></a>(self, *args, **values)</dt><dd><tt>Initialise&nbsp;a&nbsp;document&nbsp;or&nbsp;embedded&nbsp;document<br>
+&nbsp;<br>
+:param&nbsp;__auto_convert:&nbsp;Try&nbsp;and&nbsp;will&nbsp;cast&nbsp;python&nbsp;objects&nbsp;to&nbsp;Object&nbsp;types<br>
+:param&nbsp;values:&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;values&nbsp;for&nbsp;the&nbsp;document</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-__len__"><strong>__len__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-__ne__"><strong>__ne__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Usuarios-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-__setattr__"><strong>__setattr__</strong></a>(self, name, value)</dt></dl>
+
+<dl><dt><a name="Usuarios-__setitem__"><strong>__setitem__</strong></a>(self, name, value)</dt><dd><tt>Dictionary-style&nbsp;field&nbsp;access,&nbsp;set&nbsp;a&nbsp;field's&nbsp;value.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-__setstate__"><strong>__setstate__</strong></a>(self, data)</dt></dl>
+
+<dl><dt><a name="Usuarios-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Usuarios-_clear_changed_fields"><strong>_clear_changed_fields</strong></a>(self)</dt><dd><tt>Using&nbsp;get_changed_fields&nbsp;iterate&nbsp;and&nbsp;remove&nbsp;any&nbsp;fields&nbsp;that&nbsp;are<br>
+marked&nbsp;as&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-_delta"><strong>_delta</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;delta&nbsp;(set,&nbsp;unset)&nbsp;of&nbsp;the&nbsp;changes&nbsp;for&nbsp;a&nbsp;document.<br>
+Gets&nbsp;any&nbsp;values&nbsp;that&nbsp;have&nbsp;been&nbsp;explicitly&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-_get_changed_fields"><strong>_get_changed_fields</strong></a>(self, inspected<font color="#909090">=None</font>)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;fields&nbsp;that&nbsp;have&nbsp;explicitly&nbsp;been&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-_mark_as_changed"><strong>_mark_as_changed</strong></a>(self, key)</dt><dd><tt>Marks&nbsp;a&nbsp;key&nbsp;as&nbsp;explicitly&nbsp;changed&nbsp;by&nbsp;the&nbsp;user</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-_nestable_types_changed_fields"><strong>_nestable_types_changed_fields</strong></a>(self, changed_fields, key, data, inspected)</dt></dl>
+
+<dl><dt><a name="Usuarios-to_json"><strong>to_json</strong></a>(self, *args, **kwargs)</dt><dd><tt>Converts&nbsp;a&nbsp;document&nbsp;to&nbsp;JSON</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-to_mongo"><strong>to_mongo</strong></a>(self)</dt><dd><tt>Return&nbsp;as&nbsp;SON&nbsp;data&nbsp;ready&nbsp;for&nbsp;use&nbsp;with&nbsp;MongoDB.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-validate"><strong>validate</strong></a>(self, clean<font color="#909090">=True</font>)</dt><dd><tt>Ensure&nbsp;that&nbsp;all&nbsp;fields'&nbsp;values&nbsp;are&nbsp;valid&nbsp;and&nbsp;that&nbsp;required&nbsp;fields<br>
+are&nbsp;present.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><a name="Usuarios-_build_index_spec"><strong>_build_index_spec</strong></a>(cls, spec)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Build&nbsp;a&nbsp;PyMongo&nbsp;index&nbsp;spec&nbsp;from&nbsp;a&nbsp;MongoEngine&nbsp;index&nbsp;spec.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-_build_index_specs"><strong>_build_index_specs</strong></a>(cls, meta_indexes)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Generate&nbsp;and&nbsp;merge&nbsp;the&nbsp;full&nbsp;index&nbsp;specs</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-_from_son"><strong>_from_son</strong></a>(cls, son, _auto_dereference<font color="#909090">=True</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Create&nbsp;an&nbsp;instance&nbsp;of&nbsp;a&nbsp;<a href="mongoengine.document.html#Document">Document</a>&nbsp;(subclass)&nbsp;from&nbsp;a&nbsp;PyMongo&nbsp;SON.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-_geo_indices"><strong>_geo_indices</strong></a>(cls, inspected<font color="#909090">=None</font>, parent_field<font color="#909090">=None</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt></dl>
+
+<dl><dt><a name="Usuarios-_get_collection_name"><strong>_get_collection_name</strong></a>(cls)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Returns&nbsp;the&nbsp;collection&nbsp;name&nbsp;for&nbsp;this&nbsp;class.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-_lookup_field"><strong>_lookup_field</strong></a>(cls, parts)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Lookup&nbsp;a&nbsp;field&nbsp;based&nbsp;on&nbsp;its&nbsp;attribute&nbsp;and&nbsp;return&nbsp;a&nbsp;list&nbsp;containing<br>
+the&nbsp;field's&nbsp;parents&nbsp;and&nbsp;the&nbsp;field.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-_translate_field_name"><strong>_translate_field_name</strong></a>(cls, field, sep<font color="#909090">='.'</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Translate&nbsp;a&nbsp;field&nbsp;attribute&nbsp;name&nbsp;to&nbsp;a&nbsp;database&nbsp;field&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-_unique_with_indexes"><strong>_unique_with_indexes</strong></a>(cls, namespace<font color="#909090">=''</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Find&nbsp;and&nbsp;set&nbsp;unique&nbsp;indexes</tt></dd></dl>
+
+<dl><dt><a name="Usuarios-from_json"><strong>from_json</strong></a>(cls, json_data)<font color="#909090"><font face="helvetica, arial"> from <a href="mongoengine.base.metaclasses.html#TopLevelDocumentMetaclass">mongoengine.base.metaclasses.TopLevelDocumentMetaclass</a></font></font></dt><dd><tt>Converts&nbsp;json&nbsp;data&nbsp;to&nbsp;an&nbsp;unsaved&nbsp;document&nbsp;instance</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mongoengine.base.document.html#BaseDocument">mongoengine.base.document.BaseDocument</a>:<br>
+<dl><dt><strong>_created</strong> = True</dl>
+
+<dl><dt><strong>_dynamic</strong> = False</dl>
+
+<dl><dt><strong>_dynamic_lock</strong> = True</dl>
+
+<dl><dt><strong>_initialised</strong> = False</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-handler"><strong>handler</strong></a>(event)</dt><dd><tt>Signal&nbsp;decorator&nbsp;to&nbsp;allow&nbsp;use&nbsp;of&nbsp;callback&nbsp;functions&nbsp;as&nbsp;class&nbsp;decorators.</tt></dd></dl>
+ <dl><dt><a name="-update_modified"><strong>update_modified</strong></a>(sender, document)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>CASCADE</strong> = 2<br>
+<strong>DENY</strong> = 3<br>
+<strong>PULL</strong> = 4</td></tr></table>
+</body></html>

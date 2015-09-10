@@ -1,0 +1,2497 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module admin</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>admin</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/luisfer/Documentos/workspace/Educaweb/server/admin.py">/home/luisfer/Documentos/workspace/Educaweb/server/admin.py</a></font></td></tr></table>
+    <p><tt>@author:&nbsp;Luis&nbsp;Fdo.&nbsp;Pérez<br>
+@co-authors:&nbsp;Basis&nbsp;code&nbsp;obtained&nbsp;from&nbsp;the&nbsp;SCC&nbsp;Department,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Administration&nbsp;Panel</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="flask_admin.html">flask_admin</a><br>
+<a href="flask_admin.contrib.mongoengine.filters.html">flask_admin.contrib.mongoengine.filters</a><br>
+</td><td width="25%" valign=top><a href="flask_admin.helpers.html">flask_admin.helpers</a><br>
+<a href="flask_login.html">flask_login</a><br>
+</td><td width="25%" valign=top><a href="flask_admin.form.rules.html">flask_admin.form.rules</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="flask_admin.base.html#AdminIndexView">flask_admin.base.AdminIndexView</a>(<a href="flask_admin.base.html#BaseView">flask_admin.base.BaseView</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="admin.html#MyAdminIndexView">MyAdminIndexView</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a>(<a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="admin.html#MyView">MyView</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="admin.html#AsignaturasView">AsignaturasView</a>
+</font></dt><dt><font face="helvetica, arial"><a href="admin.html#PreguntasView">PreguntasView</a>
+</font></dt><dt><font face="helvetica, arial"><a href="admin.html#TemasView">TemasView</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="admin.html#UserView">UserView</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="AsignaturasView">class <strong>AsignaturasView</strong></a>(<a href="admin.html#MyView">MyView</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Subjects&nbsp;View.&nbsp;Entry&nbsp;view&nbsp;which&nbsp;lets&nbsp;administrators&nbsp;manage&nbsp;the&nbsp;subjects&nbsp;in&nbsp;the&nbsp;system.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="admin.html#AsignaturasView">AsignaturasView</a></dd>
+<dd><a href="admin.html#MyView">MyView</a></dd>
+<dd><a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a></dd>
+<dd><a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a></dd>
+<dd><a href="flask_admin.base.html#BaseView">flask_admin.base.BaseView</a></dd>
+<dd><a href="flask_admin.base.html#BaseViewClass">flask_admin.base.BaseViewClass</a></dd>
+<dd><a href="flask_admin.actions.html#ActionsMixin">flask_admin.actions.ActionsMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="AsignaturasView-action_view"><strong>action_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Mass-model&nbsp;action&nbsp;view.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-ajax_lookup"><strong>ajax_lookup</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="AsignaturasView-ajax_update"><strong>ajax_update</strong></a>(self, *args, **kwargs)</dt><dd><tt>Edits&nbsp;a&nbsp;single&nbsp;column&nbsp;of&nbsp;a&nbsp;record&nbsp;in&nbsp;list&nbsp;view.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-api_file_view"><strong>api_file_view</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="AsignaturasView-create_view"><strong>create_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Create&nbsp;model&nbsp;view</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-delete_view"><strong>delete_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Delete&nbsp;model&nbsp;view.&nbsp;Only&nbsp;POST&nbsp;method&nbsp;is&nbsp;allowed.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-edit_view"><strong>edit_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Edit&nbsp;model&nbsp;view</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-index_view"><strong>index_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>List&nbsp;view</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-is_accessible"><strong>is_accessible</strong></a>(self)</dt><dd><tt>#&nbsp;this&nbsp;view&nbsp;is&nbsp;only&nbsp;accessible&nbsp;by&nbsp;administrators</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>column_filters</strong> = ['asignatura']</dl>
+
+<hr>
+Data and other attributes inherited from <a href="admin.html#MyView">MyView</a>:<br>
+<dl><dt><strong>column_exclude_list</strong> = 'usuario'</dl>
+
+<dl><dt><strong>create_template</strong> = 'admin/create.html'</dl>
+
+<dl><dt><strong>edit_template</strong> = 'admin/edit.html'</dl>
+
+<dl><dt><strong>form_excluded_columns</strong> = 'usuario'</dl>
+
+<dl><dt><strong>list_template</strong> = 'admin/list.html'</dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a>:<br>
+<dl><dt><a name="AsignaturasView-__init__"><strong>__init__</strong></a>(self, model, name<font color="#909090">=None</font>, category<font color="#909090">=None</font>, endpoint<font color="#909090">=None</font>, url<font color="#909090">=None</font>, static_folder<font color="#909090">=None</font>, menu_class_name<font color="#909090">=None</font>, menu_icon_type<font color="#909090">=None</font>, menu_icon_value<font color="#909090">=None</font>)</dt><dd><tt>Constructor<br>
+&nbsp;<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;class<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Display&nbsp;name<br>
+:param&nbsp;category:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Display&nbsp;category<br>
+:param&nbsp;endpoint:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Endpoint<br>
+:param&nbsp;url:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Custom&nbsp;URL<br>
+:param&nbsp;menu_class_name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Optional&nbsp;class&nbsp;name&nbsp;for&nbsp;the&nbsp;menu&nbsp;item.<br>
+:param&nbsp;menu_icon_type:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Optional&nbsp;icon.&nbsp;Possible&nbsp;icon&nbsp;types:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;`flask.ext.admin.consts.ICON_TYPE_GLYPH`&nbsp;-&nbsp;Bootstrap&nbsp;glyph&nbsp;icon<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;`flask.ext.admin.consts.ICON_TYPE_IMAGE`&nbsp;-&nbsp;Image&nbsp;relative&nbsp;to&nbsp;Flask&nbsp;static&nbsp;directory<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;`flask.ext.admin.consts.ICON_TYPE_IMAGE_URL`&nbsp;-&nbsp;Image&nbsp;with&nbsp;full&nbsp;URL<br>
+&nbsp;<br>
+:param&nbsp;menu_icon_value:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Icon&nbsp;glyph&nbsp;name&nbsp;or&nbsp;URL,&nbsp;depending&nbsp;on&nbsp;`menu_icon_type`&nbsp;setting</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-action_delete"><strong>action_delete</strong></a>(self, ids)</dt></dl>
+
+<dl><dt><a name="AsignaturasView-create_model"><strong>create_model</strong></a>(self, form)</dt><dd><tt>Create&nbsp;model&nbsp;helper<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-delete_model"><strong>delete_model</strong></a>(self, model)</dt><dd><tt>Delete&nbsp;model&nbsp;helper<br>
+&nbsp;<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_list"><strong>get_list</strong></a>(self, page, sort_column, sort_desc, search, filters, execute<font color="#909090">=True</font>)</dt><dd><tt>Get&nbsp;list&nbsp;of&nbsp;objects&nbsp;from&nbsp;MongoEngine<br>
+&nbsp;<br>
+:param&nbsp;page:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Page&nbsp;number<br>
+:param&nbsp;sort_column:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sort&nbsp;column<br>
+:param&nbsp;sort_desc:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sort&nbsp;descending<br>
+:param&nbsp;search:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Search&nbsp;criteria<br>
+:param&nbsp;filters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;applied&nbsp;filters<br>
+:param&nbsp;execute:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Run&nbsp;query&nbsp;immediately&nbsp;or&nbsp;not</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_one"><strong>get_one</strong></a>(self, id)</dt><dd><tt>Return&nbsp;a&nbsp;single&nbsp;model&nbsp;instance&nbsp;by&nbsp;its&nbsp;ID<br>
+&nbsp;<br>
+:param&nbsp;id:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;ID</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_pk_value"><strong>get_pk_value</strong></a>(self, model)</dt><dd><tt>Return&nbsp;the&nbsp;primary&nbsp;key&nbsp;value&nbsp;from&nbsp;the&nbsp;model&nbsp;instance<br>
+&nbsp;<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_query"><strong>get_query</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;QuerySet&nbsp;for&nbsp;this&nbsp;view.&nbsp;&nbsp;By&nbsp;default,&nbsp;it&nbsp;returns&nbsp;all&nbsp;the<br>
+objects&nbsp;for&nbsp;the&nbsp;current&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-init_search"><strong>init_search</strong></a>(self)</dt><dd><tt>Init&nbsp;search</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-is_action_allowed"><strong>is_action_allowed</strong></a>(self, name)</dt><dd><tt>#&nbsp;Default&nbsp;model&nbsp;actions</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-is_valid_filter"><strong>is_valid_filter</strong></a>(self, filter)</dt><dd><tt>Validate&nbsp;if&nbsp;the&nbsp;provided&nbsp;filter&nbsp;is&nbsp;a&nbsp;valid&nbsp;MongoEngine&nbsp;filter<br>
+&nbsp;<br>
+:param&nbsp;filter:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-scaffold_filters"><strong>scaffold_filters</strong></a>(self, name)</dt><dd><tt>Return&nbsp;filter&nbsp;object(s)&nbsp;for&nbsp;the&nbsp;field<br>
+&nbsp;<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Either&nbsp;field&nbsp;name&nbsp;or&nbsp;field&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-scaffold_form"><strong>scaffold_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;from&nbsp;the&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-scaffold_list_columns"><strong>scaffold_list_columns</strong></a>(self)</dt><dd><tt>Scaffold&nbsp;list&nbsp;columns</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-scaffold_list_form"><strong>scaffold_list_form</strong></a>(self, custom_fieldlist<font color="#909090">=&lt;class 'flask_admin.model.fields.ListEditableFieldList'&gt;</font>, validators<font color="#909090">=None</font>)</dt><dd><tt>Create&nbsp;form&nbsp;for&nbsp;the&nbsp;`index_view`&nbsp;using&nbsp;only&nbsp;the&nbsp;columns&nbsp;from<br>
+`self.<strong>column_editable_list</strong>`.<br>
+&nbsp;<br>
+:param&nbsp;validators:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`form_args`&nbsp;dict&nbsp;with&nbsp;only&nbsp;validators<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'name':&nbsp;{'validators':&nbsp;[required()]}}<br>
+:param&nbsp;custom_fieldlist:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;WTForm&nbsp;FieldList&nbsp;class.&nbsp;By&nbsp;default,&nbsp;`ListEditableFieldList`.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-scaffold_pk"><strong>scaffold_pk</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="AsignaturasView-scaffold_sortable_columns"><strong>scaffold_sortable_columns</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;sortable&nbsp;columns&nbsp;(name,&nbsp;field)</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-update_model"><strong>update_model</strong></a>(self, form, model)</dt><dd><tt>Update&nbsp;model&nbsp;helper<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;instance<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance&nbsp;to&nbsp;update</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a>:<br>
+<dl><dt><strong>allowed_search_types</strong> = (&lt;class 'mongoengine.fields.StringField'&gt;, &lt;class 'mongoengine.fields.URLField'&gt;, &lt;class 'mongoengine.fields.EmailField'&gt;)</dl>
+
+<dl><dt><strong>column_type_formatters</strong> = {&lt;type 'bool'&gt;: &lt;function bool_formatter&gt;, &lt;type 'NoneType'&gt;: &lt;function empty_formatter&gt;, &lt;type 'list'&gt;: &lt;function list_formatter&gt;, &lt;class 'mongoengine.base.datastructures.BaseList'&gt;: &lt;function list_formatter&gt;, &lt;class 'mongoengine.fields.GridFSProxy'&gt;: &lt;function grid_formatter&gt;, &lt;class 'mongoengine.fields.ImageGridFsProxy'&gt;: &lt;function grid_image_formatter&gt;}</dl>
+
+<dl><dt><strong>filter_converter</strong> = &lt;flask_admin.contrib.mongoengine.filters.FilterConverter object&gt;</dl>
+
+<dl><dt><strong>form_subdocuments</strong> = None</dl>
+
+<dl><dt><strong>model_form_converter</strong> = &lt;class 'flask_admin.contrib.mongoengine.form.CustomModelConverter'&gt;<dd><tt>Customized&nbsp;MongoEngine&nbsp;form&nbsp;conversion&nbsp;class.<br>
+&nbsp;<br>
+Injects&nbsp;various&nbsp;Flask-Admin&nbsp;widgets&nbsp;and&nbsp;handles&nbsp;lists&nbsp;with<br>
+customized&nbsp;InlineFieldList&nbsp;field.</tt></dl>
+
+<dl><dt><strong>object_id_converter</strong> = &lt;class 'bson.objectid.ObjectId'&gt;<dd><tt>A&nbsp;MongoDB&nbsp;ObjectId.</tt></dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>:<br>
+<dl><dt><a name="AsignaturasView-after_model_change"><strong>after_model_change</strong></a>(self, form, model, is_created)</dt><dd><tt>Perform&nbsp;some&nbsp;actions&nbsp;after&nbsp;a&nbsp;model&nbsp;was&nbsp;created&nbsp;or&nbsp;updated&nbsp;and<br>
+committed&nbsp;to&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;create_model&nbsp;after&nbsp;successful&nbsp;database&nbsp;commit.<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;does&nbsp;nothing.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;used&nbsp;to&nbsp;create/update&nbsp;model<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;that&nbsp;was&nbsp;created/updated<br>
+:param&nbsp;is_created:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;model&nbsp;was&nbsp;created,&nbsp;False&nbsp;if&nbsp;model&nbsp;was&nbsp;updated</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-create_form"><strong>create_form</strong></a>(self, obj<font color="#909090">=None</font>)</dt><dd><tt>Instantiate&nbsp;model&nbsp;creation&nbsp;form&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-delete_form"><strong>delete_form</strong></a>(self)</dt><dd><tt>Instantiate&nbsp;model&nbsp;delete&nbsp;form&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.<br>
+&nbsp;<br>
+The&nbsp;delete&nbsp;form&nbsp;originally&nbsp;used&nbsp;a&nbsp;GET&nbsp;request,&nbsp;so&nbsp;delete_form<br>
+accepts&nbsp;both&nbsp;GET&nbsp;and&nbsp;POST&nbsp;request&nbsp;for&nbsp;backwards&nbsp;compatibility.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-edit_form"><strong>edit_form</strong></a>(self, obj<font color="#909090">=None</font>)</dt><dd><tt>Instantiate&nbsp;model&nbsp;editing&nbsp;form&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_column_name"><strong>get_column_name</strong></a>(self, field)</dt><dd><tt>Return&nbsp;a&nbsp;human-readable&nbsp;column&nbsp;name.<br>
+&nbsp;<br>
+:param&nbsp;field:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;field&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_create_form"><strong>get_create_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;class&nbsp;for&nbsp;model&nbsp;creation&nbsp;view.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_delete_form"><strong>get_delete_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;class&nbsp;for&nbsp;model&nbsp;delete&nbsp;view.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_edit_form"><strong>get_edit_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;class&nbsp;for&nbsp;model&nbsp;editing&nbsp;view.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_empty_list_message"><strong>get_empty_list_message</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="AsignaturasView-get_filter_arg"><strong>get_filter_arg</strong></a>(self, index, flt)</dt><dd><tt>Given&nbsp;a&nbsp;filter&nbsp;`flt`,&nbsp;return&nbsp;a&nbsp;unique&nbsp;name&nbsp;for&nbsp;that&nbsp;filter&nbsp;in<br>
+this&nbsp;view.<br>
+&nbsp;<br>
+Does&nbsp;not&nbsp;include&nbsp;the&nbsp;`flt[n]_`&nbsp;portion&nbsp;of&nbsp;the&nbsp;filter&nbsp;name.<br>
+&nbsp;<br>
+:param&nbsp;index:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;index&nbsp;in&nbsp;_filters&nbsp;array<br>
+:param&nbsp;flt:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_filters"><strong>get_filters</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;of&nbsp;filter&nbsp;objects.<br>
+&nbsp;<br>
+If&nbsp;your&nbsp;model&nbsp;backend&nbsp;implementation&nbsp;does&nbsp;not&nbsp;support&nbsp;filters,<br>
+override&nbsp;this&nbsp;method&nbsp;and&nbsp;return&nbsp;`None`.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_form"><strong>get_form</strong></a>(self)</dt><dd><tt>Get&nbsp;form&nbsp;class.<br>
+&nbsp;<br>
+If&nbsp;``self.<strong>form</strong>``&nbsp;is&nbsp;set,&nbsp;will&nbsp;return&nbsp;it&nbsp;and&nbsp;will&nbsp;call<br>
+``self.<strong>scaffold_form</strong>``&nbsp;otherwise.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_list_columns"><strong>get_list_columns</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;model&nbsp;field&nbsp;names.&nbsp;If&nbsp;`column_list`&nbsp;was<br>
+set,&nbsp;returns&nbsp;it.&nbsp;Otherwise&nbsp;calls&nbsp;`scaffold_list_columns`<br>
+to&nbsp;generate&nbsp;the&nbsp;list&nbsp;from&nbsp;the&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_list_form"><strong>get_list_form</strong></a>(self)</dt><dd><tt>Get&nbsp;form&nbsp;class&nbsp;for&nbsp;the&nbsp;editable&nbsp;list&nbsp;view.<br>
+&nbsp;<br>
+Uses&nbsp;only&nbsp;validators&nbsp;from&nbsp;`form_args`&nbsp;to&nbsp;build&nbsp;the&nbsp;form&nbsp;class.<br>
+&nbsp;<br>
+Allows&nbsp;overriding&nbsp;the&nbsp;editable&nbsp;list&nbsp;view&nbsp;field/widget.&nbsp;For&nbsp;example::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;flask.ext.admin.model.fields&nbsp;import&nbsp;ListEditableFieldList<br>
+&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;flask.ext.admin.model.widgets&nbsp;import&nbsp;XEditableWidget<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;CustomWidget(XEditableWidget):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;get_kwargs(self,&nbsp;subfield,&nbsp;kwargs):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;subfield.type&nbsp;==&nbsp;'TextAreaField':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kwargs['data-type']&nbsp;=&nbsp;'textarea'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kwargs['data-rows']&nbsp;=&nbsp;'20'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;elif:&nbsp;kwargs&nbsp;for&nbsp;other&nbsp;fields<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;kwargs<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;CustomFieldList(ListEditableFieldList):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;widget&nbsp;=&nbsp;CustomWidget()<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;MyModelView(BaseModelView):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;<a href="#AsignaturasView-get_list_form">get_list_form</a>(self):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;<a href="#AsignaturasView-scaffold_list_form">scaffold_list_form</a>(CustomFieldList)</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_list_value"><strong>get_list_value</strong></a>(self, context, model, name)</dt><dd><tt>Returns&nbsp;the&nbsp;value&nbsp;to&nbsp;be&nbsp;displayed&nbsp;in&nbsp;the&nbsp;list&nbsp;view<br>
+&nbsp;<br>
+:param&nbsp;context:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:py:class:`jinja2.runtime.Context`<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Field&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_sortable_columns"><strong>get_sortable_columns</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;the&nbsp;sortable&nbsp;columns.&nbsp;Key&nbsp;is&nbsp;a&nbsp;model<br>
+field&nbsp;name&nbsp;and&nbsp;value&nbsp;is&nbsp;sort&nbsp;column&nbsp;(for&nbsp;example&nbsp;-&nbsp;attribute).<br>
+&nbsp;<br>
+If&nbsp;`column_sortable_list`&nbsp;is&nbsp;set,&nbsp;will&nbsp;use&nbsp;it.&nbsp;Otherwise,&nbsp;will&nbsp;call<br>
+`scaffold_sortable_columns`&nbsp;to&nbsp;get&nbsp;them&nbsp;from&nbsp;the&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-handle_filter"><strong>handle_filter</strong></a>(self, filter)</dt><dd><tt>Postprocess&nbsp;(add&nbsp;joins,&nbsp;etc)&nbsp;for&nbsp;a&nbsp;filter.<br>
+&nbsp;<br>
+:param&nbsp;filter:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;object&nbsp;to&nbsp;postprocess</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-handle_view_exception"><strong>handle_view_exception</strong></a>(self, exc)</dt><dd><tt>#&nbsp;Exception&nbsp;handler</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-is_editable"><strong>is_editable</strong></a>(self, name)</dt><dd><tt>Verify&nbsp;if&nbsp;column&nbsp;is&nbsp;editable.<br>
+&nbsp;<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Column&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-is_sortable"><strong>is_sortable</strong></a>(self, name)</dt><dd><tt>Verify&nbsp;if&nbsp;column&nbsp;is&nbsp;sortable.<br>
+&nbsp;<br>
+Not&nbsp;case-sensitive.<br>
+&nbsp;<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Column&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-list_form"><strong>list_form</strong></a>(self, obj<font color="#909090">=None</font>)</dt><dd><tt>Instantiate&nbsp;model&nbsp;editing&nbsp;form&nbsp;for&nbsp;list&nbsp;view&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-on_form_prefill"><strong>on_form_prefill</strong></a>(self, form, id)</dt><dd><tt>Perform&nbsp;additional&nbsp;actions&nbsp;to&nbsp;pre-fill&nbsp;the&nbsp;edit&nbsp;form.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;edit_view,&nbsp;if&nbsp;the&nbsp;current&nbsp;action&nbsp;is&nbsp;rendering<br>
+the&nbsp;form&nbsp;rather&nbsp;than&nbsp;receiving&nbsp;client&nbsp;side&nbsp;input,&nbsp;after<br>
+default&nbsp;pre-filling&nbsp;has&nbsp;been&nbsp;performed.<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;does&nbsp;nothing.<br>
+&nbsp;<br>
+You&nbsp;only&nbsp;need&nbsp;to&nbsp;override&nbsp;this&nbsp;if&nbsp;you&nbsp;have&nbsp;added&nbsp;custom<br>
+fields&nbsp;that&nbsp;depend&nbsp;on&nbsp;the&nbsp;database&nbsp;contents&nbsp;in&nbsp;a&nbsp;way&nbsp;that<br>
+Flask-admin&nbsp;can't&nbsp;figure&nbsp;out&nbsp;by&nbsp;itself.&nbsp;Fields&nbsp;that&nbsp;were<br>
+added&nbsp;by&nbsp;name&nbsp;of&nbsp;a&nbsp;normal&nbsp;column&nbsp;or&nbsp;relationship&nbsp;should<br>
+work&nbsp;out&nbsp;of&nbsp;the&nbsp;box.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;instance<br>
+:param&nbsp;id:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;of&nbsp;the&nbsp;object&nbsp;that&nbsp;is&nbsp;going&nbsp;to&nbsp;be&nbsp;edited</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-on_model_change"><strong>on_model_change</strong></a>(self, form, model, is_created)</dt><dd><tt>Perform&nbsp;some&nbsp;actions&nbsp;after&nbsp;a&nbsp;model&nbsp;is&nbsp;created&nbsp;or&nbsp;updated.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;create_model&nbsp;and&nbsp;update_model&nbsp;in&nbsp;the&nbsp;same&nbsp;transaction<br>
+(if&nbsp;it&nbsp;has&nbsp;any&nbsp;meaning&nbsp;for&nbsp;a&nbsp;store&nbsp;backend).<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;does&nbsp;nothing.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;used&nbsp;to&nbsp;create/update&nbsp;model<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;that&nbsp;will&nbsp;be&nbsp;created/updated<br>
+:param&nbsp;is_created:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Will&nbsp;be&nbsp;set&nbsp;to&nbsp;True&nbsp;if&nbsp;model&nbsp;was&nbsp;created&nbsp;and&nbsp;to&nbsp;False&nbsp;if&nbsp;edited</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-on_model_delete"><strong>on_model_delete</strong></a>(self, model)</dt><dd><tt>Perform&nbsp;some&nbsp;actions&nbsp;before&nbsp;a&nbsp;model&nbsp;is&nbsp;deleted.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;delete_model&nbsp;in&nbsp;the&nbsp;same&nbsp;transaction<br>
+(if&nbsp;it&nbsp;has&nbsp;any&nbsp;meaning&nbsp;for&nbsp;a&nbsp;store&nbsp;backend).<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;do&nbsp;nothing.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-validate_form"><strong>validate_form</strong></a>(self, form)</dt><dd><tt>Validate&nbsp;the&nbsp;form&nbsp;on&nbsp;submit.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;to&nbsp;validate</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>:<br>
+<dl><dt><strong>action_disallowed_list</strong></dt>
+</dl>
+<dl><dt><strong>column_display_pk</strong></dt>
+</dl>
+<dl><dt><strong>column_formatters</strong></dt>
+</dl>
+<dl><dt><strong>column_labels</strong></dt>
+</dl>
+<dl><dt><strong>column_list</strong></dt>
+</dl>
+<dl><dt><strong>column_searchable_list</strong></dt>
+</dl>
+<dl><dt><strong>column_sortable_list</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>:<br>
+<dl><dt><strong>can_create</strong> = True</dl>
+
+<dl><dt><strong>can_delete</strong> = True</dl>
+
+<dl><dt><strong>can_edit</strong> = True</dl>
+
+<dl><dt><strong>column_choices</strong> = None</dl>
+
+<dl><dt><strong>column_default_sort</strong> = None</dl>
+
+<dl><dt><strong>column_descriptions</strong> = None</dl>
+
+<dl><dt><strong>column_editable_list</strong> = None</dl>
+
+<dl><dt><strong>form</strong> = None</dl>
+
+<dl><dt><strong>form_ajax_refs</strong> = None</dl>
+
+<dl><dt><strong>form_args</strong> = None</dl>
+
+<dl><dt><strong>form_base_class</strong> = &lt;class 'flask_admin.form.BaseForm'&gt;</dl>
+
+<dl><dt><strong>form_columns</strong> = None</dl>
+
+<dl><dt><strong>form_create_rules</strong> = None</dl>
+
+<dl><dt><strong>form_edit_rules</strong> = None</dl>
+
+<dl><dt><strong>form_extra_fields</strong> = None</dl>
+
+<dl><dt><strong>form_overrides</strong> = None</dl>
+
+<dl><dt><strong>form_rules</strong> = None</dl>
+
+<dl><dt><strong>form_widget_args</strong> = None</dl>
+
+<dl><dt><strong>named_filter_urls</strong> = False</dl>
+
+<dl><dt><strong>page_size</strong> = 20</dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.base.html#BaseView">flask_admin.base.BaseView</a>:<br>
+<dl><dt><a name="AsignaturasView-create_blueprint"><strong>create_blueprint</strong></a>(self, admin)</dt><dd><tt>Create&nbsp;Flask&nbsp;blueprint.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-get_url"><strong>get_url</strong></a>(self, endpoint, **kwargs)</dt><dd><tt>Generate&nbsp;URL&nbsp;for&nbsp;the&nbsp;endpoint.&nbsp;If&nbsp;you&nbsp;want&nbsp;to&nbsp;customize&nbsp;URL&nbsp;generation<br>
+logic&nbsp;(persist&nbsp;some&nbsp;query&nbsp;string&nbsp;argument,&nbsp;for&nbsp;example),&nbsp;this&nbsp;is<br>
+right&nbsp;place&nbsp;to&nbsp;do&nbsp;it.<br>
+&nbsp;<br>
+:param&nbsp;endpoint:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Flask&nbsp;endpoint&nbsp;name<br>
+:param&nbsp;kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Arguments&nbsp;for&nbsp;`url_for`</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-inaccessible_callback"><strong>inaccessible_callback</strong></a>(self, name, **kwargs)</dt><dd><tt>Handle&nbsp;the&nbsp;response&nbsp;to&nbsp;inaccessible&nbsp;views.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;it&nbsp;throw&nbsp;HTTP&nbsp;403&nbsp;error.&nbsp;Override&nbsp;this&nbsp;method&nbsp;to<br>
+customize&nbsp;the&nbsp;behaviour.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-is_visible"><strong>is_visible</strong></a>(self)</dt><dd><tt>Override&nbsp;this&nbsp;method&nbsp;if&nbsp;you&nbsp;want&nbsp;dynamically&nbsp;hide&nbsp;or&nbsp;show&nbsp;administrative&nbsp;views<br>
+from&nbsp;Flask-Admin&nbsp;menu&nbsp;structure<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;item&nbsp;is&nbsp;visible&nbsp;in&nbsp;menu.<br>
+&nbsp;<br>
+Please&nbsp;note&nbsp;that&nbsp;item&nbsp;should&nbsp;be&nbsp;both&nbsp;visible&nbsp;and&nbsp;accessible&nbsp;to&nbsp;be&nbsp;displayed&nbsp;in&nbsp;menu.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-render"><strong>render</strong></a>(self, template, **kwargs)</dt><dd><tt>Render&nbsp;template<br>
+&nbsp;<br>
+:param&nbsp;template:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Template&nbsp;path&nbsp;to&nbsp;render<br>
+:param&nbsp;kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Template&nbsp;arguments</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_admin.base.html#BaseViewClass">flask_admin.base.BaseViewClass</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="flask_admin.actions.html#ActionsMixin">flask_admin.actions.ActionsMixin</a>:<br>
+<dl><dt><a name="AsignaturasView-get_actions_list"><strong>get_actions_list</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;and&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;allowed&nbsp;actions.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-handle_action"><strong>handle_action</strong></a>(self, return_view<font color="#909090">=None</font>)</dt><dd><tt>Handle&nbsp;action&nbsp;request.<br>
+&nbsp;<br>
+:param&nbsp;return_view:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;of&nbsp;the&nbsp;view&nbsp;to&nbsp;return&nbsp;to&nbsp;after&nbsp;the&nbsp;request.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;not&nbsp;provided,&nbsp;will&nbsp;return&nbsp;user&nbsp;to&nbsp;the&nbsp;index&nbsp;view.</tt></dd></dl>
+
+<dl><dt><a name="AsignaturasView-init_actions"><strong>init_actions</strong></a>(self)</dt><dd><tt>Initialize&nbsp;list&nbsp;of&nbsp;actions&nbsp;for&nbsp;the&nbsp;current&nbsp;administrative&nbsp;view.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MyAdminIndexView">class <strong>MyAdminIndexView</strong></a>(<a href="flask_admin.base.html#AdminIndexView">flask_admin.base.AdminIndexView</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>View&nbsp;that&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;index&nbsp;for&nbsp;Admin.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="admin.html#MyAdminIndexView">MyAdminIndexView</a></dd>
+<dd><a href="flask_admin.base.html#AdminIndexView">flask_admin.base.AdminIndexView</a></dd>
+<dd><a href="flask_admin.base.html#BaseView">flask_admin.base.BaseView</a></dd>
+<dd><a href="flask_admin.base.html#BaseViewClass">flask_admin.base.BaseViewClass</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MyAdminIndexView-index"><strong>index</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="MyAdminIndexView-login_view"><strong>login_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>handle&nbsp;user&nbsp;login</tt></dd></dl>
+
+<dl><dt><a name="MyAdminIndexView-register_view"><strong>register_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>handle&nbsp;user&nbsp;register</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.base.html#AdminIndexView">flask_admin.base.AdminIndexView</a>:<br>
+<dl><dt><a name="MyAdminIndexView-__init__"><strong>__init__</strong></a>(self, name<font color="#909090">=None</font>, category<font color="#909090">=None</font>, endpoint<font color="#909090">=None</font>, url<font color="#909090">=None</font>, template<font color="#909090">='admin/index.html'</font>, menu_class_name<font color="#909090">=None</font>, menu_icon_type<font color="#909090">=None</font>, menu_icon_value<font color="#909090">=None</font>)</dt></dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.base.html#BaseView">flask_admin.base.BaseView</a>:<br>
+<dl><dt><a name="MyAdminIndexView-create_blueprint"><strong>create_blueprint</strong></a>(self, admin)</dt><dd><tt>Create&nbsp;Flask&nbsp;blueprint.</tt></dd></dl>
+
+<dl><dt><a name="MyAdminIndexView-get_url"><strong>get_url</strong></a>(self, endpoint, **kwargs)</dt><dd><tt>Generate&nbsp;URL&nbsp;for&nbsp;the&nbsp;endpoint.&nbsp;If&nbsp;you&nbsp;want&nbsp;to&nbsp;customize&nbsp;URL&nbsp;generation<br>
+logic&nbsp;(persist&nbsp;some&nbsp;query&nbsp;string&nbsp;argument,&nbsp;for&nbsp;example),&nbsp;this&nbsp;is<br>
+right&nbsp;place&nbsp;to&nbsp;do&nbsp;it.<br>
+&nbsp;<br>
+:param&nbsp;endpoint:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Flask&nbsp;endpoint&nbsp;name<br>
+:param&nbsp;kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Arguments&nbsp;for&nbsp;`url_for`</tt></dd></dl>
+
+<dl><dt><a name="MyAdminIndexView-inaccessible_callback"><strong>inaccessible_callback</strong></a>(self, name, **kwargs)</dt><dd><tt>Handle&nbsp;the&nbsp;response&nbsp;to&nbsp;inaccessible&nbsp;views.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;it&nbsp;throw&nbsp;HTTP&nbsp;403&nbsp;error.&nbsp;Override&nbsp;this&nbsp;method&nbsp;to<br>
+customize&nbsp;the&nbsp;behaviour.</tt></dd></dl>
+
+<dl><dt><a name="MyAdminIndexView-is_accessible"><strong>is_accessible</strong></a>(self)</dt><dd><tt>Override&nbsp;this&nbsp;method&nbsp;to&nbsp;add&nbsp;permission&nbsp;checks.<br>
+&nbsp;<br>
+Flask-Admin&nbsp;does&nbsp;not&nbsp;make&nbsp;any&nbsp;assumptions&nbsp;about&nbsp;the&nbsp;authentication&nbsp;system&nbsp;used&nbsp;in&nbsp;your&nbsp;application,&nbsp;so&nbsp;it&nbsp;is<br>
+up&nbsp;to&nbsp;you&nbsp;to&nbsp;implement&nbsp;it.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;it&nbsp;will&nbsp;allow&nbsp;access&nbsp;for&nbsp;everyone.</tt></dd></dl>
+
+<dl><dt><a name="MyAdminIndexView-is_visible"><strong>is_visible</strong></a>(self)</dt><dd><tt>Override&nbsp;this&nbsp;method&nbsp;if&nbsp;you&nbsp;want&nbsp;dynamically&nbsp;hide&nbsp;or&nbsp;show&nbsp;administrative&nbsp;views<br>
+from&nbsp;Flask-Admin&nbsp;menu&nbsp;structure<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;item&nbsp;is&nbsp;visible&nbsp;in&nbsp;menu.<br>
+&nbsp;<br>
+Please&nbsp;note&nbsp;that&nbsp;item&nbsp;should&nbsp;be&nbsp;both&nbsp;visible&nbsp;and&nbsp;accessible&nbsp;to&nbsp;be&nbsp;displayed&nbsp;in&nbsp;menu.</tt></dd></dl>
+
+<dl><dt><a name="MyAdminIndexView-render"><strong>render</strong></a>(self, template, **kwargs)</dt><dd><tt>Render&nbsp;template<br>
+&nbsp;<br>
+:param&nbsp;template:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Template&nbsp;path&nbsp;to&nbsp;render<br>
+:param&nbsp;kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Template&nbsp;arguments</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_admin.base.html#BaseViewClass">flask_admin.base.BaseViewClass</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MyView">class <strong>MyView</strong></a>(<a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>View&nbsp;that&nbsp;will&nbsp;be&nbsp;used&nbsp;as&nbsp;base&nbsp;for&nbsp;other&nbsp;views.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="admin.html#MyView">MyView</a></dd>
+<dd><a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a></dd>
+<dd><a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a></dd>
+<dd><a href="flask_admin.base.html#BaseView">flask_admin.base.BaseView</a></dd>
+<dd><a href="flask_admin.base.html#BaseViewClass">flask_admin.base.BaseViewClass</a></dd>
+<dd><a href="flask_admin.actions.html#ActionsMixin">flask_admin.actions.ActionsMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MyView-action_view"><strong>action_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Mass-model&nbsp;action&nbsp;view.</tt></dd></dl>
+
+<dl><dt><a name="MyView-ajax_lookup"><strong>ajax_lookup</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="MyView-ajax_update"><strong>ajax_update</strong></a>(self, *args, **kwargs)</dt><dd><tt>Edits&nbsp;a&nbsp;single&nbsp;column&nbsp;of&nbsp;a&nbsp;record&nbsp;in&nbsp;list&nbsp;view.</tt></dd></dl>
+
+<dl><dt><a name="MyView-api_file_view"><strong>api_file_view</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="MyView-create_view"><strong>create_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Create&nbsp;model&nbsp;view</tt></dd></dl>
+
+<dl><dt><a name="MyView-delete_view"><strong>delete_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Delete&nbsp;model&nbsp;view.&nbsp;Only&nbsp;POST&nbsp;method&nbsp;is&nbsp;allowed.</tt></dd></dl>
+
+<dl><dt><a name="MyView-edit_view"><strong>edit_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Edit&nbsp;model&nbsp;view</tt></dd></dl>
+
+<dl><dt><a name="MyView-index_view"><strong>index_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>List&nbsp;view</tt></dd></dl>
+
+<dl><dt><a name="MyView-is_accessible"><strong>is_accessible</strong></a>(self)</dt><dd><tt>#&nbsp;these&nbsp;views&nbsp;only&nbsp;be&nbsp;accessible&nbsp;by&nbsp;teachers</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>column_exclude_list</strong> = 'usuario'</dl>
+
+<dl><dt><strong>create_template</strong> = 'admin/create.html'</dl>
+
+<dl><dt><strong>edit_template</strong> = 'admin/edit.html'</dl>
+
+<dl><dt><strong>form_excluded_columns</strong> = 'usuario'</dl>
+
+<dl><dt><strong>list_template</strong> = 'admin/list.html'</dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a>:<br>
+<dl><dt><a name="MyView-__init__"><strong>__init__</strong></a>(self, model, name<font color="#909090">=None</font>, category<font color="#909090">=None</font>, endpoint<font color="#909090">=None</font>, url<font color="#909090">=None</font>, static_folder<font color="#909090">=None</font>, menu_class_name<font color="#909090">=None</font>, menu_icon_type<font color="#909090">=None</font>, menu_icon_value<font color="#909090">=None</font>)</dt><dd><tt>Constructor<br>
+&nbsp;<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;class<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Display&nbsp;name<br>
+:param&nbsp;category:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Display&nbsp;category<br>
+:param&nbsp;endpoint:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Endpoint<br>
+:param&nbsp;url:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Custom&nbsp;URL<br>
+:param&nbsp;menu_class_name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Optional&nbsp;class&nbsp;name&nbsp;for&nbsp;the&nbsp;menu&nbsp;item.<br>
+:param&nbsp;menu_icon_type:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Optional&nbsp;icon.&nbsp;Possible&nbsp;icon&nbsp;types:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;`flask.ext.admin.consts.ICON_TYPE_GLYPH`&nbsp;-&nbsp;Bootstrap&nbsp;glyph&nbsp;icon<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;`flask.ext.admin.consts.ICON_TYPE_IMAGE`&nbsp;-&nbsp;Image&nbsp;relative&nbsp;to&nbsp;Flask&nbsp;static&nbsp;directory<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;`flask.ext.admin.consts.ICON_TYPE_IMAGE_URL`&nbsp;-&nbsp;Image&nbsp;with&nbsp;full&nbsp;URL<br>
+&nbsp;<br>
+:param&nbsp;menu_icon_value:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Icon&nbsp;glyph&nbsp;name&nbsp;or&nbsp;URL,&nbsp;depending&nbsp;on&nbsp;`menu_icon_type`&nbsp;setting</tt></dd></dl>
+
+<dl><dt><a name="MyView-action_delete"><strong>action_delete</strong></a>(self, ids)</dt></dl>
+
+<dl><dt><a name="MyView-create_model"><strong>create_model</strong></a>(self, form)</dt><dd><tt>Create&nbsp;model&nbsp;helper<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="MyView-delete_model"><strong>delete_model</strong></a>(self, model)</dt><dd><tt>Delete&nbsp;model&nbsp;helper<br>
+&nbsp;<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_list"><strong>get_list</strong></a>(self, page, sort_column, sort_desc, search, filters, execute<font color="#909090">=True</font>)</dt><dd><tt>Get&nbsp;list&nbsp;of&nbsp;objects&nbsp;from&nbsp;MongoEngine<br>
+&nbsp;<br>
+:param&nbsp;page:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Page&nbsp;number<br>
+:param&nbsp;sort_column:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sort&nbsp;column<br>
+:param&nbsp;sort_desc:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sort&nbsp;descending<br>
+:param&nbsp;search:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Search&nbsp;criteria<br>
+:param&nbsp;filters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;applied&nbsp;filters<br>
+:param&nbsp;execute:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Run&nbsp;query&nbsp;immediately&nbsp;or&nbsp;not</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_one"><strong>get_one</strong></a>(self, id)</dt><dd><tt>Return&nbsp;a&nbsp;single&nbsp;model&nbsp;instance&nbsp;by&nbsp;its&nbsp;ID<br>
+&nbsp;<br>
+:param&nbsp;id:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;ID</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_pk_value"><strong>get_pk_value</strong></a>(self, model)</dt><dd><tt>Return&nbsp;the&nbsp;primary&nbsp;key&nbsp;value&nbsp;from&nbsp;the&nbsp;model&nbsp;instance<br>
+&nbsp;<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_query"><strong>get_query</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;QuerySet&nbsp;for&nbsp;this&nbsp;view.&nbsp;&nbsp;By&nbsp;default,&nbsp;it&nbsp;returns&nbsp;all&nbsp;the<br>
+objects&nbsp;for&nbsp;the&nbsp;current&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="MyView-init_search"><strong>init_search</strong></a>(self)</dt><dd><tt>Init&nbsp;search</tt></dd></dl>
+
+<dl><dt><a name="MyView-is_action_allowed"><strong>is_action_allowed</strong></a>(self, name)</dt><dd><tt>#&nbsp;Default&nbsp;model&nbsp;actions</tt></dd></dl>
+
+<dl><dt><a name="MyView-is_valid_filter"><strong>is_valid_filter</strong></a>(self, filter)</dt><dd><tt>Validate&nbsp;if&nbsp;the&nbsp;provided&nbsp;filter&nbsp;is&nbsp;a&nbsp;valid&nbsp;MongoEngine&nbsp;filter<br>
+&nbsp;<br>
+:param&nbsp;filter:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="MyView-scaffold_filters"><strong>scaffold_filters</strong></a>(self, name)</dt><dd><tt>Return&nbsp;filter&nbsp;object(s)&nbsp;for&nbsp;the&nbsp;field<br>
+&nbsp;<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Either&nbsp;field&nbsp;name&nbsp;or&nbsp;field&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="MyView-scaffold_form"><strong>scaffold_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;from&nbsp;the&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="MyView-scaffold_list_columns"><strong>scaffold_list_columns</strong></a>(self)</dt><dd><tt>Scaffold&nbsp;list&nbsp;columns</tt></dd></dl>
+
+<dl><dt><a name="MyView-scaffold_list_form"><strong>scaffold_list_form</strong></a>(self, custom_fieldlist<font color="#909090">=&lt;class 'flask_admin.model.fields.ListEditableFieldList'&gt;</font>, validators<font color="#909090">=None</font>)</dt><dd><tt>Create&nbsp;form&nbsp;for&nbsp;the&nbsp;`index_view`&nbsp;using&nbsp;only&nbsp;the&nbsp;columns&nbsp;from<br>
+`self.<strong>column_editable_list</strong>`.<br>
+&nbsp;<br>
+:param&nbsp;validators:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`form_args`&nbsp;dict&nbsp;with&nbsp;only&nbsp;validators<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'name':&nbsp;{'validators':&nbsp;[required()]}}<br>
+:param&nbsp;custom_fieldlist:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;WTForm&nbsp;FieldList&nbsp;class.&nbsp;By&nbsp;default,&nbsp;`ListEditableFieldList`.</tt></dd></dl>
+
+<dl><dt><a name="MyView-scaffold_pk"><strong>scaffold_pk</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MyView-scaffold_sortable_columns"><strong>scaffold_sortable_columns</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;sortable&nbsp;columns&nbsp;(name,&nbsp;field)</tt></dd></dl>
+
+<dl><dt><a name="MyView-update_model"><strong>update_model</strong></a>(self, form, model)</dt><dd><tt>Update&nbsp;model&nbsp;helper<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;instance<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance&nbsp;to&nbsp;update</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a>:<br>
+<dl><dt><strong>allowed_search_types</strong> = (&lt;class 'mongoengine.fields.StringField'&gt;, &lt;class 'mongoengine.fields.URLField'&gt;, &lt;class 'mongoengine.fields.EmailField'&gt;)</dl>
+
+<dl><dt><strong>column_filters</strong> = None</dl>
+
+<dl><dt><strong>column_type_formatters</strong> = {&lt;type 'bool'&gt;: &lt;function bool_formatter&gt;, &lt;type 'NoneType'&gt;: &lt;function empty_formatter&gt;, &lt;type 'list'&gt;: &lt;function list_formatter&gt;, &lt;class 'mongoengine.base.datastructures.BaseList'&gt;: &lt;function list_formatter&gt;, &lt;class 'mongoengine.fields.GridFSProxy'&gt;: &lt;function grid_formatter&gt;, &lt;class 'mongoengine.fields.ImageGridFsProxy'&gt;: &lt;function grid_image_formatter&gt;}</dl>
+
+<dl><dt><strong>filter_converter</strong> = &lt;flask_admin.contrib.mongoengine.filters.FilterConverter object&gt;</dl>
+
+<dl><dt><strong>form_subdocuments</strong> = None</dl>
+
+<dl><dt><strong>model_form_converter</strong> = &lt;class 'flask_admin.contrib.mongoengine.form.CustomModelConverter'&gt;<dd><tt>Customized&nbsp;MongoEngine&nbsp;form&nbsp;conversion&nbsp;class.<br>
+&nbsp;<br>
+Injects&nbsp;various&nbsp;Flask-Admin&nbsp;widgets&nbsp;and&nbsp;handles&nbsp;lists&nbsp;with<br>
+customized&nbsp;InlineFieldList&nbsp;field.</tt></dl>
+
+<dl><dt><strong>object_id_converter</strong> = &lt;class 'bson.objectid.ObjectId'&gt;<dd><tt>A&nbsp;MongoDB&nbsp;ObjectId.</tt></dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>:<br>
+<dl><dt><a name="MyView-after_model_change"><strong>after_model_change</strong></a>(self, form, model, is_created)</dt><dd><tt>Perform&nbsp;some&nbsp;actions&nbsp;after&nbsp;a&nbsp;model&nbsp;was&nbsp;created&nbsp;or&nbsp;updated&nbsp;and<br>
+committed&nbsp;to&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;create_model&nbsp;after&nbsp;successful&nbsp;database&nbsp;commit.<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;does&nbsp;nothing.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;used&nbsp;to&nbsp;create/update&nbsp;model<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;that&nbsp;was&nbsp;created/updated<br>
+:param&nbsp;is_created:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;model&nbsp;was&nbsp;created,&nbsp;False&nbsp;if&nbsp;model&nbsp;was&nbsp;updated</tt></dd></dl>
+
+<dl><dt><a name="MyView-create_form"><strong>create_form</strong></a>(self, obj<font color="#909090">=None</font>)</dt><dd><tt>Instantiate&nbsp;model&nbsp;creation&nbsp;form&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="MyView-delete_form"><strong>delete_form</strong></a>(self)</dt><dd><tt>Instantiate&nbsp;model&nbsp;delete&nbsp;form&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.<br>
+&nbsp;<br>
+The&nbsp;delete&nbsp;form&nbsp;originally&nbsp;used&nbsp;a&nbsp;GET&nbsp;request,&nbsp;so&nbsp;delete_form<br>
+accepts&nbsp;both&nbsp;GET&nbsp;and&nbsp;POST&nbsp;request&nbsp;for&nbsp;backwards&nbsp;compatibility.</tt></dd></dl>
+
+<dl><dt><a name="MyView-edit_form"><strong>edit_form</strong></a>(self, obj<font color="#909090">=None</font>)</dt><dd><tt>Instantiate&nbsp;model&nbsp;editing&nbsp;form&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_column_name"><strong>get_column_name</strong></a>(self, field)</dt><dd><tt>Return&nbsp;a&nbsp;human-readable&nbsp;column&nbsp;name.<br>
+&nbsp;<br>
+:param&nbsp;field:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;field&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_create_form"><strong>get_create_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;class&nbsp;for&nbsp;model&nbsp;creation&nbsp;view.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_delete_form"><strong>get_delete_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;class&nbsp;for&nbsp;model&nbsp;delete&nbsp;view.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_edit_form"><strong>get_edit_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;class&nbsp;for&nbsp;model&nbsp;editing&nbsp;view.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_empty_list_message"><strong>get_empty_list_message</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MyView-get_filter_arg"><strong>get_filter_arg</strong></a>(self, index, flt)</dt><dd><tt>Given&nbsp;a&nbsp;filter&nbsp;`flt`,&nbsp;return&nbsp;a&nbsp;unique&nbsp;name&nbsp;for&nbsp;that&nbsp;filter&nbsp;in<br>
+this&nbsp;view.<br>
+&nbsp;<br>
+Does&nbsp;not&nbsp;include&nbsp;the&nbsp;`flt[n]_`&nbsp;portion&nbsp;of&nbsp;the&nbsp;filter&nbsp;name.<br>
+&nbsp;<br>
+:param&nbsp;index:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;index&nbsp;in&nbsp;_filters&nbsp;array<br>
+:param&nbsp;flt:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_filters"><strong>get_filters</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;of&nbsp;filter&nbsp;objects.<br>
+&nbsp;<br>
+If&nbsp;your&nbsp;model&nbsp;backend&nbsp;implementation&nbsp;does&nbsp;not&nbsp;support&nbsp;filters,<br>
+override&nbsp;this&nbsp;method&nbsp;and&nbsp;return&nbsp;`None`.</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_form"><strong>get_form</strong></a>(self)</dt><dd><tt>Get&nbsp;form&nbsp;class.<br>
+&nbsp;<br>
+If&nbsp;``self.<strong>form</strong>``&nbsp;is&nbsp;set,&nbsp;will&nbsp;return&nbsp;it&nbsp;and&nbsp;will&nbsp;call<br>
+``self.<strong>scaffold_form</strong>``&nbsp;otherwise.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_list_columns"><strong>get_list_columns</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;model&nbsp;field&nbsp;names.&nbsp;If&nbsp;`column_list`&nbsp;was<br>
+set,&nbsp;returns&nbsp;it.&nbsp;Otherwise&nbsp;calls&nbsp;`scaffold_list_columns`<br>
+to&nbsp;generate&nbsp;the&nbsp;list&nbsp;from&nbsp;the&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_list_form"><strong>get_list_form</strong></a>(self)</dt><dd><tt>Get&nbsp;form&nbsp;class&nbsp;for&nbsp;the&nbsp;editable&nbsp;list&nbsp;view.<br>
+&nbsp;<br>
+Uses&nbsp;only&nbsp;validators&nbsp;from&nbsp;`form_args`&nbsp;to&nbsp;build&nbsp;the&nbsp;form&nbsp;class.<br>
+&nbsp;<br>
+Allows&nbsp;overriding&nbsp;the&nbsp;editable&nbsp;list&nbsp;view&nbsp;field/widget.&nbsp;For&nbsp;example::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;flask.ext.admin.model.fields&nbsp;import&nbsp;ListEditableFieldList<br>
+&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;flask.ext.admin.model.widgets&nbsp;import&nbsp;XEditableWidget<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;CustomWidget(XEditableWidget):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;get_kwargs(self,&nbsp;subfield,&nbsp;kwargs):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;subfield.type&nbsp;==&nbsp;'TextAreaField':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kwargs['data-type']&nbsp;=&nbsp;'textarea'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kwargs['data-rows']&nbsp;=&nbsp;'20'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;elif:&nbsp;kwargs&nbsp;for&nbsp;other&nbsp;fields<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;kwargs<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;CustomFieldList(ListEditableFieldList):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;widget&nbsp;=&nbsp;CustomWidget()<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;MyModelView(BaseModelView):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;<a href="#MyView-get_list_form">get_list_form</a>(self):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;<a href="#MyView-scaffold_list_form">scaffold_list_form</a>(CustomFieldList)</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_list_value"><strong>get_list_value</strong></a>(self, context, model, name)</dt><dd><tt>Returns&nbsp;the&nbsp;value&nbsp;to&nbsp;be&nbsp;displayed&nbsp;in&nbsp;the&nbsp;list&nbsp;view<br>
+&nbsp;<br>
+:param&nbsp;context:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:py:class:`jinja2.runtime.Context`<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Field&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_sortable_columns"><strong>get_sortable_columns</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;the&nbsp;sortable&nbsp;columns.&nbsp;Key&nbsp;is&nbsp;a&nbsp;model<br>
+field&nbsp;name&nbsp;and&nbsp;value&nbsp;is&nbsp;sort&nbsp;column&nbsp;(for&nbsp;example&nbsp;-&nbsp;attribute).<br>
+&nbsp;<br>
+If&nbsp;`column_sortable_list`&nbsp;is&nbsp;set,&nbsp;will&nbsp;use&nbsp;it.&nbsp;Otherwise,&nbsp;will&nbsp;call<br>
+`scaffold_sortable_columns`&nbsp;to&nbsp;get&nbsp;them&nbsp;from&nbsp;the&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="MyView-handle_filter"><strong>handle_filter</strong></a>(self, filter)</dt><dd><tt>Postprocess&nbsp;(add&nbsp;joins,&nbsp;etc)&nbsp;for&nbsp;a&nbsp;filter.<br>
+&nbsp;<br>
+:param&nbsp;filter:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;object&nbsp;to&nbsp;postprocess</tt></dd></dl>
+
+<dl><dt><a name="MyView-handle_view_exception"><strong>handle_view_exception</strong></a>(self, exc)</dt><dd><tt>#&nbsp;Exception&nbsp;handler</tt></dd></dl>
+
+<dl><dt><a name="MyView-is_editable"><strong>is_editable</strong></a>(self, name)</dt><dd><tt>Verify&nbsp;if&nbsp;column&nbsp;is&nbsp;editable.<br>
+&nbsp;<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Column&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="MyView-is_sortable"><strong>is_sortable</strong></a>(self, name)</dt><dd><tt>Verify&nbsp;if&nbsp;column&nbsp;is&nbsp;sortable.<br>
+&nbsp;<br>
+Not&nbsp;case-sensitive.<br>
+&nbsp;<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Column&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="MyView-list_form"><strong>list_form</strong></a>(self, obj<font color="#909090">=None</font>)</dt><dd><tt>Instantiate&nbsp;model&nbsp;editing&nbsp;form&nbsp;for&nbsp;list&nbsp;view&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="MyView-on_form_prefill"><strong>on_form_prefill</strong></a>(self, form, id)</dt><dd><tt>Perform&nbsp;additional&nbsp;actions&nbsp;to&nbsp;pre-fill&nbsp;the&nbsp;edit&nbsp;form.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;edit_view,&nbsp;if&nbsp;the&nbsp;current&nbsp;action&nbsp;is&nbsp;rendering<br>
+the&nbsp;form&nbsp;rather&nbsp;than&nbsp;receiving&nbsp;client&nbsp;side&nbsp;input,&nbsp;after<br>
+default&nbsp;pre-filling&nbsp;has&nbsp;been&nbsp;performed.<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;does&nbsp;nothing.<br>
+&nbsp;<br>
+You&nbsp;only&nbsp;need&nbsp;to&nbsp;override&nbsp;this&nbsp;if&nbsp;you&nbsp;have&nbsp;added&nbsp;custom<br>
+fields&nbsp;that&nbsp;depend&nbsp;on&nbsp;the&nbsp;database&nbsp;contents&nbsp;in&nbsp;a&nbsp;way&nbsp;that<br>
+Flask-admin&nbsp;can't&nbsp;figure&nbsp;out&nbsp;by&nbsp;itself.&nbsp;Fields&nbsp;that&nbsp;were<br>
+added&nbsp;by&nbsp;name&nbsp;of&nbsp;a&nbsp;normal&nbsp;column&nbsp;or&nbsp;relationship&nbsp;should<br>
+work&nbsp;out&nbsp;of&nbsp;the&nbsp;box.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;instance<br>
+:param&nbsp;id:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;of&nbsp;the&nbsp;object&nbsp;that&nbsp;is&nbsp;going&nbsp;to&nbsp;be&nbsp;edited</tt></dd></dl>
+
+<dl><dt><a name="MyView-on_model_change"><strong>on_model_change</strong></a>(self, form, model, is_created)</dt><dd><tt>Perform&nbsp;some&nbsp;actions&nbsp;after&nbsp;a&nbsp;model&nbsp;is&nbsp;created&nbsp;or&nbsp;updated.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;create_model&nbsp;and&nbsp;update_model&nbsp;in&nbsp;the&nbsp;same&nbsp;transaction<br>
+(if&nbsp;it&nbsp;has&nbsp;any&nbsp;meaning&nbsp;for&nbsp;a&nbsp;store&nbsp;backend).<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;does&nbsp;nothing.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;used&nbsp;to&nbsp;create/update&nbsp;model<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;that&nbsp;will&nbsp;be&nbsp;created/updated<br>
+:param&nbsp;is_created:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Will&nbsp;be&nbsp;set&nbsp;to&nbsp;True&nbsp;if&nbsp;model&nbsp;was&nbsp;created&nbsp;and&nbsp;to&nbsp;False&nbsp;if&nbsp;edited</tt></dd></dl>
+
+<dl><dt><a name="MyView-on_model_delete"><strong>on_model_delete</strong></a>(self, model)</dt><dd><tt>Perform&nbsp;some&nbsp;actions&nbsp;before&nbsp;a&nbsp;model&nbsp;is&nbsp;deleted.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;delete_model&nbsp;in&nbsp;the&nbsp;same&nbsp;transaction<br>
+(if&nbsp;it&nbsp;has&nbsp;any&nbsp;meaning&nbsp;for&nbsp;a&nbsp;store&nbsp;backend).<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;do&nbsp;nothing.</tt></dd></dl>
+
+<dl><dt><a name="MyView-validate_form"><strong>validate_form</strong></a>(self, form)</dt><dd><tt>Validate&nbsp;the&nbsp;form&nbsp;on&nbsp;submit.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;to&nbsp;validate</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>:<br>
+<dl><dt><strong>action_disallowed_list</strong></dt>
+</dl>
+<dl><dt><strong>column_display_pk</strong></dt>
+</dl>
+<dl><dt><strong>column_formatters</strong></dt>
+</dl>
+<dl><dt><strong>column_labels</strong></dt>
+</dl>
+<dl><dt><strong>column_list</strong></dt>
+</dl>
+<dl><dt><strong>column_searchable_list</strong></dt>
+</dl>
+<dl><dt><strong>column_sortable_list</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>:<br>
+<dl><dt><strong>can_create</strong> = True</dl>
+
+<dl><dt><strong>can_delete</strong> = True</dl>
+
+<dl><dt><strong>can_edit</strong> = True</dl>
+
+<dl><dt><strong>column_choices</strong> = None</dl>
+
+<dl><dt><strong>column_default_sort</strong> = None</dl>
+
+<dl><dt><strong>column_descriptions</strong> = None</dl>
+
+<dl><dt><strong>column_editable_list</strong> = None</dl>
+
+<dl><dt><strong>form</strong> = None</dl>
+
+<dl><dt><strong>form_ajax_refs</strong> = None</dl>
+
+<dl><dt><strong>form_args</strong> = None</dl>
+
+<dl><dt><strong>form_base_class</strong> = &lt;class 'flask_admin.form.BaseForm'&gt;</dl>
+
+<dl><dt><strong>form_columns</strong> = None</dl>
+
+<dl><dt><strong>form_create_rules</strong> = None</dl>
+
+<dl><dt><strong>form_edit_rules</strong> = None</dl>
+
+<dl><dt><strong>form_extra_fields</strong> = None</dl>
+
+<dl><dt><strong>form_overrides</strong> = None</dl>
+
+<dl><dt><strong>form_rules</strong> = None</dl>
+
+<dl><dt><strong>form_widget_args</strong> = None</dl>
+
+<dl><dt><strong>named_filter_urls</strong> = False</dl>
+
+<dl><dt><strong>page_size</strong> = 20</dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.base.html#BaseView">flask_admin.base.BaseView</a>:<br>
+<dl><dt><a name="MyView-create_blueprint"><strong>create_blueprint</strong></a>(self, admin)</dt><dd><tt>Create&nbsp;Flask&nbsp;blueprint.</tt></dd></dl>
+
+<dl><dt><a name="MyView-get_url"><strong>get_url</strong></a>(self, endpoint, **kwargs)</dt><dd><tt>Generate&nbsp;URL&nbsp;for&nbsp;the&nbsp;endpoint.&nbsp;If&nbsp;you&nbsp;want&nbsp;to&nbsp;customize&nbsp;URL&nbsp;generation<br>
+logic&nbsp;(persist&nbsp;some&nbsp;query&nbsp;string&nbsp;argument,&nbsp;for&nbsp;example),&nbsp;this&nbsp;is<br>
+right&nbsp;place&nbsp;to&nbsp;do&nbsp;it.<br>
+&nbsp;<br>
+:param&nbsp;endpoint:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Flask&nbsp;endpoint&nbsp;name<br>
+:param&nbsp;kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Arguments&nbsp;for&nbsp;`url_for`</tt></dd></dl>
+
+<dl><dt><a name="MyView-inaccessible_callback"><strong>inaccessible_callback</strong></a>(self, name, **kwargs)</dt><dd><tt>Handle&nbsp;the&nbsp;response&nbsp;to&nbsp;inaccessible&nbsp;views.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;it&nbsp;throw&nbsp;HTTP&nbsp;403&nbsp;error.&nbsp;Override&nbsp;this&nbsp;method&nbsp;to<br>
+customize&nbsp;the&nbsp;behaviour.</tt></dd></dl>
+
+<dl><dt><a name="MyView-is_visible"><strong>is_visible</strong></a>(self)</dt><dd><tt>Override&nbsp;this&nbsp;method&nbsp;if&nbsp;you&nbsp;want&nbsp;dynamically&nbsp;hide&nbsp;or&nbsp;show&nbsp;administrative&nbsp;views<br>
+from&nbsp;Flask-Admin&nbsp;menu&nbsp;structure<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;item&nbsp;is&nbsp;visible&nbsp;in&nbsp;menu.<br>
+&nbsp;<br>
+Please&nbsp;note&nbsp;that&nbsp;item&nbsp;should&nbsp;be&nbsp;both&nbsp;visible&nbsp;and&nbsp;accessible&nbsp;to&nbsp;be&nbsp;displayed&nbsp;in&nbsp;menu.</tt></dd></dl>
+
+<dl><dt><a name="MyView-render"><strong>render</strong></a>(self, template, **kwargs)</dt><dd><tt>Render&nbsp;template<br>
+&nbsp;<br>
+:param&nbsp;template:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Template&nbsp;path&nbsp;to&nbsp;render<br>
+:param&nbsp;kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Template&nbsp;arguments</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_admin.base.html#BaseViewClass">flask_admin.base.BaseViewClass</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="flask_admin.actions.html#ActionsMixin">flask_admin.actions.ActionsMixin</a>:<br>
+<dl><dt><a name="MyView-get_actions_list"><strong>get_actions_list</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;and&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;allowed&nbsp;actions.</tt></dd></dl>
+
+<dl><dt><a name="MyView-handle_action"><strong>handle_action</strong></a>(self, return_view<font color="#909090">=None</font>)</dt><dd><tt>Handle&nbsp;action&nbsp;request.<br>
+&nbsp;<br>
+:param&nbsp;return_view:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;of&nbsp;the&nbsp;view&nbsp;to&nbsp;return&nbsp;to&nbsp;after&nbsp;the&nbsp;request.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;not&nbsp;provided,&nbsp;will&nbsp;return&nbsp;user&nbsp;to&nbsp;the&nbsp;index&nbsp;view.</tt></dd></dl>
+
+<dl><dt><a name="MyView-init_actions"><strong>init_actions</strong></a>(self)</dt><dd><tt>Initialize&nbsp;list&nbsp;of&nbsp;actions&nbsp;for&nbsp;the&nbsp;current&nbsp;administrative&nbsp;view.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PreguntasView">class <strong>PreguntasView</strong></a>(<a href="admin.html#MyView">MyView</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Questions&nbsp;View.&nbsp;Entry&nbsp;view&nbsp;which&nbsp;lets&nbsp;teachers&nbsp;manage&nbsp;the&nbsp;questions&nbsp;in&nbsp;the&nbsp;system.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="admin.html#PreguntasView">PreguntasView</a></dd>
+<dd><a href="admin.html#MyView">MyView</a></dd>
+<dd><a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a></dd>
+<dd><a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a></dd>
+<dd><a href="flask_admin.base.html#BaseView">flask_admin.base.BaseView</a></dd>
+<dd><a href="flask_admin.base.html#BaseViewClass">flask_admin.base.BaseViewClass</a></dd>
+<dd><a href="flask_admin.actions.html#ActionsMixin">flask_admin.actions.ActionsMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="PreguntasView-action_view"><strong>action_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Mass-model&nbsp;action&nbsp;view.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-ajax_lookup"><strong>ajax_lookup</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="PreguntasView-ajax_update"><strong>ajax_update</strong></a>(self, *args, **kwargs)</dt><dd><tt>Edits&nbsp;a&nbsp;single&nbsp;column&nbsp;of&nbsp;a&nbsp;record&nbsp;in&nbsp;list&nbsp;view.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-api_file_view"><strong>api_file_view</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="PreguntasView-create_view"><strong>create_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Create&nbsp;model&nbsp;view</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-delete_view"><strong>delete_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Delete&nbsp;model&nbsp;view.&nbsp;Only&nbsp;POST&nbsp;method&nbsp;is&nbsp;allowed.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-edit_view"><strong>edit_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Edit&nbsp;model&nbsp;view</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-index_view"><strong>index_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>List&nbsp;view</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>column_choices</strong> = {'tipo': [(0, 'Desarrollo'), (1, 'Test'), (2, 'Verdadero o Falso')]}</dl>
+
+<dl><dt><strong>column_default_sort</strong> = ('asignatura', 'num')</dl>
+
+<dl><dt><strong>column_descriptions</strong> = {'asignatura': 'Asignatura a la que corresponde la pregunta', 'tipo': 'Preguntas a desarrollar, test o preguntas de tipo verdadero o falso'}</dl>
+
+<dl><dt><strong>column_exclude_list</strong> = ('usuario', 'verdadera', 'correcta')</dl>
+
+<dl><dt><strong>column_searchable_list</strong> = ('texto',)</dl>
+
+<dl><dt><strong>form_subdocuments</strong> = {'opciones': {'form_subdocuments': {None: {'form_rules': ('letra', 'texto', &lt;flask_admin.form.rules.HTML object&gt;), 'form_widget_args': {'name': {'style': 'color: red'}}}}}}</dl>
+
+<hr>
+Methods inherited from <a href="admin.html#MyView">MyView</a>:<br>
+<dl><dt><a name="PreguntasView-is_accessible"><strong>is_accessible</strong></a>(self)</dt><dd><tt>#&nbsp;these&nbsp;views&nbsp;only&nbsp;be&nbsp;accessible&nbsp;by&nbsp;teachers</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="admin.html#MyView">MyView</a>:<br>
+<dl><dt><strong>create_template</strong> = 'admin/create.html'</dl>
+
+<dl><dt><strong>edit_template</strong> = 'admin/edit.html'</dl>
+
+<dl><dt><strong>form_excluded_columns</strong> = 'usuario'</dl>
+
+<dl><dt><strong>list_template</strong> = 'admin/list.html'</dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a>:<br>
+<dl><dt><a name="PreguntasView-__init__"><strong>__init__</strong></a>(self, model, name<font color="#909090">=None</font>, category<font color="#909090">=None</font>, endpoint<font color="#909090">=None</font>, url<font color="#909090">=None</font>, static_folder<font color="#909090">=None</font>, menu_class_name<font color="#909090">=None</font>, menu_icon_type<font color="#909090">=None</font>, menu_icon_value<font color="#909090">=None</font>)</dt><dd><tt>Constructor<br>
+&nbsp;<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;class<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Display&nbsp;name<br>
+:param&nbsp;category:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Display&nbsp;category<br>
+:param&nbsp;endpoint:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Endpoint<br>
+:param&nbsp;url:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Custom&nbsp;URL<br>
+:param&nbsp;menu_class_name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Optional&nbsp;class&nbsp;name&nbsp;for&nbsp;the&nbsp;menu&nbsp;item.<br>
+:param&nbsp;menu_icon_type:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Optional&nbsp;icon.&nbsp;Possible&nbsp;icon&nbsp;types:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;`flask.ext.admin.consts.ICON_TYPE_GLYPH`&nbsp;-&nbsp;Bootstrap&nbsp;glyph&nbsp;icon<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;`flask.ext.admin.consts.ICON_TYPE_IMAGE`&nbsp;-&nbsp;Image&nbsp;relative&nbsp;to&nbsp;Flask&nbsp;static&nbsp;directory<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;`flask.ext.admin.consts.ICON_TYPE_IMAGE_URL`&nbsp;-&nbsp;Image&nbsp;with&nbsp;full&nbsp;URL<br>
+&nbsp;<br>
+:param&nbsp;menu_icon_value:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Icon&nbsp;glyph&nbsp;name&nbsp;or&nbsp;URL,&nbsp;depending&nbsp;on&nbsp;`menu_icon_type`&nbsp;setting</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-action_delete"><strong>action_delete</strong></a>(self, ids)</dt></dl>
+
+<dl><dt><a name="PreguntasView-create_model"><strong>create_model</strong></a>(self, form)</dt><dd><tt>Create&nbsp;model&nbsp;helper<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-delete_model"><strong>delete_model</strong></a>(self, model)</dt><dd><tt>Delete&nbsp;model&nbsp;helper<br>
+&nbsp;<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_list"><strong>get_list</strong></a>(self, page, sort_column, sort_desc, search, filters, execute<font color="#909090">=True</font>)</dt><dd><tt>Get&nbsp;list&nbsp;of&nbsp;objects&nbsp;from&nbsp;MongoEngine<br>
+&nbsp;<br>
+:param&nbsp;page:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Page&nbsp;number<br>
+:param&nbsp;sort_column:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sort&nbsp;column<br>
+:param&nbsp;sort_desc:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sort&nbsp;descending<br>
+:param&nbsp;search:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Search&nbsp;criteria<br>
+:param&nbsp;filters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;applied&nbsp;filters<br>
+:param&nbsp;execute:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Run&nbsp;query&nbsp;immediately&nbsp;or&nbsp;not</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_one"><strong>get_one</strong></a>(self, id)</dt><dd><tt>Return&nbsp;a&nbsp;single&nbsp;model&nbsp;instance&nbsp;by&nbsp;its&nbsp;ID<br>
+&nbsp;<br>
+:param&nbsp;id:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;ID</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_pk_value"><strong>get_pk_value</strong></a>(self, model)</dt><dd><tt>Return&nbsp;the&nbsp;primary&nbsp;key&nbsp;value&nbsp;from&nbsp;the&nbsp;model&nbsp;instance<br>
+&nbsp;<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_query"><strong>get_query</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;QuerySet&nbsp;for&nbsp;this&nbsp;view.&nbsp;&nbsp;By&nbsp;default,&nbsp;it&nbsp;returns&nbsp;all&nbsp;the<br>
+objects&nbsp;for&nbsp;the&nbsp;current&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-init_search"><strong>init_search</strong></a>(self)</dt><dd><tt>Init&nbsp;search</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-is_action_allowed"><strong>is_action_allowed</strong></a>(self, name)</dt><dd><tt>#&nbsp;Default&nbsp;model&nbsp;actions</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-is_valid_filter"><strong>is_valid_filter</strong></a>(self, filter)</dt><dd><tt>Validate&nbsp;if&nbsp;the&nbsp;provided&nbsp;filter&nbsp;is&nbsp;a&nbsp;valid&nbsp;MongoEngine&nbsp;filter<br>
+&nbsp;<br>
+:param&nbsp;filter:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-scaffold_filters"><strong>scaffold_filters</strong></a>(self, name)</dt><dd><tt>Return&nbsp;filter&nbsp;object(s)&nbsp;for&nbsp;the&nbsp;field<br>
+&nbsp;<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Either&nbsp;field&nbsp;name&nbsp;or&nbsp;field&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-scaffold_form"><strong>scaffold_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;from&nbsp;the&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-scaffold_list_columns"><strong>scaffold_list_columns</strong></a>(self)</dt><dd><tt>Scaffold&nbsp;list&nbsp;columns</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-scaffold_list_form"><strong>scaffold_list_form</strong></a>(self, custom_fieldlist<font color="#909090">=&lt;class 'flask_admin.model.fields.ListEditableFieldList'&gt;</font>, validators<font color="#909090">=None</font>)</dt><dd><tt>Create&nbsp;form&nbsp;for&nbsp;the&nbsp;`index_view`&nbsp;using&nbsp;only&nbsp;the&nbsp;columns&nbsp;from<br>
+`self.<strong>column_editable_list</strong>`.<br>
+&nbsp;<br>
+:param&nbsp;validators:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`form_args`&nbsp;dict&nbsp;with&nbsp;only&nbsp;validators<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'name':&nbsp;{'validators':&nbsp;[required()]}}<br>
+:param&nbsp;custom_fieldlist:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;WTForm&nbsp;FieldList&nbsp;class.&nbsp;By&nbsp;default,&nbsp;`ListEditableFieldList`.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-scaffold_pk"><strong>scaffold_pk</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PreguntasView-scaffold_sortable_columns"><strong>scaffold_sortable_columns</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;sortable&nbsp;columns&nbsp;(name,&nbsp;field)</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-update_model"><strong>update_model</strong></a>(self, form, model)</dt><dd><tt>Update&nbsp;model&nbsp;helper<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;instance<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance&nbsp;to&nbsp;update</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a>:<br>
+<dl><dt><strong>allowed_search_types</strong> = (&lt;class 'mongoengine.fields.StringField'&gt;, &lt;class 'mongoengine.fields.URLField'&gt;, &lt;class 'mongoengine.fields.EmailField'&gt;)</dl>
+
+<dl><dt><strong>column_filters</strong> = None</dl>
+
+<dl><dt><strong>column_type_formatters</strong> = {&lt;type 'bool'&gt;: &lt;function bool_formatter&gt;, &lt;type 'NoneType'&gt;: &lt;function empty_formatter&gt;, &lt;type 'list'&gt;: &lt;function list_formatter&gt;, &lt;class 'mongoengine.base.datastructures.BaseList'&gt;: &lt;function list_formatter&gt;, &lt;class 'mongoengine.fields.GridFSProxy'&gt;: &lt;function grid_formatter&gt;, &lt;class 'mongoengine.fields.ImageGridFsProxy'&gt;: &lt;function grid_image_formatter&gt;}</dl>
+
+<dl><dt><strong>filter_converter</strong> = &lt;flask_admin.contrib.mongoengine.filters.FilterConverter object&gt;</dl>
+
+<dl><dt><strong>model_form_converter</strong> = &lt;class 'flask_admin.contrib.mongoengine.form.CustomModelConverter'&gt;<dd><tt>Customized&nbsp;MongoEngine&nbsp;form&nbsp;conversion&nbsp;class.<br>
+&nbsp;<br>
+Injects&nbsp;various&nbsp;Flask-Admin&nbsp;widgets&nbsp;and&nbsp;handles&nbsp;lists&nbsp;with<br>
+customized&nbsp;InlineFieldList&nbsp;field.</tt></dl>
+
+<dl><dt><strong>object_id_converter</strong> = &lt;class 'bson.objectid.ObjectId'&gt;<dd><tt>A&nbsp;MongoDB&nbsp;ObjectId.</tt></dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>:<br>
+<dl><dt><a name="PreguntasView-after_model_change"><strong>after_model_change</strong></a>(self, form, model, is_created)</dt><dd><tt>Perform&nbsp;some&nbsp;actions&nbsp;after&nbsp;a&nbsp;model&nbsp;was&nbsp;created&nbsp;or&nbsp;updated&nbsp;and<br>
+committed&nbsp;to&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;create_model&nbsp;after&nbsp;successful&nbsp;database&nbsp;commit.<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;does&nbsp;nothing.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;used&nbsp;to&nbsp;create/update&nbsp;model<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;that&nbsp;was&nbsp;created/updated<br>
+:param&nbsp;is_created:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;model&nbsp;was&nbsp;created,&nbsp;False&nbsp;if&nbsp;model&nbsp;was&nbsp;updated</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-create_form"><strong>create_form</strong></a>(self, obj<font color="#909090">=None</font>)</dt><dd><tt>Instantiate&nbsp;model&nbsp;creation&nbsp;form&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-delete_form"><strong>delete_form</strong></a>(self)</dt><dd><tt>Instantiate&nbsp;model&nbsp;delete&nbsp;form&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.<br>
+&nbsp;<br>
+The&nbsp;delete&nbsp;form&nbsp;originally&nbsp;used&nbsp;a&nbsp;GET&nbsp;request,&nbsp;so&nbsp;delete_form<br>
+accepts&nbsp;both&nbsp;GET&nbsp;and&nbsp;POST&nbsp;request&nbsp;for&nbsp;backwards&nbsp;compatibility.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-edit_form"><strong>edit_form</strong></a>(self, obj<font color="#909090">=None</font>)</dt><dd><tt>Instantiate&nbsp;model&nbsp;editing&nbsp;form&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_column_name"><strong>get_column_name</strong></a>(self, field)</dt><dd><tt>Return&nbsp;a&nbsp;human-readable&nbsp;column&nbsp;name.<br>
+&nbsp;<br>
+:param&nbsp;field:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;field&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_create_form"><strong>get_create_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;class&nbsp;for&nbsp;model&nbsp;creation&nbsp;view.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_delete_form"><strong>get_delete_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;class&nbsp;for&nbsp;model&nbsp;delete&nbsp;view.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_edit_form"><strong>get_edit_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;class&nbsp;for&nbsp;model&nbsp;editing&nbsp;view.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_empty_list_message"><strong>get_empty_list_message</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PreguntasView-get_filter_arg"><strong>get_filter_arg</strong></a>(self, index, flt)</dt><dd><tt>Given&nbsp;a&nbsp;filter&nbsp;`flt`,&nbsp;return&nbsp;a&nbsp;unique&nbsp;name&nbsp;for&nbsp;that&nbsp;filter&nbsp;in<br>
+this&nbsp;view.<br>
+&nbsp;<br>
+Does&nbsp;not&nbsp;include&nbsp;the&nbsp;`flt[n]_`&nbsp;portion&nbsp;of&nbsp;the&nbsp;filter&nbsp;name.<br>
+&nbsp;<br>
+:param&nbsp;index:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;index&nbsp;in&nbsp;_filters&nbsp;array<br>
+:param&nbsp;flt:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_filters"><strong>get_filters</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;of&nbsp;filter&nbsp;objects.<br>
+&nbsp;<br>
+If&nbsp;your&nbsp;model&nbsp;backend&nbsp;implementation&nbsp;does&nbsp;not&nbsp;support&nbsp;filters,<br>
+override&nbsp;this&nbsp;method&nbsp;and&nbsp;return&nbsp;`None`.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_form"><strong>get_form</strong></a>(self)</dt><dd><tt>Get&nbsp;form&nbsp;class.<br>
+&nbsp;<br>
+If&nbsp;``self.<strong>form</strong>``&nbsp;is&nbsp;set,&nbsp;will&nbsp;return&nbsp;it&nbsp;and&nbsp;will&nbsp;call<br>
+``self.<strong>scaffold_form</strong>``&nbsp;otherwise.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_list_columns"><strong>get_list_columns</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;model&nbsp;field&nbsp;names.&nbsp;If&nbsp;`column_list`&nbsp;was<br>
+set,&nbsp;returns&nbsp;it.&nbsp;Otherwise&nbsp;calls&nbsp;`scaffold_list_columns`<br>
+to&nbsp;generate&nbsp;the&nbsp;list&nbsp;from&nbsp;the&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_list_form"><strong>get_list_form</strong></a>(self)</dt><dd><tt>Get&nbsp;form&nbsp;class&nbsp;for&nbsp;the&nbsp;editable&nbsp;list&nbsp;view.<br>
+&nbsp;<br>
+Uses&nbsp;only&nbsp;validators&nbsp;from&nbsp;`form_args`&nbsp;to&nbsp;build&nbsp;the&nbsp;form&nbsp;class.<br>
+&nbsp;<br>
+Allows&nbsp;overriding&nbsp;the&nbsp;editable&nbsp;list&nbsp;view&nbsp;field/widget.&nbsp;For&nbsp;example::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;flask.ext.admin.model.fields&nbsp;import&nbsp;ListEditableFieldList<br>
+&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;flask.ext.admin.model.widgets&nbsp;import&nbsp;XEditableWidget<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;CustomWidget(XEditableWidget):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;get_kwargs(self,&nbsp;subfield,&nbsp;kwargs):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;subfield.type&nbsp;==&nbsp;'TextAreaField':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kwargs['data-type']&nbsp;=&nbsp;'textarea'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kwargs['data-rows']&nbsp;=&nbsp;'20'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;elif:&nbsp;kwargs&nbsp;for&nbsp;other&nbsp;fields<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;kwargs<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;CustomFieldList(ListEditableFieldList):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;widget&nbsp;=&nbsp;CustomWidget()<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;MyModelView(BaseModelView):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;<a href="#PreguntasView-get_list_form">get_list_form</a>(self):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;<a href="#PreguntasView-scaffold_list_form">scaffold_list_form</a>(CustomFieldList)</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_list_value"><strong>get_list_value</strong></a>(self, context, model, name)</dt><dd><tt>Returns&nbsp;the&nbsp;value&nbsp;to&nbsp;be&nbsp;displayed&nbsp;in&nbsp;the&nbsp;list&nbsp;view<br>
+&nbsp;<br>
+:param&nbsp;context:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:py:class:`jinja2.runtime.Context`<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Field&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_sortable_columns"><strong>get_sortable_columns</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;the&nbsp;sortable&nbsp;columns.&nbsp;Key&nbsp;is&nbsp;a&nbsp;model<br>
+field&nbsp;name&nbsp;and&nbsp;value&nbsp;is&nbsp;sort&nbsp;column&nbsp;(for&nbsp;example&nbsp;-&nbsp;attribute).<br>
+&nbsp;<br>
+If&nbsp;`column_sortable_list`&nbsp;is&nbsp;set,&nbsp;will&nbsp;use&nbsp;it.&nbsp;Otherwise,&nbsp;will&nbsp;call<br>
+`scaffold_sortable_columns`&nbsp;to&nbsp;get&nbsp;them&nbsp;from&nbsp;the&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-handle_filter"><strong>handle_filter</strong></a>(self, filter)</dt><dd><tt>Postprocess&nbsp;(add&nbsp;joins,&nbsp;etc)&nbsp;for&nbsp;a&nbsp;filter.<br>
+&nbsp;<br>
+:param&nbsp;filter:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;object&nbsp;to&nbsp;postprocess</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-handle_view_exception"><strong>handle_view_exception</strong></a>(self, exc)</dt><dd><tt>#&nbsp;Exception&nbsp;handler</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-is_editable"><strong>is_editable</strong></a>(self, name)</dt><dd><tt>Verify&nbsp;if&nbsp;column&nbsp;is&nbsp;editable.<br>
+&nbsp;<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Column&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-is_sortable"><strong>is_sortable</strong></a>(self, name)</dt><dd><tt>Verify&nbsp;if&nbsp;column&nbsp;is&nbsp;sortable.<br>
+&nbsp;<br>
+Not&nbsp;case-sensitive.<br>
+&nbsp;<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Column&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-list_form"><strong>list_form</strong></a>(self, obj<font color="#909090">=None</font>)</dt><dd><tt>Instantiate&nbsp;model&nbsp;editing&nbsp;form&nbsp;for&nbsp;list&nbsp;view&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-on_form_prefill"><strong>on_form_prefill</strong></a>(self, form, id)</dt><dd><tt>Perform&nbsp;additional&nbsp;actions&nbsp;to&nbsp;pre-fill&nbsp;the&nbsp;edit&nbsp;form.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;edit_view,&nbsp;if&nbsp;the&nbsp;current&nbsp;action&nbsp;is&nbsp;rendering<br>
+the&nbsp;form&nbsp;rather&nbsp;than&nbsp;receiving&nbsp;client&nbsp;side&nbsp;input,&nbsp;after<br>
+default&nbsp;pre-filling&nbsp;has&nbsp;been&nbsp;performed.<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;does&nbsp;nothing.<br>
+&nbsp;<br>
+You&nbsp;only&nbsp;need&nbsp;to&nbsp;override&nbsp;this&nbsp;if&nbsp;you&nbsp;have&nbsp;added&nbsp;custom<br>
+fields&nbsp;that&nbsp;depend&nbsp;on&nbsp;the&nbsp;database&nbsp;contents&nbsp;in&nbsp;a&nbsp;way&nbsp;that<br>
+Flask-admin&nbsp;can't&nbsp;figure&nbsp;out&nbsp;by&nbsp;itself.&nbsp;Fields&nbsp;that&nbsp;were<br>
+added&nbsp;by&nbsp;name&nbsp;of&nbsp;a&nbsp;normal&nbsp;column&nbsp;or&nbsp;relationship&nbsp;should<br>
+work&nbsp;out&nbsp;of&nbsp;the&nbsp;box.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;instance<br>
+:param&nbsp;id:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;of&nbsp;the&nbsp;object&nbsp;that&nbsp;is&nbsp;going&nbsp;to&nbsp;be&nbsp;edited</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-on_model_change"><strong>on_model_change</strong></a>(self, form, model, is_created)</dt><dd><tt>Perform&nbsp;some&nbsp;actions&nbsp;after&nbsp;a&nbsp;model&nbsp;is&nbsp;created&nbsp;or&nbsp;updated.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;create_model&nbsp;and&nbsp;update_model&nbsp;in&nbsp;the&nbsp;same&nbsp;transaction<br>
+(if&nbsp;it&nbsp;has&nbsp;any&nbsp;meaning&nbsp;for&nbsp;a&nbsp;store&nbsp;backend).<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;does&nbsp;nothing.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;used&nbsp;to&nbsp;create/update&nbsp;model<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;that&nbsp;will&nbsp;be&nbsp;created/updated<br>
+:param&nbsp;is_created:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Will&nbsp;be&nbsp;set&nbsp;to&nbsp;True&nbsp;if&nbsp;model&nbsp;was&nbsp;created&nbsp;and&nbsp;to&nbsp;False&nbsp;if&nbsp;edited</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-on_model_delete"><strong>on_model_delete</strong></a>(self, model)</dt><dd><tt>Perform&nbsp;some&nbsp;actions&nbsp;before&nbsp;a&nbsp;model&nbsp;is&nbsp;deleted.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;delete_model&nbsp;in&nbsp;the&nbsp;same&nbsp;transaction<br>
+(if&nbsp;it&nbsp;has&nbsp;any&nbsp;meaning&nbsp;for&nbsp;a&nbsp;store&nbsp;backend).<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;do&nbsp;nothing.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-validate_form"><strong>validate_form</strong></a>(self, form)</dt><dd><tt>Validate&nbsp;the&nbsp;form&nbsp;on&nbsp;submit.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;to&nbsp;validate</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>:<br>
+<dl><dt><strong>action_disallowed_list</strong></dt>
+</dl>
+<dl><dt><strong>column_display_pk</strong></dt>
+</dl>
+<dl><dt><strong>column_formatters</strong></dt>
+</dl>
+<dl><dt><strong>column_labels</strong></dt>
+</dl>
+<dl><dt><strong>column_list</strong></dt>
+</dl>
+<dl><dt><strong>column_sortable_list</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>:<br>
+<dl><dt><strong>can_create</strong> = True</dl>
+
+<dl><dt><strong>can_delete</strong> = True</dl>
+
+<dl><dt><strong>can_edit</strong> = True</dl>
+
+<dl><dt><strong>column_editable_list</strong> = None</dl>
+
+<dl><dt><strong>form</strong> = None</dl>
+
+<dl><dt><strong>form_ajax_refs</strong> = None</dl>
+
+<dl><dt><strong>form_args</strong> = None</dl>
+
+<dl><dt><strong>form_base_class</strong> = &lt;class 'flask_admin.form.BaseForm'&gt;</dl>
+
+<dl><dt><strong>form_columns</strong> = None</dl>
+
+<dl><dt><strong>form_create_rules</strong> = None</dl>
+
+<dl><dt><strong>form_edit_rules</strong> = None</dl>
+
+<dl><dt><strong>form_extra_fields</strong> = None</dl>
+
+<dl><dt><strong>form_overrides</strong> = None</dl>
+
+<dl><dt><strong>form_rules</strong> = None</dl>
+
+<dl><dt><strong>form_widget_args</strong> = None</dl>
+
+<dl><dt><strong>named_filter_urls</strong> = False</dl>
+
+<dl><dt><strong>page_size</strong> = 20</dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.base.html#BaseView">flask_admin.base.BaseView</a>:<br>
+<dl><dt><a name="PreguntasView-create_blueprint"><strong>create_blueprint</strong></a>(self, admin)</dt><dd><tt>Create&nbsp;Flask&nbsp;blueprint.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-get_url"><strong>get_url</strong></a>(self, endpoint, **kwargs)</dt><dd><tt>Generate&nbsp;URL&nbsp;for&nbsp;the&nbsp;endpoint.&nbsp;If&nbsp;you&nbsp;want&nbsp;to&nbsp;customize&nbsp;URL&nbsp;generation<br>
+logic&nbsp;(persist&nbsp;some&nbsp;query&nbsp;string&nbsp;argument,&nbsp;for&nbsp;example),&nbsp;this&nbsp;is<br>
+right&nbsp;place&nbsp;to&nbsp;do&nbsp;it.<br>
+&nbsp;<br>
+:param&nbsp;endpoint:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Flask&nbsp;endpoint&nbsp;name<br>
+:param&nbsp;kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Arguments&nbsp;for&nbsp;`url_for`</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-inaccessible_callback"><strong>inaccessible_callback</strong></a>(self, name, **kwargs)</dt><dd><tt>Handle&nbsp;the&nbsp;response&nbsp;to&nbsp;inaccessible&nbsp;views.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;it&nbsp;throw&nbsp;HTTP&nbsp;403&nbsp;error.&nbsp;Override&nbsp;this&nbsp;method&nbsp;to<br>
+customize&nbsp;the&nbsp;behaviour.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-is_visible"><strong>is_visible</strong></a>(self)</dt><dd><tt>Override&nbsp;this&nbsp;method&nbsp;if&nbsp;you&nbsp;want&nbsp;dynamically&nbsp;hide&nbsp;or&nbsp;show&nbsp;administrative&nbsp;views<br>
+from&nbsp;Flask-Admin&nbsp;menu&nbsp;structure<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;item&nbsp;is&nbsp;visible&nbsp;in&nbsp;menu.<br>
+&nbsp;<br>
+Please&nbsp;note&nbsp;that&nbsp;item&nbsp;should&nbsp;be&nbsp;both&nbsp;visible&nbsp;and&nbsp;accessible&nbsp;to&nbsp;be&nbsp;displayed&nbsp;in&nbsp;menu.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-render"><strong>render</strong></a>(self, template, **kwargs)</dt><dd><tt>Render&nbsp;template<br>
+&nbsp;<br>
+:param&nbsp;template:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Template&nbsp;path&nbsp;to&nbsp;render<br>
+:param&nbsp;kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Template&nbsp;arguments</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_admin.base.html#BaseViewClass">flask_admin.base.BaseViewClass</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="flask_admin.actions.html#ActionsMixin">flask_admin.actions.ActionsMixin</a>:<br>
+<dl><dt><a name="PreguntasView-get_actions_list"><strong>get_actions_list</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;and&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;allowed&nbsp;actions.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-handle_action"><strong>handle_action</strong></a>(self, return_view<font color="#909090">=None</font>)</dt><dd><tt>Handle&nbsp;action&nbsp;request.<br>
+&nbsp;<br>
+:param&nbsp;return_view:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;of&nbsp;the&nbsp;view&nbsp;to&nbsp;return&nbsp;to&nbsp;after&nbsp;the&nbsp;request.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;not&nbsp;provided,&nbsp;will&nbsp;return&nbsp;user&nbsp;to&nbsp;the&nbsp;index&nbsp;view.</tt></dd></dl>
+
+<dl><dt><a name="PreguntasView-init_actions"><strong>init_actions</strong></a>(self)</dt><dd><tt>Initialize&nbsp;list&nbsp;of&nbsp;actions&nbsp;for&nbsp;the&nbsp;current&nbsp;administrative&nbsp;view.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="TemasView">class <strong>TemasView</strong></a>(<a href="admin.html#MyView">MyView</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Chapters&nbsp;View.&nbsp;Entry&nbsp;view&nbsp;which&nbsp;lets&nbsp;teachers&nbsp;manage&nbsp;the&nbsp;chapters&nbsp;in&nbsp;the&nbsp;system.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="admin.html#TemasView">TemasView</a></dd>
+<dd><a href="admin.html#MyView">MyView</a></dd>
+<dd><a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a></dd>
+<dd><a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a></dd>
+<dd><a href="flask_admin.base.html#BaseView">flask_admin.base.BaseView</a></dd>
+<dd><a href="flask_admin.base.html#BaseViewClass">flask_admin.base.BaseViewClass</a></dd>
+<dd><a href="flask_admin.actions.html#ActionsMixin">flask_admin.actions.ActionsMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="TemasView-action_view"><strong>action_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Mass-model&nbsp;action&nbsp;view.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-ajax_lookup"><strong>ajax_lookup</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="TemasView-ajax_update"><strong>ajax_update</strong></a>(self, *args, **kwargs)</dt><dd><tt>Edits&nbsp;a&nbsp;single&nbsp;column&nbsp;of&nbsp;a&nbsp;record&nbsp;in&nbsp;list&nbsp;view.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-api_file_view"><strong>api_file_view</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="TemasView-create_view"><strong>create_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Create&nbsp;model&nbsp;view</tt></dd></dl>
+
+<dl><dt><a name="TemasView-delete_view"><strong>delete_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Delete&nbsp;model&nbsp;view.&nbsp;Only&nbsp;POST&nbsp;method&nbsp;is&nbsp;allowed.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-edit_view"><strong>edit_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Edit&nbsp;model&nbsp;view</tt></dd></dl>
+
+<dl><dt><a name="TemasView-index_view"><strong>index_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>List&nbsp;view</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>column_default_sort</strong> = ('asignatura', 'num')</dl>
+
+<dl><dt><strong>column_labels</strong> = {'descripcion': u'Descripci<font color="#c040c0">\xf3</font>n', 'num': u'N<font color="#c040c0">\xfa</font>mero'}</dl>
+
+<hr>
+Methods inherited from <a href="admin.html#MyView">MyView</a>:<br>
+<dl><dt><a name="TemasView-is_accessible"><strong>is_accessible</strong></a>(self)</dt><dd><tt>#&nbsp;these&nbsp;views&nbsp;only&nbsp;be&nbsp;accessible&nbsp;by&nbsp;teachers</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="admin.html#MyView">MyView</a>:<br>
+<dl><dt><strong>column_exclude_list</strong> = 'usuario'</dl>
+
+<dl><dt><strong>create_template</strong> = 'admin/create.html'</dl>
+
+<dl><dt><strong>edit_template</strong> = 'admin/edit.html'</dl>
+
+<dl><dt><strong>form_excluded_columns</strong> = 'usuario'</dl>
+
+<dl><dt><strong>list_template</strong> = 'admin/list.html'</dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a>:<br>
+<dl><dt><a name="TemasView-__init__"><strong>__init__</strong></a>(self, model, name<font color="#909090">=None</font>, category<font color="#909090">=None</font>, endpoint<font color="#909090">=None</font>, url<font color="#909090">=None</font>, static_folder<font color="#909090">=None</font>, menu_class_name<font color="#909090">=None</font>, menu_icon_type<font color="#909090">=None</font>, menu_icon_value<font color="#909090">=None</font>)</dt><dd><tt>Constructor<br>
+&nbsp;<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;class<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Display&nbsp;name<br>
+:param&nbsp;category:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Display&nbsp;category<br>
+:param&nbsp;endpoint:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Endpoint<br>
+:param&nbsp;url:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Custom&nbsp;URL<br>
+:param&nbsp;menu_class_name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Optional&nbsp;class&nbsp;name&nbsp;for&nbsp;the&nbsp;menu&nbsp;item.<br>
+:param&nbsp;menu_icon_type:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Optional&nbsp;icon.&nbsp;Possible&nbsp;icon&nbsp;types:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;`flask.ext.admin.consts.ICON_TYPE_GLYPH`&nbsp;-&nbsp;Bootstrap&nbsp;glyph&nbsp;icon<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;`flask.ext.admin.consts.ICON_TYPE_IMAGE`&nbsp;-&nbsp;Image&nbsp;relative&nbsp;to&nbsp;Flask&nbsp;static&nbsp;directory<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;`flask.ext.admin.consts.ICON_TYPE_IMAGE_URL`&nbsp;-&nbsp;Image&nbsp;with&nbsp;full&nbsp;URL<br>
+&nbsp;<br>
+:param&nbsp;menu_icon_value:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Icon&nbsp;glyph&nbsp;name&nbsp;or&nbsp;URL,&nbsp;depending&nbsp;on&nbsp;`menu_icon_type`&nbsp;setting</tt></dd></dl>
+
+<dl><dt><a name="TemasView-action_delete"><strong>action_delete</strong></a>(self, ids)</dt></dl>
+
+<dl><dt><a name="TemasView-create_model"><strong>create_model</strong></a>(self, form)</dt><dd><tt>Create&nbsp;model&nbsp;helper<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="TemasView-delete_model"><strong>delete_model</strong></a>(self, model)</dt><dd><tt>Delete&nbsp;model&nbsp;helper<br>
+&nbsp;<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_list"><strong>get_list</strong></a>(self, page, sort_column, sort_desc, search, filters, execute<font color="#909090">=True</font>)</dt><dd><tt>Get&nbsp;list&nbsp;of&nbsp;objects&nbsp;from&nbsp;MongoEngine<br>
+&nbsp;<br>
+:param&nbsp;page:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Page&nbsp;number<br>
+:param&nbsp;sort_column:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sort&nbsp;column<br>
+:param&nbsp;sort_desc:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sort&nbsp;descending<br>
+:param&nbsp;search:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Search&nbsp;criteria<br>
+:param&nbsp;filters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;applied&nbsp;filters<br>
+:param&nbsp;execute:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Run&nbsp;query&nbsp;immediately&nbsp;or&nbsp;not</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_one"><strong>get_one</strong></a>(self, id)</dt><dd><tt>Return&nbsp;a&nbsp;single&nbsp;model&nbsp;instance&nbsp;by&nbsp;its&nbsp;ID<br>
+&nbsp;<br>
+:param&nbsp;id:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;ID</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_pk_value"><strong>get_pk_value</strong></a>(self, model)</dt><dd><tt>Return&nbsp;the&nbsp;primary&nbsp;key&nbsp;value&nbsp;from&nbsp;the&nbsp;model&nbsp;instance<br>
+&nbsp;<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_query"><strong>get_query</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;QuerySet&nbsp;for&nbsp;this&nbsp;view.&nbsp;&nbsp;By&nbsp;default,&nbsp;it&nbsp;returns&nbsp;all&nbsp;the<br>
+objects&nbsp;for&nbsp;the&nbsp;current&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-init_search"><strong>init_search</strong></a>(self)</dt><dd><tt>Init&nbsp;search</tt></dd></dl>
+
+<dl><dt><a name="TemasView-is_action_allowed"><strong>is_action_allowed</strong></a>(self, name)</dt><dd><tt>#&nbsp;Default&nbsp;model&nbsp;actions</tt></dd></dl>
+
+<dl><dt><a name="TemasView-is_valid_filter"><strong>is_valid_filter</strong></a>(self, filter)</dt><dd><tt>Validate&nbsp;if&nbsp;the&nbsp;provided&nbsp;filter&nbsp;is&nbsp;a&nbsp;valid&nbsp;MongoEngine&nbsp;filter<br>
+&nbsp;<br>
+:param&nbsp;filter:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="TemasView-scaffold_filters"><strong>scaffold_filters</strong></a>(self, name)</dt><dd><tt>Return&nbsp;filter&nbsp;object(s)&nbsp;for&nbsp;the&nbsp;field<br>
+&nbsp;<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Either&nbsp;field&nbsp;name&nbsp;or&nbsp;field&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="TemasView-scaffold_form"><strong>scaffold_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;from&nbsp;the&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-scaffold_list_columns"><strong>scaffold_list_columns</strong></a>(self)</dt><dd><tt>Scaffold&nbsp;list&nbsp;columns</tt></dd></dl>
+
+<dl><dt><a name="TemasView-scaffold_list_form"><strong>scaffold_list_form</strong></a>(self, custom_fieldlist<font color="#909090">=&lt;class 'flask_admin.model.fields.ListEditableFieldList'&gt;</font>, validators<font color="#909090">=None</font>)</dt><dd><tt>Create&nbsp;form&nbsp;for&nbsp;the&nbsp;`index_view`&nbsp;using&nbsp;only&nbsp;the&nbsp;columns&nbsp;from<br>
+`self.<strong>column_editable_list</strong>`.<br>
+&nbsp;<br>
+:param&nbsp;validators:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`form_args`&nbsp;dict&nbsp;with&nbsp;only&nbsp;validators<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'name':&nbsp;{'validators':&nbsp;[required()]}}<br>
+:param&nbsp;custom_fieldlist:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;WTForm&nbsp;FieldList&nbsp;class.&nbsp;By&nbsp;default,&nbsp;`ListEditableFieldList`.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-scaffold_pk"><strong>scaffold_pk</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TemasView-scaffold_sortable_columns"><strong>scaffold_sortable_columns</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;sortable&nbsp;columns&nbsp;(name,&nbsp;field)</tt></dd></dl>
+
+<dl><dt><a name="TemasView-update_model"><strong>update_model</strong></a>(self, form, model)</dt><dd><tt>Update&nbsp;model&nbsp;helper<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;instance<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance&nbsp;to&nbsp;update</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a>:<br>
+<dl><dt><strong>allowed_search_types</strong> = (&lt;class 'mongoengine.fields.StringField'&gt;, &lt;class 'mongoengine.fields.URLField'&gt;, &lt;class 'mongoengine.fields.EmailField'&gt;)</dl>
+
+<dl><dt><strong>column_filters</strong> = None</dl>
+
+<dl><dt><strong>column_type_formatters</strong> = {&lt;type 'bool'&gt;: &lt;function bool_formatter&gt;, &lt;type 'NoneType'&gt;: &lt;function empty_formatter&gt;, &lt;type 'list'&gt;: &lt;function list_formatter&gt;, &lt;class 'mongoengine.base.datastructures.BaseList'&gt;: &lt;function list_formatter&gt;, &lt;class 'mongoengine.fields.GridFSProxy'&gt;: &lt;function grid_formatter&gt;, &lt;class 'mongoengine.fields.ImageGridFsProxy'&gt;: &lt;function grid_image_formatter&gt;}</dl>
+
+<dl><dt><strong>filter_converter</strong> = &lt;flask_admin.contrib.mongoengine.filters.FilterConverter object&gt;</dl>
+
+<dl><dt><strong>form_subdocuments</strong> = None</dl>
+
+<dl><dt><strong>model_form_converter</strong> = &lt;class 'flask_admin.contrib.mongoengine.form.CustomModelConverter'&gt;<dd><tt>Customized&nbsp;MongoEngine&nbsp;form&nbsp;conversion&nbsp;class.<br>
+&nbsp;<br>
+Injects&nbsp;various&nbsp;Flask-Admin&nbsp;widgets&nbsp;and&nbsp;handles&nbsp;lists&nbsp;with<br>
+customized&nbsp;InlineFieldList&nbsp;field.</tt></dl>
+
+<dl><dt><strong>object_id_converter</strong> = &lt;class 'bson.objectid.ObjectId'&gt;<dd><tt>A&nbsp;MongoDB&nbsp;ObjectId.</tt></dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>:<br>
+<dl><dt><a name="TemasView-after_model_change"><strong>after_model_change</strong></a>(self, form, model, is_created)</dt><dd><tt>Perform&nbsp;some&nbsp;actions&nbsp;after&nbsp;a&nbsp;model&nbsp;was&nbsp;created&nbsp;or&nbsp;updated&nbsp;and<br>
+committed&nbsp;to&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;create_model&nbsp;after&nbsp;successful&nbsp;database&nbsp;commit.<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;does&nbsp;nothing.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;used&nbsp;to&nbsp;create/update&nbsp;model<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;that&nbsp;was&nbsp;created/updated<br>
+:param&nbsp;is_created:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;model&nbsp;was&nbsp;created,&nbsp;False&nbsp;if&nbsp;model&nbsp;was&nbsp;updated</tt></dd></dl>
+
+<dl><dt><a name="TemasView-create_form"><strong>create_form</strong></a>(self, obj<font color="#909090">=None</font>)</dt><dd><tt>Instantiate&nbsp;model&nbsp;creation&nbsp;form&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-delete_form"><strong>delete_form</strong></a>(self)</dt><dd><tt>Instantiate&nbsp;model&nbsp;delete&nbsp;form&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.<br>
+&nbsp;<br>
+The&nbsp;delete&nbsp;form&nbsp;originally&nbsp;used&nbsp;a&nbsp;GET&nbsp;request,&nbsp;so&nbsp;delete_form<br>
+accepts&nbsp;both&nbsp;GET&nbsp;and&nbsp;POST&nbsp;request&nbsp;for&nbsp;backwards&nbsp;compatibility.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-edit_form"><strong>edit_form</strong></a>(self, obj<font color="#909090">=None</font>)</dt><dd><tt>Instantiate&nbsp;model&nbsp;editing&nbsp;form&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_column_name"><strong>get_column_name</strong></a>(self, field)</dt><dd><tt>Return&nbsp;a&nbsp;human-readable&nbsp;column&nbsp;name.<br>
+&nbsp;<br>
+:param&nbsp;field:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;field&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_create_form"><strong>get_create_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;class&nbsp;for&nbsp;model&nbsp;creation&nbsp;view.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_delete_form"><strong>get_delete_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;class&nbsp;for&nbsp;model&nbsp;delete&nbsp;view.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_edit_form"><strong>get_edit_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;class&nbsp;for&nbsp;model&nbsp;editing&nbsp;view.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_empty_list_message"><strong>get_empty_list_message</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TemasView-get_filter_arg"><strong>get_filter_arg</strong></a>(self, index, flt)</dt><dd><tt>Given&nbsp;a&nbsp;filter&nbsp;`flt`,&nbsp;return&nbsp;a&nbsp;unique&nbsp;name&nbsp;for&nbsp;that&nbsp;filter&nbsp;in<br>
+this&nbsp;view.<br>
+&nbsp;<br>
+Does&nbsp;not&nbsp;include&nbsp;the&nbsp;`flt[n]_`&nbsp;portion&nbsp;of&nbsp;the&nbsp;filter&nbsp;name.<br>
+&nbsp;<br>
+:param&nbsp;index:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;index&nbsp;in&nbsp;_filters&nbsp;array<br>
+:param&nbsp;flt:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_filters"><strong>get_filters</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;of&nbsp;filter&nbsp;objects.<br>
+&nbsp;<br>
+If&nbsp;your&nbsp;model&nbsp;backend&nbsp;implementation&nbsp;does&nbsp;not&nbsp;support&nbsp;filters,<br>
+override&nbsp;this&nbsp;method&nbsp;and&nbsp;return&nbsp;`None`.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_form"><strong>get_form</strong></a>(self)</dt><dd><tt>Get&nbsp;form&nbsp;class.<br>
+&nbsp;<br>
+If&nbsp;``self.<strong>form</strong>``&nbsp;is&nbsp;set,&nbsp;will&nbsp;return&nbsp;it&nbsp;and&nbsp;will&nbsp;call<br>
+``self.<strong>scaffold_form</strong>``&nbsp;otherwise.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_list_columns"><strong>get_list_columns</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;model&nbsp;field&nbsp;names.&nbsp;If&nbsp;`column_list`&nbsp;was<br>
+set,&nbsp;returns&nbsp;it.&nbsp;Otherwise&nbsp;calls&nbsp;`scaffold_list_columns`<br>
+to&nbsp;generate&nbsp;the&nbsp;list&nbsp;from&nbsp;the&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_list_form"><strong>get_list_form</strong></a>(self)</dt><dd><tt>Get&nbsp;form&nbsp;class&nbsp;for&nbsp;the&nbsp;editable&nbsp;list&nbsp;view.<br>
+&nbsp;<br>
+Uses&nbsp;only&nbsp;validators&nbsp;from&nbsp;`form_args`&nbsp;to&nbsp;build&nbsp;the&nbsp;form&nbsp;class.<br>
+&nbsp;<br>
+Allows&nbsp;overriding&nbsp;the&nbsp;editable&nbsp;list&nbsp;view&nbsp;field/widget.&nbsp;For&nbsp;example::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;flask.ext.admin.model.fields&nbsp;import&nbsp;ListEditableFieldList<br>
+&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;flask.ext.admin.model.widgets&nbsp;import&nbsp;XEditableWidget<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;CustomWidget(XEditableWidget):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;get_kwargs(self,&nbsp;subfield,&nbsp;kwargs):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;subfield.type&nbsp;==&nbsp;'TextAreaField':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kwargs['data-type']&nbsp;=&nbsp;'textarea'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kwargs['data-rows']&nbsp;=&nbsp;'20'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;elif:&nbsp;kwargs&nbsp;for&nbsp;other&nbsp;fields<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;kwargs<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;CustomFieldList(ListEditableFieldList):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;widget&nbsp;=&nbsp;CustomWidget()<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;MyModelView(BaseModelView):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;<a href="#TemasView-get_list_form">get_list_form</a>(self):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;<a href="#TemasView-scaffold_list_form">scaffold_list_form</a>(CustomFieldList)</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_list_value"><strong>get_list_value</strong></a>(self, context, model, name)</dt><dd><tt>Returns&nbsp;the&nbsp;value&nbsp;to&nbsp;be&nbsp;displayed&nbsp;in&nbsp;the&nbsp;list&nbsp;view<br>
+&nbsp;<br>
+:param&nbsp;context:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:py:class:`jinja2.runtime.Context`<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Field&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_sortable_columns"><strong>get_sortable_columns</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;the&nbsp;sortable&nbsp;columns.&nbsp;Key&nbsp;is&nbsp;a&nbsp;model<br>
+field&nbsp;name&nbsp;and&nbsp;value&nbsp;is&nbsp;sort&nbsp;column&nbsp;(for&nbsp;example&nbsp;-&nbsp;attribute).<br>
+&nbsp;<br>
+If&nbsp;`column_sortable_list`&nbsp;is&nbsp;set,&nbsp;will&nbsp;use&nbsp;it.&nbsp;Otherwise,&nbsp;will&nbsp;call<br>
+`scaffold_sortable_columns`&nbsp;to&nbsp;get&nbsp;them&nbsp;from&nbsp;the&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-handle_filter"><strong>handle_filter</strong></a>(self, filter)</dt><dd><tt>Postprocess&nbsp;(add&nbsp;joins,&nbsp;etc)&nbsp;for&nbsp;a&nbsp;filter.<br>
+&nbsp;<br>
+:param&nbsp;filter:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;object&nbsp;to&nbsp;postprocess</tt></dd></dl>
+
+<dl><dt><a name="TemasView-handle_view_exception"><strong>handle_view_exception</strong></a>(self, exc)</dt><dd><tt>#&nbsp;Exception&nbsp;handler</tt></dd></dl>
+
+<dl><dt><a name="TemasView-is_editable"><strong>is_editable</strong></a>(self, name)</dt><dd><tt>Verify&nbsp;if&nbsp;column&nbsp;is&nbsp;editable.<br>
+&nbsp;<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Column&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-is_sortable"><strong>is_sortable</strong></a>(self, name)</dt><dd><tt>Verify&nbsp;if&nbsp;column&nbsp;is&nbsp;sortable.<br>
+&nbsp;<br>
+Not&nbsp;case-sensitive.<br>
+&nbsp;<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Column&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-list_form"><strong>list_form</strong></a>(self, obj<font color="#909090">=None</font>)</dt><dd><tt>Instantiate&nbsp;model&nbsp;editing&nbsp;form&nbsp;for&nbsp;list&nbsp;view&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-on_form_prefill"><strong>on_form_prefill</strong></a>(self, form, id)</dt><dd><tt>Perform&nbsp;additional&nbsp;actions&nbsp;to&nbsp;pre-fill&nbsp;the&nbsp;edit&nbsp;form.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;edit_view,&nbsp;if&nbsp;the&nbsp;current&nbsp;action&nbsp;is&nbsp;rendering<br>
+the&nbsp;form&nbsp;rather&nbsp;than&nbsp;receiving&nbsp;client&nbsp;side&nbsp;input,&nbsp;after<br>
+default&nbsp;pre-filling&nbsp;has&nbsp;been&nbsp;performed.<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;does&nbsp;nothing.<br>
+&nbsp;<br>
+You&nbsp;only&nbsp;need&nbsp;to&nbsp;override&nbsp;this&nbsp;if&nbsp;you&nbsp;have&nbsp;added&nbsp;custom<br>
+fields&nbsp;that&nbsp;depend&nbsp;on&nbsp;the&nbsp;database&nbsp;contents&nbsp;in&nbsp;a&nbsp;way&nbsp;that<br>
+Flask-admin&nbsp;can't&nbsp;figure&nbsp;out&nbsp;by&nbsp;itself.&nbsp;Fields&nbsp;that&nbsp;were<br>
+added&nbsp;by&nbsp;name&nbsp;of&nbsp;a&nbsp;normal&nbsp;column&nbsp;or&nbsp;relationship&nbsp;should<br>
+work&nbsp;out&nbsp;of&nbsp;the&nbsp;box.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;instance<br>
+:param&nbsp;id:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;of&nbsp;the&nbsp;object&nbsp;that&nbsp;is&nbsp;going&nbsp;to&nbsp;be&nbsp;edited</tt></dd></dl>
+
+<dl><dt><a name="TemasView-on_model_change"><strong>on_model_change</strong></a>(self, form, model, is_created)</dt><dd><tt>Perform&nbsp;some&nbsp;actions&nbsp;after&nbsp;a&nbsp;model&nbsp;is&nbsp;created&nbsp;or&nbsp;updated.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;create_model&nbsp;and&nbsp;update_model&nbsp;in&nbsp;the&nbsp;same&nbsp;transaction<br>
+(if&nbsp;it&nbsp;has&nbsp;any&nbsp;meaning&nbsp;for&nbsp;a&nbsp;store&nbsp;backend).<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;does&nbsp;nothing.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;used&nbsp;to&nbsp;create/update&nbsp;model<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;that&nbsp;will&nbsp;be&nbsp;created/updated<br>
+:param&nbsp;is_created:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Will&nbsp;be&nbsp;set&nbsp;to&nbsp;True&nbsp;if&nbsp;model&nbsp;was&nbsp;created&nbsp;and&nbsp;to&nbsp;False&nbsp;if&nbsp;edited</tt></dd></dl>
+
+<dl><dt><a name="TemasView-on_model_delete"><strong>on_model_delete</strong></a>(self, model)</dt><dd><tt>Perform&nbsp;some&nbsp;actions&nbsp;before&nbsp;a&nbsp;model&nbsp;is&nbsp;deleted.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;delete_model&nbsp;in&nbsp;the&nbsp;same&nbsp;transaction<br>
+(if&nbsp;it&nbsp;has&nbsp;any&nbsp;meaning&nbsp;for&nbsp;a&nbsp;store&nbsp;backend).<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;do&nbsp;nothing.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-validate_form"><strong>validate_form</strong></a>(self, form)</dt><dd><tt>Validate&nbsp;the&nbsp;form&nbsp;on&nbsp;submit.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;to&nbsp;validate</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>:<br>
+<dl><dt><strong>action_disallowed_list</strong></dt>
+</dl>
+<dl><dt><strong>column_display_pk</strong></dt>
+</dl>
+<dl><dt><strong>column_formatters</strong></dt>
+</dl>
+<dl><dt><strong>column_list</strong></dt>
+</dl>
+<dl><dt><strong>column_searchable_list</strong></dt>
+</dl>
+<dl><dt><strong>column_sortable_list</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>:<br>
+<dl><dt><strong>can_create</strong> = True</dl>
+
+<dl><dt><strong>can_delete</strong> = True</dl>
+
+<dl><dt><strong>can_edit</strong> = True</dl>
+
+<dl><dt><strong>column_choices</strong> = None</dl>
+
+<dl><dt><strong>column_descriptions</strong> = None</dl>
+
+<dl><dt><strong>column_editable_list</strong> = None</dl>
+
+<dl><dt><strong>form</strong> = None</dl>
+
+<dl><dt><strong>form_ajax_refs</strong> = None</dl>
+
+<dl><dt><strong>form_args</strong> = None</dl>
+
+<dl><dt><strong>form_base_class</strong> = &lt;class 'flask_admin.form.BaseForm'&gt;</dl>
+
+<dl><dt><strong>form_columns</strong> = None</dl>
+
+<dl><dt><strong>form_create_rules</strong> = None</dl>
+
+<dl><dt><strong>form_edit_rules</strong> = None</dl>
+
+<dl><dt><strong>form_extra_fields</strong> = None</dl>
+
+<dl><dt><strong>form_overrides</strong> = None</dl>
+
+<dl><dt><strong>form_rules</strong> = None</dl>
+
+<dl><dt><strong>form_widget_args</strong> = None</dl>
+
+<dl><dt><strong>named_filter_urls</strong> = False</dl>
+
+<dl><dt><strong>page_size</strong> = 20</dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.base.html#BaseView">flask_admin.base.BaseView</a>:<br>
+<dl><dt><a name="TemasView-create_blueprint"><strong>create_blueprint</strong></a>(self, admin)</dt><dd><tt>Create&nbsp;Flask&nbsp;blueprint.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-get_url"><strong>get_url</strong></a>(self, endpoint, **kwargs)</dt><dd><tt>Generate&nbsp;URL&nbsp;for&nbsp;the&nbsp;endpoint.&nbsp;If&nbsp;you&nbsp;want&nbsp;to&nbsp;customize&nbsp;URL&nbsp;generation<br>
+logic&nbsp;(persist&nbsp;some&nbsp;query&nbsp;string&nbsp;argument,&nbsp;for&nbsp;example),&nbsp;this&nbsp;is<br>
+right&nbsp;place&nbsp;to&nbsp;do&nbsp;it.<br>
+&nbsp;<br>
+:param&nbsp;endpoint:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Flask&nbsp;endpoint&nbsp;name<br>
+:param&nbsp;kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Arguments&nbsp;for&nbsp;`url_for`</tt></dd></dl>
+
+<dl><dt><a name="TemasView-inaccessible_callback"><strong>inaccessible_callback</strong></a>(self, name, **kwargs)</dt><dd><tt>Handle&nbsp;the&nbsp;response&nbsp;to&nbsp;inaccessible&nbsp;views.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;it&nbsp;throw&nbsp;HTTP&nbsp;403&nbsp;error.&nbsp;Override&nbsp;this&nbsp;method&nbsp;to<br>
+customize&nbsp;the&nbsp;behaviour.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-is_visible"><strong>is_visible</strong></a>(self)</dt><dd><tt>Override&nbsp;this&nbsp;method&nbsp;if&nbsp;you&nbsp;want&nbsp;dynamically&nbsp;hide&nbsp;or&nbsp;show&nbsp;administrative&nbsp;views<br>
+from&nbsp;Flask-Admin&nbsp;menu&nbsp;structure<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;item&nbsp;is&nbsp;visible&nbsp;in&nbsp;menu.<br>
+&nbsp;<br>
+Please&nbsp;note&nbsp;that&nbsp;item&nbsp;should&nbsp;be&nbsp;both&nbsp;visible&nbsp;and&nbsp;accessible&nbsp;to&nbsp;be&nbsp;displayed&nbsp;in&nbsp;menu.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-render"><strong>render</strong></a>(self, template, **kwargs)</dt><dd><tt>Render&nbsp;template<br>
+&nbsp;<br>
+:param&nbsp;template:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Template&nbsp;path&nbsp;to&nbsp;render<br>
+:param&nbsp;kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Template&nbsp;arguments</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_admin.base.html#BaseViewClass">flask_admin.base.BaseViewClass</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="flask_admin.actions.html#ActionsMixin">flask_admin.actions.ActionsMixin</a>:<br>
+<dl><dt><a name="TemasView-get_actions_list"><strong>get_actions_list</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;and&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;allowed&nbsp;actions.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-handle_action"><strong>handle_action</strong></a>(self, return_view<font color="#909090">=None</font>)</dt><dd><tt>Handle&nbsp;action&nbsp;request.<br>
+&nbsp;<br>
+:param&nbsp;return_view:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;of&nbsp;the&nbsp;view&nbsp;to&nbsp;return&nbsp;to&nbsp;after&nbsp;the&nbsp;request.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;not&nbsp;provided,&nbsp;will&nbsp;return&nbsp;user&nbsp;to&nbsp;the&nbsp;index&nbsp;view.</tt></dd></dl>
+
+<dl><dt><a name="TemasView-init_actions"><strong>init_actions</strong></a>(self)</dt><dd><tt>Initialize&nbsp;list&nbsp;of&nbsp;actions&nbsp;for&nbsp;the&nbsp;current&nbsp;administrative&nbsp;view.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="UserView">class <strong>UserView</strong></a>(<a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Users&nbsp;View.&nbsp;Entry&nbsp;view&nbsp;which&nbsp;lets&nbsp;us&nbsp;manage&nbsp;the&nbsp;users&nbsp;in&nbsp;the&nbsp;system.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="admin.html#UserView">UserView</a></dd>
+<dd><a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a></dd>
+<dd><a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a></dd>
+<dd><a href="flask_admin.base.html#BaseView">flask_admin.base.BaseView</a></dd>
+<dd><a href="flask_admin.base.html#BaseViewClass">flask_admin.base.BaseViewClass</a></dd>
+<dd><a href="flask_admin.actions.html#ActionsMixin">flask_admin.actions.ActionsMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="UserView-action_view"><strong>action_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Mass-model&nbsp;action&nbsp;view.</tt></dd></dl>
+
+<dl><dt><a name="UserView-ajax_lookup"><strong>ajax_lookup</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="UserView-ajax_update"><strong>ajax_update</strong></a>(self, *args, **kwargs)</dt><dd><tt>Edits&nbsp;a&nbsp;single&nbsp;column&nbsp;of&nbsp;a&nbsp;record&nbsp;in&nbsp;list&nbsp;view.</tt></dd></dl>
+
+<dl><dt><a name="UserView-api_file_view"><strong>api_file_view</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="UserView-create_view"><strong>create_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Create&nbsp;model&nbsp;view</tt></dd></dl>
+
+<dl><dt><a name="UserView-delete_view"><strong>delete_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Delete&nbsp;model&nbsp;view.&nbsp;Only&nbsp;POST&nbsp;method&nbsp;is&nbsp;allowed.</tt></dd></dl>
+
+<dl><dt><a name="UserView-edit_view"><strong>edit_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>Edit&nbsp;model&nbsp;view</tt></dd></dl>
+
+<dl><dt><a name="UserView-index_view"><strong>index_view</strong></a>(self, *args, **kwargs)</dt><dd><tt>List&nbsp;view</tt></dd></dl>
+
+<dl><dt><a name="UserView-is_accessible"><strong>is_accessible</strong></a>(self)</dt><dd><tt>#&nbsp;this&nbsp;view&nbsp;is&nbsp;only&nbsp;accessible&nbsp;by&nbsp;administrators</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>can_create</strong> = False</dl>
+
+<dl><dt><strong>column_choices</strong> = {'tipo': [(0, 'Administrador'), (1, 'Profesor'), (2, 'Alumno')]}</dl>
+
+<dl><dt><strong>column_descriptions</strong> = {'activado': u'El usuario debe ser activado por el administrador para acceder a la aplicaci<font color="#c040c0">\xf3</font>n', 'tipo': u'Administrador, profesor o alumno', 'usuario': u'Nombre de entrada a la aplicaci<font color="#c040c0">\xf3</font>n'}</dl>
+
+<dl><dt><strong>column_exclude_list</strong> = 'password'</dl>
+
+<dl><dt><strong>column_filters</strong> = ['usuario', 'nombre']</dl>
+
+<dl><dt><strong>column_searchable_list</strong> = ('nombre', 'usuario', 'email')</dl>
+
+<dl><dt><strong>edit_template</strong> = 'admin/edit.html'</dl>
+
+<dl><dt><strong>form_excluded_columns</strong> = 'password'</dl>
+
+<dl><dt><strong>list_template</strong> = 'admin/list.html'</dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a>:<br>
+<dl><dt><a name="UserView-__init__"><strong>__init__</strong></a>(self, model, name<font color="#909090">=None</font>, category<font color="#909090">=None</font>, endpoint<font color="#909090">=None</font>, url<font color="#909090">=None</font>, static_folder<font color="#909090">=None</font>, menu_class_name<font color="#909090">=None</font>, menu_icon_type<font color="#909090">=None</font>, menu_icon_value<font color="#909090">=None</font>)</dt><dd><tt>Constructor<br>
+&nbsp;<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;class<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Display&nbsp;name<br>
+:param&nbsp;category:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Display&nbsp;category<br>
+:param&nbsp;endpoint:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Endpoint<br>
+:param&nbsp;url:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Custom&nbsp;URL<br>
+:param&nbsp;menu_class_name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Optional&nbsp;class&nbsp;name&nbsp;for&nbsp;the&nbsp;menu&nbsp;item.<br>
+:param&nbsp;menu_icon_type:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Optional&nbsp;icon.&nbsp;Possible&nbsp;icon&nbsp;types:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;`flask.ext.admin.consts.ICON_TYPE_GLYPH`&nbsp;-&nbsp;Bootstrap&nbsp;glyph&nbsp;icon<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;`flask.ext.admin.consts.ICON_TYPE_IMAGE`&nbsp;-&nbsp;Image&nbsp;relative&nbsp;to&nbsp;Flask&nbsp;static&nbsp;directory<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;`flask.ext.admin.consts.ICON_TYPE_IMAGE_URL`&nbsp;-&nbsp;Image&nbsp;with&nbsp;full&nbsp;URL<br>
+&nbsp;<br>
+:param&nbsp;menu_icon_value:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Icon&nbsp;glyph&nbsp;name&nbsp;or&nbsp;URL,&nbsp;depending&nbsp;on&nbsp;`menu_icon_type`&nbsp;setting</tt></dd></dl>
+
+<dl><dt><a name="UserView-action_delete"><strong>action_delete</strong></a>(self, ids)</dt></dl>
+
+<dl><dt><a name="UserView-create_model"><strong>create_model</strong></a>(self, form)</dt><dd><tt>Create&nbsp;model&nbsp;helper<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="UserView-delete_model"><strong>delete_model</strong></a>(self, model)</dt><dd><tt>Delete&nbsp;model&nbsp;helper<br>
+&nbsp;<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_list"><strong>get_list</strong></a>(self, page, sort_column, sort_desc, search, filters, execute<font color="#909090">=True</font>)</dt><dd><tt>Get&nbsp;list&nbsp;of&nbsp;objects&nbsp;from&nbsp;MongoEngine<br>
+&nbsp;<br>
+:param&nbsp;page:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Page&nbsp;number<br>
+:param&nbsp;sort_column:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sort&nbsp;column<br>
+:param&nbsp;sort_desc:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Sort&nbsp;descending<br>
+:param&nbsp;search:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Search&nbsp;criteria<br>
+:param&nbsp;filters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;applied&nbsp;filters<br>
+:param&nbsp;execute:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Run&nbsp;query&nbsp;immediately&nbsp;or&nbsp;not</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_one"><strong>get_one</strong></a>(self, id)</dt><dd><tt>Return&nbsp;a&nbsp;single&nbsp;model&nbsp;instance&nbsp;by&nbsp;its&nbsp;ID<br>
+&nbsp;<br>
+:param&nbsp;id:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;ID</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_pk_value"><strong>get_pk_value</strong></a>(self, model)</dt><dd><tt>Return&nbsp;the&nbsp;primary&nbsp;key&nbsp;value&nbsp;from&nbsp;the&nbsp;model&nbsp;instance<br>
+&nbsp;<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_query"><strong>get_query</strong></a>(self)</dt><dd><tt>Returns&nbsp;the&nbsp;QuerySet&nbsp;for&nbsp;this&nbsp;view.&nbsp;&nbsp;By&nbsp;default,&nbsp;it&nbsp;returns&nbsp;all&nbsp;the<br>
+objects&nbsp;for&nbsp;the&nbsp;current&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="UserView-init_search"><strong>init_search</strong></a>(self)</dt><dd><tt>Init&nbsp;search</tt></dd></dl>
+
+<dl><dt><a name="UserView-is_action_allowed"><strong>is_action_allowed</strong></a>(self, name)</dt><dd><tt>#&nbsp;Default&nbsp;model&nbsp;actions</tt></dd></dl>
+
+<dl><dt><a name="UserView-is_valid_filter"><strong>is_valid_filter</strong></a>(self, filter)</dt><dd><tt>Validate&nbsp;if&nbsp;the&nbsp;provided&nbsp;filter&nbsp;is&nbsp;a&nbsp;valid&nbsp;MongoEngine&nbsp;filter<br>
+&nbsp;<br>
+:param&nbsp;filter:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="UserView-scaffold_filters"><strong>scaffold_filters</strong></a>(self, name)</dt><dd><tt>Return&nbsp;filter&nbsp;object(s)&nbsp;for&nbsp;the&nbsp;field<br>
+&nbsp;<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Either&nbsp;field&nbsp;name&nbsp;or&nbsp;field&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="UserView-scaffold_form"><strong>scaffold_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;from&nbsp;the&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="UserView-scaffold_list_columns"><strong>scaffold_list_columns</strong></a>(self)</dt><dd><tt>Scaffold&nbsp;list&nbsp;columns</tt></dd></dl>
+
+<dl><dt><a name="UserView-scaffold_list_form"><strong>scaffold_list_form</strong></a>(self, custom_fieldlist<font color="#909090">=&lt;class 'flask_admin.model.fields.ListEditableFieldList'&gt;</font>, validators<font color="#909090">=None</font>)</dt><dd><tt>Create&nbsp;form&nbsp;for&nbsp;the&nbsp;`index_view`&nbsp;using&nbsp;only&nbsp;the&nbsp;columns&nbsp;from<br>
+`self.<strong>column_editable_list</strong>`.<br>
+&nbsp;<br>
+:param&nbsp;validators:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`form_args`&nbsp;dict&nbsp;with&nbsp;only&nbsp;validators<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{'name':&nbsp;{'validators':&nbsp;[required()]}}<br>
+:param&nbsp;custom_fieldlist:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;WTForm&nbsp;FieldList&nbsp;class.&nbsp;By&nbsp;default,&nbsp;`ListEditableFieldList`.</tt></dd></dl>
+
+<dl><dt><a name="UserView-scaffold_pk"><strong>scaffold_pk</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="UserView-scaffold_sortable_columns"><strong>scaffold_sortable_columns</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;sortable&nbsp;columns&nbsp;(name,&nbsp;field)</tt></dd></dl>
+
+<dl><dt><a name="UserView-update_model"><strong>update_model</strong></a>(self, form, model)</dt><dd><tt>Update&nbsp;model&nbsp;helper<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;instance<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance&nbsp;to&nbsp;update</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="flask_admin.contrib.mongoengine.view.html#ModelView">flask_admin.contrib.mongoengine.view.ModelView</a>:<br>
+<dl><dt><strong>allowed_search_types</strong> = (&lt;class 'mongoengine.fields.StringField'&gt;, &lt;class 'mongoengine.fields.URLField'&gt;, &lt;class 'mongoengine.fields.EmailField'&gt;)</dl>
+
+<dl><dt><strong>column_type_formatters</strong> = {&lt;type 'bool'&gt;: &lt;function bool_formatter&gt;, &lt;type 'NoneType'&gt;: &lt;function empty_formatter&gt;, &lt;type 'list'&gt;: &lt;function list_formatter&gt;, &lt;class 'mongoengine.base.datastructures.BaseList'&gt;: &lt;function list_formatter&gt;, &lt;class 'mongoengine.fields.GridFSProxy'&gt;: &lt;function grid_formatter&gt;, &lt;class 'mongoengine.fields.ImageGridFsProxy'&gt;: &lt;function grid_image_formatter&gt;}</dl>
+
+<dl><dt><strong>filter_converter</strong> = &lt;flask_admin.contrib.mongoengine.filters.FilterConverter object&gt;</dl>
+
+<dl><dt><strong>form_subdocuments</strong> = None</dl>
+
+<dl><dt><strong>model_form_converter</strong> = &lt;class 'flask_admin.contrib.mongoengine.form.CustomModelConverter'&gt;<dd><tt>Customized&nbsp;MongoEngine&nbsp;form&nbsp;conversion&nbsp;class.<br>
+&nbsp;<br>
+Injects&nbsp;various&nbsp;Flask-Admin&nbsp;widgets&nbsp;and&nbsp;handles&nbsp;lists&nbsp;with<br>
+customized&nbsp;InlineFieldList&nbsp;field.</tt></dl>
+
+<dl><dt><strong>object_id_converter</strong> = &lt;class 'bson.objectid.ObjectId'&gt;<dd><tt>A&nbsp;MongoDB&nbsp;ObjectId.</tt></dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>:<br>
+<dl><dt><a name="UserView-after_model_change"><strong>after_model_change</strong></a>(self, form, model, is_created)</dt><dd><tt>Perform&nbsp;some&nbsp;actions&nbsp;after&nbsp;a&nbsp;model&nbsp;was&nbsp;created&nbsp;or&nbsp;updated&nbsp;and<br>
+committed&nbsp;to&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;create_model&nbsp;after&nbsp;successful&nbsp;database&nbsp;commit.<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;does&nbsp;nothing.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;used&nbsp;to&nbsp;create/update&nbsp;model<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;that&nbsp;was&nbsp;created/updated<br>
+:param&nbsp;is_created:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;model&nbsp;was&nbsp;created,&nbsp;False&nbsp;if&nbsp;model&nbsp;was&nbsp;updated</tt></dd></dl>
+
+<dl><dt><a name="UserView-create_form"><strong>create_form</strong></a>(self, obj<font color="#909090">=None</font>)</dt><dd><tt>Instantiate&nbsp;model&nbsp;creation&nbsp;form&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="UserView-delete_form"><strong>delete_form</strong></a>(self)</dt><dd><tt>Instantiate&nbsp;model&nbsp;delete&nbsp;form&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.<br>
+&nbsp;<br>
+The&nbsp;delete&nbsp;form&nbsp;originally&nbsp;used&nbsp;a&nbsp;GET&nbsp;request,&nbsp;so&nbsp;delete_form<br>
+accepts&nbsp;both&nbsp;GET&nbsp;and&nbsp;POST&nbsp;request&nbsp;for&nbsp;backwards&nbsp;compatibility.</tt></dd></dl>
+
+<dl><dt><a name="UserView-edit_form"><strong>edit_form</strong></a>(self, obj<font color="#909090">=None</font>)</dt><dd><tt>Instantiate&nbsp;model&nbsp;editing&nbsp;form&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_column_name"><strong>get_column_name</strong></a>(self, field)</dt><dd><tt>Return&nbsp;a&nbsp;human-readable&nbsp;column&nbsp;name.<br>
+&nbsp;<br>
+:param&nbsp;field:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;field&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_create_form"><strong>get_create_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;class&nbsp;for&nbsp;model&nbsp;creation&nbsp;view.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_delete_form"><strong>get_delete_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;class&nbsp;for&nbsp;model&nbsp;delete&nbsp;view.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_edit_form"><strong>get_edit_form</strong></a>(self)</dt><dd><tt>Create&nbsp;form&nbsp;class&nbsp;for&nbsp;model&nbsp;editing&nbsp;view.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_empty_list_message"><strong>get_empty_list_message</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="UserView-get_filter_arg"><strong>get_filter_arg</strong></a>(self, index, flt)</dt><dd><tt>Given&nbsp;a&nbsp;filter&nbsp;`flt`,&nbsp;return&nbsp;a&nbsp;unique&nbsp;name&nbsp;for&nbsp;that&nbsp;filter&nbsp;in<br>
+this&nbsp;view.<br>
+&nbsp;<br>
+Does&nbsp;not&nbsp;include&nbsp;the&nbsp;`flt[n]_`&nbsp;portion&nbsp;of&nbsp;the&nbsp;filter&nbsp;name.<br>
+&nbsp;<br>
+:param&nbsp;index:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;index&nbsp;in&nbsp;_filters&nbsp;array<br>
+:param&nbsp;flt:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_filters"><strong>get_filters</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;of&nbsp;filter&nbsp;objects.<br>
+&nbsp;<br>
+If&nbsp;your&nbsp;model&nbsp;backend&nbsp;implementation&nbsp;does&nbsp;not&nbsp;support&nbsp;filters,<br>
+override&nbsp;this&nbsp;method&nbsp;and&nbsp;return&nbsp;`None`.</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_form"><strong>get_form</strong></a>(self)</dt><dd><tt>Get&nbsp;form&nbsp;class.<br>
+&nbsp;<br>
+If&nbsp;``self.<strong>form</strong>``&nbsp;is&nbsp;set,&nbsp;will&nbsp;return&nbsp;it&nbsp;and&nbsp;will&nbsp;call<br>
+``self.<strong>scaffold_form</strong>``&nbsp;otherwise.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;customized&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_list_columns"><strong>get_list_columns</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;model&nbsp;field&nbsp;names.&nbsp;If&nbsp;`column_list`&nbsp;was<br>
+set,&nbsp;returns&nbsp;it.&nbsp;Otherwise&nbsp;calls&nbsp;`scaffold_list_columns`<br>
+to&nbsp;generate&nbsp;the&nbsp;list&nbsp;from&nbsp;the&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_list_form"><strong>get_list_form</strong></a>(self)</dt><dd><tt>Get&nbsp;form&nbsp;class&nbsp;for&nbsp;the&nbsp;editable&nbsp;list&nbsp;view.<br>
+&nbsp;<br>
+Uses&nbsp;only&nbsp;validators&nbsp;from&nbsp;`form_args`&nbsp;to&nbsp;build&nbsp;the&nbsp;form&nbsp;class.<br>
+&nbsp;<br>
+Allows&nbsp;overriding&nbsp;the&nbsp;editable&nbsp;list&nbsp;view&nbsp;field/widget.&nbsp;For&nbsp;example::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;flask.ext.admin.model.fields&nbsp;import&nbsp;ListEditableFieldList<br>
+&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;flask.ext.admin.model.widgets&nbsp;import&nbsp;XEditableWidget<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;CustomWidget(XEditableWidget):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;get_kwargs(self,&nbsp;subfield,&nbsp;kwargs):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;subfield.type&nbsp;==&nbsp;'TextAreaField':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kwargs['data-type']&nbsp;=&nbsp;'textarea'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kwargs['data-rows']&nbsp;=&nbsp;'20'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;elif:&nbsp;kwargs&nbsp;for&nbsp;other&nbsp;fields<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;kwargs<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;CustomFieldList(ListEditableFieldList):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;widget&nbsp;=&nbsp;CustomWidget()<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;MyModelView(BaseModelView):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;<a href="#UserView-get_list_form">get_list_form</a>(self):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;<a href="#UserView-scaffold_list_form">scaffold_list_form</a>(CustomFieldList)</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_list_value"><strong>get_list_value</strong></a>(self, context, model, name)</dt><dd><tt>Returns&nbsp;the&nbsp;value&nbsp;to&nbsp;be&nbsp;displayed&nbsp;in&nbsp;the&nbsp;list&nbsp;view<br>
+&nbsp;<br>
+:param&nbsp;context:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:py:class:`jinja2.runtime.Context`<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;instance<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Field&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_sortable_columns"><strong>get_sortable_columns</strong></a>(self)</dt><dd><tt>Returns&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;the&nbsp;sortable&nbsp;columns.&nbsp;Key&nbsp;is&nbsp;a&nbsp;model<br>
+field&nbsp;name&nbsp;and&nbsp;value&nbsp;is&nbsp;sort&nbsp;column&nbsp;(for&nbsp;example&nbsp;-&nbsp;attribute).<br>
+&nbsp;<br>
+If&nbsp;`column_sortable_list`&nbsp;is&nbsp;set,&nbsp;will&nbsp;use&nbsp;it.&nbsp;Otherwise,&nbsp;will&nbsp;call<br>
+`scaffold_sortable_columns`&nbsp;to&nbsp;get&nbsp;them&nbsp;from&nbsp;the&nbsp;model.</tt></dd></dl>
+
+<dl><dt><a name="UserView-handle_filter"><strong>handle_filter</strong></a>(self, filter)</dt><dd><tt>Postprocess&nbsp;(add&nbsp;joins,&nbsp;etc)&nbsp;for&nbsp;a&nbsp;filter.<br>
+&nbsp;<br>
+:param&nbsp;filter:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Filter&nbsp;object&nbsp;to&nbsp;postprocess</tt></dd></dl>
+
+<dl><dt><a name="UserView-handle_view_exception"><strong>handle_view_exception</strong></a>(self, exc)</dt><dd><tt>#&nbsp;Exception&nbsp;handler</tt></dd></dl>
+
+<dl><dt><a name="UserView-is_editable"><strong>is_editable</strong></a>(self, name)</dt><dd><tt>Verify&nbsp;if&nbsp;column&nbsp;is&nbsp;editable.<br>
+&nbsp;<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Column&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="UserView-is_sortable"><strong>is_sortable</strong></a>(self, name)</dt><dd><tt>Verify&nbsp;if&nbsp;column&nbsp;is&nbsp;sortable.<br>
+&nbsp;<br>
+Not&nbsp;case-sensitive.<br>
+&nbsp;<br>
+:param&nbsp;name:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Column&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="UserView-list_form"><strong>list_form</strong></a>(self, obj<font color="#909090">=None</font>)</dt><dd><tt>Instantiate&nbsp;model&nbsp;editing&nbsp;form&nbsp;for&nbsp;list&nbsp;view&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+Override&nbsp;to&nbsp;implement&nbsp;custom&nbsp;behavior.</tt></dd></dl>
+
+<dl><dt><a name="UserView-on_form_prefill"><strong>on_form_prefill</strong></a>(self, form, id)</dt><dd><tt>Perform&nbsp;additional&nbsp;actions&nbsp;to&nbsp;pre-fill&nbsp;the&nbsp;edit&nbsp;form.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;edit_view,&nbsp;if&nbsp;the&nbsp;current&nbsp;action&nbsp;is&nbsp;rendering<br>
+the&nbsp;form&nbsp;rather&nbsp;than&nbsp;receiving&nbsp;client&nbsp;side&nbsp;input,&nbsp;after<br>
+default&nbsp;pre-filling&nbsp;has&nbsp;been&nbsp;performed.<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;does&nbsp;nothing.<br>
+&nbsp;<br>
+You&nbsp;only&nbsp;need&nbsp;to&nbsp;override&nbsp;this&nbsp;if&nbsp;you&nbsp;have&nbsp;added&nbsp;custom<br>
+fields&nbsp;that&nbsp;depend&nbsp;on&nbsp;the&nbsp;database&nbsp;contents&nbsp;in&nbsp;a&nbsp;way&nbsp;that<br>
+Flask-admin&nbsp;can't&nbsp;figure&nbsp;out&nbsp;by&nbsp;itself.&nbsp;Fields&nbsp;that&nbsp;were<br>
+added&nbsp;by&nbsp;name&nbsp;of&nbsp;a&nbsp;normal&nbsp;column&nbsp;or&nbsp;relationship&nbsp;should<br>
+work&nbsp;out&nbsp;of&nbsp;the&nbsp;box.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;instance<br>
+:param&nbsp;id:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;of&nbsp;the&nbsp;object&nbsp;that&nbsp;is&nbsp;going&nbsp;to&nbsp;be&nbsp;edited</tt></dd></dl>
+
+<dl><dt><a name="UserView-on_model_change"><strong>on_model_change</strong></a>(self, form, model, is_created)</dt><dd><tt>Perform&nbsp;some&nbsp;actions&nbsp;after&nbsp;a&nbsp;model&nbsp;is&nbsp;created&nbsp;or&nbsp;updated.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;create_model&nbsp;and&nbsp;update_model&nbsp;in&nbsp;the&nbsp;same&nbsp;transaction<br>
+(if&nbsp;it&nbsp;has&nbsp;any&nbsp;meaning&nbsp;for&nbsp;a&nbsp;store&nbsp;backend).<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;does&nbsp;nothing.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;used&nbsp;to&nbsp;create/update&nbsp;model<br>
+:param&nbsp;model:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Model&nbsp;that&nbsp;will&nbsp;be&nbsp;created/updated<br>
+:param&nbsp;is_created:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Will&nbsp;be&nbsp;set&nbsp;to&nbsp;True&nbsp;if&nbsp;model&nbsp;was&nbsp;created&nbsp;and&nbsp;to&nbsp;False&nbsp;if&nbsp;edited</tt></dd></dl>
+
+<dl><dt><a name="UserView-on_model_delete"><strong>on_model_delete</strong></a>(self, model)</dt><dd><tt>Perform&nbsp;some&nbsp;actions&nbsp;before&nbsp;a&nbsp;model&nbsp;is&nbsp;deleted.<br>
+&nbsp;<br>
+Called&nbsp;from&nbsp;delete_model&nbsp;in&nbsp;the&nbsp;same&nbsp;transaction<br>
+(if&nbsp;it&nbsp;has&nbsp;any&nbsp;meaning&nbsp;for&nbsp;a&nbsp;store&nbsp;backend).<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;do&nbsp;nothing.</tt></dd></dl>
+
+<dl><dt><a name="UserView-validate_form"><strong>validate_form</strong></a>(self, form)</dt><dd><tt>Validate&nbsp;the&nbsp;form&nbsp;on&nbsp;submit.<br>
+&nbsp;<br>
+:param&nbsp;form:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;to&nbsp;validate</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>:<br>
+<dl><dt><strong>action_disallowed_list</strong></dt>
+</dl>
+<dl><dt><strong>column_display_pk</strong></dt>
+</dl>
+<dl><dt><strong>column_formatters</strong></dt>
+</dl>
+<dl><dt><strong>column_labels</strong></dt>
+</dl>
+<dl><dt><strong>column_list</strong></dt>
+</dl>
+<dl><dt><strong>column_sortable_list</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="flask_admin.model.base.html#BaseModelView">flask_admin.model.base.BaseModelView</a>:<br>
+<dl><dt><strong>can_delete</strong> = True</dl>
+
+<dl><dt><strong>can_edit</strong> = True</dl>
+
+<dl><dt><strong>column_default_sort</strong> = None</dl>
+
+<dl><dt><strong>column_editable_list</strong> = None</dl>
+
+<dl><dt><strong>create_template</strong> = 'admin/model/create.html'</dl>
+
+<dl><dt><strong>form</strong> = None</dl>
+
+<dl><dt><strong>form_ajax_refs</strong> = None</dl>
+
+<dl><dt><strong>form_args</strong> = None</dl>
+
+<dl><dt><strong>form_base_class</strong> = &lt;class 'flask_admin.form.BaseForm'&gt;</dl>
+
+<dl><dt><strong>form_columns</strong> = None</dl>
+
+<dl><dt><strong>form_create_rules</strong> = None</dl>
+
+<dl><dt><strong>form_edit_rules</strong> = None</dl>
+
+<dl><dt><strong>form_extra_fields</strong> = None</dl>
+
+<dl><dt><strong>form_overrides</strong> = None</dl>
+
+<dl><dt><strong>form_rules</strong> = None</dl>
+
+<dl><dt><strong>form_widget_args</strong> = None</dl>
+
+<dl><dt><strong>named_filter_urls</strong> = False</dl>
+
+<dl><dt><strong>page_size</strong> = 20</dl>
+
+<hr>
+Methods inherited from <a href="flask_admin.base.html#BaseView">flask_admin.base.BaseView</a>:<br>
+<dl><dt><a name="UserView-create_blueprint"><strong>create_blueprint</strong></a>(self, admin)</dt><dd><tt>Create&nbsp;Flask&nbsp;blueprint.</tt></dd></dl>
+
+<dl><dt><a name="UserView-get_url"><strong>get_url</strong></a>(self, endpoint, **kwargs)</dt><dd><tt>Generate&nbsp;URL&nbsp;for&nbsp;the&nbsp;endpoint.&nbsp;If&nbsp;you&nbsp;want&nbsp;to&nbsp;customize&nbsp;URL&nbsp;generation<br>
+logic&nbsp;(persist&nbsp;some&nbsp;query&nbsp;string&nbsp;argument,&nbsp;for&nbsp;example),&nbsp;this&nbsp;is<br>
+right&nbsp;place&nbsp;to&nbsp;do&nbsp;it.<br>
+&nbsp;<br>
+:param&nbsp;endpoint:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Flask&nbsp;endpoint&nbsp;name<br>
+:param&nbsp;kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Arguments&nbsp;for&nbsp;`url_for`</tt></dd></dl>
+
+<dl><dt><a name="UserView-inaccessible_callback"><strong>inaccessible_callback</strong></a>(self, name, **kwargs)</dt><dd><tt>Handle&nbsp;the&nbsp;response&nbsp;to&nbsp;inaccessible&nbsp;views.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;it&nbsp;throw&nbsp;HTTP&nbsp;403&nbsp;error.&nbsp;Override&nbsp;this&nbsp;method&nbsp;to<br>
+customize&nbsp;the&nbsp;behaviour.</tt></dd></dl>
+
+<dl><dt><a name="UserView-is_visible"><strong>is_visible</strong></a>(self)</dt><dd><tt>Override&nbsp;this&nbsp;method&nbsp;if&nbsp;you&nbsp;want&nbsp;dynamically&nbsp;hide&nbsp;or&nbsp;show&nbsp;administrative&nbsp;views<br>
+from&nbsp;Flask-Admin&nbsp;menu&nbsp;structure<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;item&nbsp;is&nbsp;visible&nbsp;in&nbsp;menu.<br>
+&nbsp;<br>
+Please&nbsp;note&nbsp;that&nbsp;item&nbsp;should&nbsp;be&nbsp;both&nbsp;visible&nbsp;and&nbsp;accessible&nbsp;to&nbsp;be&nbsp;displayed&nbsp;in&nbsp;menu.</tt></dd></dl>
+
+<dl><dt><a name="UserView-render"><strong>render</strong></a>(self, template, **kwargs)</dt><dd><tt>Render&nbsp;template<br>
+&nbsp;<br>
+:param&nbsp;template:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Template&nbsp;path&nbsp;to&nbsp;render<br>
+:param&nbsp;kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Template&nbsp;arguments</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_admin.base.html#BaseViewClass">flask_admin.base.BaseViewClass</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="flask_admin.actions.html#ActionsMixin">flask_admin.actions.ActionsMixin</a>:<br>
+<dl><dt><a name="UserView-get_actions_list"><strong>get_actions_list</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;and&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;allowed&nbsp;actions.</tt></dd></dl>
+
+<dl><dt><a name="UserView-handle_action"><strong>handle_action</strong></a>(self, return_view<font color="#909090">=None</font>)</dt><dd><tt>Handle&nbsp;action&nbsp;request.<br>
+&nbsp;<br>
+:param&nbsp;return_view:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;of&nbsp;the&nbsp;view&nbsp;to&nbsp;return&nbsp;to&nbsp;after&nbsp;the&nbsp;request.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;not&nbsp;provided,&nbsp;will&nbsp;return&nbsp;user&nbsp;to&nbsp;the&nbsp;index&nbsp;view.</tt></dd></dl>
+
+<dl><dt><a name="UserView-init_actions"><strong>init_actions</strong></a>(self)</dt><dd><tt>Initialize&nbsp;list&nbsp;of&nbsp;actions&nbsp;for&nbsp;the&nbsp;current&nbsp;administrative&nbsp;view.</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-initialize_admin_component"><strong>initialize_admin_component</strong></a>(app)</dt><dd><tt>Initialize&nbsp;the&nbsp;Admin&nbsp;Views.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>request</strong> = &lt;LocalProxy unbound&gt;</td></tr></table>
+</body></html>

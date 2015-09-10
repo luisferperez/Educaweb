@@ -1,0 +1,67 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module server</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>server</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/luisfer/Documentos/workspace/Educaweb/server/server.py">/home/luisfer/Documentos/workspace/Educaweb/server/server.py</a></font></td></tr></table>
+    <p><tt>@author:&nbsp;Luis&nbsp;Fdo.&nbsp;Pérez<br>
+&nbsp;<br>
+Server&nbsp;of&nbsp;the&nbsp;Application</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="config.html">config</a><br>
+</td><td width="25%" valign=top><a href="flask_login.html">flask_login</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top><a href="string.html">string</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-about_view"><strong>about_view</strong></a>()</dt><dd><tt>View&nbsp;to&nbsp;show&nbsp;the&nbsp;about&nbsp;page.</tt></dd></dl>
+ <dl><dt><a name="-contact_view"><strong>contact_view</strong></a>()</dt><dd><tt>View&nbsp;to&nbsp;show&nbsp;the&nbsp;contact&nbsp;page.</tt></dd></dl>
+ <dl><dt><a name="-cuenta_view"><strong>cuenta_view</strong></a>()</dt><dd><tt>Function&nbsp;to&nbsp;display&nbsp;the&nbsp;form&nbsp;that&nbsp;allows&nbsp;to&nbsp;query&nbsp;and&nbsp;modify&nbsp;the&nbsp;user&nbsp;profile</tt></dd></dl>
+ <dl><dt><a name="-error_mongo"><strong>error_mongo</strong></a>(e)</dt></dl>
+ <dl><dt><a name="-error_not_found"><strong>error_not_found</strong></a>(error)</dt><dd><tt>#=========================================#<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;Error&nbsp;Handling&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#<br>
+#=========================================#</tt></dd></dl>
+ <dl><dt><a name="-examenes_view"><strong>examenes_view</strong></a>(nombre<font color="#909090">=None</font>, asignatura<font color="#909090">=None</font>, usuario<font color="#909090">=None</font>, export<font color="#909090">=None</font>)</dt><dd><tt>the&nbsp;list&nbsp;of&nbsp;exams&nbsp;is&nbsp;shown&nbsp;for&nbsp;both&nbsp;the&nbsp;export&nbsp;menu&nbsp;and&nbsp;the&nbsp;menu&nbsp;to&nbsp;perform&nbsp;exams</tt></dd></dl>
+ <dl><dt><a name="-export_odt"><strong>export_odt</strong></a>(exam<font color="#909090">=None</font>, template<font color="#909090">=None</font>, modo<font color="#909090">=None</font>)</dt><dd><tt>Function&nbsp;which&nbsp;allows&nbsp;to&nbsp;export&nbsp;an&nbsp;exam&nbsp;to&nbsp;a&nbsp;odt&nbsp;file.</tt></dd></dl>
+ <dl><dt><a name="-export_pdf"><strong>export_pdf</strong></a>(exam<font color="#909090">=None</font>, template<font color="#909090">=None</font>)</dt><dd><tt>Function&nbsp;which&nbsp;allows&nbsp;to&nbsp;export&nbsp;an&nbsp;exam&nbsp;to&nbsp;a&nbsp;pdf&nbsp;file.</tt></dd></dl>
+ <dl><dt><a name="-gen_passwd"><strong>gen_passwd</strong></a>(n)</dt><dd><tt>Password&nbsp;generator&nbsp;extracted&nbsp;from:<br>
+<a href="http://miguelangelnieto.net/?action=view&amp;url=receta-generar-contrase%C3%B1as-aleatorias-en-python">http://miguelangelnieto.net/?action=view&amp;url=receta-generar-contrase%C3%B1as-aleatorias-en-python</a></tt></dd></dl>
+ <dl><dt><a name="-genera_examen_view"><strong>genera_examen_view</strong></a>()</dt><dd><tt>Function&nbsp;for&nbsp;generating&nbsp;random&nbsp;tests</tt></dd></dl>
+ <dl><dt><a name="-index"><strong>index</strong></a>()</dt><dd><tt>View&nbsp;to&nbsp;show&nbsp;the&nbsp;home&nbsp;page.</tt></dd></dl>
+ <dl><dt><a name="-init_ddbb"><strong>init_ddbb</strong></a>()</dt><dd><tt>#&nbsp;Initialize&nbsp;ddbb</tt></dd></dl>
+ <dl><dt><a name="-init_login"><strong>init_login</strong></a>(app)</dt><dd><tt>#==================================================#<br>
+#&nbsp;&nbsp;Initialize&nbsp;Flask-Login&nbsp;to&nbsp;handle&nbsp;user&nbsp;sessions&nbsp;&nbsp;#<br>
+#==================================================#</tt></dd></dl>
+ <dl><dt><a name="-logout_view"><strong>logout_view</strong></a>()</dt><dd><tt>Logging&nbsp;out&nbsp;the&nbsp;current&nbsp;session.</tt></dd></dl>
+ <dl><dt><a name="-rec_pass"><strong>rec_pass</strong></a>()</dt><dd><tt>Function&nbsp;which&nbsp;displays&nbsp;the&nbsp;form&nbsp;to&nbsp;retrieve&nbsp;the&nbsp;user's&nbsp;password.</tt></dd></dl>
+ <dl><dt><a name="-send_email"><strong>send_email</strong></a>(email, passw)</dt><dd><tt>Function&nbsp;to&nbsp;send&nbsp;an&nbsp;email&nbsp;to&nbsp;reset&nbsp;the&nbsp;password.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>app</strong> = &lt;Flask 'server'&gt;<br>
+<strong>db</strong> = &lt;flask_mongoengine.MongoEngine object&gt;<br>
+<strong>mail</strong> = &lt;flask_mail.Mail object&gt;<br>
+<strong>request</strong> = &lt;LocalProxy unbound&gt;<br>
+<strong>session</strong> = &lt;LocalProxy unbound&gt;</td></tr></table>
+</body></html>
